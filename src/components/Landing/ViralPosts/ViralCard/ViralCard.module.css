@@ -1,0 +1,128 @@
+/* MockTweetCard.module.css */
+
+.tweetCard {
+  width: 380px;
+  height: 280px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tweetCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.tweetHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  gap: 0.75rem;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.authorInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.nameContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.handle {
+  margin: 0;
+  color: #0f1419 !important;
+}
+
+.verifiedIcon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: #1d9bf0;
+}
+
+.username {
+  margin: 0;
+  color: #536471 !important;
+  font-size: 0.9rem !important;
+}
+
+.timestamp {
+  margin: 0;
+  color: #536471 !important;
+  font-size: 0.9rem !important;
+  margin-left: auto;
+}
+
+.tweetContent {
+  margin: 1rem 0 !important;
+  color: #0f1419 !important;
+  line-height: 1.5 !important;
+  flex: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+}
+
+.tweetStats {
+  display: flex;
+  gap: 1.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #f7f9fa;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.statIcon {
+  width: 16px;
+  height: 16px;
+  color: #536471;
+}
+
+.statText {
+  margin: 0 !important;
+  color: #536471 !important;
+  font-size: 0.9rem !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .tweetCard {
+    width: 320px;
+    height: 260px;
+    padding: 1.25rem;
+  }
+  
+  .avatar {
+    width: 42px;
+    height: 42px;
+  }
+  
+  .tweetContent {
+    -webkit-line-clamp: 5;
+  }
+  
+  .username,
+  .timestamp {
+    font-size: 0.8rem !important;
+  }
+  
+  .statText {
+    font-size: 0.8rem !important;
+  }
+} 

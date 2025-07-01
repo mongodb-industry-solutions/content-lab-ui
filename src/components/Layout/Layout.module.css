@@ -1,0 +1,42 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.main {
+  flex: 1;
+  padding: 0;
+  margin: 0;
+  padding-top: 100px; 
+}
+
+.container {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Medium screens */
+@media (min-width: 768px) {
+  .main {
+    padding: 1.5rem;
+    padding-top: 100px; 
+  }
+}
+
+/* Large screens */
+@media (min-width: 1024px) {
+  .main {
+    padding: 2rem;
+    padding-top: 100px; 
+  }
+} 

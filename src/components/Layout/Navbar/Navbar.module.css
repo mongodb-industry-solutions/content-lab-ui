@@ -1,0 +1,98 @@
+/* Navbar.module.css */
+
+/* Navbar wrapper for centering */
+.navbarWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0.8rem;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.navbar {
+  /* Glassmorphism background */
+  background: rgba(250, 250, 250, 0.4); 
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+    
+  /* Layout */
+  padding: 0.2rem 1.7rem;
+  display: flex;
+  align-items: center;
+  width: auto;
+  border-radius: 20px;
+  min-height: 60px;
+  gap: 13rem;
+  
+  /* glassmorphism shadow */
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 2px 6px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  
+  /* Smooth transitions */
+  transition: all 0.3s ease;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.8rem;
+  white-space: nowrap;
+  min-width: fit-content;
+}
+
+.logoText {
+  color: #000000;
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.navlinks {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.navLink {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.navLink:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+  text-underline-offset: 0.4rem;
+  text-decoration-thickness: 0.1rem;
+  text-decoration-color: #000000;
+}
+
+.navText {
+  color: #000000;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.profileAndLogoutContainer {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.profileAndLogoutContainer:hover {
+  opacity: 0.7;
+}

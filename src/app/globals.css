@@ -1,16 +1,15 @@
-@import "tailwindcss";
-
 /*
  * LeafyGreen UI Palette Colors
  * Source: https://github.com/mongodb/leafygreen-ui/tree/main/packages/palette
  */
 
+/* 
 @theme {
-  /* Basic colors */
+  // Basic colors
   --color-lg-white: #ffffff;
   --color-lg-black: #001E2B;
   
-  /* Gray scale */
+  // Gray scale
   --color-lg-gray-dark4: #112733;
   --color-lg-gray-dark3: #1C2D38;
   --color-lg-gray-dark2: #3D4F58;
@@ -20,7 +19,7 @@
   --color-lg-gray-light2: #E8EDEB;
   --color-lg-gray-light3: #F9FBFA;
   
-  /* Green (Primary brand color) */
+  // Green (Primary brand color)
   --color-lg-green-dark3: #023430;
   --color-lg-green-dark2: #00684A;
   --color-lg-green-dark1: #00A35C;
@@ -29,14 +28,14 @@
   --color-lg-green-light2: #C0FAE6;
   --color-lg-green-light3: #E3FCF7;
   
-  /* Purple */
+  // Purple
   --color-lg-purple-dark3: #2D0B59;
   --color-lg-purple-dark2: #5E0C9E;
   --color-lg-purple-base: #B45AF2;
   --color-lg-purple-light2: #F1D4FD;
   --color-lg-purple-light3: #F9EBFF;
   
-  /* Blue (Links and info) */
+  // Blue (Links and info)
   --color-lg-blue-dark3: #0C2657;
   --color-lg-blue-dark2: #083C90;
   --color-lg-blue-dark1: #1254B7;
@@ -45,14 +44,14 @@
   --color-lg-blue-light2: #C3E7FE;
   --color-lg-blue-light3: #E1F7FF;
   
-  /* Yellow (Warnings) */
+  // Yellow (Warnings)
   --color-lg-yellow-dark3: #4C2100;
   --color-lg-yellow-dark2: #944F01;
   --color-lg-yellow-base: #FFC010;
   --color-lg-yellow-light2: #FFEC9E;
   --color-lg-yellow-light3: #FEF7DB;
   
-  /* Red (Errors) */
+  // Red (Errors)
   --color-lg-red-dark3: #5B0000;
   --color-lg-red-dark2: #970606;
   --color-lg-red-base: #DB3030;
@@ -60,6 +59,7 @@
   --color-lg-red-light2: #FFCDC7;
   --color-lg-red-light3: #FFEAE5;
 }
+*/
 
 /* Base styles */
 * {

@@ -1,11 +1,62 @@
-# Next.js Template
+# [Demo Name Here]
 
-This repository provides a structured template for building Next.js applications, making it easy to create and manage new demos with a consistent layout.
+[Small description of your demo here]
 
-## Project Structure
+## Where MongoDB Shines?
 
-All development for the project takes place within the `src` folder. Inside, you'll find organized directories and files that follow best practices for Next.js applications. For detailed guidance on how Next.js application work refer to the `README` located inside the `src` directory.
+[Small explanation of which MongoDB features are present]
 
-## DEMO README
+Learn more about MongoDB [here](https://www.mongodb.com/docs/manual/).
 
-<h1 style="color:red">REPLACE THE CONTENT OF THIS README WITH `README-demo.md` and DELETE THE `README-demo.md` FILE!!!!!!!!! </h1>
+## High Level Architecture
+
+[High level architecture diagram here use [google slides](https://docs.google.com/presentation/d/1vo8Y8mBrocJtzvZc_tkVHZTsVW_jGueyUl-BExmVUtI/edit#slide=id.g30c066974c7_0_3536)]
+
+## Tech Stack
+
+[List your tech stack]
+
+[Example below]
+
+- Next.js [App Router](https://nextjs.org/docs/app) for the framework
+- [MongoDB Atlas](https://www.mongodb.com/atlas/database) for the database
+- [CSS Modules](https://github.com/css-modules/css-modules) for styling
+
+
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- Node.js 14 or higher
+
+[Add more if needed]
+
+## Run it locally
+
+1. Navigate to the `src` folder.
+2. Install dependencies by running:
+```bash
+npm install
+```
+3. Start the frontend development server with:
+````bash
+npm run dev
+````
+4. The frontend will now be accessible at http://localhost:3000 by default, providing a user interface.
+
+## Run with Docker
+
+Make sure to run this on the root directory.
+
+1. To run with Docker use the following command:
+```
+make build
+```
+2. To delete the container and image run:
+```
+make clean
+```
+
+## Common errors
+
+- Check that you've created an `.env.local` file that contains your valid (and working) API keys, environment and index variables.

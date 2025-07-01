@@ -1,0 +1,37 @@
+/* Marquee.module.css */
+
+.marqueeContainer {
+  overflow: hidden;
+  padding: 0.5rem;
+  --duration: 20s;
+  --gap: 2rem;
+}
+
+.marqueeTrack {
+  display: flex;
+  animation: marquee var(--duration) linear infinite;
+  animation-delay: -10s; /* Start animation halfway through */
+  width: max-content;
+}
+
+.marqueeContent {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: var(--gap);
+  padding-right: var(--gap);
+}
+
+.marqueePauseOnHover:hover .marqueeTrack {
+  animation-play-state: paused;
+}
+
+/* Seamless infinite marquee animation */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+} 

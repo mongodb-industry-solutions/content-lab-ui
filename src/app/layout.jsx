@@ -4,10 +4,7 @@ import "@/app/globals.css";
 
 export const metadata = {
   title: "The Content Lab",
-  description: "Application for the Content Lab at IST Media",
-  icons: {
-    icon: "/favicon.ico",
-  },
+  description: "Application for the Content Lab at IST Media"
 };
 
 export default function RootLayout({ children }) {
