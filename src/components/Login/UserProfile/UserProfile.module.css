@@ -1,0 +1,81 @@
+/* styles/userProfile.module.css */
+  
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popupCard {
+  background-color: #fff;
+  padding: 10px 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: fit-content;
+  max-width: 400px;
+  min-width: 320px;
+  position: relative;
+}
+
+.profileImage {
+  border-radius: 50%;
+  margin-bottom: 16px;
+  border: 3px solid #f0f0f0;
+}
+
+.divider {
+  border-bottom: 1px solid #e8e8e8;
+  margin: 20px 0;
+}
+  
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.userNameContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.section {
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.sectionTitle {
+  margin-bottom: 12px;
+}
+
+.styleContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sampleTextContainer {
+  background-color: #fafafa;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 8px;
+}
+
+.sampleText {
+  color: #4a4a4a;
+  font-style: italic;
+  line-height: 1.5;
+  text-align: left;
+}

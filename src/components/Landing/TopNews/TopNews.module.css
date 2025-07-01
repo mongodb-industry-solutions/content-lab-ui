@@ -1,0 +1,48 @@
+/* TopNews.module.css */
+
+.topNewsSection {
+  background: transparent;
+  padding: 4rem 0;
+  min-height: auto;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.sectionTitle {
+  text-align: center;
+  color: #000000;
+  margin-bottom: 1.5rem;
+  font-size: 3rem;
+}
+
+.sectionSubtitle {
+  text-align: center;
+  color: #5C6C75;
+  margin-bottom: 4rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.1rem;
+}
+
+.newsContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.newsCardWrapper {
+  transition: opacity 1.2s ease;
+}
+
+.newsCardWrapper.visible {
+  opacity: 1;
+}
+
+.newsCardWrapper.hidden {
+  opacity: 0;
+}

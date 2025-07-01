@@ -1,0 +1,118 @@
+/* Headline.module.css */
+
+.headlineSection {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100vw;
+  margin: -100px 0 0 calc(-50vw + 50%);
+  padding-top: 100px;
+  background: linear-gradient(135deg, #00684A, #00A35C);
+  min-height: calc(80vh + 100px);
+}
+
+.heroCard {
+  max-width: 1400px;
+  width: 100%;
+  margin: 2rem;
+  padding: 2rem 2rem;
+  background: linear-gradient(to bottom, #ffffff, #f3f4f6) !important;
+  overflow: hidden;
+  position: relative;
+}
+
+.twoColumnLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contentColumn {
+  text-align: center;
+}
+
+.contentCard {
+  padding: 3rem 2.5rem;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10;
+}
+
+.globeColumn {
+  height: 550px;
+  margin-left: 2rem;
+  transform: translateX(35%) scale(1.3);
+  position: relative;
+  z-index: 1;
+}
+
+.subtitle {
+  color: #00684A;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.mainHeadline {
+  color: #000000;
+  font-weight: 500;
+  font-size: 2rem;
+  margin: 0 0 1rem 0;
+}
+
+.subHeadline {
+  color: #5C6C75;
+  line-height: 1.6;
+  margin: 0 0 2rem 0;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.ctaLink {
+  text-decoration: none;
+}
+
+.primaryButton {
+  background-color: #00684A !important;
+  color: #ffffff !important;
+  border: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .headlineSection {
+    min-height: 100vh;
+  }
+  
+  .heroCard {
+    margin: 1rem;
+    padding: 3rem 2rem;
+  }
+  
+  .twoColumnLayout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .contentCard {
+    padding: 2rem 1.5rem;
+  }
+
+  .globeColumn {
+    height: 400px;
+    margin-left: 0;
+    transform: none;
+  }
+} 

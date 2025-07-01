@@ -1,0 +1,113 @@
+/* ViralPosts.module.css */
+
+.viralPostsSection {
+  padding: 6rem 0;
+  min-height: 80vh;
+  position: relative;
+}
+
+/* Background Components */
+.flickeringGrid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  mask-image: radial-gradient(550px circle at center, white, transparent);
+  -webkit-mask-image: radial-gradient(550px circle at center, white, transparent);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.sectionTitle {
+  text-align: center;
+  color: #000000;
+  margin-bottom: 1.5rem;
+  font-size: 3rem;
+}
+
+.sectionSubtitle {
+  text-align: center;
+  color: #5C6C75;
+  margin-bottom: 4rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.1rem;
+}
+
+.marqueeContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.marquee {
+  width: 100%;
+}
+
+.tweetWrapper {
+  margin-right: 2rem;
+  flex-shrink: 0;
+}
+
+/* Fade effects - using CSS custom properties for flexibility */
+.fadeLeft {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100%;
+  background: linear-gradient(to right, var(--fade-color, #ffffff), transparent);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.fadeRight {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100%;
+  background: linear-gradient(to left, var(--fade-color, #ffffff), transparent);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .viralPostsSection {
+    padding: 4rem 0;
+    min-height: 80vh;
+  }
+  
+  .container {
+    padding: 0 1.5rem;
+  }
+  
+  .sectionTitle {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .sectionSubtitle {
+    margin-bottom: 3rem;
+    font-size: 1rem;
+  }
+  
+  .tweetWrapper {
+    margin-right: 1.5rem;
+  }
+  
+  .fadeLeft,
+  .fadeRight {
+    width: 50px;
+  }
+} 
