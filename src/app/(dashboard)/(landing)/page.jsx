@@ -1,7 +1,7 @@
-import Headline from '@/components/Landing/Headline';
-import TopNews from '@/components/Landing/TopNews';
-import ViralPosts from '@/components/Landing/ViralPosts';
-import Divider from '@/components/Landing/Divider';
+import Headline from '@/components/Dashboard/Landing/Headline';
+import TopNews from '@/components/Dashboard/Landing/TopNews';
+import ViralPosts from '@/components/Dashboard/Landing/ViralPosts';
+import Divider from '@/components/Dashboard/Landing/Divider';
 
 export default function LandingPage() {
   return (
