@@ -52,3 +52,22 @@ export async function fetchNews() {
     return [];
   }
 }
+
+/**
+ * Fetch topics from the MongoDB Atlas database (server-side)
+ * @returns {Promise<Array>} - A promise that resolves to the topics
+ */
+export async function fetchTopics() {
+  try {
+    const response = await fetch('/api/suggestedTopics');
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const topics = await response.json();
+    return topics;
+  } catch (error) {
+    console.error('Error fetching topics on server:', error);
+    return [];
+  }
+}
