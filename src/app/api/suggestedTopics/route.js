@@ -1,37 +1,44 @@
 import { NextResponse } from "next/server";
 
-export async function GET(request) {
+// Test function 
+async function testSuggestedTopics() {
+    console.log(`[TEST] Fetching suggested topics with hardcoded parameters`);
+    
     try {
-        const backendUrl = process.env.BACKEND_URL;
-        if (!backendUrl) {
-            throw new Error("BACKEND_URL is not set");
+        const backendUrl = process.env.BACKEND_URL || "http://localhost:8000";
+        
+        
+        console.log(`[TEST] Connecting to backend at: ${backendUrl}/api/suggestions`);
+        
+        const response = await fetch(`${backendUrl}/api/suggestions?days=30&limit=10`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
         
-        console.log("backendurl with endpoint: ", `${backendUrl}/topics`);
+        const data = await response.json();
+        console.log(`[TEST] Suggested topics received:`, data);
+        return data; // Return the whole response
+    } catch (error) {
+        console.error(`[TEST] Suggested topics test failed:`, error);
+        return { error: error.message };
+    }
+}
 
-        try {
-            const response = await fetch(`${backendUrl}/topics`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    query: "What is the capital of Spain?"
-                })
-            });
-
-            if (!response.ok) {
-                console.log("HTTP error! error: ", response.error);
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            const data = await response.json();
-            console.log("data: ", data);
-            return NextResponse.json({ message: data.results });
-        }catch(error) {
-            return NextResponse.json({error: "Failed to fetch suggested topics"}, {status: 500});
-        }
-    }catch(error) {
-        return NextResponse.json({error: "Internal server error"}, {status: 500});
+export async function GET(request) {
+    try {
+        // For testing purposes
+        return NextResponse.json(await testSuggestedTopics());
+    } catch (error) {
+        console.error("Error in suggested topics API:", error);
+        return NextResponse.json(
+            { error: "Failed to fetch suggested topics" }, 
+            { status: 500 }
+        );
     }
 }

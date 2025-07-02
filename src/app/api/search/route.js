@@ -1,24 +1,25 @@
 import { NextResponse } from "next/server";
 
-async function testQueryTopics() {
-    const testQuery = "cryptocurrency market";
+// Test function with hardcoded query
+async function testSearch() {
+    const testQuery = "artificial intelligence trends";
+    const limit = 3;
     
-    console.log(`[TEST] Querying topics with hardcoded query: "${testQuery}"`);
+    console.log(`[TEST] Running search with hardcoded query: "${testQuery}"`);
     
     try {
         const backendUrl = process.env.BACKEND_URL || "http://localhost:8000";
         
+        console.log(`[TEST] Connecting to backend at: ${backendUrl}`);
         
-        console.log(`[TEST] Connecting to backend at: ${backendUrl}/api/analyze`);
-        
-        const response = await fetch(`${backendUrl}/api/analyze`, {
+        const response = await fetch(`${backendUrl}/api/search`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ 
+            body: JSON.stringify({
                 query: testQuery,
-                limit: 5 
+                limit
             })
         });
         
@@ -27,23 +28,20 @@ async function testQueryTopics() {
         }
         
         const data = await response.json();
-        console.log(`[TEST] Query topics results received:`, data);
+        console.log(`[TEST] Search results received:`, data);
         return data;
     } catch (error) {
-        console.error(`[TEST] Query topics test failed:`, error);
+        console.error(`[TEST] Search test failed:`, error);
         return { error: error.message };
     }
 }
 
 export async function POST(request) {
     try {
-        //  testing purposes
-        return NextResponse.json(await testQueryTopics());
+        // return NextResponse.json(await testSearch());
         
-        // code commented out for now
-        /*
         const body = await request.json();
-        const { query } = body;
+        const { query, limit = 5 } = body;
 
         if (!query) {
             return NextResponse.json(
@@ -53,37 +51,35 @@ export async function POST(request) {
         }
 
         const backendUrl = process.env.BACKEND_URL || "http://localhost:8000";
+        console.log(`Searching with query: "${query}", limit: ${limit}`);
 
-        console.log(`Querying topics with: "${query}"`);
-
-        const response = await fetch(`${backendUrl}/api/analyze`, {
+        const response = await fetch(`${backendUrl}/api/search`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ query, limit: 5 })
+            body: JSON.stringify({
+                query,
+                limit
+            })
         });
 
         if (!response.ok) {
-            console.error("Failed to query topics:", response.statusText);
+            console.error("Search failed:", response.statusText);
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
         const data = await response.json();
-        console.log("Received query topics response:", data);
+        console.log("Search returned results:", data.results?.length || 0);
         return NextResponse.json(data);
-        */
     } catch (error) {
-        console.error("Error in query topics API:", error);
-        return NextResponse.json(
-            { error: "Failed to fetch query topics" }, 
-            { status: 500 }
-        );
+        console.error("Search API error:", error);
+        return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }
 
-// a GET method for easier testing from the browser
+// Add a GET method for easier testing from the browser
 export async function GET() {
-    const results = await testQueryTopics();
+    const results = await testSearch();
     return NextResponse.json(results);
 }
