@@ -1,15 +1,7 @@
 import React from 'react';
 
-import SearchBar from '@/components/Dashboard/Topics/Search/SearchBar';
-import Suggestions from '@/components/Dashboard/Topics/Suggestions';
-import Divider from '@/components/external/Divider';
+import TopicsContainer from '@/components/Dashboard/Topics';
 
 export default function TopicsPage() {
-  return (
-    <>
-      <SearchBar />
-      <Divider />
-      <Suggestions />
-    </>
-  );
+  return <TopicsContainer />;
 }

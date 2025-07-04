@@ -1,7 +1,6 @@
 "use client";
 
 import Navbar from "@/components/Layout/Navbar";
-import Footer from "@/components/Layout/Footer";
 import Login from "@/components/Login";
 import { useState } from "react";
 import styles from './Layout.module.css';
@@ -27,7 +26,6 @@ export default function Layout({ children }) {
           {children}
         </div>
       </main>
-      <Footer />
     </div>
   );
 } 

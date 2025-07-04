@@ -102,8 +102,6 @@
   }
 }
 
-
-
 /* Responsive design */
 @media (max-width: 1200px) {
   .floatingCards {
@@ -143,6 +141,29 @@
 
 @media (max-width: 768px) {
   .floatingCards {
-    display: none; /* Hide on mobile to avoid cluttering */
+    display: none;
   }
 } 
+
+@media (min-height: 1200px) {
+  .floatingCard {
+    width: 400px;
+    height: 250px;
+  }
+
+  .cardContent {
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .cardImage {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .sourceBadge {
+    font-size: 1rem !important;
+    padding: 0.5rem 1rem !important;
+  }
+
+}

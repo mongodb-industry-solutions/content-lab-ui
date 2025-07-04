@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Particles } from '@/components/external/Particles';
 import { fetchTopics } from '@/lib/mongo-client';
-import { H2 } from '@leafygreen-ui/typography';
+import { H3 } from '@leafygreen-ui/typography';
+import TopicCard from '@/components/Dashboard/Topics/Suggestions/TopicCard';
 
 export default function Suggestions() {
     const [topics, setTopics] = useState([]);
@@ -20,12 +20,9 @@ export default function Suggestions() {
         fetchTopicsData();
       }, []);
 
-
     return (
-        <div>
-            <H2>Suggested Topics</H2>
-            {topics.message}
-            {/* <Particles /> */}
-        </div>
+      <div>
+        {/* Topic Cards */}
+      </div>
     )
 }

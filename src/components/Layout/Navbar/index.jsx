@@ -69,13 +69,13 @@ export default function Navbar() {
             aria-label="Profile"
             onClick={handleProfile}
           >
-            <Icon glyph="Person" color="black" />
+            <Icon glyph="Person" color="black" className={styles.profileIcon}/>
           </IconButton>
           <IconButton
             aria-label="Logout"
             onClick={handleLogout}
           >
-            <Icon glyph="LogOut" color="black" />
+            <Icon glyph="LogOut" color="black" className={styles.logoutIcon}/>
           </IconButton>
         </div>
         

@@ -2,38 +2,49 @@
 
 .searchContainer {
   position: relative;
-  max-width: 35vw;
-  margin: 1rem auto;
+  max-width: 60vw;
+  width: 100%;
+  margin: 2rem auto;
   z-index: 10;
 }
 
+.searchBarWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
 .searchCard {
-  /* Green glassmorphism background */
-  background: rgba(0, 163, 92, 0.15) !important;
-  border: 1px solid rgba(0, 163, 92, 0.3) !important;
-  backdrop-filter: blur(20px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  /* White background for particles */
+  background: rgba(255, 255, 255, 0.98) !important;
+  border: 2px solid rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(10px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
   
-  /* Green glow effect */
+  /* Subtle shadow */
   box-shadow: 
-    0 0 30px rgba(0, 163, 92, 0.3),
-    0 8px 32px rgba(0, 163, 92, 0.15),
-    0 2px 6px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+    0 4px 20px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
   
   /* Layout */
   padding: 0 !important;
+  margin: 0 !important;
   border-radius: 24px !important;
-  overflow: hidden;
+  overflow: hidden !important;
   transition: all 0.3s ease;
+  height: 3rem !important;
+  min-height: 3rem !important;
+  max-height: 3rem !important;
+  flex: 1;
 }
 
 .searchCard:hover {
   box-shadow: 
-    0 0 40px rgba(0, 163, 92, 0.4),
-    0 12px 40px rgba(0, 163, 92, 0.2),
-    0 4px 12px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+    0 6px 25px rgba(0, 0, 0, 0.15),
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
 }
 
 .searchWrapper {
@@ -41,42 +52,20 @@
   align-items: center;
   position: relative;
   background: transparent;
-}
-
-.dropdownCard {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 1.25rem;
-  background: rgba(2, 52, 48, 0.9);
-  color: #ffffff;
-  border: none !important;
-  cursor: pointer;
-  font-size: 0.95rem;
-  font-weight: 500;
-  border-radius: 24px !important;
-  white-space: nowrap;
-  border-right: 1px solid rgba(0, 163, 92, 0.3);
-}
-
-.dropdownIcon {
-  width: 16px;
-  height: 16px;
-  transition: transform 0.2s ease;
-}
-
-.dropdownIconOpen {
-  transform: rotate(180deg);
+  height: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .searchInput {
   flex: 1;
-  padding: 1rem 1.25rem;
+  padding: 0 1.25rem;
   background: transparent;
   border: none;
   outline: none;
   font-size: 0.95rem;
   color: #1a202c;
+  height: 100%;
 }
 
 .searchInput::placeholder {
@@ -84,15 +73,13 @@
 }
 
 .searchIconContainer {
-  padding: 1rem 1.25rem;
+  padding: 0 1.25rem;
   display: flex;
   align-items: center;
   cursor: pointer;
   transition: all 0.2s ease;
-}
-
-.searchIconContainer:hover {
-  opacity: 0.7;
+  height: 100%;
+  padding: 0.9;
 }
 
 .searchIcon {
@@ -101,86 +88,29 @@
   color: #00684A;
 }
 
-/* Dropdown Menu */
-.dropdownMenu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: auto;
-  width: fit-content;
-  min-width: 160px;
-  margin-top: 0.5rem;
-  background: rgba(2, 52, 48, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(0, 163, 92, 0.3);
-  border-radius: 12px;
-  box-shadow: 
-    0 0 25px rgba(0, 163, 92, 0.2),
-    0 8px 32px rgba(0, 0, 0, 0.15);
-  z-index: 20;
-  overflow: hidden;
-  animation: dropdownSlideIn 0.2s ease-out;
-}
-
-@keyframes dropdownSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.dropdownItem {
-  display: block;
-  width: 100%;
-  padding: 0.875rem 1.25rem;
-  background: transparent;
-  color: #ffffff;
-  border: none;
-  text-align: left;
-  cursor: pointer;
-  font-size: 0.95rem;
-  transition: all 0.2s ease;
-  border-bottom: 1px solid rgba(0, 163, 92, 0.1);
-}
-
-.dropdownItem:last-child {
-  border-bottom: none;
-}
-
 /* Responsive design */
 @media (max-width: 768px) {
   .searchContainer {
     max-width: 90%;
     margin: 0 auto;
   }
-  
-  .dropdownButton {
-    padding: 0.875rem 1rem;
-    font-size: 0.9rem;
+
+  .searchBarWrapper {
+    gap: 0.375rem;
   }
   
   .searchInput {
-    padding: 0.875rem 1rem;
+    padding: 0 1rem;
     font-size: 0.9rem;
   }
   
   .searchIconContainer {
-    padding: 0.875rem 1rem;
+    padding: 0 1rem;
   }
   
   .searchIcon {
     width: 18px;
     height: 18px;
-  }
-  
-  .dropdownItem {
-    padding: 0.75rem 1rem;
-    font-size: 0.9rem;
   }
 }
 
@@ -188,14 +118,36 @@
   .searchContainer {
     max-width: 95%;
   }
-  
-  .dropdownButton {
-    padding: 0.75rem 0.875rem;
-    font-size: 0.85rem;
+
+  .searchBarWrapper {
+    gap: 0.25rem;
   }
   
   .searchInput {
-    padding: 0.75rem 0.875rem;
+    padding: 0 0.875rem;
     font-size: 0.85rem;
+  }
+}
+
+/* Responsive design for big monitors/tv screens */
+@media (min-height: 1200px) {
+  .searchCard {
+    height: 4.5rem !important;
+    min-height: 4.5rem !important;
+    max-height: 4.5rem !important;
+  }
+  
+  .searchInput {
+    padding: 0 1.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .searchIconContainer {
+    padding: 0 1.5rem;
+  }
+  
+  .searchIcon {
+    width: 24px;
+    height: 24px;
   }
 }

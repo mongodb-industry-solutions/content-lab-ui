@@ -8,7 +8,6 @@ async function testQueryTopics() {
     try {
         const backendUrl = process.env.BACKEND_URL || "http://localhost:8000";
         
-        
         console.log(`[TEST] Connecting to backend at: ${backendUrl}/api/analyze`);
         
         const response = await fetch(`${backendUrl}/api/analyze`, {

@@ -26,7 +26,7 @@ export default function Headline() {
               Discover trending news and viral content in real-time. Our intelligent system analyzes engagement patterns to recommend the best topics for your next piece, keeping you ahead of the curve.
               </Body>
               <div className={styles.buttonContainer}>
-                <Link href="/dashboard/topics" className={styles.ctaLink}>
+                <Link href="/topics" className={styles.ctaLink}>
                   <Button className={styles.primaryButton}>
                     Try It Now!
                   </Button>
