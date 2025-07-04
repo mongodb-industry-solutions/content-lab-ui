@@ -1,0 +1,115 @@
+/* Suggestions.module.css */
+
+.suggestionsSection {
+  background: transparent;
+  padding: 3rem 0;
+  min-height: auto;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.sectionTitle {
+  text-align: center;
+  color: #000000;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+.sectionSubtitle {
+  text-align: center;
+  color: #5C6C75;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1rem;
+}
+
+/* Topics Grid Layout */
+.topicsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  justify-items: center;
+}
+
+/* Error State */
+.errorContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.errorMessage {
+  color: #dc2626;
+  text-align: center;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* Empty State */
+.emptyContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.emptyMessage {
+  color: #5C6C75;
+  text-align: center;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* Large screens - 4 columns */
+@media (min-height: 1200px) {
+  .suggestionsSection {
+    padding: 5rem 0;
+  }
+
+  .sectionTitle {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .sectionSubtitle {
+    font-size: 1.1rem;
+    margin-bottom: 4rem;
+  }
+
+  .topicsGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+  }
+
+  .errorMessage,
+  .emptyMessage {
+    font-size: 1.2rem;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .topicsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 2.25rem;
+  }
+
+  .sectionSubtitle {
+    margin-bottom: 2.5rem;
+  }
+}

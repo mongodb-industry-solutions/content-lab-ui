@@ -24,10 +24,6 @@ export default function Navbar() {
       label: 'Topics',
     },
     {
-      href: '/drafts',
-      label: 'Drafts',
-    },
-    {
       href: '/saved',
       label: 'Saved',
     }

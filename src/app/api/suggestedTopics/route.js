@@ -1,16 +1,25 @@
 import { NextResponse } from "next/server";
 
-// Test function 
-async function testSuggestedTopics() {
-    console.log(`[TEST] Fetching suggested topics with hardcoded parameters`);
-    
+async function fetchFilteredTopics(query = '', label = 'all') {
     try {
         const backendUrl = process.env.BACKEND_URL || "http://localhost:8000";
         
+        // Build URL parameters
+        const params = new URLSearchParams();
         
-        console.log(`[TEST] Connecting to backend at: ${backendUrl}/api/suggestions`);
+        // Add search query if provided
+        if (query && query.trim() !== '') {
+            params.append('query', query.trim());
+        }
         
-        const response = await fetch(`${backendUrl}/api/suggestions?days=30&limit=10`, {
+        // Only apply label filter if it's not 'all' (which means "show all topics")
+        if (label && label !== 'all') {
+            params.append('label', label);
+        }
+        
+        const url = `${backendUrl}/api/suggestions${params.toString() ? '?' + params.toString() : ''}`;
+        
+        const response = await fetch(url, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -22,22 +31,24 @@ async function testSuggestedTopics() {
         }
         
         const data = await response.json();
-        console.log(`[TEST] Suggested topics received:`, data);
-        return data; // Return the whole response
+        return data.suggestions;
     } catch (error) {
-        console.error(`[TEST] Suggested topics test failed:`, error);
-        return { error: error.message };
+        console.error(`[API] Failed to fetch topics:`, error);
+        throw error;
     }
 }
 
-export async function GET(request) {
+export async function POST(request) {
     try {
-        // For testing purposes
-        return NextResponse.json(await testSuggestedTopics());
+        const body = await request.json();
+        const { query = '', label = 'all' } = body;
+
+        const topics = await fetchFilteredTopics(query, label);
+        return NextResponse.json(topics);
     } catch (error) {
         console.error("Error in suggested topics API:", error);
         return NextResponse.json(
-            { error: "Failed to fetch suggested topics" }, 
+            { error: "Failed to fetch topics" }, 
             { status: 500 }
         );
     }

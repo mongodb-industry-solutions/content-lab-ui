@@ -7,19 +7,24 @@ import styles from './Dropdown.module.css';
 
 const filterOptions = [
   { value: 'all', label: 'All' },
-  { value: 'news', label: 'News' },
-  { value: 'social', label: 'Social Media' },
-  { value: 'politics', label: 'Politics' },
+  { value: 'health', label: 'Health' },
   { value: 'technology', label: 'Technology' },
-  { value: 'business', label: 'Business' },
+  { value: 'politics', label: 'Politics' },
+  { value: 'science', label: 'Science' },
+  { value: 'culture', label: 'Culture' },
+  { value: 'sports', label: 'Sports' },
+  { value: 'business', label: 'Business' }
 ];
 
-export default function FilterDropdown({ onFilterChange, defaultValue = 'all' }) {
+export default function FilterDropdown({ 
+  onFilterChange, 
+  selectedValue = 'all' 
+}) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(
-    filterOptions.find(option => option.value === defaultValue) || filterOptions[0]
-  );
   const dropdownRef = useRef(null);
+
+  // Find the current selected option based on selectedValue prop
+  const selectedOption = filterOptions.find(option => option.value === selectedValue) || filterOptions[0];
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -38,7 +43,6 @@ export default function FilterDropdown({ onFilterChange, defaultValue = 'all' })
   };
 
   const handleOptionSelect = (option) => {
-    setSelectedOption(option);
     setIsOpen(false);
     if (onFilterChange) {
       onFilterChange(option.value);

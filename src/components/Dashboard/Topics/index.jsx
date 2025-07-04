@@ -1,20 +1,90 @@
 "use client";
 
+import React, { useState, useCallback, useRef, useEffect } from 'react';
+import { fetchTopics } from '@/lib/mongo-client';
+import { debounce, areRequestsEqual } from '@/lib/utils';
 import Search from "@/components/Dashboard/Topics/Search";
 import Suggestions from "@/components/Dashboard/Topics/Suggestions";
-import { Particles } from "@/components/external/Particles";
+import GridPattern from "@/components/external/GridPattern";
 import styles from "./Topics.module.css";
 
 const TopicsContainer = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedLabel, setSelectedLabel] = useState('all');
+  const [topics, setTopics] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const lastRequestRef = useRef({ query: '', label: 'all' });
+
+  const fetchFilteredTopics = async (query, label) => {
+    const currentRequest = { query, label };
+    
+    // Prevent duplicate requests
+    if (areRequestsEqual(lastRequestRef.current, currentRequest)) {
+      return;
+    }
+
+    // Prevent multiple simultaneous requests
+    if (isLoading) {
+      return;
+    }
+
+    setIsLoading(true);
+    setError(null);
+    lastRequestRef.current = currentRequest;
+
+    try {
+      const fetchedTopics = await fetchTopics({ query, label });
+      setTopics(fetchedTopics);
+    } catch (err) {
+      console.error('Failed to fetch topics:', err);
+      setError('Failed to load topics. Please try again.');
+      setTopics([]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Debounced version for search submit (prevent spam clicking Enter)
+  const debouncedFetch = useCallback(
+    debounce(fetchFilteredTopics, 300),
+    []
+  );
+
+  // Handle search submission (Enter key)
+  const handleSearchSubmit = useCallback((query) => {
+    setSearchQuery(query);
+    debouncedFetch(query, selectedLabel);
+  }, [selectedLabel, debouncedFetch]);
+
+  // Handle filter/label changes (immediate fetch)
+  const handleLabelChange = useCallback((label) => {
+    setSelectedLabel(label);
+    fetchFilteredTopics(searchQuery, label);
+  }, [searchQuery]);
+
+  // Initial load on component mount
+  useEffect(() => {
+    fetchFilteredTopics('', '');
+  }, []);
+
   return (
     <div className={styles.topicsContainer}>
-      {/* Particles Background */}
-      <Particles className={styles.particles} />
+      <GridPattern />
       
       {/* Content */}
       <div className={styles.content}>
-        <Search />
-        <Suggestions />
+        <Search 
+          onSearchSubmit={handleSearchSubmit}
+          onLabelChange={handleLabelChange}
+          searchQuery={searchQuery}
+          selectedLabel={selectedLabel}
+        />
+        <Suggestions 
+          topics={topics}
+          isLoading={isLoading}
+          error={error}
+        />
       </div>
     </div>
   );

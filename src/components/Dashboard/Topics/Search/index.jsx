@@ -4,15 +4,22 @@ import SearchBar from "./SearchBar";
 import RecQueries from "./RecQueries";
 import styles from "./Search.module.css";
 
-const Search = () => {
+const Search = ({ 
+  onSearchSubmit, 
+  onLabelChange, 
+  searchQuery, 
+  selectedLabel 
+}) => {
   const handleFilterChange = (filterValue) => {
-    console.log('Filter changed to:', filterValue);
-    // filter logic
+    if (onLabelChange) {
+      onLabelChange(filterValue);
+    }
   };
 
   const handleSearch = (query) => {
-    console.log('Search query:', query);
-    // search logic
+    if (onSearchSubmit) {
+      onSearchSubmit(query);
+    }
   };
 
   return (
@@ -21,8 +28,10 @@ const Search = () => {
         <SearchBar 
           onSearch={handleSearch}
           onFilterChange={handleFilterChange}
+          searchQuery={searchQuery}
+          selectedLabel={selectedLabel}
         />
-        <RecQueries />
+        <RecQueries onQuerySelect={handleSearch} />
       </div>
     </section>
   );

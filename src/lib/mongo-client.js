@@ -55,11 +55,20 @@ export async function fetchNews() {
 
 /**
  * Fetch topics from the MongoDB Atlas database (server-side)
+ * @param {Object} params - The search parameters
+ * @param {string} params.query - The search query (optional)
+ * @param {string} params.label - The filter label (optional, defaults to 'all')
  * @returns {Promise<Array>} - A promise that resolves to the topics
  */
-export async function fetchTopics() {
+export async function fetchTopics({ query = '', label = 'all' } = {}) {
   try {
-    const response = await fetch('/api/suggestedTopics');
+    const response = await fetch('/api/suggestedTopics', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ query, label }),
+    });
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);

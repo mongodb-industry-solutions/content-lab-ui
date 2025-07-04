@@ -42,3 +42,27 @@ export const formatNumber = (num) => {
   if (num >= 1000) return `${(num / 1000).toFixed(1)}K`;
   return num.toString();
 };
+
+/**
+ * Debounce function to prevent rapid successive function calls
+ * @param {Function} func - The function to debounce
+ * @param {number} delay - The delay in milliseconds
+ * @returns {Function} The debounced function
+ */
+export const debounce = (func, delay) => {
+  let timeoutId;
+  return (...args) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => func.apply(null, args), delay);
+  };
+};
+
+/**
+ * Check if two request objects are identical to prevent duplicate API calls
+ * @param {Object} requestA - First request object
+ * @param {Object} requestB - Second request object
+ * @returns {boolean} True if requests are identical
+ */
+export const areRequestsEqual = (requestA, requestB) => {
+  return requestA.query === requestB.query && requestA.label === requestB.label;
+};
