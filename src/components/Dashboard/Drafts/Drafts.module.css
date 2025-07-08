@@ -9,12 +9,22 @@
     overflow: hidden;
 }
 
-/* Back Button */
-.backButtonContainer {
+/* Header Container */
+.headerContainer {
     position: absolute;
     top: 120px;
     left: 32px;
+    right: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     z-index: 10;
+}
+
+/* Back Button */
+.backButtonContainer {
+    display: flex;
+    align-items: center;
 }
 
 .backButton {
@@ -29,11 +39,18 @@
     background-color: rgba(255, 255, 255, 1);
 }
 
+/* Publish Button */
+.publishButtonContainer {
+    display: flex;
+    align-items: center;
+}
+
 /* Content Grid */
 .contentGrid {
     display: grid;
     grid-template-columns: 10fr 3fr;
     gap: 16px;
+    margin-top: 16px;
     padding: 60px 16px 16px 16px;
     flex: 1;
     height: calc(100vh - 160px); 
@@ -59,7 +76,7 @@
         padding-top: 120px;
     }
     
-    .backButtonContainer {
+    .headerContainer {
         top: 140px;
     }
     
