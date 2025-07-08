@@ -1,9 +1,9 @@
 import React from 'react';
 
+import Drafts from '@/components/Dashboard/Drafts';
+
 export default function DraftsPage() {
   return (
-    <>
-      <h1>Drafts</h1>
-    </>
+    <Drafts />
   );
 }

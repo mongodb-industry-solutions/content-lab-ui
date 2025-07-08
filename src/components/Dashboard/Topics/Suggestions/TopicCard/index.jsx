@@ -9,14 +9,6 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import styles from './TopicCard.module.css';
 
-// Mock images
-const mockImages = [
-  '/mock_1.webp',
-  '/mock_2.webp', 
-  '/mock_3.webp',
-  '/mock_4.webp'
-];
-
 export default function TopicCard({ topicCard, index = 0 }) {
     const router = useRouter();
     
@@ -29,13 +21,8 @@ export default function TopicCard({ topicCard, index = 0 }) {
         url = "https://mongodb.com"
     } = topicCard || {};
 
-    // Get mock image based on index
-    const imageIndex = index % mockImages.length;
-    const imageSrc = mockImages[imageIndex];
-
     const handleDraft = () => {
-        // Future: redirect to /draft
-        // TODO: Implement draft functionality
+        router.push('/drafts');
     };
 
     const handleSourceClick = () => {
@@ -49,10 +36,11 @@ export default function TopicCard({ topicCard, index = 0 }) {
             {/* Image Section - 40% */}
             <div className={styles.imageSection}>
                 <Image 
-                    src={imageSrc}
+                    src={`/categories/${label}_${index % 4 + 1}.png`}
                     alt={topic}
                     width={400}
                     height={250}
+                    priority
                     className={styles.topicImage}
                 />
             </div>
@@ -98,7 +86,7 @@ export default function TopicCard({ topicCard, index = 0 }) {
                     
                     <div className={styles.actionButtons}>
                         <Button 
-                            size="xsmall" 
+                            size="default" 
                             variant="default"
                             className={styles.draftButton}
                             onClick={handleDraft}

@@ -13,7 +13,7 @@ const cardData = [
     sourceColor: 'lightgray',
     content: 'New productivity hack takes the internet by storm',
     metric: '6 min read',
-    image: '/mock_1.webp'
+    image: 'categories/technology_1.png'
   },
   {
     id: 2, 
@@ -21,7 +21,7 @@ const cardData = [
     sourceColor: 'blue',
     content: 'AI-generated Drake song goes viral, raises questions about deepfakes',
     metric: 'Bloom·berg',
-    image: '/mock_2.webp'
+    image: 'categories/science_2.png'
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ const cardData = [
     sourceColor: 'red',
     content: 'Unboxing videos are making a comeback on TikTok',
     metric: '358K views',
-    image: '/mock_3.webp'
+    image: 'categories/entertainment_3.png'
   }
 ];
 

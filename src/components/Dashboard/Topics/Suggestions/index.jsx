@@ -6,19 +6,23 @@ import TopicCard from '@/components/Dashboard/Topics/Suggestions/TopicCard';
 import Loading from './Loading';
 import styles from './Suggestions.module.css';
 
-export default function Suggestions({ topics = [], isLoading = false, error = null }) {
+export default function Suggestions({ topics = [], isLoading = false, isSearchLoading = false, error = null }) {
     // Show loading state
     if (isLoading) {
         return (
             <section className={styles.suggestionsSection}>
                 <div className={styles.container}>
-                    <H2 className={styles.sectionTitle}>
-                        Suggested Topics
-                    </H2>
-                    <Body className={styles.sectionSubtitle}>
-                        Discover trending topics personalized for your content strategy.
-                    </Body>
-                    <Loading />
+                    {!isSearchLoading && (
+                        <>
+                            <H2 className={styles.sectionTitle}>
+                                Suggested Topics
+                            </H2>
+                            <Body className={styles.sectionSubtitle}>
+                                Discover trending topics personalized for your content strategy.
+                            </Body>
+                        </>
+                    )}
+                    <Loading isSearchLoading={isSearchLoading} />
                 </div>
             </section>
         );

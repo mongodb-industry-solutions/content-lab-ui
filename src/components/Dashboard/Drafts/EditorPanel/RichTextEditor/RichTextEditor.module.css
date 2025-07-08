@@ -1,0 +1,181 @@
+/* RichTextEditor.module.css */
+
+.richTextEditor {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Toolbar Section */
+.toolbarSection {
+  border-bottom: 1px solid #E8EDEB;
+  padding: 8px 16px;
+}
+
+/* Editor Section */
+.editorSection {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.editorContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+/* Tiptap editor content styling */
+.editorContent :global(.ProseMirror) {
+  outline: none;
+  line-height: 1.6;
+  font-size: 14px;
+  font-family: 'Euclid Circular A', Arial, sans-serif;
+  color: #1C3D31;
+  min-height: 400px;
+}
+
+.editorContent :global(.ProseMirror p) {
+  margin: 0 0 16px 0;
+}
+
+.editorContent :global(.ProseMirror p:last-child) {
+  margin-bottom: 0;
+}
+
+.editorContent :global(.ProseMirror h1) {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 24px 0 16px 0;
+  color: #1C3D31;
+  line-height: 1.4;
+}
+
+.editorContent :global(.ProseMirror h2) {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 20px 0 12px 0;
+  color: #1C3D31;
+  line-height: 1.4;
+}
+
+.editorContent :global(.ProseMirror h3) {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 16px 0 8px 0;
+  color: #1C3D31;
+  line-height: 1.4;
+}
+
+.editorContent :global(.ProseMirror strong) {
+  font-weight: 700;
+}
+
+.editorContent :global(.ProseMirror em) {
+  font-style: italic;
+}
+
+.editorContent :global(.ProseMirror u) {
+  text-decoration: underline;
+}
+
+.editorContent :global(.ProseMirror s) {
+  text-decoration: line-through;
+}
+
+/* Lists */
+.editorContent :global(.tiptap-bullet-list) {
+  margin: 16px 0;
+  padding-left: 24px;
+}
+
+.editorContent :global(.tiptap-ordered-list) {
+  margin: 16px 0;
+  padding-left: 24px;
+}
+
+.editorContent :global(.ProseMirror ul li) {
+  margin: 4px 0;
+  list-style-type: disc;
+}
+
+.editorContent :global(.ProseMirror ol li) {
+  margin: 4px 0;
+  list-style-type: decimal;
+}
+
+/* Links */
+.editorContent :global(.tiptap-link) {
+  color: #00684A;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.editorContent :global(.tiptap-link:hover) {
+  color: #013030;
+}
+
+/* Text alignment */
+.editorContent :global(.ProseMirror p[style*="text-align: center"]) {
+  text-align: center;
+}
+
+.editorContent :global(.ProseMirror p[style*="text-align: right"]) {
+  text-align: right;
+}
+
+.editorContent :global(.ProseMirror h1[style*="text-align: center"]),
+.editorContent :global(.ProseMirror h2[style*="text-align: center"]),
+.editorContent :global(.ProseMirror h3[style*="text-align: center"]) {
+  text-align: center;
+}
+
+.editorContent :global(.ProseMirror h1[style*="text-align: right"]),
+.editorContent :global(.ProseMirror h2[style*="text-align: right"]),
+.editorContent :global(.ProseMirror h3[style*="text-align: right"]) {
+  text-align: right;
+}
+
+/* Placeholder */
+.editorContent :global(.ProseMirror p.is-editor-empty:first-child::before) {
+  content: attr(data-placeholder);
+  float: left;
+  color: #89A094;
+  pointer-events: none;
+  height: 0;
+}
+
+/* Status Bar */
+.statusBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  border-top: 1px solid #E8EDEB;
+  font-size: 12px;
+  color: #5F6C6B;
+}
+
+.wordCount {
+  font-weight: 500;
+}
+
+/* Custom scrollbar for editor */
+.editorContent::-webkit-scrollbar {
+  width: 8px;
+}
+
+.editorContent::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.editorContent::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.editorContent::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+} 

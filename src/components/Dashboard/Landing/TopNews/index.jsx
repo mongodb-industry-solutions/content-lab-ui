@@ -8,22 +8,6 @@ import { fetchNews } from '@/lib/mongo-client';
 import Loading from './Loading';
 import styles from './TopNews.module.css';
 
-// Mock news data
-const mockImages = [
-  {
-    image: "/mock_1.webp",
-  },
-  {
-    image: "/mock_2.webp",
-  },
-  {
-    image: "/mock_3.webp",
-  },
-  {
-    image: "/mock_4.webp",
-  }
-];
-
 export default function TopNews() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
@@ -75,7 +59,7 @@ export default function TopNews() {
           ) : (
             <div className={styles.newsContainer}>
               <div className={`${styles.newsCardWrapper} ${isVisible ? styles.visible : styles.hidden}`}>
-                <NewsCard article={news[currentIndex]} image={mockImages[currentIndex].image} />
+                <NewsCard article={news[currentIndex]} currentIndex={currentIndex} />
               </div>
             </div>
           )}

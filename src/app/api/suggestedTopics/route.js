@@ -1,18 +1,11 @@
 import { NextResponse } from "next/server";
 
-async function fetchFilteredTopics(query = '', label = 'all') {
+async function fetchFilteredTopics(label = 'all') {
     try {
         const backendUrl = process.env.BACKEND_URL || "http://localhost:8000";
         
-        // Build URL parameters
         const params = new URLSearchParams();
         
-        // Add search query if provided
-        if (query && query.trim() !== '') {
-            params.append('query', query.trim());
-        }
-        
-        // Only apply label filter if it's not 'all' (which means "show all topics")
         if (label && label !== 'all') {
             params.append('label', label);
         }
@@ -41,9 +34,9 @@ async function fetchFilteredTopics(query = '', label = 'all') {
 export async function POST(request) {
     try {
         const body = await request.json();
-        const { query = '', label = 'all' } = body;
+        const { label = 'all' } = body;
 
-        const topics = await fetchFilteredTopics(query, label);
+        const topics = await fetchFilteredTopics(label);
         return NextResponse.json(topics);
     } catch (error) {
         console.error("Error in suggested topics API:", error);

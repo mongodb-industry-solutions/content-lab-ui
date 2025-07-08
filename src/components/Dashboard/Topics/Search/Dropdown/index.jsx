@@ -7,13 +7,16 @@ import styles from './Dropdown.module.css';
 
 const filterOptions = [
   { value: 'all', label: 'All' },
-  { value: 'health', label: 'Health' },
+  { value: 'barcelona', label: 'Barcelona' },
   { value: 'technology', label: 'Technology' },
+  { value: 'health', label: 'Health' },
+  { value: 'sports', label: 'Sports' },
   { value: 'politics', label: 'Politics' },
   { value: 'science', label: 'Science' },
-  { value: 'culture', label: 'Culture' },
-  { value: 'sports', label: 'Sports' },
-  { value: 'business', label: 'Business' }
+  { value: 'business', label: 'Business' },
+  { value: 'entertainment', label: 'Entertainment' },
+  { value: 'travel', label: 'Travel' },
+  { value: 'education', label: 'Education' }
 ];
 
 export default function FilterDropdown({ 

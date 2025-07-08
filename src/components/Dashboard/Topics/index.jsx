@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { fetchTopics } from '@/lib/mongo-client';
+import { fetchSuggestedTopics, fetchQueryTopics } from '@/lib/mongo-client';
 import { debounce, areRequestsEqual } from '@/lib/utils';
 import Search from "@/components/Dashboard/Topics/Search";
 import Suggestions from "@/components/Dashboard/Topics/Suggestions";
-import GridPattern from "@/components/external/GridPattern";
+import { GradientBackground } from "@/components/external/GradientBackground";
 import styles from "./Topics.module.css";
 
 const TopicsContainer = () => {
@@ -13,6 +13,7 @@ const TopicsContainer = () => {
   const [selectedLabel, setSelectedLabel] = useState('all');
   const [topics, setTopics] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSearchLoading, setIsSearchLoading] = useState(false);
   const [error, setError] = useState(null);
   const lastRequestRef = useRef({ query: '', label: 'all' });
 
@@ -29,12 +30,24 @@ const TopicsContainer = () => {
       return;
     }
 
+    const isSearchQuery = query && query.trim() !== '';
+    
     setIsLoading(true);
+    setIsSearchLoading(isSearchQuery);
     setError(null);
     lastRequestRef.current = currentRequest;
 
     try {
-      const fetchedTopics = await fetchTopics({ query, label });
+      let fetchedTopics;
+      
+      if (isSearchQuery) {
+        // User is searching - use queryTopics endpoint
+        fetchedTopics = await fetchQueryTopics(query, label);
+      } else {
+        // User is filtering by label or initial load - use suggestedTopics endpoint
+        fetchedTopics = await fetchSuggestedTopics(label);
+      }
+      
       setTopics(fetchedTopics);
     } catch (err) {
       console.error('Failed to fetch topics:', err);
@@ -42,6 +55,7 @@ const TopicsContainer = () => {
       setTopics([]);
     } finally {
       setIsLoading(false);
+      setIsSearchLoading(false);
     }
   };
 
@@ -70,7 +84,7 @@ const TopicsContainer = () => {
 
   return (
     <div className={styles.topicsContainer}>
-      <GridPattern />
+      <GradientBackground />
       
       {/* Content */}
       <div className={styles.content}>
@@ -83,6 +97,7 @@ const TopicsContainer = () => {
         <Suggestions 
           topics={topics}
           isLoading={isLoading}
+          isSearchLoading={isSearchLoading}
           error={error}
         />
       </div>

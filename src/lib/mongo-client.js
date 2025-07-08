@@ -54,15 +54,42 @@ export async function fetchNews() {
 }
 
 /**
- * Fetch topics from the MongoDB Atlas database (server-side)
- * @param {Object} params - The search parameters
- * @param {string} params.query - The search query (optional)
- * @param {string} params.label - The filter label (optional, defaults to 'all')
+ * Fetch suggested topics from the MongoDB Atlas database (server-side)
+ * Used for initial load and label filtering only
+ * @param {string} label - The filter label (optional, defaults to 'all')
  * @returns {Promise<Array>} - A promise that resolves to the topics
  */
-export async function fetchTopics({ query = '', label = 'all' } = {}) {
+export async function fetchSuggestedTopics(label = 'all') {
   try {
     const response = await fetch('/api/suggestedTopics', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ label }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const topics = await response.json();
+    return topics;
+  } catch (error) {
+    console.error('Error fetching suggested topics on server:', error);
+    return [];
+  }
+}
+
+/**
+ * Fetch query-based topics from the MongoDB Atlas database (server-side)
+ * Used for search functionality
+ * @param {string} query - The search query
+ * @param {string} label - The filter label (for future implementation)
+ * @returns {Promise<Array>} - A promise that resolves to the topics
+ */
+export async function fetchQueryTopics(query, label = 'all') {
+  try {
+    const response = await fetch('/api/queryTopics', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -76,7 +103,7 @@ export async function fetchTopics({ query = '', label = 'all' } = {}) {
     const topics = await response.json();
     return topics;
   } catch (error) {
-    console.error('Error fetching topics on server:', error);
+    console.error('Error fetching query topics on server:', error);
     return [];
   }
 }

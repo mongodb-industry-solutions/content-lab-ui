@@ -69,28 +69,27 @@
 
 /* Large screens - 4 columns */
 @media (min-height: 1200px) {
-  .suggestionsSection {
-    padding: 5rem 0;
+  .container {
+    max-width: 80%;
   }
 
   .sectionTitle {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 1.5rem;
   }
 
   .sectionSubtitle {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     margin-bottom: 4rem;
   }
 
   .topicsGrid {
-    grid-template-columns: repeat(4, 1fr);
     gap: 2.5rem;
   }
 
   .errorMessage,
   .emptyMessage {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 }
 

@@ -1,0 +1,15 @@
+.draftsContainer {
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    gap: 16px;
+    padding: 16px;
+    height: 90vh;
+}
+
+.editorSection {
+    grid-column: 1 / 2;
+}
+
+.copilotSection {
+    grid-column: 2 / 3;
+}
