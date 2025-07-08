@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { H3 } from "@leafygreen-ui/typography";
+import { Body } from "@leafygreen-ui/typography";
 import styles from "./SparklesText.module.css";
 
 const SparklesText = ({
   text,
-  colors = { first: "#9E7AFF", second: "#FE8BBB" },
+  colors = { first: "#00684A", second: "#00ED64" },
   className = "",
   sparklesCount = 10,
   ...props
@@ -62,7 +62,7 @@ const SparklesText = ({
         {sparkles.map((sparkle) => (
           <Sparkle key={sparkle.id} {...sparkle} />
         ))}
-        <H3 className={styles.sparklesText}>{text}</H3>
+        <Body className={styles.sparklesText}>{text}</Body>
       </span>
     </div>
   );

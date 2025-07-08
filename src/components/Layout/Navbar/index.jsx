@@ -1,8 +1,5 @@
 "use client";
 
-{/* Custom Navbar component with glassmorphism effects / Leafygreen Components */}
-{/* Felipe & Aswin */}
-
 import { MongoDBLogoMark } from '@leafygreen-ui/logo';
 import { H1, Subtitle } from '@leafygreen-ui/typography';
 import Card from '@leafygreen-ui/card';
@@ -13,7 +10,7 @@ import Link from 'next/link';
 import styles from './Navbar.module.css';
 import { useState } from 'react';
 
-export default function Navbar() {
+export default function Navbar({ onLogout }) {
   const navItems = [
     {
       href: '/',
@@ -32,8 +29,7 @@ export default function Navbar() {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   const handleLogout = () => {
-    localStorage.clear();
-    window.location.reload();
+    onLogout();
   }
 
   const handleProfile = () => {

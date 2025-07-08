@@ -1,20 +1,24 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Heading from '@tiptap/extension-heading';
-import BulletList from '@tiptap/extension-bullet-list';
-import OrderedList from '@tiptap/extension-ordered-list';
 import TextAlign from '@tiptap/extension-text-align';
 import Link from '@tiptap/extension-link';
 import Underline from '@tiptap/extension-underline';
 import Placeholder from '@tiptap/extension-placeholder';
 import TiptapToolbar from '@/components/external/TiptapToolbar';
+import { Body } from '@leafygreen-ui/typography';
 import styles from './RichTextEditor.module.css';
 
 export default function RichTextEditor() {
     const [content, setContent] = useState('');
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
     const editor = useEditor({
         extensions: [
@@ -23,16 +27,6 @@ export default function RichTextEditor() {
             }),
             Heading.configure({
                 levels: [1, 2, 3],
-            }),
-            BulletList.configure({
-                HTMLAttributes: {
-                    class: 'tiptap-bullet-list',
-                },
-            }),
-            OrderedList.configure({
-                HTMLAttributes: {
-                    class: 'tiptap-ordered-list',
-                },
             }),
             TextAlign.configure({
                 types: ['heading', 'paragraph'],
@@ -53,10 +47,19 @@ export default function RichTextEditor() {
             const html = editor.getHTML();
             setContent(html);
         },
+        // Add this to prevent SSR issues
+        immediatelyRender: false,
     });
 
-    if (!editor) {
-        return null;
+    // Don't render until component is mounted (prevents SSR issues)
+    if (!isMounted || !editor) {
+        return (
+            <div className={styles.richTextEditor}>
+                <div className={styles.loadingState}>
+                    <Body>Loading editor...</Body>
+                </div>
+            </div>
+        );
     }
 
     // Calculate word count

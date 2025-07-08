@@ -1,31 +1,17 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Card from '@leafygreen-ui/card';
 import TextInput from '@leafygreen-ui/text-input';
 import styles from './Sidebar.module.css';
 
-export default function Sidebar() {
-    const [metadata, setMetadata] = useState({
-        title: '',
-        author: '',
-        category: '',
-    });
-
-    const handleInputChange = (field, value) => {
-        setMetadata(prev => ({
-            ...prev,
-            [field]: value
-        }));
-    };
+export default function Sidebar({ topicCard, userProfile }) {
 
     const mockKeyPoints = [
         "Latest AI developments in content creation and automation tools",
         "Impact on traditional writing workflows and productivity metrics",
         "User adoption statistics and industry transformation trends",
-        "Future predictions for 2024-2025 in content marketing",
-        "Case studies of successful AI-assisted content strategies",
-        "Ethical considerations and best practices for AI writing tools"
+        "Future predictions for 2024-2025 in content marketing"
     ];
 
     return (
@@ -37,9 +23,8 @@ export default function Sidebar() {
                 <div className={styles.inputGroup}>
                     <TextInput
                         label="Article Title"
-                        value={metadata.title}
+                        defaultValue={topicCard.topic}
                         onChange={(e) => handleInputChange('title', e.target.value)}
-                        placeholder="Enter article title..."
                         sizeVariant="small"
                         aria-label="Enter article title..."
                     />
@@ -48,9 +33,8 @@ export default function Sidebar() {
                 <div className={styles.inputGroup}>
                     <TextInput
                         label="Author Name"
-                        value={metadata.author}
+                        defaultValue={userProfile.userName}
                         onChange={(e) => handleInputChange('author', e.target.value)}
-                        placeholder="Enter author name..."
                         sizeVariant="small"
                         aria-label="Enter author name..."
                     />
@@ -59,9 +43,8 @@ export default function Sidebar() {
                 <div className={styles.inputGroup}>
                     <TextInput
                         label="Category/Topic Tag"
-                        value={metadata.category}
+                        defaultValue={topicCard.label}
                         onChange={(e) => handleInputChange('category', e.target.value)}
-                        placeholder="Enter category/topic tag..."
                         sizeVariant="small"
                         aria-label="Enter category/topic tag..."
                     />

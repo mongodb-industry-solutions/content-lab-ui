@@ -101,6 +101,9 @@ importers:
       react-loading-skeleton:
         specifier: ^3.1.1
         version: 3.5.0(react@19.0.0-rc-02c0e824-20241028)
+      react-speech-recognition:
+        specifier: ^4.0.1
+        version: 4.0.1(react@19.0.0-rc-02c0e824-20241028)
 
 packages:
 
@@ -1258,6 +1261,9 @@ packages:
   linkifyjs@4.3.1:
     resolution: {integrity: sha512-DRSlB9DKVW04c4SUdGvKK5FR6be45lTU9M76JnngqPeeGDqPwYc0zdUErtsNVMtxPXgUWV4HbXbnC4sNyBxkYg==}
 
+  lodash.debounce@4.0.8:
+    resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
+
   lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
 
@@ -1543,6 +1549,11 @@ packages:
 
   react-loading-skeleton@3.5.0:
     resolution: {integrity: sha512-gxxSyLbrEAdXTKgfbpBEFZCO/P153DnqSCQau2+o6lNy1jgMRr2MmRmOzMmyrwSaSYLRB8g7b0waYPmUjz7IhQ==}
+    peerDependencies:
+      react: '>=16.8.0'
+
+  react-speech-recognition@4.0.1:
+    resolution: {integrity: sha512-0fIqzLtfY8vuYA6AmJVK7qiabZx0oFKOO+rbiBgFI3COWVGREy0A+gdU16hWXmFebeyrI8JsOLYsWk6WaHUXRw==}
     peerDependencies:
       react: '>=16.8.0'
 
@@ -3109,6 +3120,8 @@ snapshots:
 
   linkifyjs@4.3.1: {}
 
+  lodash.debounce@4.0.8: {}
+
   lodash@4.17.21: {}
 
   loose-envify@1.4.0:
@@ -3410,6 +3423,11 @@ snapshots:
 
   react-loading-skeleton@3.5.0(react@19.0.0-rc-02c0e824-20241028):
     dependencies:
+      react: 19.0.0-rc-02c0e824-20241028
+
+  react-speech-recognition@4.0.1(react@19.0.0-rc-02c0e824-20241028):
+    dependencies:
+      lodash.debounce: 4.0.8
       react: 19.0.0-rc-02c0e824-20241028
 
   react-transition-group@4.4.5(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028):

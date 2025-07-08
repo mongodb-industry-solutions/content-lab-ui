@@ -22,6 +22,8 @@ export default function TopicCard({ topicCard, index = 0 }) {
     } = topicCard || {};
 
     const handleDraft = () => {
+        // Send the topic in local storage
+        localStorage.setItem('topicCard', JSON.stringify(topicCard));
         router.push('/drafts');
     };
 

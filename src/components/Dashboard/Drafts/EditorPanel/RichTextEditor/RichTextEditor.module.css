@@ -7,10 +7,19 @@
   overflow: hidden;
 }
 
+.loadingState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 400px;
+}
+
 /* Toolbar Section */
 .toolbarSection {
   border-bottom: 1px solid #E8EDEB;
   padding: 8px 16px;
+  flex-shrink: 0;
 }
 
 /* Editor Section */
@@ -19,12 +28,24 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  min-height: 0; 
 }
 
 .editorContent {
   flex: 1;
   overflow-y: auto;
   padding: 16px;
+  min-height: 0; 
+}
+
+/* Hide Scrollbar */
+.editorContent {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.editorContent::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }
 
 /* Tiptap editor content styling */
@@ -156,26 +177,9 @@
   border-top: 1px solid #E8EDEB;
   font-size: 12px;
   color: #5F6C6B;
+  flex-shrink: 0;
 }
 
 .wordCount {
   font-weight: 500;
-}
-
-/* Custom scrollbar for editor */
-.editorContent::-webkit-scrollbar {
-  width: 8px;
-}
-
-.editorContent::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-.editorContent::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 4px;
-}
-
-.editorContent::-webkit-scrollbar-thumb:hover {
-  background: #a1a1a1;
 } 
