@@ -6,11 +6,13 @@
   flex-direction: column;
   padding: 24px;
   border-right: 1px solid #e8e8e8;
+  background-color: #fafafa;
 }
 
 /* Metadata Section */
 .metadataSection {
   margin-bottom: 2rem;
+  flex-shrink: 0;
 }
 
 .sectionTitle {
@@ -23,49 +25,3 @@
 .inputGroup {
   margin-bottom: 1rem;
 }
-
-/* Topic Information Section */
-.topicSection {
-  flex: 1;
-}
-
-.topicCard {
-  padding: 1rem !important;
-  height: fit-content;
-}
-
-.topicTitle {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #1a202c;
-  margin-bottom: 0.75rem;
-}
-
-.keyPointsList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.keyPoint {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 0.5rem;
-  font-size: 0.875rem;
-  line-height: 1.4;
-  color: #374151;
-}
-
-.keyPoint:last-child {
-  margin-bottom: 0;
-}
-
-.bullet {
-  width: 4px;
-  height: 4px;
-  background-color: #00684A;
-  border-radius: 50%;
-  margin-right: 0.75rem;
-  margin-top: 0.5rem;
-  flex-shrink: 0;
-} 

@@ -15,7 +15,7 @@ export default function ChatHeader() {
                     className={styles.logoIcon}
                 />
                 <Subtitle className={styles.title}>
-                    AI Assistant
+                    Writing Assistant
                 </Subtitle>
             </div>
         </Card>

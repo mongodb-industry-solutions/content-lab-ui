@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { fetchSuggestedTopics, fetchQueryTopics } from '@/lib/mongo-client';
+import { fetchSuggestedTopics } from '@/api/suggestions_api';
+import { searchQuery } from '@/api/search_api';
 import { debounce, areRequestsEqual } from '@/lib/utils';
 import Search from "@/components/Dashboard/Topics/Search";
 import Suggestions from "@/components/Dashboard/Topics/Suggestions";
@@ -39,12 +40,10 @@ const TopicsContainer = () => {
 
     try {
       let fetchedTopics;
-      
+      // Use the correct API endpoint based on the search query      
       if (isSearchQuery) {
-        // User is searching - use queryTopics endpoint
-        fetchedTopics = await fetchQueryTopics(query, label);
+        fetchedTopics = await searchQuery(query, label);
       } else {
-        // User is filtering by label or initial load - use suggestedTopics endpoint
         fetchedTopics = await fetchSuggestedTopics(label);
       }
       

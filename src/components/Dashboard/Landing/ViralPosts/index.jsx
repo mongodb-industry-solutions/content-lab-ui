@@ -6,7 +6,7 @@ import { Marquee } from '@/components/external/Marquee';
 import ViralCard from './ViralCard';
 import Loading from './Loading';
 import { FlickeringGrid } from '@/components/external/FlickeringGrid';
-import { fetchRedditPosts } from '@/lib/mongo-client';
+import { fetchRedditPosts } from '@/api/reddit_api';
 import styles from './ViralPosts.module.css';
 
 export default function ViralPosts() {

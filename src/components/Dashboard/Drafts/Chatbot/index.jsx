@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import Card from '@leafygreen-ui/card';
-import { sendChatMessage } from '@/lib/mongo-client';
-import styles from './Copilot.module.css';
+import { sendChatMessage } from '@/api/chat_api';
+import styles from './Chatbot.module.css';
 import ChatbotInput from '@/components/Dashboard/Drafts/Chatbot/ChatbotInput';
 import ChatHeader from '@/components/Dashboard/Drafts/Chatbot/ChatHeader';
 import ChatMessages from '@/components/Dashboard/Drafts/Chatbot/ChatMessages';

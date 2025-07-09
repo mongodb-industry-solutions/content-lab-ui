@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { H2, Body } from '@leafygreen-ui/typography';
 import NewsCard from './NewsCard';
 import DotBackground from '@/components/external/DotBackground';
-import { fetchNews } from '@/lib/mongo-client';
+import { fetchNews } from '@/api/news_api';
 import Loading from './Loading';
 import styles from './TopNews.module.css';
 
