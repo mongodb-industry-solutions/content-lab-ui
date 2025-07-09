@@ -23,7 +23,7 @@ export default function Headline() {
                 Turn Trends Into Timely Content
               </H2>
               <Body className={styles.subHeadline}>
-              Discover trending news and viral content in real-time. Our intelligent system analyzes engagement patterns to recommend the best topics for your next piece, keeping you ahead of the curve.
+              Discover trending news and viral content powered by <strong>vector search</strong>. Skip the endless scrolling and research as our smart recommendations surface the perfect topics for your next piece, keeping you productive and ahead of the curve.
               </Body>
               <div className={styles.buttonContainer}>
                 <Link href="/topics" className={styles.ctaLink}>
