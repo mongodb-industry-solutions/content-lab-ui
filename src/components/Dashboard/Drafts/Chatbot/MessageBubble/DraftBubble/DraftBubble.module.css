@@ -1,0 +1,35 @@
+/* Draft Layout Bubble Styles */
+.draftBubble {
+    max-width: none;
+    width: 100%;
+}
+
+.draftBubble .messageText {
+    padding-right: 0;
+    margin-bottom: 12px;
+}
+
+.draftPreview {
+    background-color: #F7FAF9;
+    border: 1px solid #E8EDEB;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 12px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.draftContent {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    margin: 0;
+    white-space: pre-wrap;
+    color: #1C3D31;
+}
+
+.actionButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}

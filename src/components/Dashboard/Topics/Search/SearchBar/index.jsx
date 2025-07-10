@@ -3,56 +3,35 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Card from '@leafygreen-ui/card';
 import Icon from '@leafygreen-ui/icon';
+import FilterDropdown from '../Dropdown';
 import styles from './SearchBar.module.css';
 
-const searchCategories = [
-  { id: 'everything', label: 'Everything' },
-  { id: 'videos', label: 'Videos' },
-  { id: 'community', label: 'Community' },
-  { id: 'playlists', label: 'Playlists' },
-  { id: 'shorts', label: 'Shorts' }
-];
-
-export default function SearchBar({ onSearch, onCategoryChange, placeholder = "Search anything..." }) {
-  const [selectedCategory, setSelectedCategory] = useState(searchCategories[0]);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const dropdownRef = useRef(null);
+export default function SearchBar({ 
+  onSearch, 
+  onFilterChange, 
+  searchQuery = '',
+  selectedLabel = 'all',
+  placeholder = "Search anything..." 
+}) {
+  const [localSearchQuery, setLocalSearchQuery] = useState(searchQuery);
   const searchInputRef = useRef(null);
 
-  // Close dropdown when clicking outside
+  // Update local state when parent searchQuery changes
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsDropdownOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  const handleCategorySelect = (category) => {
-    setSelectedCategory(category);
-    setIsDropdownOpen(false);
-    
-    // Call the onCategoryChange callback if provided
-    if (onCategoryChange) {
-      onCategoryChange(category);
-    }
-  };
+    setLocalSearchQuery(searchQuery);
+  }, [searchQuery]);
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     
-    // Call the onSearch callback if provided
+    // Call the onSearch callback with current input value
     if (onSearch) {
-      onSearch(searchQuery, selectedCategory);
+      onSearch(localSearchQuery.trim());
     }
   };
 
   const handleSearchInputChange = (e) => {
-    setSearchQuery(e.target.value);
+    setLocalSearchQuery(e.target.value);
   };
 
   const handleSearchIconClick = () => {
@@ -65,69 +44,42 @@ export default function SearchBar({ onSearch, onCategoryChange, placeholder = "S
     }
   };
 
+  const handleFilterChange = (filterValue) => {
+    if (onFilterChange) {
+      onFilterChange(filterValue);
+    }
+  };
+
   return (
-    <div className={styles.searchContainer} ref={dropdownRef}>
-      <Card className={styles.searchCard}>
-        <form onSubmit={handleSearchSubmit} className={styles.searchWrapper}>
-          {/* Category Dropdown Button */}
-          <Card
-            className={styles.dropdownCard}
-            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            aria-haspopup="listbox"
-            aria-expanded={isDropdownOpen}
-          >
-            <span>{selectedCategory.label}</span>
-            <Icon
-              glyph="ChevronDown"
-              className={`${styles.dropdownIcon} ${isDropdownOpen ? styles.dropdownIconOpen : ''}`}
+    <div className={styles.searchContainer}>
+      <div className={styles.searchBarWrapper}>
+        {/* Filter Dropdown */}
+        <FilterDropdown 
+          onFilterChange={handleFilterChange} 
+          selectedValue={selectedLabel}
+        />
+
+        {/* Search Card */}
+        <Card className={styles.searchCard}>
+          <form onSubmit={handleSearchSubmit} className={styles.searchWrapper}>
+            {/* Search Input */}
+            <input
+              ref={searchInputRef}
+              className={styles.searchInput}
+              placeholder={placeholder}
+              value={localSearchQuery}
+              onChange={handleSearchInputChange}
+              onKeyDown={handleKeyDown}
+              aria-label="Search input"
             />
-          </Card>
-
-          {/* Search Input */}
-          <input
-            ref={searchInputRef}
-            className={styles.searchInput}
-            placeholder={placeholder}
-            value={searchQuery}
-            onChange={handleSearchInputChange}
-            onKeyDown={handleKeyDown}
-            aria-label="Search input"
-          />
-
-          {/* Search Icon */}
-          <div 
-            className={styles.searchIconContainer}
-            onClick={handleSearchIconClick}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                handleSearchIconClick();
-              }
-            }}
-            aria-label="Submit search"
-          >
-            <Icon glyph="MagnifyingGlass" className={styles.searchIcon} />
-          </div>
-        </form>
-      </Card>
-
-      {/* Dropdown Menu */}
-      {isDropdownOpen && (
-        <div className={styles.dropdownMenu} role="listbox">
-          {searchCategories.map((category) => (
-            <button
-              key={category.id}
-              className={styles.dropdownItem}
-              onClick={() => handleCategorySelect(category)}
-              role="option"
-              aria-selected={selectedCategory.id === category.id}
-            >
-              {category.label}
-            </button>
-          ))}
-        </div>
-      )}
+            
+            {/* Search Icon moved to right */}
+            <div className={styles.searchIconContainer} onClick={handleSearchIconClick}>
+              <Icon glyph="MagnifyingGlass" className={styles.searchIcon} />
+            </div>
+          </form>
+        </Card>
+      </div>
     </div>
   );
 }

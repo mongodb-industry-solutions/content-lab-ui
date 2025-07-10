@@ -6,15 +6,15 @@
  */
 export const USER_MAP = {
     "6862a8988c0f7bf43af995a7": {
-        name: "fridaklo",
+        name: "Helly R.",
         avatar: 1
     },
     "6862a8988c0f7bf43af995a8": {
-        name: "gracehop",
+        name: "Mark S.",
         avatar: 2
     },
     "6862a8988c0f7bf43af995a9": {
-        name: "adalove",
+        name: "Ms. Casey",
         avatar: 3
     }
 };

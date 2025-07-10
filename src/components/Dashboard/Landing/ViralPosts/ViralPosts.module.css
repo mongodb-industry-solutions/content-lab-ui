@@ -1,8 +1,9 @@
 /* ViralPosts.module.css */
 
 .viralPostsSection {
-  padding: 6rem 0;
-  min-height: 80vh;
+  padding: 4rem 0;
+  margin-bottom: 4rem;
+  min-height: fit-content;
   position: relative;
 }
 
@@ -13,13 +14,14 @@
   left: 0;
   right: 0;
   bottom: 0;
+  height: calc(100% + 4rem);
   z-index: 0;
-  mask-image: radial-gradient(550px circle at center, white, transparent);
-  -webkit-mask-image: radial-gradient(550px circle at center, white, transparent);
+  mask-image: radial-gradient(600px circle at center, white, transparent);
+  -webkit-mask-image: radial-gradient(600px circle at center, white, transparent);
 }
 
 .container {
-  max-width: 1400px;
+  max-width: fit-content;
   margin: 0 auto;
   padding: 0 3rem;
   position: relative;
@@ -82,10 +84,27 @@
 }
 
 /* Responsive design */
+@media (min-width: 1200px) {
+  .viralPostsSection {
+    padding: 5rem 0;
+    margin-bottom: 5rem;
+    min-height: 40vh;
+  }
+  
+  .flickeringGrid {
+    height: calc(100% + 5rem);
+  }
+}
+
 @media (max-width: 768px) {
   .viralPostsSection {
-    padding: 4rem 0;
-    min-height: 80vh;
+    padding: 3rem 0;
+    margin-bottom: 3rem;
+    min-height: 60vh;
+  }
+  
+  .flickeringGrid {
+    height: calc(100% + 3rem);
   }
   
   .container {

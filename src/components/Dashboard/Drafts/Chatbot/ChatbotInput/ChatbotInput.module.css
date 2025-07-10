@@ -1,0 +1,134 @@
+.compactCard {
+  padding: 8px !important;
+  min-height: auto !important;
+  border: 1px solid #d3d9e1;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 4px 8px;
+}
+
+.textarea {
+  width: 100%;
+  resize: none;
+  border: 0;
+  background-color: transparent;
+  color: #1f2937;
+  min-height: 36px;
+  font-size: 14px;
+  line-height: 1.5;
+  outline: none;
+  border-radius: 8px;
+  padding: 4px 0;
+}
+
+.textarea::placeholder {
+  color: #6b7280;
+}
+
+.textarea:focus {
+  outline: none;
+}
+
+/* Custom scrollbar */
+.textarea::-webkit-scrollbar {
+  width: 4px;
+}
+
+.textarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.textarea::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 2px;
+}
+
+.textarea::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-top: 0;
+}
+
+.micButton {
+  display: flex;
+  height: 28px;
+  width: 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #1f2937;
+  transition: all 0.15s ease-in-out;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+}
+
+.micButton:hover {
+  background-color: #f3f4f6;
+}
+
+.micButton:focus {
+  outline: none;
+}
+
+.micButton.listening {
+  background-color: #dc2626;
+  color: white;
+  animation: pulseScale 1.5s infinite;
+}
+
+@keyframes pulseScale {
+  0%, 100% {
+    transform: scale(1);
+    background-color: #dc2626;
+  }
+  50% {
+    transform: scale(1.1);
+    background-color: #b91c1c;
+  }
+}
+
+.sendButton {
+  display: flex;
+  height: 28px;
+  width: 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #1f2937;
+  transition: all 0.15s ease-in-out;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+}
+
+.sendButton:hover {
+  background-color: #f3f4f6;
+}
+
+.sendButton:focus {
+  outline: none;
+}
+
+.icon {
+  height: 16px;
+  width: 16px;
+  flex-shrink: 0;
+}
+
+/* Animation for auto-resize */
+.textarea {
+  transition: height 0.1s ease-out;
+}

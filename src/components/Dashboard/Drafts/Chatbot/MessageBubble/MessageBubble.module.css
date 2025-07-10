@@ -1,0 +1,144 @@
+/* Message Wrapper - Overall layout */
+.messageWrapper {
+    display: flex;
+    margin-bottom: 16px;
+    max-width: 100%;
+}
+
+.messageWrapper.user {
+    justify-content: flex-end;
+}
+
+.messageWrapper.bot {
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+/* Bot Avatar */
+.botAvatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 4px;
+    border: 1px solid #C1C7C6;
+    color: #1C3D31;
+}
+
+/* Message Content Area */
+.messageContent {
+    display: flex;
+    flex-direction: column;
+    max-width: 70%;
+}
+
+.messageContent .user {
+    align-items: flex-end;
+}
+
+.messageContent .bot {
+    align-items: flex-start;
+}
+
+/* Message Bubbles */
+.messageBubble {
+    position: relative;
+    padding: 12px 16px;
+    border-radius: 14px;
+    word-wrap: break-word;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.messageBubble.user {
+    background-color: #00684A;
+    color: #ffffff;
+}
+
+.messageBubble.bot {
+    background-color: #ffffff;
+    color: #1C3D31;
+    border: 1px solid #E8EDEB;
+}
+
+/* Message Text */
+.messageText {
+    font-size: 0.8rem;
+    margin: 0;
+    line-height: 1.4;
+    padding-right: 28px; /* Space for copy button */
+}
+
+.messageBubble.user .messageText {
+    color: #ffffff;
+}
+
+.messageBubble.bot .messageText {
+    color: #1C3D31;
+}
+
+/* Copy Button */
+.copyButton {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    opacity: 0.6;
+    width: 20px;
+    height: 20px;
+}
+
+.copyButton:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.copyButton:active {
+    transform: scale(0.95);
+}
+
+/* Copy Button for User Messages */
+.copyButton.user {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.copyButton.user:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+/* Copy Button for Bot Messages */
+.copyButton.bot {
+    color: #89A094;
+}
+
+.copyButton.bot:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #1C3D31;
+}
+
+/* Timestamps */
+.timestamp {
+    margin-top: 4px;
+    font-size: 11px;
+    color: #89A094;
+}
+
+.timestamp.user {
+    text-align: right;
+}
+
+.timestamp.bot {
+    text-align: left;
+}

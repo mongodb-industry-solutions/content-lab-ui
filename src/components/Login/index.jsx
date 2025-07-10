@@ -10,14 +10,13 @@ import Loading from './Loading';
 import { USER_MAP } from "@/lib/constants";
 import Banner from "@leafygreen-ui/banner";
 import { useRouter } from 'next/navigation';
-import { fetchUserProfile } from "@/lib/mongo-client";
+import { fetchUserProfile } from "@/api/profile_api";
 
 const LoginComponent = ({ onUserSelected }) => {
     const [open, setOpen] = useState(false);
     const router = useRouter();
 
-    // Updated to include UserName and BearerToken
-    const [users, setUsers] = useState([]); // Constant users
+    const [users, setUsers] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
     const [usersLoading, setUsersLoading] = useState(true);
 

@@ -42,3 +42,43 @@ export const formatNumber = (num) => {
   if (num >= 1000) return `${(num / 1000).toFixed(1)}K`;
   return num.toString();
 };
+
+/**
+ * Debounce function to prevent rapid successive function calls
+ * @param {Function} func - The function to debounce
+ * @param {number} delay - The delay in milliseconds
+ * @returns {Function} The debounced function
+ */
+export const debounce = (func, delay) => {
+  let timeoutId;
+  return (...args) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => func.apply(null, args), delay);
+  };
+};
+
+/**
+ * Check if two request objects are identical to prevent duplicate API calls
+ * Handles both suggested topics (label-only) and query topics (query-based) requests
+ * @param {Object} requestA - First request object
+ * @param {Object} requestB - Second request object
+ * @returns {boolean} True if requests are identical
+ */
+export const areRequestsEqual = (requestA, requestB) => {
+  // Check if both requests have the same type (based on presence of query)
+  const aHasQuery = requestA.query && requestA.query.trim() !== '';
+  const bHasQuery = requestB.query && requestB.query.trim() !== '';
+  
+  // Different request types (one has query, other doesn't)
+  if (aHasQuery !== bHasQuery) {
+    return false;
+  }
+  
+  // Both are query-based requests
+  if (aHasQuery && bHasQuery) {
+    return requestA.query === requestB.query && requestA.label === requestB.label;
+  }
+  
+  // Both are suggested topics requests (label-only)
+  return requestA.label === requestB.label;
+};

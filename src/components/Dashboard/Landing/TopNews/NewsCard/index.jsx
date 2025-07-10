@@ -9,7 +9,7 @@ import styles from './NewsCard.module.css';
 import Image from 'next/image';
 import { getHumanReadableDate, formatNumber } from '@/lib/utils';
 
-export default function NewsCard({ article, image }) {
+export default function NewsCard({ article, currentIndex }) {
   const { 
     url, 
     title, 
@@ -46,10 +46,11 @@ export default function NewsCard({ article, image }) {
         {/* Left Side - Image */}
         <div className={styles.imageContainer}>
           <Image 
-            src={image} 
+            src={`/categories/${category}_${currentIndex % 4 + 1}.png`} 
             alt={title}
             width={500}
             height={300}
+            priority
             className={styles.newsImage}
           />
         </div>

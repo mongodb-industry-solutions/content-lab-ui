@@ -4,25 +4,9 @@ import React, { useState, useEffect } from 'react';
 import { H2, Body } from '@leafygreen-ui/typography';
 import NewsCard from './NewsCard';
 import DotBackground from '@/components/external/DotBackground';
-import { fetchNews } from '@/lib/mongo-client';
+import { fetchNews } from '@/api/news_api';
 import Loading from './Loading';
 import styles from './TopNews.module.css';
-
-// Mock news data
-const mockImages = [
-  {
-    image: "/mock_1.webp",
-  },
-  {
-    image: "/mock_2.webp",
-  },
-  {
-    image: "/mock_3.webp",
-  },
-  {
-    image: "/mock_4.webp",
-  }
-];
 
 export default function TopNews() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -75,7 +59,7 @@ export default function TopNews() {
           ) : (
             <div className={styles.newsContainer}>
               <div className={`${styles.newsCardWrapper} ${isVisible ? styles.visible : styles.hidden}`}>
-                <NewsCard article={news[currentIndex]} image={mockImages[currentIndex].image} />
+                <NewsCard article={news[currentIndex]} currentIndex={currentIndex} />
               </div>
             </div>
           )}

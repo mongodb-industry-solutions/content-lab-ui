@@ -1,0 +1,25 @@
+.chatHeader {
+    display: flex;
+    place-content: center;
+    border-bottom: 1px solid #E8EDEB;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+}
+
+.headerContent {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logoIcon {
+    flex-shrink: 0;
+}
+
+.title {
+    margin: 0;
+    color: #1C3D31;
+    font-weight: 500;
+}
