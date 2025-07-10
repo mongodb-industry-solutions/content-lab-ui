@@ -46,6 +46,13 @@
     font-size: 0.875rem;
 }
 
+/* Quick Actions Wrapper */
+.quickActionsWrapper {
+    margin: 16px 0 8px 0;
+    place-self: center;
+    padding: 0 4px;
+}
+
 /* Typing Indicator */
 .typingWrapper {
     display: flex;

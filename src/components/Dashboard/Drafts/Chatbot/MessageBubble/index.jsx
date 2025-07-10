@@ -1,71 +1,47 @@
 'use client';
 
-import { useState } from 'react';
-import { Body, Disclaimer } from '@leafygreen-ui/typography';
-import Icon from '@leafygreen-ui/icon';
-import Typewriter from '@/components/Dashboard/Drafts/Chatbot/Typewriter';
-import styles from './MessageBubble.module.css';
+import TextBubble from './TextBubble';
+import DraftBubble from './DraftBubble';
+import SuggestionBubble from './SuggestionBubble';
 
-export default function MessageBubble({ message, type, completedMessages, markCompleted }) {
-    const { text, timestamp, id } = message;
-    const [isCopied, setIsCopied] = useState(false);
+export default function MessageBubble({ 
+    message, 
+    completedMessages, 
+    markCompleted,
+    applyDraftLayout,
+    applySuggestion 
+}) {
+    const messageType = message.type || 'text';
 
-    const handleCopyToClipboard = async () => {
-        try {
-            const textToCopy = text;
-            await navigator.clipboard.writeText(textToCopy);
-            setIsCopied(true);
-            
-            // Reset the copied state after 2 seconds
-            setTimeout(() => {
-                setIsCopied(false);
-            }, 2000);
-        } catch (err) {
-            console.error('Failed to copy text: ', err);
-        }
-    };
+    if (messageType === 'draft_layout') {
+        return (
+            <DraftBubble 
+                message={message}
+                onApply={applyDraftLayout}
+                completedMessages={completedMessages}
+                markCompleted={markCompleted}
+            />
+        );
+    }
 
+    if (messageType === 'suggestions') {
+        return (
+            <SuggestionBubble 
+                message={message}
+                onApply={applySuggestion}
+                completedMessages={completedMessages}
+                markCompleted={markCompleted}
+            />
+        );
+    }
+
+    // Default to text message bubble
     return (
-        <div className={`${styles.messageWrapper} ${styles[type]}`}>
-            {type === 'bot' && (
-                <div className={styles.botAvatar}>
-                    <Icon glyph="Sparkle" size="small" />
-                </div>
-            )}
-            
-            <div className={styles.messageContent}>
-                <div className={`${styles.messageBubble} ${styles[type]}`}>
-                    <Body className={styles.messageText}>
-                        {type === 'bot' ? (
-                            <Typewriter
-                                text={text}
-                                messageId={id}
-                                completedMessages={completedMessages}
-                                markCompleted={markCompleted}
-                            />
-                        ) : (
-                            text
-                        )}
-                    </Body>
-                    
-                    <button 
-                        className={`${styles.copyButton} ${styles[type]}`}
-                        onClick={handleCopyToClipboard}
-                        title={isCopied ? 'Copied!' : 'Copy to clipboard'}
-                    >
-                        <Icon 
-                            glyph={isCopied ? "Checkmark" : "Copy"} 
-                            size="small" 
-                        />
-                    </button>
-                </div>
-                
-                {timestamp && (
-                    <Disclaimer className={`${styles.timestamp} ${styles[type]}`}>
-                        {timestamp}
-                    </Disclaimer>
-                )}
-            </div>
-        </div>
+        <TextBubble 
+            message={message}
+            type={message.sender}
+            completedMessages={completedMessages}
+            markCompleted={markCompleted}
+        />
     );
 }

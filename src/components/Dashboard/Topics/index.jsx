@@ -2,7 +2,7 @@
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { fetchSuggestedTopics } from '@/api/suggestions_api';
-import { searchQuery } from '@/api/search_api';
+import { analyzeQuery } from '@/api/search_api';
 import { debounce, areRequestsEqual } from '@/lib/utils';
 import Search from "@/components/Dashboard/Topics/Search";
 import Suggestions from "@/components/Dashboard/Topics/Suggestions";
@@ -39,10 +39,9 @@ const TopicsContainer = () => {
     lastRequestRef.current = currentRequest;
 
     try {
-      let fetchedTopics;
-      // Use the correct API endpoint based on the search query      
+      let fetchedTopics; 
       if (isSearchQuery) {
-        fetchedTopics = await searchQuery(query, label);
+        fetchedTopics = await analyzeQuery(query, label);
       } else {
         fetchedTopics = await fetchSuggestedTopics(label);
       }

@@ -6,17 +6,17 @@ import styles from './QuickActions.module.css';
 export default function QuickActions({ onActionSelect }) {
     const quickActions = [
         {
-            id: 'draft-layout',
+            id: 'draft_layout',
             text: 'Create a draft layout for this topic',
             message: 'Help me create a draft layout for the current topic with key sections and structure.'
         },
         {
-            id: 'proofread-content',
+            id: 'proofread',
             text: 'Proofread and suggest improvements',
             message: 'Please proofread my content and suggest improvements for clarity, grammar, and flow.'
         },
         {
-            id: 'refine-style',
+            id: 'refine',
             text: 'Refine content based on writing style',
             message: 'Help me refine this document content to match my writing style and topic requirements.'
         }
@@ -24,7 +24,7 @@ export default function QuickActions({ onActionSelect }) {
 
     const handleActionClick = (action) => {
         if (onActionSelect) {
-            onActionSelect(action.message);
+            onActionSelect(action);
         }
     };
 

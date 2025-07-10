@@ -7,7 +7,7 @@ const mainBackendUrl = process.env.BACKEND_URL || "http://localhost:8000";
  * @param {string} label - The filter label (for future implementation)
  * @returns {Promise<Array>} - A promise that resolves to the topics
  */
-export async function searchQuery(query, label = 'all') {
+export async function analyzeQuery(query, label = 'all') {
     try {
       const response = await fetch(`${mainBackendUrl}/api/analyze`, {
         method: 'POST',

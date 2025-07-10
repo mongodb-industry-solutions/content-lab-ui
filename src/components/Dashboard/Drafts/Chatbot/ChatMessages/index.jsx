@@ -6,7 +6,15 @@ import MessageBubble from '@/components/Dashboard/Drafts/Chatbot/MessageBubble';
 import QuickActions from '@/components/Dashboard/Drafts/Chatbot/QuickActions';
 import styles from './ChatMessages.module.css';
 
-export default function ChatMessages({ messages, isTyping, onQuickAction, completedMessages, markCompleted }) {
+export default function ChatMessages({ 
+    messages, 
+    isTyping, 
+    onQuickAction, 
+    completedMessages, 
+    markCompleted,
+    applyDraftLayout,
+    applySuggestion 
+}) {
     const messagesEndRef = useRef(null);
     const messagesContainerRef = useRef(null);
 
@@ -25,7 +33,16 @@ export default function ChatMessages({ messages, isTyping, onQuickAction, comple
         scrollToBottom();
     }, [messages, isTyping]);
 
-    // Empty state when no messages - show quick actions
+    // Check if we should show quick actions
+    const shouldShowQuickActions = () => {
+        if (isTyping) return false; // Don't show while typing
+        
+        // Show if last message is from bot and typewriter is completed
+        const lastMessage = messages[messages.length - 1];
+        return lastMessage?.sender === 'bot' && completedMessages[lastMessage.id] === true;
+    };
+
+    // Empty state when no messages - show conversation starter text and quick actions
     if (!messages || messages.length === 0) {
         return (
             <div className={styles.chatMessages}>
@@ -34,7 +51,9 @@ export default function ChatMessages({ messages, isTyping, onQuickAction, comple
                         Start a conversation with the AI Assistant
                     </Body>
                     
-                    <QuickActions onActionSelect={onQuickAction} />
+                    <div className={styles.quickActionsWrapper}>
+                        <QuickActions onActionSelect={onQuickAction} />
+                    </div>
                 </div>
             </div>
         );
@@ -47,11 +66,19 @@ export default function ChatMessages({ messages, isTyping, onQuickAction, comple
                     <MessageBubble
                         key={message.id}
                         message={message}
-                        type={message.sender}
                         completedMessages={completedMessages}
                         markCompleted={markCompleted}
+                        applyDraftLayout={applyDraftLayout}
+                        applySuggestion={applySuggestion}
                     />
                 ))}
+                
+                {/* Show quick actions after bot responses */}
+                {shouldShowQuickActions() && (
+                    <div className={styles.quickActionsWrapper}>
+                        <QuickActions onActionSelect={onQuickAction} />
+                    </div>
+                )}
                 
                 {/* Typing indicator placeholder */}
                 {isTyping && (

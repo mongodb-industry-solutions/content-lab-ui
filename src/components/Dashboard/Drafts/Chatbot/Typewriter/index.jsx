@@ -25,7 +25,7 @@ const Typewriter = ({ text, messageId, completedMessages, markCompleted }) => {
         };
 
         // Speed up the typing by reducing the interval from 30ms to 10ms
-        typingIntervalRef.current = setInterval(typeNextCharacter, 10);
+        typingIntervalRef.current = setInterval(typeNextCharacter, 20);
 
         return () => clearInterval(typingIntervalRef.current);
     }, [text, messageId, completedMessages, markCompleted]);

@@ -1,5 +1,6 @@
 'use client';
 
+import { useRef } from 'react';
 import EditorPanel from './EditorPanel';
 import Chatbot from './Chatbot';
 import { GradientBackground } from '@/components/external/GradientBackground';
@@ -11,6 +12,7 @@ import styles from './Drafts.module.css';
 
 export default function Drafts() {
     const router = useRouter();
+    const editorRef = useRef(null);
 
     const handleBackClick = () => {
         router.push('/topics');
@@ -19,6 +21,19 @@ export default function Drafts() {
     const handlePublishDraft = () => {
         // TODO: Implement publish draft functionality
         console.log('Publishing draft...');
+    };
+
+    // Draft functions to pass to Chatbot
+    const getDraftContent = () => {
+        return editorRef.current?.getDraftContent() || '';
+    };
+
+    const applyDraftLayout = (newContent) => {
+        editorRef.current?.setDraftContent(newContent);
+    };
+
+    const applySuggestion = (original, replacement) => {
+        editorRef.current?.replaceText(original, replacement);
     };
 
     return (
@@ -58,10 +73,14 @@ export default function Drafts() {
             {/* Main Content Grid */}
             <div className={styles.contentGrid}>
                 <div className={styles.editorSection}>
-                    <EditorPanel />
+                    <EditorPanel ref={editorRef} />
                 </div>
                 <div className={styles.chatbotSection}>
-                    <Chatbot />
+                    <Chatbot 
+                        getDraftContent={getDraftContent}
+                        applyDraftLayout={applyDraftLayout}
+                        applySuggestion={applySuggestion}
+                    />
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Heading from '@tiptap/extension-heading';
@@ -12,13 +12,9 @@ import TiptapToolbar from '@/components/external/TiptapToolbar';
 import { Body } from '@leafygreen-ui/typography';
 import styles from './RichTextEditor.module.css';
 
-export default function RichTextEditor() {
+const RichTextEditor = forwardRef((props, ref) => {
     const [content, setContent] = useState('');
     const [isMounted, setIsMounted] = useState(false);
-
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
 
     const editor = useEditor({
         extensions: [
@@ -47,9 +43,30 @@ export default function RichTextEditor() {
             const html = editor.getHTML();
             setContent(html);
         },
-        // Add this to prevent SSR issues
         immediatelyRender: false,
     });
+
+    useImperativeHandle(ref, () => ({
+        getDraftContent: () => {
+            return editor?.getText() || '';
+        },
+        setDraftContent: (newContent) => {
+            if (editor) {
+                editor.commands.setContent(newContent);
+            }
+        },
+        replaceText: (original, replacement) => {
+            if (editor) {
+                const currentContent = editor.getHTML();
+                const newContent = currentContent.replace(original, replacement);
+                editor.commands.setContent(newContent);
+            }
+        }
+    }));
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
     // Don't render until component is mounted (prevents SSR issues)
     if (!isMounted || !editor) {
@@ -91,4 +108,8 @@ export default function RichTextEditor() {
             </div>
         </div>
     );
-} 
+});
+
+RichTextEditor.displayName = 'RichTextEditor';
+
+export default RichTextEditor; 
