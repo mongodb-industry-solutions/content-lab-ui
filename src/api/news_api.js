@@ -20,7 +20,6 @@ export async function fetchNews() {
       const news = await response.json();
       return news;
     } catch (error) {
-      console.error('Error fetching news on server:', error);
-      return [];
+      throw new Error('Failed to get news. Please try again.');
     }
   }

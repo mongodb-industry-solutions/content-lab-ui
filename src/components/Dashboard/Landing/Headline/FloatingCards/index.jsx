@@ -9,26 +9,26 @@ import styles from './FloatingCards.module.css';
 const cardData = [
   {
     id: 1,
-    source: 'Medium',
+    source: 'Reuters',
     sourceColor: 'lightgray',
-    content: 'New productivity hack takes the internet by storm',
-    metric: '6 min read',
+    content: 'Global technology trends shaping the future of work',
+    metric: '8 min read',
     image: 'categories/technology_1.png'
   },
   {
     id: 2, 
-    source: 'Bloomberg',
+    source: 'BBC',
     sourceColor: 'blue',
-    content: 'AI-generated Drake song goes viral, raises questions about deepfakes',
-    metric: 'Bloom·berg',
+    content: 'Scientific breakthroughs continue to advance human knowledge',
+    metric: 'BBC News',
     image: 'categories/science_2.png'
   },
   {
     id: 3,
-    source: 'TikTok',
+    source: 'YouTube',
     sourceColor: 'red',
-    content: 'Unboxing videos are making a comeback on TikTok',
-    metric: '358K views',
+    content: 'Creative content creators explore new storytelling formats',
+    metric: '2.1M views',
     image: 'categories/entertainment_3.png'
   }
 ];

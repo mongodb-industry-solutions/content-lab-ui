@@ -135,16 +135,3 @@
   align-items: center;
   flex-shrink: 0;
 }
-
-.tooltipContainer {
-  color: #64748b;
-  cursor: help;
-  transition: color 0.2s ease;
-  padding: 0.25rem;
-  border-radius: 0.25rem;
-}
-
-.tooltipContainer:hover {
-  color: #00684A;
-  background-color: #f8fafc;
-}

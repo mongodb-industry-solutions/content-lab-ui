@@ -1,24 +1,14 @@
 'use client';
 
-import { useState, useRef, useLayoutEffect, useEffect } from "react";
-import { Mic, Send } from "lucide-react";
+import { useState, useRef, useLayoutEffect } from "react";
+import { Send } from "lucide-react";
 import { Body } from '@leafygreen-ui/typography';
 import Card from '@leafygreen-ui/card';
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import styles from "./ChatbotInput.module.css";
 
 export default function ChatbotInput({ className, onChange, onSendMessage, ...props }) {
   const internalTextareaRef = useRef(null);
   const [value, setValue] = useState("");
-  const [isListening, setIsListening] = useState(false);
-  const [baseText, setBaseText] = useState(""); // Text before speech recognition started
-
-  const {
-    transcript,
-    listening,
-    resetTranscript,
-    browserSupportsSpeechRecognition
-  } = useSpeechRecognition();
 
   // Auto-resize textarea
   useLayoutEffect(() => {
@@ -30,50 +20,9 @@ export default function ChatbotInput({ className, onChange, onSendMessage, ...pr
     }
   }, [value]);
 
-  // Update the listening state based on actual SpeechRecognition state
-  useEffect(() => {
-    setIsListening(listening);
-  }, [listening]);
-
-  // Handle transcript updates
-  useEffect(() => {
-    if (isListening && transcript) {
-      // Combine base text with current transcript
-      const newValue = baseText + (baseText ? ' ' : '') + transcript;
-      setValue(newValue);
-      
-      if (onChange) {
-        const syntheticEvent = {
-          target: { value: newValue }
-        };
-        onChange(syntheticEvent);
-      }
-    }
-  }, [transcript, isListening, baseText, onChange]);
-
-  // Handle keyboard events
-  useEffect(() => {
-    const handleKeyPress = (e) => {
-      if (e.key === 'Enter' && isListening) {
-        e.preventDefault();
-        stopListening();
-      }
-    };
-
-    if (isListening) {
-      document.addEventListener('keydown', handleKeyPress);
-      return () => document.removeEventListener('keydown', handleKeyPress);
-    }
-  }, [isListening]);
-
   const handleInputChange = (e) => {
     const newValue = e.target.value;
     setValue(newValue);
-    
-    // If not listening, update base text to current value
-    if (!isListening) {
-      setBaseText(newValue);
-    }
     
     if (onChange) onChange(e);
   };
@@ -88,43 +37,6 @@ export default function ChatbotInput({ className, onChange, onSendMessage, ...pr
       
       // Clear input after sending
       setValue("");
-      setBaseText("");
-      resetTranscript();
-    }
-  };
-
-  const startListening = () => {
-    if (!browserSupportsSpeechRecognition) {
-      console.warn("Browser doesn't support speech recognition");
-      alert("Your browser doesn't support speech recognition. Please try Chrome or Edge.");
-      return;
-    }
-    
-    // Store current text as base text
-    setBaseText(value);
-    resetTranscript();
-    
-    SpeechRecognition.startListening({ 
-      continuous: true,
-      language: 'en-US'
-    });
-  };
-
-  const stopListening = () => {
-    SpeechRecognition.stopListening();
-    // After stopping, set the final combined text as the base text
-    if (transcript) {
-      const finalText = baseText + (baseText ? ' ' : '') + transcript;
-      setBaseText(finalText);
-      setValue(finalText);
-    }
-  };
-
-  const handleMicClick = () => {
-    if (isListening) {
-      stopListening();
-    } else {
-      startListening();
     }
   };
 
@@ -140,22 +52,12 @@ export default function ChatbotInput({ className, onChange, onSendMessage, ...pr
             rows={1}
             value={value}
             onChange={handleInputChange}
-            placeholder={isListening ? "Listening..." : "Ask me anything..."}
+            placeholder="Ask me anything..."
             className={styles.textarea}
-            disabled={isListening} // Disable manual input while listening
             {...props}
           />
           
           <div className={styles.buttonContainer}>
-            <button
-              type="button"
-              onClick={handleMicClick}
-              className={`${styles.micButton} ${isListening ? styles.listening : ""}`}
-              aria-label={isListening ? "Stop recording" : "Start recording"}
-            >
-              <Mic className={styles.icon} />
-            </button>
-
             <button
               type="submit"
               disabled={!hasValue}

@@ -20,7 +20,6 @@ export async function fetchRedditPosts() {
       const redditPosts = await response.json();
       return redditPosts;
     } catch (error) {
-      console.error('Error fetching reddit posts on server:', error);
-      return [];
+      throw new Error('Failed to get reddit posts. Please try again.');
     }
   }

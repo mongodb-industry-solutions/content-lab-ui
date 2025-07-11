@@ -19,6 +19,9 @@
     "@leafygreen-ui/text-area": "^12.0.1",
     "@leafygreen-ui/text-input": "^16.0.1",
     "@leafygreen-ui/typography": "^21.0.1",
+    "@leafygreen-ui/tabs": "^17.0.0",
+    "@leafygreen-ui/tooltip": "^14.1.1",
+    "@leafygreen-ui/modal": "^19.0.1",
     "@tiptap/extension-bullet-list": "^2.25.0",
     "@tiptap/extension-heading": "^2.25.0",
     "@tiptap/extension-link": "^2.25.0",
@@ -38,7 +41,6 @@
     "ogl": "^1.0.11",
     "react": "19.0.0-rc-02c0e824-20241028",
     "react-dom": "19.0.0-rc-02c0e824-20241028",
-    "react-loading-skeleton": "^3.1.1",
-    "react-speech-recognition": "^4.0.1"
+    "react-loading-skeleton": "^3.1.1"
   }
 }

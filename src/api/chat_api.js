@@ -38,7 +38,6 @@ export async function sendChatMessage(chatData, streaming = false) {
     
     
   } catch (error) {
-    console.error('Error sending chat message:', error);
     throw new Error('Failed to get AI response. Please try again.');
   }
 }

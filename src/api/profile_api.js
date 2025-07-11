@@ -24,7 +24,6 @@ export async function fetchUserProfile(userId) {
       const userProfile = await response.json();
       return userProfile;
     } catch (error) {
-      console.error('Error fetching user profile on server:', error);
-      return null;
+      throw new Error('Failed to get user profile. Please try again.');
     }
   }

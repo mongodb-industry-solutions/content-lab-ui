@@ -5,11 +5,14 @@ import Card from '@leafygreen-ui/card';
 import Button from '@leafygreen-ui/button';
 import Icon from '@leafygreen-ui/icon';
 import { researchTopic } from '@/api/research_api';
+import InfoWizard from '@/components/external/InfoWizard';
+import { KEYPOINTS_INFO_WIZARD } from '@/lib/constants';
 import styles from './KeyPoints.module.css';
 
 export default function KeyPoints({ topicCard }) {
     const [keyPoints, setKeyPoints] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [openHelpModal, setOpenHelpModal] = useState(false);
 
     useEffect(() => {
         const fetchKeyPoints = async () => {
@@ -66,11 +69,15 @@ export default function KeyPoints({ topicCard }) {
                         )}
                     </div>
 
-                    {/* Footer with Tooltip */}
+                    {/* Footer with InfoWizard */}
                     <div className={styles.footer}>
-                        <div className={styles.tooltipContainer} title="Research assistant">
-                            <Icon glyph="Wizard" size="small" />
-                        </div>
+                        <InfoWizard
+                            open={openHelpModal}
+                            setOpen={setOpenHelpModal}
+                            tooltipText="Learn about real-time research"
+                            iconGlyph="Wizard"
+                            sections={KEYPOINTS_INFO_WIZARD}
+                        />
                     </div>
                 </div>
             </Card>

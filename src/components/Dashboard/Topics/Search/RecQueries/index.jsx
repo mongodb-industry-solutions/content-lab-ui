@@ -6,9 +6,9 @@ import GradientText from "@/components/external/GradientText";
 
 const RecQueries = ({ onQuerySelect }) => {
   const sampleQueries = [
-    "Latest tech trends in 2024",
+    "Latest tech trends in 2025",
     "Viral social media content",
-    "Breaking news analysis"
+    "Current trends in AI"
   ];
 
   const handleQueryClick = (query) => {

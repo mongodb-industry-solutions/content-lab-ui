@@ -28,7 +28,6 @@ export async function analyzeQuery(query, label = 'all') {
       const data = await response.json();
       return data.suggestions;
     } catch (error) {
-      console.error('Error fetching query topics on server:', error);
-      return [];
+      throw new Error('Failed to get query topics. Please try again.');
     }
   }

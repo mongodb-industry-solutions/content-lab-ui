@@ -30,7 +30,6 @@ export async function fetchSuggestedTopics(label = 'all') {
       const data = await response.json();
       return data.suggestions;
     } catch (error) {
-      console.error('Error fetching suggested topics on server:', error);
-      return [];
+      throw new Error('Failed to get suggested topics. Please try again.');
     }
   }
