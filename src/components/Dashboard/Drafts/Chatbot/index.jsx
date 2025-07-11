@@ -1,12 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import Card from '@leafygreen-ui/card';
 import { sendChatMessage } from '@/api/chat_api';
+import { createBotMessage, createUserMessage, createErrorMessage, createNeedContentMessage } from '@/lib/chatUtils';
 import styles from './Chatbot.module.css';
 import ChatbotInput from '@/components/Dashboard/Drafts/Chatbot/ChatbotInput';
 import ChatHeader from '@/components/Dashboard/Drafts/Chatbot/ChatHeader';
 import ChatMessages from '@/components/Dashboard/Drafts/Chatbot/ChatMessages';
+import ChatPanel from '@/components/Dashboard/Drafts/Chatbot/ChatPanel';
 
 export default function Chatbot({ 
     getDraftContent, 
@@ -18,62 +20,21 @@ export default function Chatbot({
     const [completedMessages, setCompletedMessages] = useState({});
 
     // Mark a message as completed (typewriter finished)
-    const markCompleted = (messageId) => {
+    const markCompleted = useCallback((messageId) => {
         setCompletedMessages(prev => ({
             ...prev,
             [messageId]: true
         }));
-    };
-
-    // Create message object based on response type
-    const createBotMessage = (response, baseId) => {
-        const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        
-        console.log(response);
-
-        if (response.data.tool_used === 'outline') {
-            return {
-                id: baseId,
-                type: 'draft_layout',
-                draftContent: response.data.result.html_content,
-                sender: 'bot',
-                timestamp
-            };
-        }
-        
-        if (response.data.tool_used === 'proofread' || response.data.tool_used === 'refine') {
-            return {
-                id: baseId,
-                type: 'suggestions',
-                suggestions: response.data.result,
-                sender: 'bot',
-                timestamp
-            };
-        }
-        
-        // Default text message
-        return {
-            id: baseId,
-            type: 'text',
-            text: response.response || response.data.result.response || "Sorry, I couldn't process that request.",
-            sender: 'bot',
-            timestamp
-        };
-    };
+    }, []);
 
     // Handle sending a new message (from input or quick actions)
-    const handleSendMessage = async (messageText, promptType = null) => {
-        if (!messageText.trim()) return;
+    const handleSendMessage = useCallback(async (messageText, promptType = null) => {
+        if (!messageText?.trim()) return;
 
         // Add user message
-        const userMessage = {
-            id: Date.now().toString(),
-            text: messageText,
-            sender: 'user',
-            type: 'text',
-            timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-        };
-
+        const userMessage = createUserMessage(messageText);
+        if (!userMessage) return; // Handle invalid message creation
+        
         setMessages(prev => [...prev, userMessage]);
 
         // Send message to AI
@@ -95,30 +56,35 @@ export default function Chatbot({
             const aiResponse = await sendChatMessage(chatData);
             
             const botMessage = createBotMessage(aiResponse, (Date.now() + 1).toString());
-            setMessages(prev => [...prev, botMessage]);
+            if (botMessage) {
+                setMessages(prev => [...prev, botMessage]);
+            }
             
         } catch (error) {
             console.error('Chat error:', error);
             
-            const errorMessage = {
-                id: (Date.now() + 1).toString(),
-                type: 'text',
-                text: "I'm experiencing some technical difficulties. Please try again.",
-                sender: 'bot',
-                timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-            };
-            
+            const errorMessage = createErrorMessage();
             setMessages(prev => [...prev, errorMessage]);
         } finally {
             setIsTyping(false);
         }
-    };
+    }, [getDraftContent]);
 
     // Handle quick actions with prompt types
-    const handleQuickAction = (actionText) => {        
-        console.log(actionText.id);
+    const handleQuickAction = useCallback((actionText) => {
+        // Check if action needs draft content
+        if ((actionText.id === 'refine' || actionText.id === 'proofread')) {
+            const draftContent = getDraftContent();
+            if (!draftContent?.trim()) {
+                // Add a simple message instead of sending to AI
+                const infoMessage = createNeedContentMessage(actionText.id);
+                setMessages(prev => [...prev, infoMessage]);
+                return;
+            }
+        }
+        
         handleSendMessage(actionText.message, actionText.id);
-    };
+    }, [handleSendMessage, getDraftContent]);
 
     return (
         <Card className={styles.copilot}>
@@ -129,11 +95,16 @@ export default function Chatbot({
                     <ChatMessages 
                         messages={messages} 
                         isTyping={isTyping} 
-                        onQuickAction={handleQuickAction}
                         completedMessages={completedMessages}
                         markCompleted={markCompleted}
                         applyDraftLayout={applyDraftLayout}
                         applySuggestion={applySuggestion}
+                    />
+                </div>
+                
+                <div className={styles.panelSection}>
+                    <ChatPanel 
+                        onActionSelect={handleQuickAction}
                     />
                 </div>
                 

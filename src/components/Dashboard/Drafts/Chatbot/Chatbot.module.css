@@ -20,7 +20,13 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    min-height: 0; 
+    min-height: 0;
+}
+
+.panelSection {
+    padding: 1rem;
+    border-top: 1px solid #e5e7eb;
+    background: #fafbfc;
 }
 
 .chatbotSection {

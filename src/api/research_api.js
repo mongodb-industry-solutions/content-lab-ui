@@ -1,4 +1,4 @@
-const mainBackendUrl = process.env.BACKEND_URL || "http://localhost:8000";
+const mainBackendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
 
 /**
  * Research a topic and get key points for content creation

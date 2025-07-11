@@ -1,0 +1,24 @@
+.chatPanel {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+
+.panelTitle {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #374151;
+  font-size: 0.8rem;
+}
+
+.toolsList {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.toolButton {
+  flex: 1;
+  min-width: 0;
+}

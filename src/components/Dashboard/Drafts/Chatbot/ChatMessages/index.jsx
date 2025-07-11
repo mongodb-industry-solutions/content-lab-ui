@@ -1,15 +1,13 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import { Body } from '@leafygreen-ui/typography';
 import MessageBubble from '@/components/Dashboard/Drafts/Chatbot/MessageBubble';
-import QuickActions from '@/components/Dashboard/Drafts/Chatbot/QuickActions';
 import styles from './ChatMessages.module.css';
 
 export default function ChatMessages({ 
     messages, 
     isTyping, 
-    onQuickAction, 
     completedMessages, 
     markCompleted,
     applyDraftLayout,
@@ -19,30 +17,46 @@ export default function ChatMessages({
     const messagesContainerRef = useRef(null);
 
     // Auto-scroll to bottom when new messages arrive
-    const scrollToBottom = () => {
+    const scrollToBottom = useCallback(() => {
         if (messagesEndRef.current) {
             messagesEndRef.current.scrollIntoView({ 
                 behavior: 'smooth',
                 block: 'end'
             });
         }
-    };
+    }, []);
 
-    // Scroll to bottom when messages change or typing status changes
+    // Scroll for user messages immediately
     useEffect(() => {
-        scrollToBottom();
-    }, [messages, isTyping]);
-
-    // Check if we should show quick actions
-    const shouldShowQuickActions = () => {
-        if (isTyping) return false; // Don't show while typing
+        if (!messages || messages.length === 0) return;
         
-        // Show if last message is from bot and typewriter is completed
         const lastMessage = messages[messages.length - 1];
-        return lastMessage?.sender === 'bot' && completedMessages[lastMessage.id] === true;
-    };
+        if (lastMessage?.sender === 'user') {
+            // User messages don't have typewriter effect, scroll immediately
+            scrollToBottom();
+        }
+    }, [messages, scrollToBottom]);
 
-    // Empty state when no messages - show conversation starter text and quick actions
+    // Scroll when typing indicator changes
+    useEffect(() => {
+        if (isTyping) {
+            // Scroll when typing indicator appears
+            scrollToBottom();
+        }
+    }, [isTyping, scrollToBottom]);
+
+    // Scroll when bot message typewriter completes
+    useEffect(() => {
+        if (!messages || messages.length === 0) return;
+        
+        const lastMessage = messages[messages.length - 1];
+        if (lastMessage?.sender === 'bot' && completedMessages[lastMessage.id]) {
+            // Bot message typewriter finished, now scroll
+            scrollToBottom();
+        }
+    }, [completedMessages, messages, scrollToBottom]);
+
+    // Early return for empty state
     if (!messages || messages.length === 0) {
         return (
             <div className={styles.chatMessages}>
@@ -50,10 +64,6 @@ export default function ChatMessages({
                     <Body className={styles.emptyText}>
                         Start a conversation with the AI Assistant
                     </Body>
-                    
-                    <div className={styles.quickActionsWrapper}>
-                        <QuickActions onActionSelect={onQuickAction} />
-                    </div>
                 </div>
             </div>
         );
@@ -73,14 +83,7 @@ export default function ChatMessages({
                     />
                 ))}
                 
-                {/* Show quick actions after bot responses */}
-                {shouldShowQuickActions() && (
-                    <div className={styles.quickActionsWrapper}>
-                        <QuickActions onActionSelect={onQuickAction} />
-                    </div>
-                )}
-                
-                {/* Typing indicator placeholder */}
+                {/* Typing indicator */}
                 {isTyping && (
                     <div className={styles.typingWrapper}>
                         <div className={styles.typingIndicator}>

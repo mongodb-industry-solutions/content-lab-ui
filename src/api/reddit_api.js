@@ -1,4 +1,4 @@
-const mainBackendUrl = process.env.BACKEND_URL || "http://localhost:8000";
+  const mainBackendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
 
 /**
  * Fetch reddit posts from the main backend

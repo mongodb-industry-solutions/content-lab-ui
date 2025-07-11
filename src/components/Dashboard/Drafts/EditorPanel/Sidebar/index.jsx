@@ -9,8 +9,7 @@ export default function Sidebar({ topicCard, userProfile }) {
 
     const handleInputChange = (field, value) => {
         // Handle input changes if needed
-        console.log(`${field}: ${value}`);
-    };
+        };
 
     return (
         <div className={styles.sidebar}>

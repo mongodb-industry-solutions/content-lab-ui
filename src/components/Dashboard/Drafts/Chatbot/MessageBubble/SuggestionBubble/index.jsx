@@ -13,7 +13,7 @@ export default function SuggestionBubble({ message, onApply, completedMessages, 
     const [appliedSuggestions, setAppliedSuggestions] = useState(new Set());
 
     const handleApplySuggestion = (suggestion, index) => {
-        onApply(suggestion.original, suggestion.replacement);
+        onApply(suggestion.original, suggestion.corrected);
         
         setAppliedSuggestions(prev => new Set([...prev, index]));
         
@@ -49,11 +49,11 @@ export default function SuggestionBubble({ message, onApply, completedMessages, 
                             <div key={index} className={styles.suggestionCard}>
                                 <div className={styles.suggestionText}>
                                     <div className={styles.originalText}>
-                                        "{suggestion.original_text}"
+                                        "{suggestion.original}"
                                     </div>
                                     <div className={styles.arrow}>→</div>
                                     <div className={styles.replacementText}>
-                                        "{suggestion.refined_text || suggestion.improved_text}"
+                                        "{suggestion.corrected}"
                                     </div>
                                 </div>
                                 

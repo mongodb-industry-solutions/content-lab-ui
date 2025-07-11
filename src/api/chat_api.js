@@ -1,4 +1,4 @@
-const chatBackendUrl = process.env.CHAT_BACKEND_URL || "http://localhost:8001";
+const chatBackendUrl = "http://localhost:8001";
 
 /**
  * Send a chat message and get AI response (currently simulated)
@@ -13,7 +13,6 @@ const chatBackendUrl = process.env.CHAT_BACKEND_URL || "http://localhost:8001";
  */
 export async function sendChatMessage(chatData, streaming = false) {
   try {
-  
     const response = await fetch(`${chatBackendUrl}/api/writing/assist`, {
       method: 'POST',
       headers: {
@@ -24,7 +23,8 @@ export async function sendChatMessage(chatData, streaming = false) {
           draftContent: chatData.draftContent,
           promptType: chatData.promptType,
           profile: chatData.userProfile,
-          message: chatData.message
+          message: chatData.message,
+          topicDetails: chatData.topicCard
         }
       ),
     });

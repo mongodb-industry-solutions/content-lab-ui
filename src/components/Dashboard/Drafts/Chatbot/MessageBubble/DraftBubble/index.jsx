@@ -32,7 +32,7 @@ export default function DraftBubble({ message, onApply, completedMessages, markC
                 <div className={`${mainStyles.messageBubble} ${mainStyles.bot} ${styles.draftBubble}`}>
                     <Body className={mainStyles.messageText}>
                         <Typewriter
-                            text="📝 Here's a complete draft for your topic:"
+                            text="📝 Here's an improved draft for your topic:"
                             messageId={id}
                             completedMessages={completedMessages}
                             markCompleted={markCompleted}

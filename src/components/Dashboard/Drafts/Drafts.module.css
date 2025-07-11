@@ -48,10 +48,10 @@
 /* Content Grid */
 .contentGrid {
     display: grid;
-    grid-template-columns: 10fr 3fr;
+    grid-template-columns: 11fr 4fr;
     gap: 16px;
     margin-top: 16px;
-    padding: 60px 16px 16px 16px;
+    padding: 50px 16px 0px 16px;
     flex: 1;
     height: calc(100vh - 160px); 
     overflow: hidden; 
