@@ -1,5 +1,10 @@
 "use client";
 
+/**
+ * Viral posts component for the landing page
+ * Contains the viral posts cards and the flickering grid background
+ */
+
 import React, { useEffect, useState } from 'react';
 import { H2, Body } from '@leafygreen-ui/typography';
 import { Marquee } from '@/components/external/Marquee';
@@ -8,6 +13,7 @@ import Loading from './Loading';
 import { FlickeringGrid } from '@/components/external/FlickeringGrid';
 import { fetchRedditPosts } from '@/api/reddit_api';
 import styles from './ViralPosts.module.css';
+import { fallbackViralPosts } from '@/utils/constants';
 
 export default function ViralPosts() {
   const [viralPosts, setViralPosts] = useState([]);
@@ -20,7 +26,7 @@ export default function ViralPosts() {
         const posts = await fetchRedditPosts();
         setViralPosts(posts);
       } catch (error) {
-        throw new Error('Failed to load viral posts');
+        setViralPosts(fallbackViralPosts); // Set viral posts to  
       } finally {
         setIsLoading(false);
       }

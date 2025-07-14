@@ -82,3 +82,25 @@ export const areRequestsEqual = (requestA, requestB) => {
   // Both are suggested topics requests (label-only)
   return requestA.label === requestB.label;
 };
+
+/**
+ * Get badge variant color based on category
+ * @param {string} category - The category name
+ * @returns {string} The badge variant color
+ */
+export const getBadgeVariant = (category) => {
+  const variants = {
+    'technology': 'yellow',
+    'business': 'blue', 
+    'health': 'green',
+    'sports': 'yellow',
+    'politics': 'blue',
+    'science': 'green',
+    'education': 'yellow',
+    'culture': 'blue',
+    'barcelona': 'green',
+    'travel': 'yellow',
+    'entertainment': 'blue'
+  };
+  return variants[category?.toLowerCase()] || 'gray';
+};

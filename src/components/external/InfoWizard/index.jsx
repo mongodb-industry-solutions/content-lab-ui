@@ -1,5 +1,9 @@
 "use client";
 
+/**
+ * Info wizard component source: https://github.com/mongodb-industry-solutions/leafy-bank-ui/blob/main/frontend/components/InfoWizard/InfoWizard.jsx
+ */
+
 import React, { useState } from "react";
 import Modal from "@leafygreen-ui/modal";
 import { H3, Body } from "@leafygreen-ui/typography";

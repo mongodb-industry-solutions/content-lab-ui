@@ -7,7 +7,7 @@ const mainBackendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:
  */
 export async function researchTopic(topic) {
     try {
-      const response = await fetch(`${mainBackendUrl}/api/research`, {
+      const response = await fetch(`${mainBackendUrl}/api/services/research`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

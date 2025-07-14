@@ -1,4 +1,6 @@
-import React from 'react';
+/**
+ * Drafts page top level component
+ */
 
 import Drafts from '@/components/Dashboard/Drafts';
 

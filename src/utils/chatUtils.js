@@ -1,6 +1,7 @@
 /**
  * Safely parse backend response structure
- * Handles inconsistent response formats from the backend
+ * @param {Object} response - The backend response
+ * @returns {Object} - The parsed response
  */
 export const parseBackendResponse = (response) => {
     console.log('Raw backend response:', response);
@@ -19,7 +20,9 @@ export const parseBackendResponse = (response) => {
 
 /**
  * Create message object based on backend response
- * Maps different tool types to appropriate message structures
+ * @param {Object} response - The backend response
+ * @param {string} baseId - The base message id
+ * @returns {Object} - The message object
  */
 export const createBotMessage = (response, baseId) => {
     const { toolUsed, result, fallbackText } = parseBackendResponse(response);
@@ -58,6 +61,8 @@ export const createBotMessage = (response, baseId) => {
 
 /**
  * Create user message object
+ * @param {string} messageText - The user message text
+ * @returns {Object} - The message object
  */
 export const createUserMessage = (messageText) => {
     return {
@@ -71,6 +76,8 @@ export const createUserMessage = (messageText) => {
 
 /**
  * Create error message object
+ * @param {string} errorText - The error message text
+ * @returns {Object} - The message object
  */
 export const createErrorMessage = (errorText = "I'm experiencing some technical difficulties. Please try again.") => {
     return {
@@ -84,6 +91,8 @@ export const createErrorMessage = (errorText = "I'm experiencing some technical 
 
 /**
  * Create "need content" message when draft is empty
+ * @param {string} actionType - The action type
+ * @returns {Object} - The message object
  */
 export const createNeedContentMessage = (actionType) => {
     const messages = {

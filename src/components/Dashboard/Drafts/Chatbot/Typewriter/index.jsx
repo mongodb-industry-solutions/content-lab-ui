@@ -1,5 +1,10 @@
 "use client";
 
+/**
+ * Typewriter component for the chatbot component source: https://github.com/mongodb-industry-solutions/leafy-bank-ui/blob/main/frontend/components/ChatbotPortfolio/Typewriter.jsx
+ * Contains the typewriter effect for the chatbot messages
+ */
+
 import { useState, useEffect, useRef } from "react";
 
 const Typewriter = ({ text, messageId, completedMessages, markCompleted }) => {

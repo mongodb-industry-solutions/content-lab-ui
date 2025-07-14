@@ -9,15 +9,15 @@ const mainBackendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:
  */
 export async function analyzeQuery(query, label = 'all') {
     try {
-      const response = await fetch(`${mainBackendUrl}/api/analyze`, {
+      const response = await fetch(`${mainBackendUrl}/api/services/analyze`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ 
           query: query.trim(),
-          limit: 10
-          // label: label !== 'all' ? label : undefined
+          limit: 4,
+          label: label !== 'all' ? label : undefined
         }),
       });
   

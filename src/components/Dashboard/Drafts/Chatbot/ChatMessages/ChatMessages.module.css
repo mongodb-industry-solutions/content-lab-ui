@@ -1,4 +1,5 @@
-/* Main Chat Messages Container */
+/* ChatMessages.module.css */
+
 .chatMessages {
     display: flex;
     flex-direction: column;
@@ -6,7 +7,6 @@
     overflow: hidden;
 }
 
-/* Messages List - Scrollable Area */
 .messagesList {
     flex: 1;
     overflow-y: auto;
@@ -15,10 +15,10 @@
     flex-direction: column;
     gap: 8px;
     scroll-behavior: smooth;
-    min-height: 0; /* Important: allows flex item to shrink */
+    min-height: 0;
 }
 
-/* Hide Scrollbar */
+/* Hide scrollbar */
 .messagesList {
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* Internet Explorer 10+ */
@@ -28,7 +28,6 @@
     display: none; /* Safari and Chrome */
 }
 
-/* Empty State */
 .emptyState {
     display: flex;
     flex-direction: column;
@@ -46,7 +45,6 @@
     font-size: 0.875rem;
 }
 
-/* Typing Indicator */
 .typingWrapper {
     display: flex;
     align-items: flex-start;
@@ -89,7 +87,6 @@
     animation-delay: 0.4s;
 }
 
-/* Typing Animation */
 @keyframes typing {
     0%, 60%, 100% {
         transform: translateY(0);
@@ -101,12 +98,10 @@
     }
 }
 
-/* Smooth scroll behavior */
 .chatMessages {
     scroll-behavior: smooth;
 }
 
-/* Ensure proper spacing */
 .messagesList > :last-child {
     margin-bottom: 8px;
 }

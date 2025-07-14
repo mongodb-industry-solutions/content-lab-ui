@@ -1,5 +1,10 @@
 "use client";
 
+/**
+ * News card component for the top news component
+ * Contains the news card with the image, title, description, source, author, published date, country, metrics and cta
+ */
+
 import React from 'react';
 import { H3, Overline, Body, Subtitle, Disclaimer } from '@leafygreen-ui/typography';
 import Card from '@leafygreen-ui/card';
@@ -7,32 +12,32 @@ import Button from '@leafygreen-ui/button';
 import Badge from '@leafygreen-ui/badge';
 import styles from './NewsCard.module.css';
 import Image from 'next/image';
-import { getHumanReadableDate, formatNumber } from '@/lib/utils';
+import { getHumanReadableDate, formatNumber, getBadgeVariant } from '@/utils/generalUtils';
 
 export default function NewsCard({ article, currentIndex }) {
   const { 
-    url, 
-    title, 
-    description,
-    author,
-    source, 
-    published_at,
-    country,
+    url = "https://www.mongodb.com", 
+    title = "Title", 
+    description = "Description",
+    author = "Author",
+    source = "Source", 
+    published_at = new Date(),
+    country = "Country",
     News_metrics = {},
-    category
+    category = "Category"
   } = article;
 
   const {
-    Total_visits,
-    Total_retention, 
-    total_Comments,
-    Total_shares
+    Total_visits = 0,
+    Total_retention = 0, 
+    total_Comments = 0,
+    Total_shares = 0
   } = News_metrics;
 
   const humanReadableDate = getHumanReadableDate(published_at);
-  const formattedTotalVisits = formatNumber(Total_visits);
-  const formattedTotalShares = formatNumber(Total_shares);
-  const formattedTotalComments = formatNumber(total_Comments);
+  const formattedTotalVisits = formatNumber(Total_visits || 0);
+  const formattedTotalShares = formatNumber(Total_shares || 0);
+  const formattedTotalComments = formatNumber(total_Comments || 0);
 
   const handleViewOriginal = () => {
     if (url) {
@@ -60,7 +65,7 @@ export default function NewsCard({ article, currentIndex }) {
           {/* Header Section */}
           <div className={styles.headerSection}>
             <div className={styles.badgeContainer}>
-              <Badge variant="green" className={styles.categoryBadge}>
+              <Badge variant={getBadgeVariant(category)} className={styles.categoryBadge}>
                 {category}
               </Badge>
               

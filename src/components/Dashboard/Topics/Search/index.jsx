@@ -1,5 +1,10 @@
 "use client";
 
+/**
+ * Search component for the topics component
+ * Contains the search bar, dropdown and recommended queries
+ */
+
 import SearchBar from "./SearchBar";
 import RecQueries from "./RecQueries";
 import styles from "./Search.module.css";

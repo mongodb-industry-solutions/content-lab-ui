@@ -1,5 +1,9 @@
 "use client";
 
+/**
+ * Sparkles text component source: https://magicui.design/docs/components/sparkles-text
+ */
+
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { Body } from "@leafygreen-ui/typography";

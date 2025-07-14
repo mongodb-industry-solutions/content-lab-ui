@@ -1,5 +1,10 @@
 'use client';
 
+/**
+ * Text bubble component for the chatbot component
+ * Contains the text bubble and the copy button (default message bubble basically)
+ */
+
 import { useState } from 'react';
 import { Body, Disclaimer } from '@leafygreen-ui/typography';
 import Icon from '@leafygreen-ui/icon';

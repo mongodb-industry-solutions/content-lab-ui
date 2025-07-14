@@ -1,5 +1,9 @@
 "use client";
 
+/**
+ * Login component for the dashboard source: https://github.com/mongodb-industry-solutions/leafy-bank-ui/blob/main/frontend/components/Login/Login.jsx
+ */
+
 import React, { useState, useEffect } from 'react';
 import Icon from '@leafygreen-ui/icon';
 import Card from "@leafygreen-ui/card";
@@ -7,7 +11,7 @@ import { H2, Description, Subtitle } from '@leafygreen-ui/typography';
 import styles from './Login.module.css';
 import User from './User';
 import Loading from './Loading';
-import { USER_MAP } from "@/lib/constants";
+import { USER_MAP } from "@/utils/constants";
 import Banner from "@leafygreen-ui/banner";
 import { useRouter } from 'next/navigation';
 import { fetchUserProfile } from "@/api/profile_api";
@@ -52,7 +56,7 @@ const LoginComponent = ({ onUserSelected }) => {
             const userProfile = await fetchUserProfile(user.id);
             localStorage.setItem('userProfile', JSON.stringify(userProfile));
         } catch (error) {
-            console.error('Error fetching user profile:', error);
+            // Do nothing user profile is not fetched from backend
         }
 
         // Notify parent component about the selected user

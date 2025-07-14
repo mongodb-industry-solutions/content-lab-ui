@@ -1,5 +1,10 @@
 'use client';
 
+/**
+ * Message bubble component for the chatbot component
+ * Contains the text, draft, suggestion and text bubble
+ */
+
 import TextBubble from './TextBubble';
 import DraftBubble from './DraftBubble';
 import SuggestionBubble from './SuggestionBubble';

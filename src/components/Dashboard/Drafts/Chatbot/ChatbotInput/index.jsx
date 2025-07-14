@@ -1,5 +1,10 @@
 'use client';
 
+/**
+ * Chatbot input component for the chatbot component
+ * Contains the chatbot input and the send button
+ */
+
 import { useState, useRef, useLayoutEffect } from "react";
 import { Send } from "lucide-react";
 import { Body } from '@leafygreen-ui/typography';

@@ -1,5 +1,10 @@
 'use client';
 
+/**
+ * Chat panel component for the chatbot component
+ * Contains the chat panel with the writing tools (draft, refine, proofread)
+ */
+
 import { Body } from '@leafygreen-ui/typography';
 import Button from '@leafygreen-ui/button';
 import styles from './ChatPanel.module.css';

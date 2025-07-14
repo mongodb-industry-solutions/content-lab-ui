@@ -1,4 +1,4 @@
-const chatBackendUrl = "http://localhost:8001";
+const chatBackendUrl = process.env.NEXT_PUBLIC_CHAT_BACKEND_URL || "http://localhost:8001";
 
 /**
  * Send a chat message and get AI response (currently simulated)

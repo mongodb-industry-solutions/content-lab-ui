@@ -6,7 +6,7 @@ const mainBackendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:
  */
 export async function fetchNews() {
     try {
-      const response = await fetch(`${mainBackendUrl}/api/news`, {
+      const response = await fetch(`${mainBackendUrl}/api/content/news`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

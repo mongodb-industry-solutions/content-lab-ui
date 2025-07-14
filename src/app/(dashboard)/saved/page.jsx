@@ -1,9 +1,13 @@
-import React from 'react';
+/**
+ * Saved page top level component
+ */
+
+import Saved from '@/components/Dashboard/Saved';
 
 export default function SavedPage() {
   return (
     <>
-      <h1>Saved</h1>
+      <Saved />
     </>
   );
 }

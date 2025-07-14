@@ -1,4 +1,5 @@
-/* Skeleton Loading Styles */
+/* Loading.module.css */
+
 .loadingSkeleton {
     display: flex;
     flex-direction: column;

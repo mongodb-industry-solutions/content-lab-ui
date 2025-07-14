@@ -1,10 +1,15 @@
 "use client";
 
+/**
+ * Suggestions component for the topics component
+ * Contains the topic cards and the info wizard
+ */
+
 import React, { useState } from 'react';
 import { H2, Body } from '@leafygreen-ui/typography';
 import TopicCard from '@/components/Dashboard/Topics/Suggestions/TopicCard';
 import InfoWizard from '@/components/external/InfoWizard';
-import { SUGGESTIONS_INFO_WIZARD } from '@/lib/constants';
+import { SUGGESTIONS_INFO_WIZARD } from '@/utils/constants';
 import Loading from './Loading';
 import styles from './Suggestions.module.css';
 

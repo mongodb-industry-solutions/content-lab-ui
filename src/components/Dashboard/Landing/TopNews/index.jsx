@@ -1,11 +1,17 @@
 "use client";
 
+/**
+ * Top news component for the landing page
+ * Contains the news cards
+ */
+
 import React, { useState, useEffect } from 'react';
 import { H2, Body } from '@leafygreen-ui/typography';
 import NewsCard from './NewsCard';
 import DotBackground from '@/components/external/DotBackground';
 import { fetchNews } from '@/api/news_api';
 import Loading from './Loading';
+import { fallbackNews } from '@/utils/constants';
 import styles from './TopNews.module.css';
 
 export default function TopNews() {
@@ -21,7 +27,7 @@ export default function TopNews() {
         const news = await fetchNews();
         setNews(news);
       } catch (error) {
-        throw new Error('Failed to load news');
+        setNews(fallbackNews); // Set news to fallback if error
       } finally {
         setIsLoading(false);
       }

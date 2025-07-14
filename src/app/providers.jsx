@@ -1,5 +1,9 @@
 "use client";
 
+/**
+ * Leafygreen provider component
+ */
+
 import LeafyGreenProvider, { useDarkMode } from "@leafygreen-ui/leafygreen-provider";
 
 export function Providers({ children }) {

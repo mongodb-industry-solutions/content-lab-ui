@@ -1,5 +1,9 @@
 "use client";
 
+/**
+ * Recommended queries component for the search component
+ */
+
 import Card from "@leafygreen-ui/card";
 import styles from "./RecQueries.module.css";
 import GradientText from "@/components/external/GradientText";

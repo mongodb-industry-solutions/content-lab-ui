@@ -10,7 +10,7 @@ export async function fetchUserProfile(userId) {
       const params = new URLSearchParams();
       params.append('userId', userId);
       
-      const response = await fetch(`${mainBackendUrl}/api/profile?${params.toString()}`, {
+      const response = await fetch(`${mainBackendUrl}/api/content/profile?${params.toString()}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

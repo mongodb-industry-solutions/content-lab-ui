@@ -1,12 +1,17 @@
 "use client";
 
+/**
+ * Headline component for the landing page
+ * Contains the headline, subtitle, info wizard and the globe (very cool globe)
+ */
+
 import React, { useState } from 'react';
 import { H2, Subtitle, Body } from '@leafygreen-ui/typography';
 import Card from '@leafygreen-ui/card';
 import Button from '@leafygreen-ui/button';
 import Link from 'next/link';
 import InfoWizard from '@/components/external/InfoWizard';
-import { LANDING_INFO_WIZARD } from '@/lib/constants';
+import { LANDING_INFO_WIZARD } from '@/utils/constants';
 import styles from './Headline.module.css';
 import Globe from '@/components/external/Globe';
 import FloatingCards from './FloatingCards';

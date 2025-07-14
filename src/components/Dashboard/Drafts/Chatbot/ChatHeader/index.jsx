@@ -1,11 +1,16 @@
 'use client';
 
+/**
+ * Chat header component for the chatbot component
+ * Contains the chatbot logo and the info wizard
+ */
+
 import { useState } from 'react';
 import { MongoDBLogoMark } from '@leafygreen-ui/logo';
 import { Subtitle } from '@leafygreen-ui/typography';
 import Card from '@leafygreen-ui/card';
 import InfoWizard from '@/components/external/InfoWizard';
-import { CHATBOT_INFO_WIZARD } from '@/lib/constants';
+import { CHATBOT_INFO_WIZARD } from '@/utils/constants';
 import styles from './ChatHeader.module.css';
 
 export default function ChatHeader() {

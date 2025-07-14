@@ -1,5 +1,10 @@
 'use client';
 
+/**
+ * Draft bubble component for the chatbot component
+ * Contains the draft bubble and the apply button (suggests entire draft layout or refines the content)
+ */
+
 import { useState } from 'react';
 import { Body, Disclaimer } from '@leafygreen-ui/typography';
 import Button from '@leafygreen-ui/button';

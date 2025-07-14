@@ -1,0 +1,163 @@
+/* Saved.module.css */
+
+.savedSection {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100vw;
+  margin: -100px 0 0 calc(-50vw + 50%);
+  padding-top: 100px;
+  background: #ffffff;
+  min-height: calc(100vh + 100px);
+  position: relative;
+}
+
+/* Background Components */
+.animatedGrid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 200%;
+  z-index: 0;
+  mask-image: radial-gradient(800px circle at center, white, transparent);
+  -webkit-mask-image: radial-gradient(800px circle at center, white, transparent);
+  transform: skew(0deg, 12deg);
+  inset: -30% 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 3rem;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.headerSection {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  color: #000000;
+  margin-bottom: 1rem;
+  font-size: 3rem;
+}
+
+.sectionSubtitle {
+  color: #5C6C75;
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+/* Drafts Grid */
+.draftsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Loading State */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 0;
+  gap: 1rem;
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e5e7eb;
+  border-top: 3px solid #00684A;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loadingText {
+  color: #6B7280;
+  font-size: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error State */
+.errorContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 0;
+}
+
+.errorMessage {
+  color: #EF4444;
+  text-align: center;
+  font-size: 1rem;
+  background: #FEF2F2;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  border: 1px solid #FECACA;
+}
+
+/* Empty State */
+.emptyContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.emptyTitle {
+  color: #374151;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.emptyMessage {
+  color: #6B7280;
+  max-width: 500px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* for big monitor/tv screens */
+@media (min-height: 1200px) {
+  .savedSection {
+    min-height: calc(120vh + 100px);
+  }
+  
+  .container {
+    padding: 3rem 4rem;
+  }
+  
+  .headerSection {
+    margin-bottom: 4rem;
+  }
+  
+  .sectionTitle {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .sectionSubtitle {
+    font-size: 1.2rem;
+  }
+  
+  .draftsGrid {
+    gap: 2.5rem;
+    margin-top: 3rem;
+  }
+}

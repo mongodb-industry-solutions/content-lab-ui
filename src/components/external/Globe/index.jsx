@@ -1,5 +1,9 @@
 "use client";
 
+/**
+ * Globe component source: https://magicui.design/docs/components/globe
+ */
+
 import createGlobe from "cobe";
 import { useMotionValue, useSpring } from "motion/react";
 import { useEffect, useRef } from "react";

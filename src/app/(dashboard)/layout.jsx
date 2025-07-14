@@ -1,3 +1,7 @@
+/**
+ * Dashboard top level layout component
+ */
+
 import Layout from "@/components/Layout";
 
 export const metadata = {

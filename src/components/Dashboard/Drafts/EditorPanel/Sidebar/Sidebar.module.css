@@ -25,3 +25,19 @@
 .inputGroup {
   margin-bottom: 1rem;
 } 
+
+/* Keywords Section */
+.keywordsLabel {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a202c;
+  margin-bottom: 8px;
+}
+
+.keywordsBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+}

@@ -1,3 +1,7 @@
+/**
+ * Gradient text component source: https://reactbits.dev/text-animations/gradient-text
+ */
+
 import styles from "./GradientText.module.css";
 
 export default function GradientText({

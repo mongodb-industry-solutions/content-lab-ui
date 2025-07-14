@@ -1,5 +1,9 @@
 "use client";
 
+/**
+ * Navbar component for the dashboard (nice glassmorphism effect)
+ */
+
 import { MongoDBLogoMark } from '@leafygreen-ui/logo';
 import { H1, Subtitle } from '@leafygreen-ui/typography';
 import Card from '@leafygreen-ui/card';

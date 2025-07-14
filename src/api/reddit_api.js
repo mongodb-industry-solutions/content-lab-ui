@@ -6,7 +6,7 @@
  */
 export async function fetchRedditPosts() {
     try {
-      const response = await fetch(`${mainBackendUrl}/api/reddit`, {
+      const response = await fetch(`${mainBackendUrl}/api/content/reddit`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

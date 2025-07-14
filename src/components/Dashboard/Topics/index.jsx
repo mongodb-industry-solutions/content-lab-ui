@@ -1,9 +1,16 @@
 "use client";
 
+/**
+ * Topics page top level component called from the dashboard page
+ * Contains the search and suggestions components
+ * Acts as main source of truth for every component used in this page
+ * Delegates the logic to other components via a lot of callbacks and state management
+ */
+
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { fetchSuggestedTopics } from '@/api/suggestions_api';
 import { analyzeQuery } from '@/api/search_api';
-import { debounce, areRequestsEqual } from '@/lib/utils';
+import { debounce, areRequestsEqual } from '@/utils/generalUtils';
 import Search from "@/components/Dashboard/Topics/Search";
 import Suggestions from "@/components/Dashboard/Topics/Suggestions";
 import { GradientBackground } from "@/components/external/GradientBackground";

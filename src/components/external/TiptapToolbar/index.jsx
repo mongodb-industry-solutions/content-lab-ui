@@ -1,3 +1,7 @@
+/**
+ * Tiptap toolbar component source: https://tiptap.dev/docs/ui-components/templates/simple-editor
+ */
+
 import React from 'react';
 import { 
   Bold, 

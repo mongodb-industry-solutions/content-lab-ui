@@ -1,5 +1,9 @@
 "use client";
 
+/**
+ * User profile component for the dashboard source: https://github.com/mongodb-industry-solutions/leafy-bank-ui/blob/main/frontend/components/UserProfile/UserProfile.jsx
+ */
+
 import { useState, useEffect } from "react";
 import { H3, Subtitle, Body } from '@leafygreen-ui/typography';
 import Image from 'next/image';

@@ -1,0 +1,117 @@
+/* DraftCard.module.css */
+
+.draftCard {
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  height: 200px;
+}
+
+.draftCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.cardContent {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  height: 100%;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+/* Left Side - Metadata */
+.metadataSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-content: flex-start;
+  border-right: 1px solid #e5e7eb;
+  padding-right: 1.5rem;
+}
+
+.draftTitle {
+  color: #000000;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.3;
+  font-size: 1.1rem;
+}
+
+.categoryBadge {
+  width: fit-content;
+  font-size: 0.75rem;
+}
+
+.lastEdited {
+  color: #6B7280;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+/* Right Side - Content */
+.contentSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.contentPreview {
+  color: #5C6C75;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.4;
+  font-size: 0.9rem;
+  flex: 1;
+}
+
+.ctaSection {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.keepDraftingBtn {
+  background-color: #00684A !important;
+  border-color: #00684A !important;
+  transition: all 0.2s ease;
+}
+
+.keepDraftingBtn:hover {
+  background-color: #004d36 !important;
+  border-color: #004d36 !important;
+}
+
+/* For big monitor/tv screens */
+@media (min-height: 1200px) {
+  .draftCard {
+    height: 240px;
+  }
+  
+  .cardContent {
+    padding: 2rem;
+    gap: 2rem;
+  }
+  
+  .draftTitle {
+    font-size: 1.2rem;
+  }
+  
+  .contentPreview {
+    font-size: 1rem;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+  }
+}

@@ -1,5 +1,9 @@
 "use client";
 
+/**
+ * Flickering grid component source: https://magicui.design/docs/components/flickering-grid
+ */
+
 import React, {
   useCallback,
   useEffect,

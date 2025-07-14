@@ -1,5 +1,10 @@
 "use client";
 
+/**
+ * Floating cards component for the landing page
+ * Contains the floating cards with the source, content and metric
+ */
+
 import React from 'react';
 import Card from '@leafygreen-ui/card';
 import Badge from '@leafygreen-ui/badge';

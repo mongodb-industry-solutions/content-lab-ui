@@ -1,5 +1,9 @@
 "use client";
 
+/**
+ * Marquee component source: https://magicui.design/docs/components/marquee
+ */
+
 import React from "react";
 import styles from "./Marquee.module.css";
 

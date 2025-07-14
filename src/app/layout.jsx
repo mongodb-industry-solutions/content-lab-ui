@@ -1,3 +1,7 @@
+/**
+ * Root layout top level component
+ */
+
 import { GeistSans } from "geist/font/sans";
 import Providers from "@/app/providers";
 import "@/app/globals.css";

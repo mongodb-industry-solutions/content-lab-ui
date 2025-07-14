@@ -1,3 +1,7 @@
+/**
+ * Loading component for the user selection page   
+ */
+
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import styles from './Loading.module.css';

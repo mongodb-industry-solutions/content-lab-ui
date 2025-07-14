@@ -14,7 +14,7 @@ export async function fetchSuggestedTopics(label = 'all') {
         params.append('label', label);
       }
       
-      const url = `${mainBackendUrl}/api/suggestions${params.toString() ? '?' + params.toString() : ''}`;
+      const url = `${mainBackendUrl}/api/content/suggestions${params.toString() ? '?' + params.toString() : ''}`;
       
       const response = await fetch(url, {
         method: 'GET',

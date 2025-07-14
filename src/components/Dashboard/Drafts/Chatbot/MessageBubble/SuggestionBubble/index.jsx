@@ -1,5 +1,10 @@
 'use client';
 
+/**
+ * Suggestion bubble component for the chatbot component
+ * Contains the suggestion bubble and the apply button (for quick fixes)
+ */
+
 import { useState } from 'react';
 import { Body, Disclaimer } from '@leafygreen-ui/typography';
 import Button from '@leafygreen-ui/button';

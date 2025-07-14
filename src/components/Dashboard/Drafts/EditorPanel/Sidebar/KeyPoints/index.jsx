@@ -1,12 +1,17 @@
 'use client';
 
+/**
+ * Key points component for the editor panel
+ * Contains the key points section and the info wizard
+ */
+
 import React, { useState, useEffect } from 'react';
 import Card from '@leafygreen-ui/card';
 import Button from '@leafygreen-ui/button';
 import Icon from '@leafygreen-ui/icon';
 import { researchTopic } from '@/api/research_api';
 import InfoWizard from '@/components/external/InfoWizard';
-import { KEYPOINTS_INFO_WIZARD } from '@/lib/constants';
+import { KEYPOINTS_INFO_WIZARD } from '@/utils/constants';
 import styles from './KeyPoints.module.css';
 
 export default function KeyPoints({ topicCard }) {

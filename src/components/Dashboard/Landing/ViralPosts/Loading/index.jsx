@@ -1,3 +1,7 @@
+/**
+ * Loading component for the viral posts component
+ */
+
 import React from 'react';
 import styles from './Loading.module.css';
 

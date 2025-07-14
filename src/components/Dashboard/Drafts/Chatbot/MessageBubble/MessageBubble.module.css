@@ -1,4 +1,5 @@
-/* Message Wrapper - Overall layout */
+/* MessageBubble.module.css */
+
 .messageWrapper {
     display: flex;
     margin-bottom: 16px;
@@ -15,7 +16,6 @@
     gap: 8px;
 }
 
-/* Bot Avatar */
 .botAvatar {
     display: flex;
     align-items: center;
@@ -29,7 +29,6 @@
     color: #1C3D31;
 }
 
-/* Message Content Area */
 .messageContent {
     display: flex;
     flex-direction: column;
@@ -44,7 +43,6 @@
     align-items: flex-start;
 }
 
-/* Message Bubbles */
 .messageBubble {
     position: relative;
     padding: 12px 16px;
@@ -64,12 +62,11 @@
     border: 1px solid #E8EDEB;
 }
 
-/* Message Text */
 .messageText {
     font-size: 0.8rem;
     margin: 0;
     line-height: 1.4;
-    padding-right: 28px; /* Space for copy button */
+    padding-right: 28px;
 }
 
 .messageBubble.user .messageText {
@@ -80,7 +77,6 @@
     color: #1C3D31;
 }
 
-/* Copy Button */
 .copyButton {
     position: absolute;
     top: 8px;
@@ -108,7 +104,6 @@
     transform: scale(0.95);
 }
 
-/* Copy Button for User Messages */
 .copyButton.user {
     color: rgba(255, 255, 255, 0.8);
 }
@@ -118,7 +113,6 @@
     color: #ffffff;
 }
 
-/* Copy Button for Bot Messages */
 .copyButton.bot {
     color: #89A094;
 }
@@ -128,7 +122,6 @@
     color: #1C3D31;
 }
 
-/* Timestamps */
 .timestamp {
     margin-top: 4px;
     font-size: 11px;

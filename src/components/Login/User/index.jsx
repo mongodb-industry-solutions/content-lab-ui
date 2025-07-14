@@ -1,5 +1,9 @@
 "use client";
 
+/**
+ * User component for the dashboard source: https://github.com/mongodb-industry-solutions/leafy-bank-ui/blob/main/frontend/components/User/User.jsx
+ */
+
 import React from 'react';
 import { Body } from '@leafygreen-ui/typography';
 import Card from '@leafygreen-ui/card';

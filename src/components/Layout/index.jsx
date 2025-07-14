@@ -1,5 +1,9 @@
 "use client";
 
+/**
+ * Layout component for the dashboard / user selection
+ */
+
 import Navbar from "@/components/Layout/Navbar";
 import Login from "@/components/Login";
 import { useState, useEffect } from "react";

@@ -1,5 +1,10 @@
 'use client';
 
+/**
+ * Chat messages component for the chatbot component
+ * Contains the chat messages and the typing indicator
+ */
+
 import { useEffect, useRef, useCallback } from 'react';
 import { Body } from '@leafygreen-ui/typography';
 import MessageBubble from '@/components/Dashboard/Drafts/Chatbot/MessageBubble';

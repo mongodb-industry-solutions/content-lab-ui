@@ -1,21 +1,26 @@
 "use client";
 
+/**
+ * Viral post card component for the viral posts component
+ * Contains the viral post card with the title, author, subreddit, comments, reposts and likes
+ */
+
 import React from 'react';
 import Icon from '@leafygreen-ui/icon';
 import Card from '@leafygreen-ui/card';
 import { Body, Subtitle } from '@leafygreen-ui/typography';
-import { getRelativeTime } from '@/lib/utils';
+import { getRelativeTime } from '@/utils/generalUtils';
 import Image from 'next/image';
 import styles from './ViralCard.module.css';
 
 export default function ViralCard({ viralPost }) {
   const {
-    _id,
-    title,
-    author,
-    subreddit,
+    _id = "123",
+    title = "Title",
+    author = "Author",
+    subreddit = "Subreddit",
     reddit_metrics = {},
-    created_at,
+    created_at =  new Date(),
   } = viralPost;
 
   const {

@@ -1,3 +1,7 @@
+/**
+ * Gradient background component source: https://21st.dev/muhammadnadeemmn9485134/bg-gredient/default
+ */
+
 import styles from "./GradientBackground.module.css";
 
 export const GradientBackground = ({ 

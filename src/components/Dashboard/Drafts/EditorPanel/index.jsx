@@ -1,14 +1,17 @@
 'use client';
 
-import { useEffect, useState, forwardRef, useImperativeHandle, useRef } from 'react';
+/**
+ * Editor panel component for the drafts component
+ * Contains the sidebar and the rich text editor (Tiptap)
+ */
+
+import { forwardRef, useImperativeHandle, useRef } from 'react';
 import Card from '@leafygreen-ui/card';
 import Sidebar from './Sidebar';
 import RichTextEditor from './RichTextEditor';
 import styles from './EditorPanel.module.css';
 
-const EditorPanel = forwardRef((props, ref) => {
-    const [topicCard, setTopicCard] = useState(null);
-    const [userProfile, setUserProfile] = useState(null);
+const EditorPanel = forwardRef(({ metadata, onMetadataChange, userProfile, topicCard }, ref) => {
     const editorRef = useRef(null);
 
     useImperativeHandle(ref, () => ({
@@ -23,13 +26,6 @@ const EditorPanel = forwardRef((props, ref) => {
         }
     }));
 
-    useEffect(() => {
-        const topicCard = JSON.parse(localStorage.getItem('topicCard'));
-        const userProfile = JSON.parse(localStorage.getItem('userProfile'));
-        setTopicCard(topicCard);
-        setUserProfile(userProfile);
-    }, []);
-
     if (!topicCard || !userProfile) {
         return null;
     }
@@ -38,7 +34,11 @@ const EditorPanel = forwardRef((props, ref) => {
         <Card className={styles.editorPanel}>
             <div className={styles.container}>
                 <div className={styles.sidebar}>
-                    <Sidebar topicCard={topicCard} userProfile={userProfile}/>
+                    <Sidebar 
+                        topicCard={topicCard} 
+                        metadata={metadata}
+                        onMetadataChange={onMetadataChange}
+                    />
                 </div>
                 <div className={styles.textEditor}>
                     <RichTextEditor ref={editorRef} />

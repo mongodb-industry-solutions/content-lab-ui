@@ -1,16 +1,23 @@
 "use client";
 
-import React from 'react';
+/**
+ * Topic card component for the suggestions component
+ */
+
+import React, { useState } from 'react';
 import { H3, Body, Disclaimer } from '@leafygreen-ui/typography';
 import Card from '@leafygreen-ui/card';
 import Badge from '@leafygreen-ui/badge';
 import Button from '@leafygreen-ui/button';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { navigateToDraft } from '@/utils/draftUtils';
+import { getBadgeVariant } from '@/utils/generalUtils';
 import styles from './TopicCard.module.css';
 
 export default function TopicCard({ topicCard, index = 0 }) {
     const router = useRouter();
+    const [isNavigating, setIsNavigating] = useState(false);
     
     // topic data with fallbacks
     const {
@@ -21,10 +28,19 @@ export default function TopicCard({ topicCard, index = 0 }) {
         url = "https://mongodb.com"
     } = topicCard || {};
 
-    const handleDraft = () => {
-        // Send the topic in local storage
-        localStorage.setItem('topicCard', JSON.stringify(topicCard));
-        router.push('/drafts');
+    const handleDraft = async () => {
+        if (isNavigating) return; // Prevent multiple clicks
+        
+        setIsNavigating(true);
+        
+        try {
+            await navigateToDraft(topicCard, router);
+        } catch (error) {
+            // Fallback to new draft on error
+            router.push('/drafts');
+        } finally {
+            setIsNavigating(false);
+        }
     };
 
     const handleSourceClick = () => {
@@ -51,7 +67,7 @@ export default function TopicCard({ topicCard, index = 0 }) {
             <div className={styles.contentSection}>
                 {/* Header with Category Badge and Title */}
                 <div className={styles.headerSection}>
-                    <Badge variant="green" className={styles.categoryBadge}>
+                    <Badge variant={getBadgeVariant(label)} className={styles.categoryBadge}>
                         {label}
                     </Badge>
                     <H3 className={styles.topicTitle}>
@@ -92,8 +108,9 @@ export default function TopicCard({ topicCard, index = 0 }) {
                             variant="default"
                             className={styles.draftButton}
                             onClick={handleDraft}
+                            disabled={isNavigating}
                         >
-                            Start Drafting
+                            {isNavigating ? 'Loading...' : 'Start Drafting'}
                         </Button>
                     </div>
                 </div>

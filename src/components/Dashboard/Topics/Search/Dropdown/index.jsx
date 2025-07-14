@@ -1,5 +1,9 @@
 "use client";
 
+/**
+ * Dropdown component for the search component
+ */
+
 import React, { useState, useRef, useEffect } from 'react';
 import Card from '@leafygreen-ui/card';
 import Icon from '@leafygreen-ui/icon';
