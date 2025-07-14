@@ -32,7 +32,7 @@ const UserProfile = ({ onClose }) => {
     }, []);
 
     // Don't render anything if selectedUser is null
-    if (!selectedUser) {
+    if (!selectedUser || !userProfile) {
         return null;
     }
 
