@@ -18,12 +18,12 @@ import styles from "./Topics.module.css";
 
 const TopicsContainer = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedLabel, setSelectedLabel] = useState('all');
+  const [selectedLabel, setSelectedLabel] = useState('general');
   const [topics, setTopics] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isSearchLoading, setIsSearchLoading] = useState(false);
   const [error, setError] = useState(null);
-  const lastRequestRef = useRef({ query: '', label: 'all' });
+  const lastRequestRef = useRef({ query: '', label: 'general' });
 
   const fetchFilteredTopics = async (query, label) => {
     const currentRequest = { query, label };

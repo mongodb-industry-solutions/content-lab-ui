@@ -10,17 +10,14 @@ import Icon from '@leafygreen-ui/icon';
 import styles from './Dropdown.module.css';
 
 const filterOptions = [
-  { value: 'all', label: 'All' },
-  { value: 'barcelona', label: 'Barcelona' },
+  { value: 'general', label: 'General' },
   { value: 'technology', label: 'Technology' },
   { value: 'health', label: 'Health' },
   { value: 'sports', label: 'Sports' },
   { value: 'politics', label: 'Politics' },
   { value: 'science', label: 'Science' },
   { value: 'business', label: 'Business' },
-  { value: 'entertainment', label: 'Entertainment' },
-  { value: 'travel', label: 'Travel' },
-  { value: 'education', label: 'Education' }
+  { value: 'entertainment', label: 'Entertainment' }
 ];
 
 export default function FilterDropdown({ 

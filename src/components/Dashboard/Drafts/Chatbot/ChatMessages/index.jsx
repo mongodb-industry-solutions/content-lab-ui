@@ -91,8 +91,8 @@ export default function ChatMessages({
                             src="/mongodb/AnimatedGTM.gif" 
                             alt="Chatbot Logo"
                             width={150}
-                            height={100}
-                            style={{ height: 'auto' }}
+                            height={150}
+                            priority={true}
                         />
                     </div>
                 </div>

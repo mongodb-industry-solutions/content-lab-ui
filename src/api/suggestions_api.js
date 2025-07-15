@@ -3,14 +3,14 @@ const mainBackendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:
 /**
  * Fetch suggested topics from the main backend
  * Used for initial load and label filtering only
- * @param {string} label - The filter label (optional, defaults to 'all')
+ * @param {string} label - The filter label (optional, defaults to 'general')
  * @returns {Promise<Array>} - A promise that resolves to the topics
  */
-export async function fetchSuggestedTopics(label = 'all') {
+export async function fetchSuggestedTopics(label = 'general') {
     try {
       const params = new URLSearchParams();
       
-      if (label && label !== 'all') {
+      if (label && label !== 'general') {
         params.append('label', label);
       }
       

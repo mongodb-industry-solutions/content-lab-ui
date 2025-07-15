@@ -7,7 +7,7 @@ const mainBackendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:
  * @param {string} label - The filter label (for future implementation)
  * @returns {Promise<Array>} - A promise that resolves to the topics
  */
-export async function analyzeQuery(query, label = 'all') {
+export async function analyzeQuery(query, label = 'general') {
     try {
       const response = await fetch(`${mainBackendUrl}/api/services/analyze`, {
         method: 'POST',
@@ -17,7 +17,7 @@ export async function analyzeQuery(query, label = 'all') {
         body: JSON.stringify({ 
           query: query.trim(),
           limit: 4,
-          label: label !== 'all' ? label : undefined
+          label: label !== 'general' ? label : undefined
         }),
       });
   

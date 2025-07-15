@@ -57,7 +57,7 @@ export function useTiptapEditor() {
     // Imperative methods that can be exposed via forwardRef
     const editorMethods = {
         getDraftContent: () => {
-            return editor?.getText() || '';
+            return editor?.getHTML() || '';
         },
         setDraftContent: (newContent) => {
             if (editor) {
