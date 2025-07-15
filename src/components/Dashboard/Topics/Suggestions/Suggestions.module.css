@@ -110,23 +110,3 @@
     font-size: 1.5rem;
   }
 }
-
-/* Tablet */
-@media (max-width: 1024px) {
-  .container {
-    padding: 0 1.5rem;
-  }
-
-  .topicsGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .headerSection {
-    margin-bottom: 2.5rem;
-  }
-
-  .sectionTitle {
-    font-size: 2.25rem;
-  }
-}

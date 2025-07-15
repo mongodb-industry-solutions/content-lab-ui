@@ -63,7 +63,7 @@ export default function TopNews() {
           {isLoading ? (
             <Loading />
           ) : (
-            <div className={styles.newsContainer}>
+            <div>
               <div className={`${styles.newsCardWrapper} ${isVisible ? styles.visible : styles.hidden}`}>
                 <NewsCard article={news[currentIndex]} currentIndex={currentIndex} />
               </div>

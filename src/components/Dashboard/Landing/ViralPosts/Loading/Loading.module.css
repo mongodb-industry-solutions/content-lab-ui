@@ -1,55 +1,39 @@
 /* Loading.module.css */
 
 .simpleSkeleton {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    padding: 3rem 0;
-    width: 100%;
-  }
-  
-  .skeletonBar {
-    height: 20px;
-    width: 60%;
-    max-width: 400px;
-    border-radius: 10px;
-    background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
-  }
-  
-  .skeletonBarShort {
-    height: 20px;
-    width: 40%;
-    max-width: 250px;
-    border-radius: 10px;
-    background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
-  }
-  
-  @keyframes shimmer {
-    0% {
-      background-position: -200% 0;
-    }
-    100% {
-      background-position: 200% 0;
-    }
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 3rem 0;
+  width: 100%;
+}
 
-@media (max-width: 768px) {
-  .simpleSkeleton {
-    padding: 2rem 0;
-  }
+.skeletonBar {
+  height: 20px;
+  width: 60%;
+  max-width: 400px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
 
-  .skeletonBar {
-    width: 80%;
-    height: 16px;
-  }
+.skeletonBarShort {
+  height: 20px;
+  width: 40%;
+  max-width: 250px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
 
-  .skeletonBarShort {
-    width: 60%;
-    height: 16px;
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
   }
 }

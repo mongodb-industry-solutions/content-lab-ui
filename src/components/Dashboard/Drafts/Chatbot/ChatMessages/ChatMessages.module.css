@@ -18,22 +18,12 @@
     min-height: 0;
 }
 
-/* Hide scrollbar */
-.messagesList {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
-}
-
-.messagesList::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
-}
-
 .emptyState {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     height: 100%;
-    padding: 24px 0 16px 0;
+    padding: 24px 16px 16px 16px;
     text-align: center;
     overflow-y: auto;
 }
@@ -43,6 +33,17 @@
     margin: 0 0 24px 0;
     padding: 0 16px;
     font-size: 0.875rem;
+}
+
+.greetingContainer {
+    text-align: left;
+    margin-bottom: 32px;
+}
+
+.centeredGif {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .typingWrapper {

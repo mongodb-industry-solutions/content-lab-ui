@@ -78,12 +78,3 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
-
-/* Remove border-radius when modal is fullscreen */
-@media (max-width: 767.98px) {
-
-    /* Corresponds to md-down */
-    .leafyFeel :global(.modal-content) {
-        border-radius: 0px;
-    }
-}

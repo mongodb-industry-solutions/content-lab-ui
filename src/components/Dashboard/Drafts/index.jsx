@@ -47,7 +47,6 @@ export default function Drafts({ draftId: initialDraftId = null }) {
 
     const handlePublishDraft = () => {
         // Do something else here
-        console.log('Publishing draft...');
     };
 
     return (
@@ -89,7 +88,7 @@ export default function Drafts({ draftId: initialDraftId = null }) {
                     <Button
                         rightGlyph={<Icon glyph="Save" />}
                         size="default"
-                        variant="primary"
+                        variant="primaryOutline"
                         onClick={handleSaveDraft}
                         disabled={isSaving || isLoading}
                     >
@@ -113,7 +112,6 @@ export default function Drafts({ draftId: initialDraftId = null }) {
                         ref={editorRef} 
                         metadata={metadata}
                         onMetadataChange={handleMetadataChange}
-                        userProfile={userProfile}
                         topicCard={topicCard}
                     />
                 </div>

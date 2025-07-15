@@ -20,15 +20,9 @@
 .titleGroup {
     display: flex;
     align-items: center;
-    gap: 8px;
-}
-
-.logoIcon {
-    flex-shrink: 0;
+    gap: 12px;
 }
 
 .title {
-    margin: 0;
-    color: #1C3D31;
-    font-weight: 500;
+    font-size: 1rem;
 }

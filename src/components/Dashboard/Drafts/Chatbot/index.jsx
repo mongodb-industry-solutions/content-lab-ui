@@ -30,7 +30,7 @@ export default function Chatbot({
         markCompleted,
         handleSendMessage,
         handleQuickAction
-    } = useChatbot(getDraftContent, applyDraftLayout, applySuggestion, userProfile, topicCard);
+    } = useChatbot(getDraftContent, userProfile, topicCard);
 
     return (
         <Card className={styles.copilot}>
@@ -45,6 +45,7 @@ export default function Chatbot({
                         markCompleted={markCompleted}
                         applyDraftLayout={applyDraftLayout}
                         applySuggestion={applySuggestion}
+                        userProfile={userProfile}
                     />
                 </div>
                 

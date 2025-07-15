@@ -21,14 +21,3 @@
   );
   opacity: 0.3;
 }
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .divider {
-    padding: 1.5rem 0;
-  }
-  
-  .line {
-    width: 90%;
-  }
-} 

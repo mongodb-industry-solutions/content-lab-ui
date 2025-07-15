@@ -19,6 +19,16 @@ export const USER_MAP = {
 };
 
 /**
+ * Chatbot greeting message based on user profile
+ * @exports CHATBOT_GREETING_MESSAGE
+ */
+export const CHATBOT_GREETING_MESSAGE = {
+    "6862a8988c0f7bf43af995a7": "👋 Hey Helly R.! I'm your Writing Assistant—ready to slay listicles with iced-coffee vibes, TikTok lingo, and meme magic. What's up?",
+    "6862a8988c0f7bf43af995a8": "👋 Good day, Mark S.! I'm your Writing Assistant—here to craft polished, citation-rich analysis for your next piece. How can I assist?",
+    "6862a8988c0f7bf43af995a9": "👋 Hello Ms. Casey! I'm your Writing Assistant—your data-driven sidekick blending clear explanations, anecdotes, and stats. What's the writing challenge?"
+};
+
+/**
  * Fallback news for when the news API is down
  * @exports fallbackNews
  */
@@ -197,72 +207,6 @@ export const fallbackViralPosts = [
 ]
 
 /**
- * InfoWizard content for Landing page
- * Explains the app's capabilities and MongoDB-powered features
- * @exports LANDING_INFO_WIZARD
- */
-export const LANDING_INFO_WIZARD = [
-    {
-        heading: "Content Creation Revolution",
-        content: [
-            {
-                heading: "End the Research Struggle",
-                body: "Stop wasting hours searching through endless articles, social media feeds, and news sources. The Content Lab eliminates the research bottleneck that slows down content creators and writers worldwide."
-            },
-            {
-                heading: "MongoDB Atlas Vector Search Power",
-                body: "Built on MongoDB Atlas Vector Search, our platform performs semantic searches across millions of documents in milliseconds. This isn't just keyword matching – it's true understanding of context and meaning, powered by MongoDB's cutting-edge vector database technology."
-            },
-            {
-                heading: "Why Content Creators Choose Us",
-                body: [
-                    "Reduce research time from hours to minutes",
-                    "Access trending topics before they peak",
-                    "Get AI-curated content suggestions instantly", 
-                    "Never miss viral opportunities again",
-                    "Focus on creating, not searching"
-                ]
-            },
-            {
-                heading: "MongoDB Atlas Advantage",
-                body: "MongoDB Atlas Vector Search enables us to understand the semantic meaning behind your queries. When you search for 'productivity tips', we don't just find exact matches – we discover related concepts like 'workflow optimization', 'time management', and 'efficiency hacks' through vector embeddings."
-            }
-        ]
-    },
-    {
-        heading: "The Technology Behind the Magic",
-        content: [
-            {
-                heading: "Vector Embeddings at Scale",
-                body: "Every piece of content in our database is converted into high-dimensional vector embeddings using advanced machine learning models. MongoDB Atlas stores these vectors efficiently and performs similarity searches at lightning speed."
-            },
-            {
-                heading: "Real-Time Data Pipeline",
-                body: "Our MongoDB-powered pipeline continuously ingests content from news sources, social media, and trending platforms. Atlas Change Streams ensure your searches always include the latest information, updated in real-time."
-            },
-            {
-                heading: "Intelligent Content Ranking",
-                body: [
-                    "Semantic similarity scoring using vector distance",
-                    "Trending momentum analysis with time-series data",
-                    "Authority scoring based on source credibility",
-                    "Personalization through user behavior vectors",
-                    "Multi-dimensional relevance optimization"
-                ]
-            },
-            {
-                heading: "MongoDB Atlas Benefits",
-                body: "Atlas Vector Search combines the flexibility of MongoDB's document model with powerful vector search capabilities. This means we can store rich metadata alongside vectors, enabling complex queries that traditional vector databases simply can't handle."
-            },
-            {
-                heading: "Why MongoDB Over Alternatives",
-                body: "While other platforms use separate vector databases that require complex data synchronization, MongoDB Atlas keeps everything in one place. This unified approach means faster queries, better data consistency, and reduced infrastructure complexity – benefits that translate directly to a better user experience."
-            }
-        ]
-    }
-];
-
-/**
  * InfoWizard content for Suggestions component
  * Explains data sources and AI-powered search capabilities
  * @exports SUGGESTIONS_INFO_WIZARD
@@ -324,58 +268,6 @@ export const SUGGESTIONS_INFO_WIZARD = [
             {
                 heading: "Continuous Learning",
                 body: "Our AI models continuously learn from user interactions, search patterns, and content performance to improve suggestion quality. The more the platform is used, the better it becomes at predicting what content will resonate."
-            }
-        ]
-    }
-];
-
-/**
- * InfoWizard content for KeyPoints component
- * Explains real-time research and contextual resources
- * @exports KEYPOINTS_INFO_WIZARD
- */
-export const KEYPOINTS_INFO_WIZARD = [
-    {
-        heading: "Real-Time Research",
-        content: [
-            {
-                heading: "Live Topic Analysis",
-                body: "Our AI research assistant continuously scans the web for the most current and relevant information about your selected topic. This ensures you always have access to the latest insights, trends, and developments."
-            },
-            {
-                heading: "Smart Source Selection",
-                body: [
-                    "Authoritative news outlets and publications",
-                    "Academic papers and research studies", 
-                    "Industry reports and expert analysis",
-                    "Recent social media discussions and trends",
-                    "Government and institutional data"
-                ]
-            },
-            {
-                heading: "Quality Assurance",
-                body: "Each key point is verified for credibility and relevance before being presented to you. We prioritize sources with high authority scores and recent publication dates."
-            }
-        ]
-    },
-    {
-        heading: "How It Works",
-        content: [
-            {
-                heading: "Intelligent Crawling",
-                body: "When you select a topic, our system immediately begins searching across multiple data sources including news APIs, academic databases, and social media platforms to gather comprehensive information."
-            },
-            {
-                heading: "Contextual Filtering",
-                body: "The AI analyzes each piece of information for relevance to your specific topic and writing goals. It filters out outdated, irrelevant, or low-quality content automatically."
-            },
-            {
-                heading: "Dynamic Updates", 
-                body: "Key points are refreshed in real-time as new information becomes available. This means you're always working with the most current data and insights for your writing."
-            },
-            {
-                heading: "Source Verification",
-                body: "Every key point includes a direct link to its source, allowing you to verify information and dive deeper into topics that interest you most."
             }
         ]
     }

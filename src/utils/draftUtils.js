@@ -15,7 +15,6 @@ export async function findExistingDraft(topicId, userId) {
         const existingDraft = await fetchDraftByTopicId(topicId, userId);
         return existingDraft ? existingDraft._id : null;
     } catch (error) {
-        console.error('Error checking for existing draft:', error);
         return null;
     }
 }
@@ -43,7 +42,6 @@ export async function navigateToDraft(topicCard, router) {
 
         router.push('/drafts');
     } catch (error) {
-        console.error('Error navigating to draft:', error);
         router.push('/drafts');
     }
 } 

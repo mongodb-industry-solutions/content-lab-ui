@@ -53,32 +53,29 @@ export default function NewsCard({ article, currentIndex }) {
           <Image 
             src={`/categories/${category}_${currentIndex % 4 + 1}.png`} 
             alt={title}
-            width={500}
-            height={300}
-            priority
+            fill
             className={styles.newsImage}
+            priority
           />
         </div>
         
         {/* Right Side - Content */}
         <div className={styles.contentContainer}>
           {/* Header Section */}
-          <div className={styles.headerSection}>
-            <div className={styles.badgeContainer}>
-              <Badge variant={getBadgeVariant(category)} className={styles.categoryBadge}>
-                {category}
-              </Badge>
-              
-              <Badge variant="blue" className={styles.countryBadge}>
-                {country}
-              </Badge>
-            </div>
+          <div className={styles.badgeContainer}>
+            <Badge variant={getBadgeVariant(category)}>
+              {category}
+            </Badge>
             
-            {/* Main Headline */}
-            <H3 className={styles.headline}>
-              {title}
-            </H3>
+            <Badge variant="blue">
+              {country}
+            </Badge>
           </div>
+
+          {/* Main Headline */}
+          <H3 className={styles.headline}>
+            {title}
+          </H3>
 
           {/* Description */}
           <Body className={styles.description}>
@@ -87,53 +84,47 @@ export default function NewsCard({ article, currentIndex }) {
           
           {/* Metadata Section */}
           <div className={styles.metadataSection}>
-            <div className={styles.sourceInfo}>
-              <Overline className={styles.source}>{source}</Overline>
+              <Overline>{source}</Overline>
               <Body className={styles.author}>by {author}</Body>
-              <Disclaimer className={styles.publishDate}>
-                {humanReadableDate}
-              </Disclaimer>
-            </div>
+            <Disclaimer>{humanReadableDate}</Disclaimer>
           </div>
 
           {/* Metrics Section */}
           <div className={styles.metricsSection}>
-            <Subtitle className={styles.metricsTitle}>Engagement Metrics</Subtitle>
+            <Subtitle>Engagement Metrics</Subtitle>
             <div className={styles.metricsGrid}>
               <div className={styles.metricItem}>
                 <Body className={styles.metricValue}>{formattedTotalVisits}</Body>
-                <Disclaimer className={styles.metricLabel}>Visits</Disclaimer>
+                <Disclaimer>Visits</Disclaimer>
               </div>
           
               <div className={styles.metricItem}>
                 <Body className={styles.metricValue}>{formattedTotalShares}</Body>
-                <Disclaimer className={styles.metricLabel}>Shares</Disclaimer>
+                <Disclaimer>Shares</Disclaimer>
               </div>
             
               <div className={styles.metricItem}>
                 <Body className={styles.metricValue}>{formattedTotalComments}</Body>
-                <Disclaimer className={styles.metricLabel}>Comments</Disclaimer>
+                <Disclaimer>Comments</Disclaimer>
               </div>
             
               <div className={styles.metricItem}>
                 <Body className={styles.metricValue}>{Total_retention}%</Body>
-                <Disclaimer className={styles.metricLabel}>Retention</Disclaimer>
+                <Disclaimer>Retention</Disclaimer>
               </div>
             </div>
           </div>
 
           {/* CTA Section */}
-          <div className={styles.ctaSection}>
-            <Button 
-              size="default" 
-              variant="outline"
-              className={styles.viewOriginalCta}
-              onClick={handleViewOriginal}
-              disabled={!url}
-            >
-              View Original Article
-            </Button>
-          </div>
+          <Button 
+            size="default" 
+            variant="default"
+            onClick={handleViewOriginal}
+            disabled={!url}
+            className={styles.ctaButton}
+          >
+            View Original Article
+          </Button>
         </div>
       </div>
     </Card>

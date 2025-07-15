@@ -72,6 +72,7 @@
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 6;
+  line-clamp: 6;
   -webkit-box-orient: vertical;
 }
 
@@ -99,30 +100,3 @@
   color: #536471 !important;
   font-size: 0.9rem !important;
 }
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .tweetCard {
-    width: 320px;
-    height: 260px;
-    padding: 1.25rem;
-  }
-  
-  .avatar {
-    width: 42px;
-    height: 42px;
-  }
-  
-  .tweetContent {
-    -webkit-line-clamp: 5;
-  }
-  
-  .username,
-  .timestamp {
-    font-size: 0.8rem !important;
-  }
-  
-  .statText {
-    font-size: 0.8rem !important;
-  }
-} 

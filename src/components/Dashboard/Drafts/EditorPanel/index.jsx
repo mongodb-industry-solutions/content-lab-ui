@@ -11,7 +11,7 @@ import Sidebar from './Sidebar';
 import RichTextEditor from './RichTextEditor';
 import styles from './EditorPanel.module.css';
 
-const EditorPanel = forwardRef(({ metadata, onMetadataChange, userProfile, topicCard }, ref) => {
+const EditorPanel = forwardRef(({ metadata, onMetadataChange, topicCard }, ref) => {
     const editorRef = useRef(null);
 
     useImperativeHandle(ref, () => ({
@@ -26,7 +26,7 @@ const EditorPanel = forwardRef(({ metadata, onMetadataChange, userProfile, topic
         }
     }));
 
-    if (!topicCard || !userProfile) {
+    if (!topicCard) {
         return null;
     }
 

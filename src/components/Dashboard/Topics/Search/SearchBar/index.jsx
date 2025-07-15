@@ -15,7 +15,7 @@ export default function SearchBar({
   onFilterChange, 
   searchQuery = '',
   selectedLabel = 'all',
-  placeholder = "Search anything..." 
+  placeholder = "Search for topics..." 
 }) {
   const [localSearchQuery, setLocalSearchQuery] = useState(searchQuery);
   const searchInputRef = useRef(null);

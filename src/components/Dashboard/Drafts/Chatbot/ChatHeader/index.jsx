@@ -6,9 +6,9 @@
  */
 
 import { useState } from 'react';
-import { MongoDBLogoMark } from '@leafygreen-ui/logo';
-import { Subtitle } from '@leafygreen-ui/typography';
+import { H3 } from '@leafygreen-ui/typography';
 import Card from '@leafygreen-ui/card';
+import Image from 'next/image';
 import InfoWizard from '@/components/external/InfoWizard';
 import { CHATBOT_INFO_WIZARD } from '@/utils/constants';
 import styles from './ChatHeader.module.css';
@@ -20,22 +20,21 @@ export default function ChatHeader() {
         <Card className={styles.chatHeader}>
             <div className={styles.headerContent}>
                 <div className={styles.titleGroup}>
-                    <MongoDBLogoMark 
-                        color="black" 
-                        height={20} 
-                        className={styles.logoIcon}
+                    <Image 
+                        src="/mongodb/Bot.svg" 
+                        alt="Chatbot Logo" 
+                        width={40}
+                        height={40}
                     />
-                    <Subtitle className={styles.title}>
-                        Writing Assistant
-                    </Subtitle>
+                    <H3 className={styles.title}>Writing Assistant</H3>
                 </div>
+                
                 <InfoWizard 
                     open={openHelpModal}
                     setOpen={setOpenHelpModal}
                     tooltipText="Learn about writing assistant"
                     iconGlyph="Wizard"
                     sections={CHATBOT_INFO_WIZARD}
-                    className={styles.infoWizard}
                 />
             </div>
         </Card>

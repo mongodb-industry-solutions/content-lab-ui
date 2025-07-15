@@ -55,7 +55,6 @@ const TopicsContainer = () => {
       
       setTopics(fetchedTopics);
     } catch (err) {
-      console.error('Failed to fetch topics:', err);
       setError('Failed to load topics. Please try again.');
       setTopics([]);
     } finally {

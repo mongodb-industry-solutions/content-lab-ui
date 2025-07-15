@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { Body, Disclaimer } from '@leafygreen-ui/typography';
 import Icon from '@leafygreen-ui/icon';
 import Typewriter from '@/components/Dashboard/Drafts/Chatbot/Typewriter';
+import Image from 'next/image';
 import mainStyles from '../MessageBubble.module.css';
 
 export default function TextBubble({ message, type, completedMessages, markCompleted }) {
@@ -26,7 +27,7 @@ export default function TextBubble({ message, type, completedMessages, markCompl
                 setIsCopied(false);
             }, 2000);
         } catch (err) {
-            console.error('Failed to copy text: ', err);
+            // Error copying text to clipboard
         }
     };
 
@@ -34,7 +35,12 @@ export default function TextBubble({ message, type, completedMessages, markCompl
         <div className={`${mainStyles.messageWrapper} ${mainStyles[type]}`}>
             {type === 'bot' && (
                 <div className={mainStyles.botAvatar}>
-                    <Icon glyph="Sparkle" size="small" />
+                    <Image 
+                        src="/mongodb/Bot.svg" 
+                        alt="Chatbot Logo"
+                        width={28}
+                        height={28}
+                    />
                 </div>
             )}
             

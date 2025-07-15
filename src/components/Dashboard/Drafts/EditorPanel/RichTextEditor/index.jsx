@@ -9,7 +9,7 @@ import React, { forwardRef, useImperativeHandle } from 'react';
 import { EditorContent } from '@tiptap/react';
 import { useTiptapEditor } from '@/hooks/useTiptapEditor';
 import TiptapToolbar from '@/components/external/TiptapToolbar';
-import { Body } from '@leafygreen-ui/typography';
+import { Body, Description } from '@leafygreen-ui/typography';
 import styles from './RichTextEditor.module.css';
 
 const RichTextEditor = forwardRef((props, ref) => {
@@ -51,10 +51,8 @@ const RichTextEditor = forwardRef((props, ref) => {
 
             {/* Status Bar */}
             <div className={styles.statusBar}>
-                <span>Ready</span>
-                <div className={styles.wordCount}>
-                    {wordCount} words • {charCount} characters
-                </div>
+                <Description baseFontSize="13">Ready</Description>
+                <Body baseFontSize="13">{wordCount} words • {charCount} characters</Body>
             </div>
         </div>
     );

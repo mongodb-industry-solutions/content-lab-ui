@@ -1,13 +1,11 @@
 /* TopNews.module.css */
 
 .topNewsSection {
-  background: transparent;
   padding: 4rem 0;
-  min-height: auto;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -23,14 +21,10 @@
   text-align: center;
   color: #5C6C75;
   margin-bottom: 4rem;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
   font-size: 1.1rem;
 }
 
 .newsContainer {
-  max-width: 1000px;
   margin: 0 auto;
   position: relative;
 }
@@ -45,4 +39,10 @@
 
 .newsCardWrapper.hidden {
   opacity: 0;
+}
+
+@media (min-height: 1200px) {
+  .container {
+    max-width: 1200px;
+  }
 }

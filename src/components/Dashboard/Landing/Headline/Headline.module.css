@@ -33,18 +33,14 @@
 }
 
 .contentColumn {
+  display: flex;
+  flex-direction: column;
   text-align: center;
 }
 
 .contentCard {
-  padding: 3rem 2.5rem;
-  background: rgba(255, 255, 255, 0.95) !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  position: relative;
   z-index: 10;
 }
 
@@ -62,69 +58,16 @@
   margin-bottom: 1rem;
 }
 
-.headlineWithInfo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-}
-
 .mainHeadline {
   color: #000000;
   font-weight: 500;
   font-size: 2rem;
-  margin: 0;
+  margin-bottom: 1rem;
 }
 
 .subHeadline {
   color: #5C6C75;
-  line-height: 1.6;
-  margin: 0 0 2rem 0;
-}
-
-.buttonContainer {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  align-items: center;
-}
-
-.ctaLink {
-  text-decoration: none;
-}
-
-.primaryButton {
-  background-color: #00684A !important;
-  color: #ffffff !important;
-  border: none;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-  .headlineSection {
-    min-height: 100vh;
-  }
-  
-  .heroCard {
-    margin: 1rem;
-    padding: 3rem 2rem;
-  }
-  
-  .twoColumnLayout {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-  
-  .contentCard {
-    padding: 2rem 1.5rem;
-  }
-
-  .globeColumn {
-    height: 400px;
-    margin-left: 0;
-    transform: none;
-  }
+  margin-bottom: 1.5rem;
 }
 
 @media (min-height: 1200px) {
@@ -180,16 +123,5 @@
     font-size: 1.2rem;
     margin-bottom: 2.5rem;
     line-height: 1.7;
-  }
-
-  .buttonContainer {
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-
-  .primaryButton {
-    width: 10rem;
-    height: 3rem;
-    font-size: 1.2rem !important;
   }
 }

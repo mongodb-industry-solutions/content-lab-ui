@@ -6,9 +6,10 @@
  */
 
 import { useEffect, useRef, useCallback } from 'react';
-import { Body } from '@leafygreen-ui/typography';
+import Image from 'next/image';
 import MessageBubble from '@/components/Dashboard/Drafts/Chatbot/MessageBubble';
 import styles from './ChatMessages.module.css';
+import { CHATBOT_GREETING_MESSAGE } from '@/utils/constants';
 
 export default function ChatMessages({ 
     messages, 
@@ -16,7 +17,8 @@ export default function ChatMessages({
     completedMessages, 
     markCompleted,
     applyDraftLayout,
-    applySuggestion 
+    applySuggestion,
+    userProfile
 }) {
     const messagesEndRef = useRef(null);
     const messagesContainerRef = useRef(null);
@@ -63,12 +65,36 @@ export default function ChatMessages({
 
     // Early return for empty state
     if (!messages || messages.length === 0) {
+        const greetingMessage = {
+            id: 'greeting-message',
+            sender: 'bot',
+            text: CHATBOT_GREETING_MESSAGE[userProfile?._id] || "rendering the greeting message",
+            type: 'text',
+            timestamp: null
+        };
+
         return (
             <div className={styles.chatMessages}>
                 <div className={styles.emptyState}>
-                    <Body className={styles.emptyText}>
-                        Start a conversation with the AI Assistant
-                    </Body>
+                    <div className={styles.greetingContainer}>
+                        <MessageBubble
+                            message={greetingMessage}
+                            completedMessages={{ 'greeting-message': true }}
+                            markCompleted={() => {}}
+                            applyDraftLayout={() => {}}
+                            applySuggestion={() => {}}
+                        />
+                    </div>
+                    
+                    <div className={styles.centeredGif}>
+                        <Image 
+                            src="/mongodb/AnimatedGTM.gif" 
+                            alt="Chatbot Logo"
+                            width={150}
+                            height={100}
+                            style={{ height: 'auto' }}
+                        />
+                    </div>
                 </div>
             </div>
         );

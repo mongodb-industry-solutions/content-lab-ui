@@ -6,32 +6,15 @@
 }
 
 .filterCard {
-  background: rgba(255, 255, 255, 0.98) !important;
   border: 2px solid rgba(0, 0, 0, 0.1) !important;
-  box-shadow: 
-    0 4px 20px rgba(0, 0, 0, 0.1),
-    0 2px 8px rgba(0, 0, 0, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
-  
-  /* Layout */
   padding: 0 !important;
   margin: 0 !important;
-  border-radius: 24px !important;
-  overflow: visible !important;
   height: 3rem !important;
   min-height: 3rem !important;
   max-height: 3rem !important;
   cursor: pointer;
   width: fit-content;
   min-width: 4rem;
-  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
-}
-
-.filterCard:hover {
-  box-shadow: 
-    0 6px 25px rgba(0, 0, 0, 0.15),
-    0 4px 12px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
 }
 
 .filterContent {
@@ -41,7 +24,6 @@
   height: 100%;
   gap: 0.5rem;
   white-space: nowrap;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .filterText {
@@ -49,7 +31,6 @@
   color: #1a202c;
   font-weight: 500;
   user-select: none;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .dropdownIcon {
@@ -57,7 +38,6 @@
   height: 14px;
   color: #00684A;
   flex-shrink: 0;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .dropdownIcon.rotated {
@@ -66,27 +46,15 @@
 
 .dropdownMenu {
   position: absolute;
-  top: calc(100%);
-  left: 0;
+  top: 100%;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.98) !important;
   border: 2px solid rgba(0, 0, 0, 0.1) !important;
-  backdrop-filter: blur(10px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
-  
-  box-shadow: 
-    0 8px 25px rgba(0, 0, 0, 0.15),
-    0 4px 12px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
-  
   padding: 0 !important;
   margin: 0 !important;
   margin-top: 0.5rem !important;
-  border-radius: 16px !important;
   overflow: hidden !important;
   width: fit-content;
   min-width: 100%;
-  
   animation: dropdownSlideIn 0.2s ease-out;
   transform-origin: top;
 }
@@ -109,7 +77,6 @@
 .option {
   padding: 0.75rem 1rem;
   font-size: 0.9rem;
-  color: #1a202c;
   cursor: pointer;
   transition: all 0.15s ease;
   user-select: none;

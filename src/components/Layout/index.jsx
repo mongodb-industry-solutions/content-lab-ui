@@ -29,7 +29,6 @@ export default function Layout({ children }) {
           setIsLoggedIn(false);
         }
       } catch (error) {
-        console.error('Error checking login status:', error);
         setIsLoggedIn(false);
       } finally {
         setIsLoading(false);

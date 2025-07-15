@@ -39,9 +39,6 @@
   text-align: center;
   color: #5C6C75;
   margin-bottom: 4rem;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
   font-size: 1.1rem;
 }
 
@@ -60,7 +57,7 @@
   flex-shrink: 0;
 }
 
-/* Fade effects - using CSS custom properties for flexibility */
+/* Fade effects */
 .fadeLeft {
   position: absolute;
   top: 0;
@@ -84,49 +81,14 @@
 }
 
 /* Responsive design */
-@media (min-width: 1200px) {
+@media (min-height: 1200px) {
   .viralPostsSection {
     padding: 5rem 0;
     margin-bottom: 5rem;
-    min-height: 40vh;
+    min-height: 60vh;
   }
   
   .flickeringGrid {
     height: calc(100% + 5rem);
   }
 }
-
-@media (max-width: 768px) {
-  .viralPostsSection {
-    padding: 3rem 0;
-    margin-bottom: 3rem;
-    min-height: 60vh;
-  }
-  
-  .flickeringGrid {
-    height: calc(100% + 3rem);
-  }
-  
-  .container {
-    padding: 0 1.5rem;
-  }
-  
-  .sectionTitle {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .sectionSubtitle {
-    margin-bottom: 3rem;
-    font-size: 1rem;
-  }
-  
-  .tweetWrapper {
-    margin-right: 1.5rem;
-  }
-  
-  .fadeLeft,
-  .fadeRight {
-    width: 50px;
-  }
-} 

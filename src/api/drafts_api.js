@@ -127,7 +127,6 @@ export async function fetchDraftByTopicId(topicId, userId) {
 
         return await response.json();
     } catch (error) {
-        console.error('Error fetching draft by topic:', error);
         return null;
     }
 }
@@ -152,7 +151,6 @@ export async function fetchUserDrafts(userId) {
 
         return await response.json();
     } catch (error) {
-        console.error('Error fetching user drafts:', error);
         throw new Error('Failed to fetch drafts. Please try again.');
     }
 }

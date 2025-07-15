@@ -16,9 +16,7 @@
 }
 
 .sectionTitle {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #1a202c;
+  font-size: 1.3rem;
   margin-bottom: 1rem;
 }
 
@@ -26,13 +24,9 @@
   margin-bottom: 1rem;
 } 
 
-/* Keywords Section */
 .keywordsLabel {
-  display: block;
-  font-size: 14px;
-  font-weight: 500;
-  color: #1a202c;
-  margin-bottom: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
 }
 
 .keywordsBadges {

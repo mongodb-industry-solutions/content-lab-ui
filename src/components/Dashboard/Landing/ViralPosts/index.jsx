@@ -26,7 +26,7 @@ export default function ViralPosts() {
         const posts = await fetchRedditPosts();
         setViralPosts(posts);
       } catch (error) {
-        setViralPosts(fallbackViralPosts); // Set viral posts to  
+        setViralPosts(fallbackViralPosts); // Set viral posts to fallback if error
       } finally {
         setIsLoading(false);
       }

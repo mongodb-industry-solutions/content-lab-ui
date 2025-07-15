@@ -16,40 +16,20 @@
 }
 
 .searchCard {
-  /* White background for particles */
-  background: rgba(255, 255, 255, 0.98) !important;
   border: 2px solid rgba(0, 0, 0, 0.1) !important;
-  
-  /* Subtle shadow */
-  box-shadow: 
-    0 4px 20px rgba(0, 0, 0, 0.1),
-    0 2px 8px rgba(0, 0, 0, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
-  
-  /* Layout */
   padding: 0 !important;
   margin: 0 !important;
-  border-radius: 24px !important;
-  overflow: hidden !important;
-  transition: all 0.3s ease;
   height: 3rem !important;
   min-height: 3rem !important;
   max-height: 3rem !important;
+  overflow: hidden !important;
   flex: 1;
-}
-
-.searchCard:hover {
-  box-shadow: 
-    0 6px 25px rgba(0, 0, 0, 0.15),
-    0 4px 12px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
 }
 
 .searchWrapper {
   display: flex;
   align-items: center;
   position: relative;
-  background: transparent;
   height: 100%;
   margin: 0 !important;
   padding: 0 !important;
@@ -58,16 +38,10 @@
 .searchInput {
   flex: 1;
   padding: 0 1.25rem;
-  background: transparent;
   border: none;
   outline: none;
   font-size: 0.95rem;
-  color: #1a202c;
   height: 100%;
-}
-
-.searchInput::placeholder {
-  color: rgba(26, 32, 44, 0.6);
 }
 
 .searchIconContainer {
@@ -75,7 +49,6 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-  transition: all 0.2s ease;
   height: 100%;
   padding: 0.9;
 }
@@ -86,48 +59,7 @@
   color: #00684A;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-  .searchContainer {
-    max-width: 90%;
-    margin: 0 auto;
-  }
-
-  .searchBarWrapper {
-    gap: 0.375rem;
-  }
-  
-  .searchInput {
-    padding: 0 1rem;
-    font-size: 0.9rem;
-  }
-  
-  .searchIconContainer {
-    padding: 0 1rem;
-  }
-  
-  .searchIcon {
-    width: 18px;
-    height: 18px;
-  }
-}
-
-@media (max-width: 480px) {
-  .searchContainer {
-    max-width: 95%;
-  }
-
-  .searchBarWrapper {
-    gap: 0.25rem;
-  }
-  
-  .searchInput {
-    padding: 0 0.875rem;
-    font-size: 0.85rem;
-  }
-}
-
-/* Responsive design for big monitors/tv screens */
+/* for big monitors/tv screens */
 @media (min-height: 1200px) {
   .searchCard {
     height: 4.5rem !important;

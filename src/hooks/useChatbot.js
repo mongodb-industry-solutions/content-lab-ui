@@ -5,11 +5,11 @@ import { createBotMessage, createUserMessage, createErrorMessage, createNeedCont
 /**
  * Custom hook for managing chatbot state and message handling
  * @param {Function} getDraftContent - Function to get current draft content
- * @param {Function} applyDraftLayout - Function to apply draft layout to editor
- * @param {Function} applySuggestion - Function to apply suggestions to editor
+ * @param {Object} userProfile - User profile for personalized responses
+ * @param {Object} topicCard - Topic card for context
  * @returns {Object} - Chatbot state and handlers
  */
-export function useChatbot(getDraftContent, applyDraftLayout, applySuggestion, userProfile, topicCard) {
+export function useChatbot(getDraftContent, userProfile, topicCard) {
     const [messages, setMessages] = useState([]);
     const [isTyping, setIsTyping] = useState(false);
     const [completedMessages, setCompletedMessages] = useState({});

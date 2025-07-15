@@ -38,22 +38,12 @@
   min-height: 0; 
 }
 
-/* Hide Scrollbar */
-.editorContent {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-}
-
-.editorContent::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
-}
-
 /* Tiptap editor content styling */
 .editorContent :global(.ProseMirror) {
   outline: none;
   line-height: 1.6;
   font-size: 14px;
-  font-family: 'Euclid Circular A', Arial, sans-serif;
+  font-family: 'Euclid Circular A', Arial, sans-serif; /* Use leafygreen font */
   color: #1C3D31;
   min-height: 400px;
 }
@@ -179,7 +169,3 @@
   color: #5F6C6B;
   flex-shrink: 0;
 }
-
-.wordCount {
-  font-weight: 500;
-} 

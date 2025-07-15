@@ -5,7 +5,7 @@
  */
 
 import React, { useState } from 'react';
-import { H3, Body, Disclaimer } from '@leafygreen-ui/typography';
+import { H3, Body, Link } from '@leafygreen-ui/typography';
 import Card from '@leafygreen-ui/card';
 import Badge from '@leafygreen-ui/badge';
 import Button from '@leafygreen-ui/button';
@@ -65,7 +65,6 @@ export default function TopicCard({ topicCard, index = 0 }) {
 
             {/* Content Section - 60% */}
             <div className={styles.contentSection}>
-                {/* Header with Category Badge and Title */}
                 <div className={styles.headerSection}>
                     <Badge variant={getBadgeVariant(label)} className={styles.categoryBadge}>
                         {label}
@@ -75,7 +74,6 @@ export default function TopicCard({ topicCard, index = 0 }) {
                     </H3>
                 </div>
 
-                {/* Keywords Section */}
                 <div className={styles.keywordsSection}>
                     {keywords.slice(0, 4).map((keyword, idx) => (
                         <Badge 
@@ -88,25 +86,24 @@ export default function TopicCard({ topicCard, index = 0 }) {
                     ))}
                 </div>
 
-                {/* Description */}
                 <Body className={styles.description}>
                     {description}
                 </Body>
 
-                {/* Footer with Source and Actions */}
+                {/* Footer */}
                 <div className={styles.footerSection}>
-                    <Disclaimer 
-                        className={styles.sourceLink}
+                    <Link 
                         onClick={handleSourceClick}
+                        baseFontSize="13"
+                        arrowAppearance="hover"
                     >
                         View Source
-                    </Disclaimer>
+                    </Link>
                     
                     <div className={styles.actionButtons}>
                         <Button 
                             size="default" 
-                            variant="default"
-                            className={styles.draftButton}
+                            variant="primary"
                             onClick={handleDraft}
                             disabled={isNavigating}
                         >

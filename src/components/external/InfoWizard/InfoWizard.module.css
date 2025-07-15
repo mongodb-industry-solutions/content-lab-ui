@@ -36,24 +36,6 @@
   border-radius: 8px;
 }
 
-@media (max-width: 708px) {
-  .modal {
-    width: 100%;
-    padding: 10px;
-  }
-
-  .modalContent {
-    height: 500px; /* Adjust for smaller screens */
-    min-height: 400px;
-    margin-left: 50px;
-  }
-
-  .modalImage {
-    width: 100%;
-    max-width: unset;
-  }
-}
-
 .htmlRender p, .htmlRender li{
   font-size: 13px;
 }

@@ -4,8 +4,6 @@
  * @returns {Object} - The parsed response
  */
 export const parseBackendResponse = (response) => {
-    console.log('Raw backend response:', response);
-    
     // Safely extract the data structure
     const data = response?.data || {};
     const toolUsed = data.tool_used;

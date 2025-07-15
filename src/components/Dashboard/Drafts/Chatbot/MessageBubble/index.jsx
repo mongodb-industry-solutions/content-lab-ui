@@ -45,8 +45,8 @@ export default function MessageBubble({
         <TextBubble 
             message={message}
             type={message.sender}
-                                completedMessages={completedMessages}
-                                markCompleted={markCompleted}
-                            />
+            completedMessages={completedMessages}
+            markCompleted={markCompleted}
+        />
     );
 }

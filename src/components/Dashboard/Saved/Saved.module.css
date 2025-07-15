@@ -12,7 +12,7 @@
   position: relative;
 }
 
-/* Background Components */
+/* Background Components (styling taken from an example) */
 .animatedGrid {
   position: absolute;
   top: 0;
@@ -52,7 +52,6 @@
   max-width: 600px;
   margin: 0 auto;
   font-size: 1.1rem;
-  line-height: 1.5;
 }
 
 /* Drafts Grid */
@@ -60,7 +59,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   gap: 2rem;
-  margin-top: 2rem;
 }
 
 /* Loading State */
@@ -135,12 +133,9 @@
 
 /* for big monitor/tv screens */
 @media (min-height: 1200px) {
-  .savedSection {
-    min-height: calc(120vh + 100px);
-  }
-  
   .container {
     padding: 3rem 4rem;
+    max-width: 1500px;
   }
   
   .headerSection {
@@ -155,9 +150,9 @@
   .sectionSubtitle {
     font-size: 1.2rem;
   }
-  
+
   .draftsGrid {
-    gap: 2.5rem;
+    gap: 3rem;
     margin-top: 3rem;
   }
 }

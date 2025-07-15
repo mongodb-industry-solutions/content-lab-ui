@@ -7,6 +7,7 @@
 
 import React from 'react';
 import TextInput from '@leafygreen-ui/text-input';
+import { H3, Label } from '@leafygreen-ui/typography';
 import Badge from '@leafygreen-ui/badge';
 import KeyPoints from './KeyPoints';
 import styles from './Sidebar.module.css';
@@ -23,7 +24,7 @@ export default function Sidebar({ topicCard, metadata, onMetadataChange }) {
         <div className={styles.sidebar}>
             {/* Metadata Section */}
             <div className={styles.metadataSection}>
-                <h3 className={styles.sectionTitle}>Article Metadata</h3>
+                <H3 className={styles.sectionTitle}>Article Information</H3>
                 
                 <div className={styles.inputGroup}>
                     <TextInput
@@ -47,7 +48,7 @@ export default function Sidebar({ topicCard, metadata, onMetadataChange }) {
 
                 {metadata?.keywords && metadata.keywords.length > 0 && (
                     <div className={styles.inputGroup}>
-                        <label className={styles.keywordsLabel}>Keywords</label>
+                        <Label baseFontSize="13">Keywords</Label>
                         <div className={styles.keywordsBadges}>
                             {metadata.keywords.map((keyword, index) => (
                                 <Badge 

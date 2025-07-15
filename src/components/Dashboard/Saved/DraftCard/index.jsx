@@ -67,12 +67,19 @@ export default function DraftCard({ draft }) {
           
           <div className={styles.ctaSection}>
             <Button 
-              size="default" 
+              size="small"
               variant="primary"
-              className={styles.keepDraftingBtn}
               onClick={handleKeepDrafting}
             >
-              Keep Drafting
+              Open
+            </Button>
+
+            <Button 
+              size="small" 
+              variant="danger"
+              onClick={handleKeepDrafting}
+            >
+              Delete
             </Button>
           </div>
         </div>

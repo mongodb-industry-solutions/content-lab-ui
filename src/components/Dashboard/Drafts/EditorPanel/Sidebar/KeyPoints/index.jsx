@@ -2,22 +2,20 @@
 
 /**
  * Key points component for the editor panel
- * Contains the key points section and the info wizard
+ * Contains the key points section 
  */
 
 import React, { useState, useEffect } from 'react';
 import Card from '@leafygreen-ui/card';
 import Button from '@leafygreen-ui/button';
+import { Subtitle, Body } from '@leafygreen-ui/typography';
 import Icon from '@leafygreen-ui/icon';
 import { researchTopic } from '@/api/research_api';
-import InfoWizard from '@/components/external/InfoWizard';
-import { KEYPOINTS_INFO_WIZARD } from '@/utils/constants';
 import styles from './KeyPoints.module.css';
 
 export default function KeyPoints({ topicCard }) {
     const [keyPoints, setKeyPoints] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [openHelpModal, setOpenHelpModal] = useState(false);
 
     useEffect(() => {
         const fetchKeyPoints = async () => {
@@ -26,7 +24,6 @@ export default function KeyPoints({ topicCard }) {
                 const keyPoints = await researchTopic(topicCard.topic);
                 setKeyPoints(keyPoints || []);
             } catch (error) {
-                console.error('Failed to fetch key points:', error);
                 setKeyPoints([]);
             } finally {
                 setIsLoading(false);
@@ -40,8 +37,8 @@ export default function KeyPoints({ topicCard }) {
             <Card className={styles.keyPointsCard}>
                 <div className={styles.keyPointsContent}>
                     {/* Sticky Header */}
-                    <div className={styles.stickyHeader}>
-                        <h4 className={styles.keyPointsTitle}>What not to miss!</h4>
+                    <div className={styles.header}>
+                        <Subtitle className={styles.keyPointsTitle}>What not to miss!</Subtitle>
                     </div>
 
                     {/* Scrollable Content */}
@@ -55,7 +52,7 @@ export default function KeyPoints({ topicCard }) {
                                         <div className={styles.keyPointHeader}>
                                             <span className={styles.bullet}></span>
                                             <div className={styles.keyPointContent}>
-                                                <h5 className={styles.keyPointTitle}>{point.title}</h5>
+                                                <Body baseFontSize="13" weight="medium">{point.title}</Body>
                                                 <Button
                                                     variant="default"
                                                     size="xsmall"
@@ -72,17 +69,6 @@ export default function KeyPoints({ topicCard }) {
                                 ))}
                             </div>
                         )}
-                    </div>
-
-                    {/* Footer with InfoWizard */}
-                    <div className={styles.footer}>
-                        <InfoWizard
-                            open={openHelpModal}
-                            setOpen={setOpenHelpModal}
-                            tooltipText="Learn about real-time research"
-                            iconGlyph="Wizard"
-                            sections={KEYPOINTS_INFO_WIZARD}
-                        />
                     </div>
                 </div>
             </Card>

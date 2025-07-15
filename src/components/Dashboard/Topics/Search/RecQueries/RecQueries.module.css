@@ -28,7 +28,7 @@
   text-align: center !important;
 }
 
-/* Responsive design */
+/* for big monitors/tv screens */
 @media (min-height: 1200px) {
   .recQueriesGrid {
     gap: 1.5rem;
@@ -36,20 +36,5 @@
   
   .recQueryText {
     font-size: 1.1rem !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .recQueriesContainer {
-    max-width: 90%;
-  }
-  
-  .recQueriesGrid {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
-  
-  .recQueryText {
-    font-size: 0.8rem !important;
   }
 }
