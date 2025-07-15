@@ -1,5 +1,11 @@
 /* User.module.css */
 
+.userContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .userCard {
     max-width: 130px;
     min-width: 105px;
@@ -20,6 +26,11 @@
 
 .userName {
     margin-top: -5px;
+}
+
+.userDescription {
+    font-style: italic;
+    text-align: center;
 }
 
 .userSelected {

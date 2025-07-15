@@ -33,7 +33,8 @@ const LoginComponent = ({ onUserSelected }) => {
             const loadedUsers = Object.entries(USER_MAP).map(([id, details]) => ({
                 id,
                 name: details.name,
-                avatar: details.avatar
+                avatar: details.avatar,
+                shortDescription: details.shortDescription
             }));
             
             setUsers(loadedUsers);
@@ -44,11 +45,9 @@ const LoginComponent = ({ onUserSelected }) => {
     }, []);
 
     const handleUserSelect = async (user) => {
-        // Clear previous user session data
-        localStorage.removeItem('selectedUser'); // Constant user
-        localStorage.removeItem('userProfile'); // Fetched from backend
+        localStorage.removeItem('selectedUser'); 
+        localStorage.removeItem('userProfile'); 
 
-        // Set the selected user and fetch user profile data
         setSelectedUser(user);
         localStorage.setItem('selectedUser', JSON.stringify(user));
         
@@ -59,14 +58,10 @@ const LoginComponent = ({ onUserSelected }) => {
             // Do nothing user profile is not fetched from backend
         }
 
-        // Notify parent component about the selected user
         onUserSelected(user);
-        
-        // Redirect to the landing page
         router.push('/');
     };
 
-    // Show loading component if users are still loading
     if (usersLoading) {
         return <Loading />;
     }
@@ -90,6 +85,7 @@ const LoginComponent = ({ onUserSelected }) => {
                             key={user.id}
                             setOpen={setOpen}
                             setLocalSelectedUser={handleUserSelect}
+                            shortDescription={user.shortDescription}
                         />
                     ))}
                 </div>

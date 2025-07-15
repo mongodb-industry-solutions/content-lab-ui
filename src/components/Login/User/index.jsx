@@ -10,7 +10,7 @@ import Card from '@leafygreen-ui/card';
 
 import styles from './User.module.css';
 
-const User = ({ user = null, isSelectedUser = false, setOpen, setLocalSelectedUser = null }) => {
+const User = ({ user = null, isSelectedUser = false, setOpen, setLocalSelectedUser = null, shortDescription = null }) => {
     const selectUserAndCloseModal = () => {
         if (!setLocalSelectedUser) return;
         setLocalSelectedUser(user);
@@ -18,13 +18,19 @@ const User = ({ user = null, isSelectedUser = false, setOpen, setLocalSelectedUs
     };
 
     return (
-        <Card
-            className={`${styles.userCard} ${user !== null ? 'cursorPointer' : ''} ${isSelectedUser ? styles.userSelected : ''}`}
-            onClick={() => selectUserAndCloseModal()}
-        >
-            <img src={`/users/avatar${user.avatar}.png`} alt="User Avatar" />
-            <Body className={styles.userName}>{user.name}</Body> 
-        </Card>
+        <div className={styles.userContainer}>
+            <Card
+                className={`${styles.userCard} ${user !== null ? 'cursorPointer' : ''} ${isSelectedUser ? styles.userSelected : ''}`}
+                onClick={() => selectUserAndCloseModal()}
+            >
+                <img src={`/users/avatar${user.avatar}.png`} alt="User Avatar" />
+                <Body className={styles.userName}>{user.name}</Body>
+            </Card>
+            
+            <Body baseFontSize={13} weight="medium" className={styles.userDescription}>
+                {shortDescription}
+            </Body>
+        </div>
     );
 };
 

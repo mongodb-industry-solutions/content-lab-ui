@@ -93,6 +93,7 @@ export default function ChatMessages({
                             width={150}
                             height={150}
                             priority={true}
+                            unoptimized={true}
                         />
                     </div>
                 </div>

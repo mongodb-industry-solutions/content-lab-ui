@@ -12,7 +12,7 @@
 
 .card {
     width: 80%;
-    height: 35rem;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,7 +20,6 @@
     background: linear-gradient(to bottom, #ffffff, #f3f4f6) !important;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
     border: 1px solid rgba(0, 0, 0, 0.2);  
-    border-radius: 20px;
 }
 
 .title {
@@ -52,26 +51,11 @@
     flex-direction: column;
 }
 
-.disabledCloseButton {
-    cursor: not-allowed;
-    opacity: 0.5;
-}
-
 .parentContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 10px;
-}
-
-.closeButtonContainer {
-    display: flex;
-    flex-direction: row-reverse;
-    padding: 0.25rem;
-    cursor: pointer;
-    position: absolute;
-    top: 10px;
-    right: 10px;
 }
 
 .bottomDescription {

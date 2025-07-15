@@ -6,15 +6,18 @@
 export const USER_MAP = {
     "6862a8988c0f7bf43af995a7": {
         name: "Helly R.",
-        avatar: 1
+        avatar: 1,
+        shortDescription: "Emoji-packed Gen Z hot-take pro"
     },
     "6862a8988c0f7bf43af995a8": {
         name: "Mark S.",
-        avatar: 2
+        avatar: 2,
+        shortDescription: "Polished academic expert"
     },
     "6862a8988c0f7bf43af995a9": {
         name: "Ms. Casey",
-        avatar: 3
+        avatar: 3,
+        shortDescription: "Friendly data-driven storyteller"
     }
 };
 
