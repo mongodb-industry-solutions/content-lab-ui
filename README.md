@@ -9,7 +9,7 @@ An important feature of The Content Lab is the **AI Writing Assistant**, an inte
 The Content Lab is composed of several interconnected features that demonstrate the capabilities of modern content management systems. Users can:
 
 1. **Select a Demo User**
-   - Choose from a range of pre-loaded demo personas (Helly R., Mark S., Ms. Casey).
+   - Choose from a range of pre-loaded demo personas.
    - Each user has unique writing styles, preferences, and AI assistant personalities.
    - Designed to create a dynamic, realistic experience for different content creation approaches.
 
