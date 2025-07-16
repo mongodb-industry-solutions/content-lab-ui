@@ -9,7 +9,7 @@ import React, { useState, useEffect } from 'react';
 import { H2, Body } from '@leafygreen-ui/typography';
 import GridPattern from '@/components/external/GridPattern';
 import DraftCard from './DraftCard';
-import { fetchUserDrafts } from '@/api/drafts_api';
+import { fetchUserDrafts, deleteDraft } from '@/api/drafts_api';
 import styles from './Saved.module.css';
 
 export default function Saved() {
@@ -40,6 +40,16 @@ export default function Saved() {
 
     loadUserDrafts();
   }, []);
+
+  const handleDeleteDraft = async (draftId) => {
+    try {
+      const userProfile = JSON.parse(localStorage.getItem('userProfile') || '{}');
+      await deleteDraft(draftId, userProfile._id);
+      setDrafts(prevDrafts => prevDrafts.filter(draft => draft._id !== draftId));
+    } catch (err) {
+      setError('Failed to delete draft');
+    }
+  };
 
   const renderContent = () => {
     if (isLoading) {
@@ -72,10 +82,16 @@ export default function Saved() {
       );
     }
 
+    
+
     return (
       <div className={styles.draftsGrid}>
         {drafts.map((draft) => (
-          <DraftCard key={draft._id} draft={draft} />
+          <DraftCard 
+          key={draft._id} 
+          draft={draft} 
+          onDelete={() => handleDeleteDraft(draft._id)} 
+          />
         ))}
       </div>
     );

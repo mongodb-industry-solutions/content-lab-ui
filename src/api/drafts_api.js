@@ -155,3 +155,30 @@ export async function fetchUserDrafts(userId) {
     }
 }
 
+
+/**
+ * Delete a draft by ID and userId
+ * @param {string} draftId - The draft id
+ * @param {string} userId - The user id
+ * @returns {Promise<Object>} - A promise that resolves to the deletion result
+ */
+export async function deleteDraft(draftId, userId) {
+    try {
+        const response = await fetch(
+            `${mainBackendUrl}/api/drafts/${draftId}?userId=${userId}`,
+            {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }
+        );
+        if (!response.ok) {
+            throw new Error('Failed to delete draft');
+        }
+        return await response.json();
+    } catch (error) {
+        throw new Error('Failed to delete draft. Please try again.');
+    }
+}
+

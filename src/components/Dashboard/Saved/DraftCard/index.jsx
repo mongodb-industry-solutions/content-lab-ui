@@ -13,7 +13,7 @@ import { useRouter } from 'next/navigation';
 import { getHumanReadableDate, getBadgeVariant } from '@/utils/generalUtils';
 import styles from './DraftCard.module.css';
 
-export default function DraftCard({ draft }) {
+export default function DraftCard({ draft, onDelete }) {
   const router = useRouter();
   
   const { 
@@ -77,7 +77,7 @@ export default function DraftCard({ draft }) {
             <Button 
               size="small" 
               variant="danger"
-              onClick={handleKeepDrafting}
+              onClick={onDelete}
             >
               Delete
             </Button>
