@@ -25,11 +25,10 @@ const User = ({ user = null, isSelectedUser = false, setOpen, setLocalSelectedUs
             >
                 <img src={`/users/avatar${user.avatar}.png`} alt="User Avatar" />
                 <Body className={styles.userName}>{user.name}</Body>
+                <Body baseFontSize={13} weight="medium" className={styles.userDescription}>
+                    {shortDescription}
+                </Body>
             </Card>
-            
-            <Body baseFontSize={13} weight="medium" className={styles.userDescription}>
-                {shortDescription}
-            </Body>
         </div>
     );
 };

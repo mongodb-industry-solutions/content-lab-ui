@@ -16,7 +16,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 110px 0px;
+    padding: 120px 5px;
 }
 
 .userCard img {
@@ -29,8 +29,8 @@
 }
 
 .userDescription {
-    font-style: italic;
     text-align: center;
+    color: #5C6C75;
 }
 
 .userSelected {

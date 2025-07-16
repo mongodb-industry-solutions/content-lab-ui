@@ -36,7 +36,10 @@ const Search = ({
           searchQuery={searchQuery}
           selectedLabel={selectedLabel}
         />
-        <RecQueries onQuerySelect={handleSearch} />
+        <RecQueries 
+          onQuerySelect={handleSearch} 
+          selectedCategory={selectedLabel}
+        />
       </div>
     </section>
   );

@@ -57,7 +57,7 @@ export default function ChatbotInput({ className, onChange, onSendMessage, ...pr
             rows={1}
             value={value}
             onChange={handleInputChange}
-            placeholder="Ask me anything..."
+            placeholder="Start typing to brainstorm, edit, or improve text..."
             className={styles.textarea}
             {...props}
           />
