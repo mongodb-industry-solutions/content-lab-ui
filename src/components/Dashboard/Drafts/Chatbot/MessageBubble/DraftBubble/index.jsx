@@ -10,7 +10,8 @@ import { Body, Disclaimer } from '@leafygreen-ui/typography';
 import Button from '@leafygreen-ui/button';
 import Icon from '@leafygreen-ui/icon';
 import Typewriter from '@/components/Dashboard/Drafts/Chatbot/Typewriter';
-import mainStyles from '../MessageBubble.module.css';
+import mainStyles from '../MessageBubble.module.css'
+import Image from 'next/image';
 import styles from './DraftBubble.module.css';
 
 export default function DraftBubble({ message, onApply, completedMessages, markCompleted }) {
@@ -30,7 +31,12 @@ export default function DraftBubble({ message, onApply, completedMessages, markC
     return (
         <div className={`${mainStyles.messageWrapper} ${mainStyles.bot}`}>
             <div className={mainStyles.botAvatar}>
-                <Icon glyph="Edit" size="small" />
+                <Image 
+                    src="/mongodb/Bot.svg" 
+                    alt="Chatbot Logo"
+                    width={28}
+                    height={28}
+                />
             </div>
             
             <div className={mainStyles.messageContent}>

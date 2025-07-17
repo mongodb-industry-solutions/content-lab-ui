@@ -9,6 +9,7 @@ import React, { useState, useEffect } from 'react';
 import { H2, Body } from '@leafygreen-ui/typography';
 import GridPattern from '@/components/external/GridPattern';
 import DraftCard from './DraftCard';
+import Button from '@leafygreen-ui/button';
 import { fetchUserDrafts, deleteDraft } from '@/api/drafts_api';
 import styles from './Saved.module.css';
 
@@ -78,6 +79,14 @@ export default function Saved() {
           <Body className={styles.emptyMessage}>
             Start creating content by exploring topics and saving your work. Your drafts will appear here.
           </Body>
+          <Button
+            variant="primary"
+            href="/topics"
+            size="large"
+            baseFontSize="16"
+          >
+            Explore Topics
+          </Button>
         </div>
       );
     }

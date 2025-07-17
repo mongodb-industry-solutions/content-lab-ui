@@ -54,14 +54,12 @@
   font-size: 1.1rem;
 }
 
-/* Drafts Grid */
 .draftsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   gap: 2rem;
 }
 
-/* Loading State */
 .loadingContainer {
   display: flex;
   flex-direction: column;
@@ -90,7 +88,6 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Error State */
 .errorContainer {
   display: flex;
   justify-content: center;
@@ -108,13 +105,13 @@
   border: 1px solid #FECACA;
 }
 
-/* Empty State */
 .emptyContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 4rem 0;
+  gap: 2rem;
   text-align: center;
 }
 

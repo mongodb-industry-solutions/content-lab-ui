@@ -6,9 +6,8 @@
  */
 
 import React from 'react';
-import { H3, Overline, Body, Subtitle, Disclaimer } from '@leafygreen-ui/typography';
+import { H3, Overline, Body, Subtitle, Disclaimer, Link as LeafyLink } from '@leafygreen-ui/typography';
 import Card from '@leafygreen-ui/card';
-import Button from '@leafygreen-ui/button';
 import Badge from '@leafygreen-ui/badge';
 import styles from './NewsCard.module.css';
 import Image from 'next/image';
@@ -116,15 +115,13 @@ export default function NewsCard({ article, currentIndex }) {
           </div>
 
           {/* CTA Section */}
-          <Button 
-            size="default" 
-            variant="default"
-            onClick={handleViewOriginal}
-            disabled={!url}
-            className={styles.ctaButton}
+          <LeafyLink
+              onClick={handleViewOriginal}
+              baseFontSize="13"
+              arrowAppearance="hover"
           >
-            View Original Article
-          </Button>
+              View Source
+          </LeafyLink>
         </div>
       </div>
     </Card>

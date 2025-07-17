@@ -23,6 +23,16 @@ export default function ChatMessages({
     const messagesEndRef = useRef(null);
     const messagesContainerRef = useRef(null);
 
+    const greetingMessage = {
+        id: 'greeting-message',
+        sender: 'bot',
+        text: CHATBOT_GREETING_MESSAGE[userProfile?._id] || "rendering the greeting message",
+        type: 'text',
+        timestamp: null
+    };
+
+    const displayMessages = [greetingMessage, ...(messages || [])];
+
     // Auto-scroll to bottom when new messages arrive
     const scrollToBottom = useCallback(() => {
         if (messagesEndRef.current) {
@@ -63,48 +73,10 @@ export default function ChatMessages({
         }
     }, [completedMessages, messages, scrollToBottom]);
 
-    // Early return for empty state
-    if (!messages || messages.length === 0) {
-        const greetingMessage = {
-            id: 'greeting-message',
-            sender: 'bot',
-            text: CHATBOT_GREETING_MESSAGE[userProfile?._id] || "rendering the greeting message",
-            type: 'text',
-            timestamp: null
-        };
-
-        return (
-            <div className={styles.chatMessages}>
-                <div className={styles.emptyState}>
-                    <div className={styles.greetingContainer}>
-                        <MessageBubble
-                            message={greetingMessage}
-                            completedMessages={{ 'greeting-message': true }}
-                            markCompleted={() => {}}
-                            applyDraftLayout={() => {}}
-                            applySuggestion={() => {}}
-                        />
-                    </div>
-                    
-                    <div className={styles.centeredGif}>
-                        <Image 
-                            src="/mongodb/AnimatedGTM.gif" 
-                            alt="Chatbot Logo"
-                            width={150}
-                            height={150}
-                            priority={true}
-                            unoptimized={true}
-                        />
-                    </div>
-                </div>
-            </div>
-        );
-    }
-
     return (
         <div className={styles.chatMessages} ref={messagesContainerRef}>
             <div className={styles.messagesList}>
-                {messages.map((message) => (
+                {displayMessages.map((message) => (
                     <MessageBubble
                         key={message.id}
                         message={message}

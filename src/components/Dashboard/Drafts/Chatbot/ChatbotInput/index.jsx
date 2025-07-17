@@ -32,6 +32,12 @@ export default function ChatbotInput({ className, onChange, onSendMessage, ...pr
     if (onChange) onChange(e);
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSubmit(e);
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (value.trim()) {
@@ -57,6 +63,7 @@ export default function ChatbotInput({ className, onChange, onSendMessage, ...pr
             rows={1}
             value={value}
             onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
             placeholder="Start typing to brainstorm, edit, or improve text..."
             className={styles.textarea}
             {...props}

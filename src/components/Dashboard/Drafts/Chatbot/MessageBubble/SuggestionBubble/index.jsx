@@ -11,6 +11,7 @@ import Button from '@leafygreen-ui/button';
 import Icon from '@leafygreen-ui/icon';
 import Typewriter from '@/components/Dashboard/Drafts/Chatbot/Typewriter';
 import mainStyles from '../MessageBubble.module.css';
+import Image from 'next/image';
 import styles from './SuggestionBubble.module.css';
 
 export default function SuggestionBubble({ message, onApply, completedMessages, markCompleted }) {
@@ -35,7 +36,12 @@ export default function SuggestionBubble({ message, onApply, completedMessages, 
     return (
         <div className={`${mainStyles.messageWrapper} ${mainStyles.bot}`}>
             <div className={mainStyles.botAvatar}>
-                <Icon glyph="Sparkle" size="small" />
+                <Image 
+                    src="/mongodb/Bot.svg" 
+                    alt="Chatbot Logo"
+                    width={28}
+                    height={28}
+                />
             </div>
             
             <div className={mainStyles.messageContent}>
