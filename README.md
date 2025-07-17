@@ -114,7 +114,7 @@ The Content Lab is built with a modern tech stack designed to deliver a responsi
 
 This tech stack ensures The Content Lab is both powerful and user-friendly, capable of handling the interactive needs of modern content creation applications.
 
-## Further Reading
+## Further Reading
 
 For a detailed breakdown of folder structure, component/data-flow and design patterns used in this project, see [ARCHITECTURE.md](./ARCHITECTURE.md).
 
