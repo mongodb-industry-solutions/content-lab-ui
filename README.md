@@ -16,15 +16,15 @@ The Content Lab is composed of several interconnected features that demonstrate 
 2. **Explore Trending Content**
    - View curated news articles and viral social media posts.
    - Access real-time content aggregation from multiple sources.
-   - Browse categorized content across topics like technology, business, sports, and culture.
+   - Browse categorized content across topics like technology, business, sports and more.
 
 3. **Research Content Topics**
    - Discover trending topics and content suggestions.
    - Access topic-specific research data and background information.
-   - Generate content ideas based on current trends and user interests.
+   - Generate content ideas based on current trends.
 
 4. **Create and Edit Drafts**
-   - Use a rich text editor powered by TipTap for professional content creation.
+   - Use a rich text editor for professional content creation.
    - Save drafts manually with metadata including title, category, and keywords.
    - Edit existing drafts with full formatting capabilities and content persistence.
 
@@ -33,12 +33,7 @@ The Content Lab is composed of several interconnected features that demonstrate 
    - Receive contextual suggestions based on current draft content.
    - Get style recommendations tailored to the selected user persona.
 
-6. **Manage Content Library**
-   - Save interesting articles and content for future reference.
-   - Organize saved content by categories and topics.
-   - Access a personal content library for research and inspiration.
-
-7. **Switch Between Demo Users**
+6. **Switch Between Demo Users**
    - Seamlessly switch between different content creator personas.
    - Experience how writing styles and AI assistance adapt to different user types.
    - Validate and test how content creation workflows behave across different user contexts.
@@ -49,38 +44,43 @@ The Content Lab demonstrates the power and flexibility of MongoDB, making it an 
 
 This modern **microservices architecture** splits functionalities across different repositories, showcasing a real-world approach to scalable and maintainable software development. Here's how MongoDB shines in the backend services powering The Content Lab:
 
-### 1. **Content Aggregation Service**
-This service handles real-time news aggregation and viral content discovery from multiple sources. MongoDB excels here by offering a **flexible document model** that can seamlessly store diverse content structures from different APIs (news articles, Reddit posts, social media content) without requiring schema migrations. Its powerful **aggregation pipelines** enable efficient content filtering, categorization, and ranking based on engagement metrics.
+### 1. **Content Analysis & Suggestion Engine**  
+**Repository:** [Content Lab – Automated Content Analysis & Suggestion Engine](https://github.com/mongodb-industry-solutions/ist-media-internship-be)
 
-![content aggregation diagram](diagrams/content_aggregation_diagram.png)
+This backend service aggregates, analyzes, and surfaces emerging topics by continuously ingesting raw news and social media data:
 
----
+- **‘suggestions’ Collection**  
+  - Stores generated topic suggestions with metadata (timestamp, source, engagement score and more).  
+  - Updated by scheduled jobs that run continously to keep trends fresh.
 
-### 2. **Draft Management Service**
-Responsible for handling article creation, editing, and persistence, this service uses MongoDB's **document model** to store rich content with embedded metadata. The **flexible schema** allows for dynamic content structures, supporting various article formats, embedded media, and evolving content requirements. MongoDB's efficient indexing ensures fast retrieval and search capabilities across large content collections.
+- **Automated Content Aggregation**  
+  - Fetches the latest articles and social media posts from configured APIs.  
+  - Normalizes and writes raw payloads into MongoDB, then runs aggregation pipelines to extract candidate topics.
 
-![draft management diagram](diagrams/draft_management_diagram.png)
+- **Semantic Research Endpoint**  
+  - Given a topic as context, it returns related links and resources pulled from external indexes.  
+  - Helps users deep‑dive into context around each trending topic.
 
----
-
-### 3. **AI Writing Assistant Service**
-This service powers the intelligent chatbot that provides contextual writing assistance. It leverages **MongoDB Atlas Vector Search** to store and query high-dimensional embeddings from content drafts and user interactions. Vector search enables the AI to retrieve contextually relevant suggestions, writing style recommendations, and persona-specific guidance efficiently. MongoDB's optimized vector search ensures fast and accurate AI-driven interactions within The Content Lab ecosystem.
-
-![ai writing assistant diagram](diagrams/ai_writing_assistant_diagram.png)
-
----
-
-### 4. **User Profile and Personalization Service**
-This service manages user personas, preferences, and writing styles. MongoDB's **document model** perfectly aligns with the complex user profile structures, storing writing preferences, AI assistant personalities, and content history in a natural JSON-like format. The **flexible schema** accommodates evolving user attributes without requiring database migrations.
-
-![user profile service diagram](diagrams/user_profile_service_diagram.png)
+![content analysis & suggestion engine diagram](diagrams/content_analysis_service_diagram.png)
 
 ---
 
-### 5. **Content Research and Discovery Service**
-This service handles topic research, trend analysis, and content recommendations. MongoDB's **aggregation framework** powers complex analytical queries across content collections, enabling trend detection, topic clustering, and personalized content suggestions. The document model efficiently stores research data, topic metadata, and recommendation algorithms' outputs.
+### 2. **AI Chatbot Service**  
+**Repository:** [Content Lab – AI Chatbot Service](https://github.com/mongodb-industry-solutions/ist-media-internship-be2)
 
-![content research service diagram](diagrams/content_research_service_diagram.png)
+A single FastAPI endpoint powers all conversational and writing‑tool operations:
+
+- **Unified Chat Endpoint** 
+  - Accepts the full context payload: current draft content, user profile, selected topic, and tool‑type hint (chat completion vs. writing tool).  
+  - Internally routes the request to the appropriate sub‑routine based on payload flags.
+
+- **Context Enrichment**   
+  - Ensures every reply is tailored to the user’s style, current draft state, and topic.
+
+- **AI Invocation**  
+  - Delegates to an LLM for both free‑form chat and structured writing tasks, then returns the enhanced text or suggestions to the frontend in real time.
+  
+![ai chatbot service diagram](diagrams/ai_chatbot_service_diagram.png)
 
 ---
 
@@ -107,15 +107,16 @@ The Content Lab is built with a modern tech stack designed to deliver a responsi
   - [Lucide React](https://lucide.dev/) for extra icons
 
 - **Animations and Effects:**
-  - Open-source components from [Magic UI](https://magicui.design/) and [React Bits](https://reactbits.dev/)
-
-- **Typography:**
-  - [Geist Font](https://vercel.com/font)
+  - Open-source components from [Magic UI](https://magicui.design/), [React Bits](https://reactbits.dev/) and [21st.dev](https://21st.dev/home)
 
 - **Core React and Next.js:**
   - `next`, `react`, `react-dom`
 
 This tech stack ensures The Content Lab is both powerful and user-friendly, capable of handling the interactive needs of modern content creation applications.
+
+## Further Reading
+
+For a detailed breakdown of folder structure, component/data-flow and design patterns used in this project, see [ARCHITECTURE.md](./ARCHITECTURE.md).
 
 ## Prerequisites
 
