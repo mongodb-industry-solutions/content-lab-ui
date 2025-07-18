@@ -47,21 +47,27 @@ This modern **microservices architecture** splits functionalities across differe
 ### 1. **Content Analysis & Suggestion Engine**  
 **Repository:** [Content Lab – Automated Content Analysis & Suggestion Engine](https://github.com/mongodb-industry-solutions/ist-media-internship-be)
 
-This backend service aggregates, analyzes, and surfaces emerging topics by continuously ingesting raw news and social media data:
+This FastAPI‑based service powers the backend for content insights by ingesting, storing, and analyzing news and social media data, as well as managing user drafts:
+
+- **Collection Fetch**  
+  Retrieves raw and processed documents (news articles, social media posts, topic suggestions, user profiles) directly from MongoDB for the frontend UI.
+
+- **Drafts Management**  
+  Handles creation, retrieval, updating, and deletion of draft documents, each containing metadata (title, category, keywords) and rich‑text content.
 
 - **‘suggestions’ Collection**  
-  - Stores generated topic suggestions with metadata (timestamp, source, engagement score and more).  
-  - Updated by scheduled jobs that run continously to keep trends fresh.
+  Maintains generated topic suggestions with metadata (timestamp, source, content, etc.). Continuously refreshed by scheduled jobs to surface the latest trends.
 
 - **Automated Content Aggregation**  
-  - Fetches the latest articles and social media posts from configured APIs.  
-  - Normalizes and writes raw payloads into MongoDB, then runs aggregation pipelines to extract candidate topics.
+  Periodically ingests data from external news and social media APIs, normalizes payloads into MongoDB, and runs aggregation pipelines to extract and rank emerging topics.
 
-- **Semantic Research Endpoint**  
-  - Given a topic as context, it returns related links and resources pulled from external indexes.  
-  - Helps users deep‑dive into context around each trending topic.
+- **Semantic Research**  
+  Accepts a topic as input and returns curated links and resources from external indexes to support deep exploration of each trend.
 
-![content analysis & suggestion engine diagram](diagrams/content_analysis_service_diagram.png)
+- **Content Analysis**  
+  Performs semantic searches over news and social media collections to derive new topic suggestions and deliver contextually relevant source documents.
+
+![content analysis & suggestion engine diagram](diagrams/search_microservice.png)
 
 ---
 
@@ -80,7 +86,7 @@ A single FastAPI endpoint powers all conversational and writing‑tool operation
 - **AI Invocation**  
   - Delegates to an LLM for both free‑form chat and structured writing tasks, then returns the enhanced text or suggestions to the frontend in real time.
   
-![ai chatbot service diagram](diagrams/ai_chatbot_service_diagram.png)
+![ai chatbot service diagram](diagrams/chat_microservice.png)
 
 ---
 
