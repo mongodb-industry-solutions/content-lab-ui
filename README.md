@@ -44,6 +44,8 @@ The Content Lab demonstrates the power and flexibility of MongoDB, making it an 
 
 This modern **microservices architecture** splits functionalities across different repositories, showcasing a real-world approach to scalable and maintainable software development. Here's how MongoDB shines in the backend services powering The Content Lab:
 
+![The Content Lab Architecture Overview](diagrams/general.svg)
+
 ### 1. **Content Analysis & Suggestion Engine**  
 **Repository:** [Content Lab – Automated Content Analysis & Suggestion Engine](https://github.com/mongodb-industry-solutions/ist-media-internship-be)
 
