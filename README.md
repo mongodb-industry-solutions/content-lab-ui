@@ -2,8 +2,6 @@
 
 **The Content Lab is the graphical user interface (GUI) for our demo content creation platform**, showcasing the integration of MongoDB's powerful features tailored specifically for the Media Industry. This responsive and intuitive UI allows users to interact with a fully functional demo content management environment, highlighting advanced capabilities like real-time content aggregation, AI-powered writing assistance, and a seamless editorial experience. It is designed to demonstrate the potential of building modern, journalist-focused content applications with MongoDB as the backbone.
 
-An important feature of The Content Lab is the **AI Writing Assistant**, an intelligent chatbot embedded within the application. This chatbot enhances the content creation process by providing contextual writing suggestions, style adaptations based on user personas, and real-time feedback on draft content, showcasing the incorporation of AI-powered assistance in modern journalism workflows.
-
 ## Components and Features:
 
 The Content Lab is composed of several interconnected features that demonstrate the capabilities of modern content management systems. The following diagram illustrates the complete user journey from login to draft completion:
