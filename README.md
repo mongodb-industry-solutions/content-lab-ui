@@ -6,7 +6,11 @@ An important feature of The Content Lab is the **AI Writing Assistant**, an inte
 
 ## Components and Features:
 
-The Content Lab is composed of several interconnected features that demonstrate the capabilities of modern content management systems. Users can:
+The Content Lab is composed of several interconnected features that demonstrate the capabilities of modern content management systems. The following diagram illustrates the complete user journey from login to draft completion:
+
+![User Flow Diagram](diagrams/user-flow.svg)
+
+Users can:
 
 1. **Select a Demo User**
    - Choose from a range of pre-loaded demo personas.
@@ -69,7 +73,7 @@ This FastAPI‑based service powers the backend for content insights by ingestin
 - **Content Analysis**  
   Performs semantic searches over news and social media collections to derive new topic suggestions and deliver contextually relevant source documents.
 
-![content analysis & suggestion engine diagram](diagrams/search_microservice.png)
+![content analysis & suggestion engine diagram](diagrams/search_microservice.svg)
 
 ---
 
