@@ -88,7 +88,7 @@ A single FastAPI endpoint powers all conversational and writing‑tool operation
 - **AI Invocation**  
   - Delegates to an LLM for both free‑form chat and structured writing tasks, then returns the enhanced text or suggestions to the frontend in real time.
   
-![ai chatbot service diagram](diagrams/chat_microservice.png)
+![ai chatbot service diagram](diagrams/chatbot_microservice.svg)
 
 ---
 
