@@ -78,7 +78,7 @@ export default function Suggestions({ topics = [], isLoading = false, isSearchLo
                             />
                         </div>
                         <Body className={styles.sectionSubtitle}>
-                            Discover trending topics personalized for your content strategy.
+                            Discover trending topics personalized for your content strategy and start drafting compelling articles.
                         </Body>
                     </div>
                 )}

@@ -216,61 +216,33 @@ export const fallbackViralPosts = [
  */
 export const SUGGESTIONS_INFO_WIZARD = [
     {
-        heading: "Data Sources & Collection",
+        heading: "How It Works",
         content: [
             {
-                heading: "Web Scraping at Scale",
-                body: "Our advanced web scraping infrastructure continuously monitors thousands of news websites, blogs, and online publications. We extract trending topics, viral content, and emerging conversations in real-time to keep our suggestions fresh and relevant."
+                heading: "AI-Powered Topic Discovery",
+                body: "Our system uses semantic search and vector embeddings to understand your query intent beyond keywords. Search results include contextually related topics, not just exact matches."
             },
             {
-                heading: "Social Media Intelligence",
-                body: "We tap into major social media platforms to identify viral content, trending hashtags, and emerging conversations. Our algorithms analyze engagement patterns, shareability metrics, and momentum indicators to surface topics before they peak."
-            },
-            {
-                heading: "Multi-Source Aggregation",
+                heading: "Data Sources",
                 body: [
-                    "Major news outlets and publications",
-                    "Reddit discussions and trending posts",
-                    "Twitter/X trending topics and viral tweets",
-                    "Industry blogs and thought leadership content",
-                    "YouTube trending videos and popular channels",
-                    "TikTok viral content and hashtag trends"
+                    "News websites and publications",
+                    "Social media trending content",
+                    "Reddit discussions and viral posts"
                 ]
+            },
+            {
+                heading: "Search Architecture",
+                body: "The diagram below shows how your search queries are processed through our AI models to deliver relevant topic suggestions."
+            },
+            {
+                image: {
+                    src: "/diagrams/search_microservice.svg",
+                    alt: "Search Microservice Architecture Diagram"
+                }
             },
             {
                 heading: "Real-Time Processing",
-                body: "Our data pipeline processes millions of content pieces daily, extracting key topics, themes, and trending signals. This ensures you're always seeing the most current and relevant suggestions for your content strategy."
-            }
-        ]
-    },
-    {
-        heading: "AI-Powered Search Technology",
-        content: [
-            {
-                heading: "Generative AI Understanding",
-                body: "When you perform a search query, our generative AI models analyze your intent beyond just keywords. The system understands context, related concepts, and semantic relationships to find topics that truly match what you're looking for."
-            },
-            {
-                heading: "Semantic Search Capabilities",
-                body: "Our semantic search goes far beyond keyword matching. If you search for 'sustainable living', we'll find related topics like 'eco-friendly lifestyle', 'zero waste tips', 'renewable energy', and 'environmental consciousness' – all contextually relevant to your query."
-            },
-            {
-                heading: "Intelligent Query Processing",
-                body: [
-                    "Natural language understanding of search intent",
-                    "Concept expansion and related topic discovery",
-                    "Trend momentum analysis and viral prediction",
-                    "Content freshness and relevance scoring",
-                    "Personalized recommendations based on search history"
-                ]
-            },
-            {
-                heading: "Vector Search Technology",
-                body: "Every topic suggestion is powered by high-dimensional vector embeddings that capture semantic meaning. This allows us to find conceptually similar content even when the exact words don't match your search terms."
-            },
-            {
-                heading: "Continuous Learning",
-                body: "Our AI models continuously learn from user interactions, search patterns, and content performance to improve suggestion quality. The more the platform is used, the better it becomes at predicting what content will resonate."
+                body: "Topics are continuously updated from live data sources, ensuring you always see current trends and emerging conversations relevant to your content strategy."
             }
         ]
     }
@@ -283,46 +255,34 @@ export const SUGGESTIONS_INFO_WIZARD = [
  */
 export const CHATBOT_INFO_WIZARD = [
     {
-        heading: "AI Writing Assistant",
+        heading: "Writing Assistant",
         content: [
             {
-                heading: "Intelligent Writing Support",
-                body: "Your AI writing assistant provides real-time help with content creation, editing, and optimization. It understands context and adapts to your writing style and goals."
+                heading: "AI-Powered Writing Help",
+                body: "The chatbot provides real-time writing assistance, content suggestions, and editing support. It reads your current draft to offer contextually relevant help."
             },
             {
-                heading: "Dynamic Tool Suggestions",
+                heading: "Available Tools",
                 body: [
-                    "Content generation and brainstorming",
-                    "Grammar and style improvements", 
-                    "Tone and voice adjustments",
-                    "Research integration and fact-checking",
-                    "Structure and flow optimization"
+                    "Draft layout and structure suggestions",
+                    "Content refinement and style improvements",
+                    "Proofreading and grammar corrections",
+                    "Research integration and fact-checking"
                 ]
             },
             {
-                heading: "Context-Aware Assistance",
-                body: "The assistant analyzes your current draft content to provide relevant suggestions and tools. As you write, it adapts its recommendations to match your specific needs and writing context."
-            }
-        ]
-    },
-    {
-        heading: "How to Use",
-        content: [
-            {
-                heading: "Natural Conversations",
-                body: "Simply type your questions or requests in natural language. Ask for help with specific sections, request content suggestions, or get feedback on your writing."
+                heading: "Chatbot Architecture",
+                body: "The diagram below illustrates how the writing assistant processes your requests and integrates with your draft content."
             },
             {
-                heading: "Smart Tool Panel",
-                body: "The right panel displays writing tools that are relevant to your current draft content. These tools update dynamically as you work on different sections or topics."
+                image: {
+                    src: "/diagrams/chatbot_microservice.svg",
+                    alt: "Chatbot Microservice Architecture Diagram"
+                }
             },
             {
-                heading: "Iterative Collaboration", 
-                body: "Work collaboratively with the AI by building on its suggestions. You can refine, expand, or modify any generated content to perfectly match your vision and requirements."
-            },
-            {
-                heading: "Draft Integration",
-                body: "Suggestions and generated content can be easily integrated into your draft. The assistant helps maintain consistency in tone, style, and messaging throughout your document."
+                heading: "How to Use",
+                body: "Type natural language requests like 'help me improve this section' or use the quick action buttons (Draft, Refine, Proofread) for instant assistance with your current content."
             }
         ]
     }
