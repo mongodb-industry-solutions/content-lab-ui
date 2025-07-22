@@ -67,7 +67,7 @@ export default function ViralCard({ viralPost }) {
           <Body className={styles.statText}>{reposts.toLocaleString()}</Body>
         </div>
         <div className={styles.stat}>
-          <Icon glyph="ThumbsUp" className={styles.statIcon} />
+          <Icon glyph="ArrowUp" className={styles.statIcon} />
           <Body className={styles.statText}>{likes.toLocaleString()}</Body>
         </div>
       </div>

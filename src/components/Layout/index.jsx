@@ -16,26 +16,10 @@ export default function Layout({ children }) {
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
-  // Check localStorage on component mount 
+  // Always show login on page load/reload
   useEffect(() => {
-    const checkLoginStatus = () => {
-      try {
-        const selectedUser = localStorage.getItem('selectedUser');
-        const userProfile = localStorage.getItem('userProfile');
-        
-        if (selectedUser && userProfile) {
-          setIsLoggedIn(true);
-        } else {
-          setIsLoggedIn(false);
-        }
-      } catch (error) {
-        setIsLoggedIn(false);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    checkLoginStatus();
+    setIsLoggedIn(false);
+    setIsLoading(false);
   }, []);
 
   const handleUserSelected = (user) => {

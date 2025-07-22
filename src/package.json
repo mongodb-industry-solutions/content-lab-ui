@@ -14,6 +14,7 @@
     "@leafygreen-ui/card": "^13.0.1",
     "@leafygreen-ui/icon": "^14.0.0",
     "@leafygreen-ui/icon-button": "^17.0.1",
+    "@leafygreen-ui/info-sprinkle": "^5.0.3",
     "@leafygreen-ui/leafygreen-provider": "^5.0.0",
     "@leafygreen-ui/logo": "^11.0.0",
     "@leafygreen-ui/modal": "^19.0.1",

@@ -27,8 +27,7 @@ export default function NewsCard({ article, currentIndex }) {
   } = article;
 
   const {
-    Total_visits = 0,
-    Total_retention = 0, 
+    Total_visits = 0, 
     total_Comments = 0,
     Total_shares = 0
   } = News_metrics;
@@ -53,6 +52,7 @@ export default function NewsCard({ article, currentIndex }) {
             src={`/categories/${category}_${currentIndex % 4 + 1}.png`} 
             alt={title}
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 400px"
             className={styles.newsImage}
             priority
           />
@@ -105,11 +105,6 @@ export default function NewsCard({ article, currentIndex }) {
               <div className={styles.metricItem}>
                 <Body className={styles.metricValue}>{formattedTotalComments}</Body>
                 <Disclaimer>Comments</Disclaimer>
-              </div>
-            
-              <div className={styles.metricItem}>
-                <Body className={styles.metricValue}>{Total_retention}%</Body>
-                <Disclaimer>Retention</Disclaimer>
               </div>
             </div>
           </div>

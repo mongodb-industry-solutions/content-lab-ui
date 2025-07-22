@@ -42,6 +42,12 @@
   gap: 0.8rem;
   white-space: nowrap;
   min-width: fit-content;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  opacity: 0.8;
 }
 
 .logoText {

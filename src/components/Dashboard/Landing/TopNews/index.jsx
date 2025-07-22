@@ -7,6 +7,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { H2, Body } from '@leafygreen-ui/typography';
+import { InfoSprinkle } from '@leafygreen-ui/info-sprinkle';
 import NewsCard from './NewsCard';
 import DotBackground from '@/components/external/DotBackground';
 import { fetchNews } from '@/api/news_api';
@@ -54,9 +55,18 @@ export default function TopNews() {
     <DotBackground>
       <section className={styles.topNewsSection}>
         <div className={styles.container}>
-          <H2 className={styles.sectionTitle}>
-            Trending News & Insights
-          </H2>
+          <div className={styles.headerContainer}>
+            <H2 className={styles.sectionTitle}>
+              Trending News & Insights
+            </H2>
+            <InfoSprinkle
+              triggerProps={{
+                'aria-label': 'News Metrics Info',
+              }}
+            >
+              The news articles and engagement metrics shown are simulated for demonstration purposes.
+            </InfoSprinkle>
+          </div>
           <Body className={styles.sectionSubtitle}>
             Real-time analysis from trusted news sources to power our content recommendations.
           </Body>

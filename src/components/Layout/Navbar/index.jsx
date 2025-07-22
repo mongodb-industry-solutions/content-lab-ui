@@ -45,10 +45,10 @@ export default function Navbar({ onLogout }) {
       {isProfileOpen && <UserProfile onClose={() => setIsProfileOpen(false)} />}
       <Card as="header" className={styles.navbar}>
         {/* Logo Section */}
-        <div className={styles.logo}>
+        <Link href="/" className={styles.logo}>
           <MongoDBLogoMark color="black" height={35} />
           <H1 className={styles.logoText}>The Content Lab</H1>
-        </div>
+        </Link>
 
         {/* Navigation Links */}
         <div className={styles.navlinks}>

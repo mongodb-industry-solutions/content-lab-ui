@@ -539,10 +539,6 @@ const EditorPanel = forwardRef(({ metadata, onMetadataChange, topicCard }, ref) 
 });
 ```
 
-### Data Flow Visualization
-
-![Drafts Component Data Flow Diagram](diagrams/drafts_component_data_flow.png)
-
 ### Key Benefits of This Pattern
 
 1. **Single Source of Truth**: All state lives in the Drafts component, eliminating inconsistencies
