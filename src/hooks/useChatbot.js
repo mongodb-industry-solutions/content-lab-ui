@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import { sendChatMessage } from '@/api/chat_api';
 import { createBotMessage, createUserMessage, createErrorMessage, createNeedContentMessage } from '@/utils/chatUtils';
+import { WRITING_TOOLS } from '@/utils/constants';
 
 /**
  * Custom hook for managing chatbot state and message handling
@@ -13,6 +14,7 @@ export function useChatbot(getDraftContent, userProfile, topicCard) {
     const [messages, setMessages] = useState([]);
     const [isTyping, setIsTyping] = useState(false);
     const [completedMessages, setCompletedMessages] = useState({});
+    const [activeCommand, setActiveCommand] = useState(null);
 
     // Mark a message as completed (typewriter finished)
     const markCompleted = useCallback((messageId) => {
@@ -22,13 +24,35 @@ export function useChatbot(getDraftContent, userProfile, topicCard) {
         }));
     }, []);
 
-    // Handle sending a new message (from input or quick actions)
+    // Clear active command
+    const clearActiveCommand = useCallback(() => {
+        setActiveCommand(null);
+    }, []);
+
+    // Handle sending a new message
     const handleSendMessage = useCallback(async (messageText, promptType = null) => {
         if (!messageText?.trim()) return;
 
+        let finalMessage = messageText;
+        let finalPromptType = promptType;
+
+        if (activeCommand) {
+            const userContext = messageText.replace(activeCommand.command, '').trim();
+            
+            // If user only typed command with no context, use default message
+            if (!userContext || messageText.trim() === activeCommand.command) {
+                finalMessage = activeCommand.message;
+            } else {
+                finalMessage = userContext;
+            }
+            
+            finalPromptType = activeCommand.id;
+            setActiveCommand(null);
+        }
+
         // Add user message
-        const userMessage = createUserMessage(messageText);
-        if (!userMessage) return; // Handle invalid message creation
+        const userMessage = createUserMessage(finalMessage);
+        if (!userMessage) return;
         
         setMessages(prev => [...prev, userMessage]);
 
@@ -39,9 +63,9 @@ export function useChatbot(getDraftContent, userProfile, topicCard) {
             const draftContent = getDraftContent();
             
             const chatData = {
-                message: messageText,
+                message: finalMessage,
                 draftContent: draftContent,
-                promptType: promptType,
+                promptType: finalPromptType,
                 userProfile: userProfile,
                 topicCard: topicCard
             };
@@ -59,33 +83,39 @@ export function useChatbot(getDraftContent, userProfile, topicCard) {
         } finally {
             setIsTyping(false);
         }
-    }, [getDraftContent]);
+    }, [getDraftContent, activeCommand]);
 
-    // Handle quick actions with prompt types
-    const handleQuickAction = useCallback((actionText) => {
-        // Check if action needs draft content
-        if ((actionText.id === 'refine' || actionText.id === 'proofread')) {
+    // Handle quick actions
+    const handleQuickAction = useCallback((actionTool) => {
+        // Check if action needs draft content for certain commands
+        if ((actionTool.id === 'refine' || actionTool.id === 'proofread')) {
             const draftContent = getDraftContent();
             if (!draftContent?.trim()) {
-                // Add a simple message instead of sending to AI
-                const infoMessage = createNeedContentMessage(actionText.id);
+                // Add a simple message instead of setting command
+                const infoMessage = createNeedContentMessage(actionTool.id);
                 setMessages(prev => [...prev, infoMessage]);
                 return;
             }
         }
         
-        handleSendMessage(actionText.message, actionText.id);
-    }, [handleSendMessage, getDraftContent]);
+        // Find the corresponding tool with command property and set active command
+        const toolWithCommand = WRITING_TOOLS.find(tool => tool.id === actionTool.id);
+        if (toolWithCommand) {
+            setActiveCommand(toolWithCommand);
+        }
+    }, [getDraftContent]);
 
     return {
         // State
         messages, 
         isTyping, 
         completedMessages,
+        activeCommand,
         
         // Actions
         markCompleted, 
         handleSendMessage, 
-        handleQuickAction
+        handleQuickAction,
+        clearActiveCommand
     };
 } 

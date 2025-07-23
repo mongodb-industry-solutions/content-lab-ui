@@ -11,6 +11,44 @@
   flex-direction: column;
   gap: 2px;
   padding: 4px 8px;
+  position: relative;
+}
+
+.commandChip {
+  background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  margin-bottom: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.commandRemove {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  transition: background-color 0.15s ease;
+}
+
+.commandRemove:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.removeIcon {
+  width: 12px;
+  height: 12px;
 }
 
 .textarea {
@@ -36,22 +74,8 @@
   outline: none;
 }
 
-/* Custom scrollbar */
-.textarea::-webkit-scrollbar {
-  width: 4px;
-}
-
-.textarea::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.textarea::-webkit-scrollbar-thumb {
-  background: #d1d5db;
-  border-radius: 2px;
-}
-
-.textarea::-webkit-scrollbar-thumb:hover {
-  background: #9ca3af;
+.textareaWithCommand {
+  margin-top: 0;
 }
 
 .buttonContainer {

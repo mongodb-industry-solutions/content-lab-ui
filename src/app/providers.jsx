@@ -4,13 +4,12 @@
  * Leafygreen provider component
  */
 
-import LeafyGreenProvider, { useDarkMode } from "@leafygreen-ui/leafygreen-provider";
+import LeafyGreenProvider from "@leafygreen-ui/leafygreen-provider";
 
-export function Providers({ children }) {
-  const { darkMode } = useDarkMode(); 
+export function Providers({ children }) { 
 
   return (
-    <LeafyGreenProvider baseFontSize={16} darkMode={darkMode}>
+    <LeafyGreenProvider baseFontSize={16}>
       {children}
     </LeafyGreenProvider>
   );

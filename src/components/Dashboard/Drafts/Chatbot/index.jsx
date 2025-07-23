@@ -27,9 +27,11 @@ export default function Chatbot({
         messages,
         isTyping,
         completedMessages,
+        activeCommand,
         markCompleted,
         handleSendMessage,
-        handleQuickAction
+        handleQuickAction,
+        clearActiveCommand
     } = useChatbot(getDraftContent, userProfile, topicCard);
 
     return (
@@ -56,7 +58,11 @@ export default function Chatbot({
                 </div>
                 
                 <div className={styles.chatbotSection}>
-                    <ChatbotInput onSendMessage={handleSendMessage} />
+                    <ChatbotInput 
+                        onSendMessage={handleSendMessage}
+                        activeCommand={activeCommand}
+                        onClearActiveCommand={clearActiveCommand}
+                    />
                 </div>
             </div>
         </Card>

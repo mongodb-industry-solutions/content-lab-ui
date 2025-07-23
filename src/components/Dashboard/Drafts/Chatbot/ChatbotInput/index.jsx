@@ -6,12 +6,19 @@
  */
 
 import { useState, useRef, useLayoutEffect } from "react";
-import { Send } from "lucide-react";
+import { Send, X } from "lucide-react";
 import { Body } from '@leafygreen-ui/typography';
 import Card from '@leafygreen-ui/card';
 import styles from "./ChatbotInput.module.css";
 
-export default function ChatbotInput({ className, onChange, onSendMessage, ...props }) {
+export default function ChatbotInput({ 
+  className, 
+  onChange, 
+  onSendMessage, 
+  activeCommand,
+  onClearActiveCommand,
+  ...props 
+}) {
   const internalTextareaRef = useRef(null);
   const [value, setValue] = useState("");
 
@@ -40,10 +47,12 @@ export default function ChatbotInput({ className, onChange, onSendMessage, ...pr
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (value.trim()) {
+    if (value.trim() || activeCommand) {
+      const messageToSend = activeCommand ? `${activeCommand.command} ${value}`.trim() : value.trim();
+      
       // Send message to parent component
       if (onSendMessage) {
-        onSendMessage(value.trim());
+        onSendMessage(messageToSend);
       }
       
       // Clear input after sending
@@ -51,12 +60,25 @@ export default function ChatbotInput({ className, onChange, onSendMessage, ...pr
     }
   };
 
-  const hasValue = value.trim().length > 0;
+  const hasValue = value.trim().length > 0 || activeCommand;
 
   return (
     <Card className={styles.compactCard}>
       <form onSubmit={handleSubmit}>
         <div className={styles.inputWrapper}>
+          {activeCommand && (
+            <div className={styles.commandChip}>
+              <span>{activeCommand.command}</span>
+              <button
+                type="button"
+                onClick={onClearActiveCommand}
+                className={styles.commandRemove}
+                aria-label="Remove command"
+              >
+                <X className={styles.removeIcon} />
+              </button>
+            </div>
+          )}
           <Body
             as="textarea"
             ref={internalTextareaRef}
@@ -64,8 +86,8 @@ export default function ChatbotInput({ className, onChange, onSendMessage, ...pr
             value={value}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
-            placeholder="Start typing to brainstorm, edit, or improve text..."
-            className={styles.textarea}
+            placeholder={activeCommand ? "Add context for your command..." : "Start typing to brainstorm, edit, or improve text..."}
+            className={`${styles.textarea} ${activeCommand ? styles.textareaWithCommand : ''}`}
             {...props}
           />
           
@@ -73,7 +95,7 @@ export default function ChatbotInput({ className, onChange, onSendMessage, ...pr
             <button
               type="submit"
               disabled={!hasValue}
-              className={`${styles.sendButton} ${!hasValue ? styles.disabled : ""}`}
+              className={styles.sendButton}
               aria-label="Send message"
             >
               <Send className={styles.icon} />
