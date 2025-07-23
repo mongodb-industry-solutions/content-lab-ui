@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "generate-notices": "node docs/scripts/generate-third-party-notices.js"
   },
   "dependencies": {
     "@leafygreen-ui/badge": "^10.0.1",
@@ -42,5 +43,8 @@
     "react": "19.0.0-rc-02c0e824-20241028",
     "react-dom": "19.0.0-rc-02c0e824-20241028",
     "react-loading-skeleton": "^3.1.1"
+  },
+  "devDependencies": {
+    "license-checker": "^25.0.1"
   }
 }
