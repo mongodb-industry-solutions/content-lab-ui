@@ -90,16 +90,13 @@ export const areRequestsEqual = (requestA, requestB) => {
  */
 export const getBadgeVariant = (category) => {
   const variants = {
+    'general': 'green',
     'technology': 'yellow',
-    'business': 'blue', 
     'health': 'green',
     'sports': 'yellow',
     'politics': 'blue',
     'science': 'green',
-    'education': 'yellow',
-    'culture': 'blue',
-    'barcelona': 'green',
-    'travel': 'yellow',
+    'business': 'blue', 
     'entertainment': 'blue'
   };
   return variants[category?.toLowerCase()] || 'gray';

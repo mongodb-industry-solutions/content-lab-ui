@@ -49,7 +49,7 @@ export default function NewsCard({ article, currentIndex }) {
         {/* Left Side - Image */}
         <div className={styles.imageContainer}>
           <Image 
-            src={`/categories/${category}_${currentIndex % 4 + 1}.png`} 
+            src={`/categories/${category === 'general' ? 'technology' : category}_${currentIndex % 4 + 1}.png`} 
             alt={title}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 400px"

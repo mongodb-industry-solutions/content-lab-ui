@@ -54,7 +54,7 @@ export default function TopicCard({ topicCard, index = 0 }) {
             {/* Image Section - 40% */}
             <div className={styles.imageSection}>
                 <Image 
-                    src={`/categories/${label}_${index % 4 + 1}.png`}
+                    src={`/categories/${label === 'general' ? 'technology' : label}_${index % 4 + 1}.png`}
                     alt={topic}
                     width={400}
                     height={250}
