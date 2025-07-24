@@ -33,6 +33,7 @@
   height: 100%;
   margin: 0 !important;
   padding: 0 !important;
+  width: 100%;
 }
 
 .searchInput {
@@ -48,9 +49,10 @@
   padding: 0 1.25rem;
   display: flex;
   align-items: center;
+  justify-content: center;
   cursor: pointer;
   height: 100%;
-  padding: 0.9;
+  position: relative;
 }
 
 .searchIcon {

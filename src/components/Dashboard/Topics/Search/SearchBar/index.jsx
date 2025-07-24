@@ -77,7 +77,7 @@ export default function SearchBar({
               aria-label="Search input"
             />
             
-            {/* Search Icon moved to right */}
+            {/* Search Icon */}
             <div className={styles.searchIconContainer} onClick={handleSearchIconClick}>
               <Icon glyph="MagnifyingGlass" className={styles.searchIcon} />
             </div>
