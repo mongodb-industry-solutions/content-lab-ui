@@ -89,7 +89,7 @@
 /* Responsive design for large screens */
 @media (min-height: 1200px) {
   .topicCard {
-    height: 35rem;
+    height: 33rem;
   }
 
   .contentSection {

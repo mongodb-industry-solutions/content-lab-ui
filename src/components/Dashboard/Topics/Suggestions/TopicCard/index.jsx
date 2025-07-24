@@ -87,7 +87,7 @@ export default function TopicCard({ topicCard, index = 0 }) {
                 </div>
 
                 <Body className={styles.description}>
-                    {description}
+                    {description?.length > 150 ? `${description.substring(0, 150)}...` : description}
                 </Body>
 
                 {/* Footer */}
