@@ -18,29 +18,19 @@ The Content Lab frontend is built with a **component-driven architecture** that 
 
 ## Project Structure Deep Dive
 
-The application follows a clear hierarchical structure that separates concerns and promotes code organization:
+The application follows a clear hierarchical structure organized by feature and function:
 
 ```
 /src
-├── /app                    # Next.js App Router - route definitions and layouts
-│   ├── layout.jsx         # Root layout with providers and global styles
-│   ├── providers.jsx      # LeafyGreen provider configuration
-│   ├── globals.css        # Global CSS styles
-│   └── (dashboard)/       # Route group for authenticated pages
-│       ├── layout.jsx     # Dashboard layout wrapper
-│       ├── (landing)/     # Landing page route
-│       ├── drafts/        # Draft creation and editing routes
-│       ├── saved/         # Saved drafts management
-│       └── topics/        # Topic exploration and research
-├── /components            # Reusable UI components organized by feature
-│   ├── /Dashboard/        # Feature-specific dashboard components
-│   ├── /Layout/           # Application layout components
-│   ├── /Login/            # User selection and authentication
-│   └── /external/         # Third-party and animation components
-├── /api                   # API client functions for backend communication
+├── /app                    # Next.js App Router with route groups
+├── /components            # Feature-organized UI components
+│   ├── /Dashboard/        # Main application features (Landing, Topics, Drafts, Saved)
+│   ├── /Layout/           # Navigation and layout components
+│   └── /external/         # Animation and UI enhancement components
+├── /api                   # Backend communication layer
 ├── /hooks                 # Custom React hooks for shared logic
 ├── /utils                 # Utility functions and constants
-└── /public               # Static assets including images and icons
+└── /public               # Static assets and images
 ```
 
 ## Component Architecture
@@ -56,24 +46,15 @@ The application uses a **hierarchical component structure** with clear separatio
 ### Feature Components
 **Purpose**: Implement specific business logic and user workflows
 
-#### Dashboard Components (`/components/Dashboard/`)
+The dashboard is organized into four main feature areas:
 - **`Landing/`**: Welcome page with trending content aggregation
-  - `Headline/`: Hero section with floating cards animation
-  - `TopNews/`: Curated news display with category filtering
-  - `ViralPosts/`: Social media content aggregation
-- **`Topics/`**: Content research and topic exploration
-  - `Search/`: Advanced search with filters and suggested queries
-  - `Suggestions/`: AI-powered topic recommendations with visual cards
-- **`Drafts/`**: Content creation and editing environment
-  - `EditorPanel/`: Rich text editor with metadata sidebar
-  - `Chatbot/`: AI writing assistant integration
+- **`Topics/`**: Content research and topic exploration with AI-powered suggestions
+- **`Drafts/`**: Content creation environment with rich text editor and AI writing assistant
 - **`Saved/`**: Draft management and organization
-  - `DraftCard/`: Individual draft preview and actions
 
-#### Shared Components (`/components/external/`)
-- **Animation Components**: `FlickeringGrid`, `GradientBackground`, `SparklesText`
-- **UI Enhancements**: `InfoWizard`, `DotBackground`, `GridPattern`
-- **Interactive Elements**: `Globe`, `Marquee`, `TiptapToolbar`
+### Shared Components
+- **Animation Components**: Visual enhancements (`FlickeringGrid`, `GradientBackground`, `SparklesText`)
+- **UI Utilities**: Interactive elements (`InfoWizard`, `Globe`, `TiptapToolbar`)
 
 ### Component Design Patterns
 
@@ -157,180 +138,87 @@ const topicCard = JSON.parse(localStorage.getItem('topicCard') || 'null');
 
 ### Next.js App Router Implementation
 
-The application leverages Next.js 15's App Router with strategic route organization:
+The application uses Next.js 15's App Router with strategic route grouping:
 
 ```
 /app/(dashboard)/
 ├── layout.jsx           # Shared dashboard layout
-├── (landing)/page.jsx   # Default route: Landing page
-├── topics/page.jsx      # Topic research and exploration
+├── (landing)/page.jsx   # Default landing page
+├── topics/page.jsx      # Topic research
 ├── saved/page.jsx       # Draft management
-├── drafts/
-│   ├── page.jsx         # New draft creation
-│   └── [draftId]/page.jsx  # Existing draft editing
+└── drafts/[draftId]/    # Dynamic draft editing
 ```
 
-#### Dynamic Routing Patterns
-```jsx
-// Dynamic draft editing with parameter handling
-export default async function EditDraftPage({ params }) {
-  const { draftId } = await params;
-  return <Drafts draftId={draftId} />;
-}
-```
-
-#### Navigation State Management
+Key features:
+- **Dynamic Routing**: URL parameters for draft editing (`/drafts/[draftId]`)
+- **State Preservation**: User context and topic cards maintained across navigation
 - **Programmatic Navigation**: `useRouter` for dynamic routing based on user actions
-- **State Preservation**: Topic cards and user context maintained across navigation
-- **Deep Linking**: Direct URL access to specific drafts and content states
 
 ## Styling Architecture
 
-### CSS Modules Implementation
+### CSS Modules & Design System Integration
 
-The application uses CSS Modules for **component-scoped styling** with consistent naming conventions:
+The application uses **CSS Modules** for component-scoped styling combined with **LeafyGreen Design System** for consistent UI components:
 
-```css
-/* Component.module.css */
-.componentContainer {
-  display: flex;
-  flex-direction: column;
-  padding: 2rem;
-}
-
-.headerSection {
-  margin-bottom: 3rem;
-}
-
-/* Responsive design patterns */
-@media (min-height: 1200px) {
-  .componentContainer {
-    padding: 3rem 4rem;
-  }
-}
-```
-
-### LeafyGreen Design System Integration
-
-#### Component Usage Patterns
 ```jsx
+// Component styling with LeafyGreen integration
 import { H2, Body } from '@leafygreen-ui/typography';
 import Button from '@leafygreen-ui/button';
 import Card from '@leafygreen-ui/card';
+import styles from './Component.module.css';
 
-// Consistent design system implementation
 <Card className={styles.customCard}>
-  <H2 className={styles.title}>Content Title</H2>
-  <Body className={styles.description}>Content description</Body>
-  <Button variant="primary" size="default">Action</Button>
+  <H2>Content Title</H2>
+  <Body>Content description</Body>
+  <Button variant="primary">Action</Button>
 </Card>
 ```
 
-#### Design Token Consistency
-- **Color Palette**: MongoDB brand colors with semantic variants
-- **Typography Scale**: Consistent font sizes and weights across components (LeafyGreen Typography)
-
 ### Animation and Visual Effects
-
-#### External Component Integration
-- **Magic UI Components**: `GradientBackground`, `GridPattern` for visual enhancement
-- **React Bits**: Interactive animations for user engagement
-- **21st.dev Components**: Modern UI effects and transitions
+External components provide modern UI enhancements:
+- **Magic UI Components**: `GradientBackground`, `GridPattern` for visual appeal
+- **Interactive Animations**: User engagement through motion and transitions
 
 ## Development Patterns
 
-### Component Design Patterns
+### Key Architectural Patterns
 
-#### Ref Forwarding for Editor Integration
+#### Ref Forwarding for Component Communication
 ```jsx
-const EditorPanel = forwardRef(({ metadata, onMetadataChange, topicCard }, ref) => {
+// Direct editor control through ref forwarding
+const EditorPanel = forwardRef(({ metadata, onMetadataChange }, ref) => {
   const editorRef = useRef(null);
   
   useImperativeHandle(ref, () => ({
     getDraftContent: () => editorRef.current?.getDraftContent() || '',
-    setDraftContent: (newContent) => editorRef.current?.setDraftContent(newContent)
+    setDraftContent: (content) => editorRef.current?.setDraftContent(content)
   }));
   
   return <RichTextEditor ref={editorRef} />;
 });
 ```
 
-#### Custom Hook Patterns
+#### Custom Hooks for Complex Logic
 ```jsx
-// Encapsulating complex logic in reusable hooks
+// Encapsulating stateful logic in reusable hooks
 export function useChatbot(getDraftContent, userProfile, topicCard) {
   const [messages, setMessages] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
   
   const handleSendMessage = useCallback(async (messageText, promptType) => {
-    // Complex message handling logic
+    // Complex message handling logic with context
   }, [getDraftContent, userProfile, topicCard]);
   
   return { messages, isTyping, handleSendMessage };
 }
 ```
 
-### Error Handling Strategies
+### Error Handling & Performance
 
-#### Component-Level Error Boundaries
-```jsx
-// Graceful error handling with fallback UI
-const renderContent = () => {
-  if (error) {
-    return (
-      <div className={styles.errorContainer}>
-        <Body className={styles.errorMessage}>{error}</Body>
-      </div>
-    );
-  }
-  
-  return <MainContent />;
-};
-```
-
-#### API Error Handling
-```javascript
-// Consistent error messaging across API calls
-try {
-  const result = await apiFunction();
-  return result;
-} catch (error) {
-  throw new Error('Failed to fetch data. Please try again.');
-}
-```
-
-### Loading States Implementation
-
-#### Skeleton Loading Patterns
-```jsx
-import Skeleton from 'react-loading-skeleton';
-
-const LoadingComponent = () => (
-  <div className={styles.loadingContainer}>
-    <Skeleton height={200} count={3} />
-  </div>
-);
-```
-
-#### Progressive Loading States
-- **Initial Load**: Full page loading with spinner
-- **Search Loading**: Contextual loading during search operations
-- **Component Loading**: Individual component loading states
-
-### Performance Optimization
-
-#### Image Optimization
-```jsx
-// Next.js Image optimization with responsive loading
-<Image 
-  src={`/categories/${category}_${index % 4 + 1}.png`}
-  alt={topic}
-  width={400}
-  height={250}
-  priority
-  className={styles.topicImage}
-/>
-```
+- **Consistent Error Boundaries**: Graceful fallback UI for component failures
+- **API Error Handling**: Standardized error messaging across all backend calls
+- **Image Optimization**: Next.js Image component with responsive loading
+- **Loading States**: Progressive loading with skeleton screens for better UX
 
 ## Complex Component Integration Example: The Drafts System
 
@@ -387,6 +275,15 @@ export default function Drafts({ draftId: initialDraftId = null }) {
                     />
                 </div>
             </div>
+
+            {/* Notification system for user feedback */}
+            {notification && (
+                <Notification
+                    variant={notification.type}
+                    description={notification.message}
+                    onClose={clearNotification}
+                />
+            )}
         </div>
     );
 }
@@ -404,18 +301,22 @@ export function useDraftManager(initialDraftId, showNotification, editorRef) {
     const [metadata, setMetadata] = useState({ title: '', category: '', keywords: [] });
     const [userProfile, setUserProfile] = useState(null);
     const [topicCard, setTopicCard] = useState(null);
+    const [isSaving, setIsSaving] = useState(false);
 
     // Load existing draft content into editor
     useEffect(() => {
         if (draftId && userProfile?._id) {
             const loadDraft = async () => {
                 try {
+                    setIsLoading(true);
                     const draft = await fetchDraftById(draftId, userProfile._id);
                     setMetadata(draft.metadata);
                     // Directly control editor through ref
                     editorRef.current?.setDraftContent(draft.content);
                 } catch (error) {
                     showNotification('error', 'Failed to load draft');
+                } finally {
+                    setIsLoading(false);
                 }
             };
             loadDraft();
@@ -423,10 +324,11 @@ export function useDraftManager(initialDraftId, showNotification, editorRef) {
     }, [draftId, userProfile, editorRef]);
 
     const handleSaveDraft = async () => {
-        // Get current content from editor via ref
-        const content = editorRef.current?.getDraftContent() || '';
-        
+        setIsSaving(true);
         try {
+            // Get current content from editor via ref
+            const content = editorRef.current?.getDraftContent() || '';
+            
             const result = draftId 
                 ? await updateDraft(draftId, metadata.title, metadata.category, content)
                 : await saveDraft(userProfile._id, metadata.title, metadata.category, content);
@@ -435,10 +337,19 @@ export function useDraftManager(initialDraftId, showNotification, editorRef) {
             showNotification('success', 'Draft saved successfully!');
         } catch (error) {
             showNotification('error', 'Failed to save draft');
+        } finally {
+            setIsSaving(false);
         }
     };
 
-    return { draftId, metadata, userProfile, topicCard, handleSaveDraft, handleMetadataChange };
+    const handleMetadataChange = (field, value) => {
+        setMetadata(prev => ({ ...prev, [field]: value }));
+    };
+
+    return { 
+        draftId, isSaving, isLoading, userProfile, topicCard, metadata,
+        handleSaveDraft, handleMetadataChange 
+    };
 }
 ```
 
@@ -477,30 +388,46 @@ export default function Chatbot({
     userProfile,          // Shared user context
     topicCard            // Shared topic context
 }) {
-    const { messages, isTyping, handleSendMessage } = useChatbot(
-        getDraftContent, userProfile, topicCard
-    );
-
-    // When AI suggests content changes
-    const handleApplySuggestion = (suggestion) => {
-        if (suggestion.type === 'layout') {
-            applyDraftLayout(suggestion.content);
-        } else if (suggestion.type === 'replacement') {
-            applySuggestion(suggestion.original, suggestion.replacement);
-        }
-    };
-
-    // When sending messages, include current editor content for context
-    const handleMessage = async (message, promptType) => {
-        const currentContent = getDraftContent(); // Read from editor
-        await handleSendMessage(message, promptType, currentContent);
-    };
+    // Use custom hook for all chatbot logic
+    const {
+        messages,
+        isTyping,
+        completedMessages,
+        markCompleted,
+        handleSendMessage,
+        handleQuickAction       // Handle writing tool button clicks
+    } = useChatbot(getDraftContent, userProfile, topicCard);
 
     return (
-        <div className={styles.chatbotContainer}>
-            <ChatMessages messages={messages} onApplySuggestion={handleApplySuggestion} />
-            <ChatInput onSendMessage={handleMessage} />
-        </div>
+        <Card className={styles.copilot}>
+            <div className={styles.copilotContent}>
+                <ChatHeader />
+                
+                <div className={styles.messagesSection}>
+                    <ChatMessages 
+                        messages={messages} 
+                        isTyping={isTyping} 
+                        completedMessages={completedMessages}
+                        markCompleted={markCompleted}
+                        applyDraftLayout={applyDraftLayout}
+                        applySuggestion={applySuggestion}
+                        userProfile={userProfile}
+                    />
+                </div>
+                
+                <div className={styles.panelSection}>
+                    <ChatPanel 
+                        onActionSelect={handleQuickAction}  // Writing tools trigger actions
+                    />
+                </div>
+                
+                <div className={styles.chatbotSection}>
+                    <ChatbotInput 
+                        onSendMessage={handleSendMessage}
+                    />
+                </div>
+            </div>
+        </Card>
     );
 }
 ```
@@ -548,70 +475,6 @@ const EditorPanel = forwardRef(({ metadata, onMetadataChange, topicCard }, ref) 
 5. **Scalability**: New features can be added without disrupting existing communication patterns
 
 This hierarchical pattern ensures that complex interactions between the editor and chatbot remain predictable and maintainable, while allowing each component to focus on its specific responsibilities within the larger content creation workflow.
-
-## Backend Integration Details
-
-### Service Communication Architecture
-
-#### Main Backend Integration (Port 8000)
-```javascript
-// Centralized backend URL configuration
-const mainBackendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
-
-// Consistent API patterns for content operations (One of the many endpoints from the main backend)
-export async function saveDraft(userId, title, category, content, keywords, topicId) {
-  const response = await fetch(`${mainBackendUrl}/api/drafts`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ userId, title, category, content, keywords, topicId })
-  });
-  
-  if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-  return await response.json();
-}
-```
-
-#### AI Chat Service Integration (Port 8001)
-```javascript
-// Centralized backend URL configuration
-const mainBackendUrl = process.env.NEXT_PUBLIC_CHAT_BACKEND_URL || "http://localhost:8000";
-
-// Specialized chat service communication
-export async function sendChatMessage(chatData) {
-  const response = await fetch(`${chatBackendUrl}/api/writing/assist`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      draftContent: chatData.draftContent,
-      promptType: chatData.promptType,
-      profile: chatData.userProfile,
-      message: chatData.message,
-      topicDetails: chatData.topicCard
-    })
-  });
-  
-  return await response.json();
-}
-```
-
-### Real-Time Data Updates
-
-#### Optimistic UI Updates
-```javascript
-// Immediate UI feedback with rollback capability
-const handleSaveDraft = async () => {
-  setIsSaving(true);
-  
-  try {
-    const result = await saveDraft(/* ... */);
-    showNotification('success', 'Draft saved successfully!');
-  } catch (error) {
-    showNotification('error', 'Failed to save draft. Please try again.');
-  } finally {
-    setIsSaving(false);
-  }
-};
-```
 
 ---
 
