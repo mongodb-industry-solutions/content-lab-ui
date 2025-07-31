@@ -2,63 +2,63 @@
 
 .container {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     background: linear-gradient(150deg, #023430, #00684A);
-    height: 100vh;
+    min-height: 100vh;
     padding: 0.75rem;
 }
 
 .card {
-    width: 80%;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    width: min(80%, 800px);
     background: linear-gradient(to bottom, #ffffff, #f3f4f6) !important;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(0, 0, 0, 0.2);  
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.title {
-    margin-bottom: 1rem;
-    text-align: center;
+.modalMainContent {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
 }
 
-.subtitle {
-    text-align: center;
-}   
-
+.title,
+.subtitle,
 .description {
     text-align: center;
 }
 
+.title {
+    margin-bottom: 1rem;
+}
+
 .usersContainer {
-    display: grid;
-    column-gap: 10px;
-    row-gap: 15px;
-    justify-items: center;
-    grid-template-columns: repeat(auto-fit, minmax(105px, 130px));
-    justify-content: space-evenly;
-    margin: 30px 0px 20px 0px;
-}
-
-.modalMainContent {
-    height: 100%;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px 80px;
+    margin: 30px 0 20px;
 }
 
-.parentContainer {
+.descriptionContainer {
     display: flex;
     justify-content: center;
-    align-items: center;
     margin: 10px;
 }
 
-.bottomDescription {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+/* Mobile: 2 columns */
+@media (max-width: 768px) {
+    .card {
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    .modalMainContent {
+        padding: 0.75rem;
+    }
+
+    .usersContainer {
+        gap: 15px 5px;
+        justify-content: space-evenly;
+    }
 }

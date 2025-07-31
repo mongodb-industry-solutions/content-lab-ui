@@ -7,6 +7,7 @@
 import React from 'react';
 import { Body } from '@leafygreen-ui/typography';
 import Card from '@leafygreen-ui/card';
+import Image from 'next/image';
 
 import styles from './User.module.css';
 
@@ -23,7 +24,13 @@ const User = ({ user = null, isSelectedUser = false, setOpen, setLocalSelectedUs
                 className={`${styles.userCard} ${user !== null ? 'cursorPointer' : ''} ${isSelectedUser ? styles.userSelected : ''}`}
                 onClick={() => selectUserAndCloseModal()}
             >
-                <img src={`/users/avatar${user.avatar}.png`} alt="User Avatar" />
+                <Image 
+                    src={`/users/avatar${user.avatar}.png`} 
+                    alt="User Avatar"
+                    width={100}
+                    height={100}
+                    style={{ width: '100%', height: 'auto' }}
+                />
                 <Body className={styles.userName}>{user.name}</Body>
                 <Body baseFontSize={13} weight="medium" className={styles.userDescription}>
                     {shortDescription}

@@ -90,13 +90,13 @@ const LoginComponent = ({ onUserSelected }) => {
                     ))}
                 </div>
 
-                <div className={styles.parentContainer}>
+                <div className={styles.descriptionContainer}>
                     <Banner>
                         Look out for  <Icon glyph="Wizard" fill="#889397" /> to find out more about what is going on behind the scenes!
                     </Banner>
                 </div>
 
-                <Description className={styles.bottomDescription}>
+                <Description>
                     Note: Each user has pre-loaded data, such as writing styles, and sample text. This variation is designed to showcase different scenarios, providing a more dynamic and realistic user experience for the demo.
                 </Description>
             </div>

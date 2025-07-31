@@ -7,21 +7,15 @@
 }
 
 .userCard {
-    max-width: 130px;
-    min-width: 105px;
     width: 100%;
+    min-width: 105px;
+    max-width: 130px;
     height: 150px;
-    justify-self: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 120px 5px;
-}
-
-.userCard img {
-    width: 100%;
-    height: auto;
 }
 
 .userName {
