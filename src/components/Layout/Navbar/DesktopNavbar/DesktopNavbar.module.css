@@ -1,0 +1,52 @@
+/* DesktopNavbar.module.css */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.8rem 15%;
+  padding: 0.8rem;
+  border-radius: 40px;
+
+  /* Glassmorphism effect */
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.textSize {
+  font-size: 15px; 
+}
+
+/* Logo section */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+/* Navigation links */
+.navlinks {
+  display: flex;
+  gap: 4rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.navLink {
+  text-decoration: none;
+}
+
+.navLink:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+  text-decoration-thickness: 0.1rem;
+  text-decoration-color: #000000;
+}
+
+.profileAndLogoutContainer {
+  display: flex;
+  gap: 1rem;
+}

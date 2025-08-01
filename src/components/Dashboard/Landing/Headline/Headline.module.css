@@ -6,7 +6,7 @@
   align-items: flex-start;
   width: 100vw;
   margin: -100px 0 0 calc(-50vw + 50%);
-  padding-top: 100px;
+  padding-top: 70px;
   background: #00684A;
   min-height: calc(80vh + 100px);
 }
@@ -19,7 +19,7 @@
   margin-right: 4rem;
   margin-bottom: 2rem;
   padding: 2rem 2rem;
-  background: linear-gradient(to bottom, #ffffff, #f3f4f6) !important;
+  background: linear-gradient(to bottom, #ffffff, #f3f4f6);
   overflow: hidden;
   position: relative;
 }
@@ -39,12 +39,6 @@
   text-align: center;
 }
 
-.contentCard {
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-}
-
 .globeColumn {
   height: 37.5rem;
   margin-left: 2rem;
@@ -53,22 +47,28 @@
   z-index: 1;
 }
 
+.contentCard {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .subtitle {
   color: #00684A;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
 }
 
 .mainHeadline {
-  color: #000000;
-  font-weight: 500;
   font-size: 2rem;
-  margin-bottom: 1rem;
 }
 
 .subHeadline {
-  color: #5C6C75;
-  margin-bottom: 1.5rem;
+  color: darkslategray;
+}
+
+.ctaButton{
+  border-radius: 20px;
 }
 
 @media (min-height: 1200px) {
@@ -93,6 +93,7 @@
     justify-content: center;
     height: auto;
     min-height: 35rem;
+    gap: 1rem;
   }
 
   .contentColumn {
@@ -112,17 +113,14 @@
 
   .mainHeadline {
     font-size: 2.8rem;
-    margin-bottom: 1.5rem;
   }
 
   .subtitle {
     font-size: 1.4rem;
-    margin-bottom: 1.5rem;
   }
 
   .subHeadline {
     font-size: 1.2rem;
-    margin-bottom: 2.5rem;
     line-height: 1.7;
   }
 }
