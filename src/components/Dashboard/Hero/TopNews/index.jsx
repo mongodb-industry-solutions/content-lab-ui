@@ -70,7 +70,10 @@ export default function TopNews() {
       </Body>
 
       {isLoading ? (
-        <Loading />
+        <div className={styles.contentGrid}>
+          <NewsCard article={fallbackNews[0]} currentIndex={0} />
+          <MetricsChart article={fallbackNews[0]} />
+        </div>
       ) : (
         <div className={`${styles.contentGrid} ${isVisible ? styles.visible : styles.hidden}`}>
           <NewsCard article={news[currentIndex]} currentIndex={currentIndex} />

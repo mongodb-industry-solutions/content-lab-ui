@@ -8,9 +8,12 @@
  */
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
+import { H3, Body } from '@leafygreen-ui/typography';
+import InfoWizard from '@/components/external/InfoWizard';
 import { fetchSuggestedTopics } from '@/api/suggestions_api';
 import { analyzeQuery } from '@/api/search_api';
 import { debounce, areRequestsEqual } from '@/utils/generalUtils';
+import { SUGGESTIONS_INFO_WIZARD } from '@/utils/constants';
 import Search from "@/components/Dashboard/Topics/Search";
 import Suggestions from "@/components/Dashboard/Topics/Suggestions";
 import styles from "./Topics.module.css";
@@ -22,6 +25,7 @@ export default function Topics () {
   const [isLoading, setIsLoading] = useState(false);
   const [isSearchLoading, setIsSearchLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [openHelpModal, setOpenHelpModal] = useState(false);
   const lastRequestRef = useRef({ query: '', label: 'general' });
 
   const fetchFilteredTopics = async (query, label) => {
@@ -80,6 +84,22 @@ export default function Topics () {
     fetchFilteredTopics(searchQuery, label);
   }, [searchQuery]);
 
+  // Generate status text based on current search state
+  const getStatusText = () => {
+    const categoryName = selectedLabel === 'general' ? 'All Categories' : 
+      selectedLabel.charAt(0).toUpperCase() + selectedLabel.slice(1);
+    
+    if (searchQuery && searchQuery.trim() !== '') {
+      return `Search results for "${searchQuery}" in ${categoryName}`;
+    }
+    
+    if (selectedLabel === 'general') {
+      return 'Suggested topics from all categories';
+    }
+    
+    return `Suggested topics in ${categoryName}`;
+  };
+
   // Initial load on component mount
   useEffect(() => {
     fetchFilteredTopics('', '');
@@ -88,14 +108,44 @@ export default function Topics () {
   return (
     <div className={styles.topicsContainer}>
       
+      {/* Header Section */}
+      <div className={styles.headerSection}>
+        <div className={styles.titleWithInfo}>
+          <H3 className={styles.mainTitle}>
+            Discover Trending Topics
+          </H3>
+          <InfoWizard
+            open={openHelpModal}
+            setOpen={setOpenHelpModal}
+            tooltipText="Learn about our data sources and AI search"
+            iconGlyph="Wizard"
+            sections={SUGGESTIONS_INFO_WIZARD}
+          />
+        </div>
+        <Body className={styles.subtitle}>
+          Discover what's trending and get started with your draft in one click.
+        </Body>
+      </div>
+
+      {/* Search Section */}
+      <Search 
+        onSearchSubmit={handleSearchSubmit}
+        onLabelChange={handleLabelChange}
+        searchQuery={searchQuery}
+        selectedLabel={selectedLabel}
+      />
+
+      {/* Divider Line */}
+      <div className={styles.dividerLine}></div>
+      
       {/* Content */}
       <div className={styles.content}>
-        <Search 
-          onSearchSubmit={handleSearchSubmit}
-          onLabelChange={handleLabelChange}
-          searchQuery={searchQuery}
-          selectedLabel={selectedLabel}
-        />
+        <div className={styles.statusIndicator}>
+          <Body className={styles.statusText}>
+            {getStatusText()}
+          </Body>
+        </div>
+        
         <Suggestions 
           topics={topics}
           isLoading={isLoading}

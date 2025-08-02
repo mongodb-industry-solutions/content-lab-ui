@@ -2,6 +2,9 @@
 
 .topNewsWrapper {
   width: 100%;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
   padding: 2rem;
   border: 1px solid rgba(0, 0, 0, 0.8);
   border-radius: 24px;
@@ -49,6 +52,7 @@
 
 @media (min-height: 1200px) {
   .topNewsWrapper {
+    min-height: 500px;
     padding: 3rem;
     border-radius: 28px;
   }
