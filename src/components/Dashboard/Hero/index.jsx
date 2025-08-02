@@ -14,6 +14,7 @@ import ViralPosts from './ViralPosts';
 import styles from './Hero.module.css';
 import DotBackground from '@/components/external/DotBackground';
 import { GradientBackground } from '@/components/external/GradientBackground';
+import Icon from '@leafygreen-ui/icon';
 
 export default function Hero() {
   return (
@@ -42,6 +43,7 @@ export default function Hero() {
                   size="large"
                   variant="primary"
                   className={styles.ctaButton}
+                  rightGlyph={<Icon glyph="Sparkle" />}
                 >
                   Browse Topics
                 </Button>
@@ -52,6 +54,7 @@ export default function Hero() {
                   size="large"
                   variant="default"
                   className={styles.ctaButton}
+                  rightGlyph={<Icon glyph="Cursor" />}
                 >
                   My Drafts
                 </Button>

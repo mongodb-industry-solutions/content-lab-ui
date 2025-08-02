@@ -6,7 +6,6 @@
  */
 
 import React from 'react';
-import { H3 } from '@leafygreen-ui/typography';
 import Badge from '@leafygreen-ui/badge';
 import {
   AreaChart,

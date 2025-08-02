@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: flex-start;
   width: 100%;
+  padding: 2rem 0;
 }
 
 .container {
@@ -15,17 +16,83 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50vw;
+  width: 100%;
+  max-width: 800px;
   box-sizing: border-box;
 }
 
+.searchRow {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  align-items: end;
+}
+
+.searchWrapper {
+  flex: 1;
+  min-width: 300px;
+}
+
+.comboboxWrapper {
+  flex: 0 0 200px;
+  min-width: 200px;
+}
+
 /* Responsive design */
+@media (max-width: 768px) {
+  .searchRow {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  
+  .searchWrapper {
+    flex: none;
+    width: 100%;
+    min-width: auto;
+    order: 1;
+  }
+  
+  .comboboxWrapper {
+    flex: none;
+    width: 100%;
+    min-width: auto;
+    order: 2;
+  }
+  
+  .container {
+    padding: 0 2rem;
+  }
+  
+  .searchSection {
+    padding: 1.5rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .searchSection {
+    padding: 1rem 0;
+  }
+  
+  .searchRow {
+    gap: 0.75rem;
+  }
+}
+
 @media (min-height: 1200px) {
   .searchSection {
-    padding-bottom: 2rem;
+    padding: 3rem 0;
   }
 
   .container {
-    width: 40vw;
+    max-width: 900px;
+  }
+  
+  .searchRow {
+    gap: 1.5rem;
   }
 }
