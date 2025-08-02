@@ -30,6 +30,7 @@ const User = ({ user = null, isSelectedUser = false, setOpen, setLocalSelectedUs
                     width={100}
                     height={100}
                     style={{ width: '100%', height: 'auto' }}
+                    priority
                 />
                 <Body className={styles.userName}>{user.name}</Body>
                 <Body baseFontSize={13} weight="medium" className={styles.userDescription}>

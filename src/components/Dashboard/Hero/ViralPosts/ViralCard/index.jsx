@@ -35,8 +35,8 @@ export default function ViralCard({ viralPost }) {
   const relativeTimestamp = getRelativeTime(created_at);
 
   return (
-    <Card key={_id} className={styles.tweetCard}>
-      <div className={styles.tweetHeader}>
+    <Card key={_id} className={styles.redditCard}>
+      <div className={styles.redditHeader}>
         <Image 
           src={avatar}
           alt={subreddit}
@@ -55,9 +55,9 @@ export default function ViralCard({ viralPost }) {
         )}
       </div>
 
-      <Body className={styles.tweetContent}>{title}</Body>
+      <Body className={styles.redditContent}>{title}</Body>
 
-      <div className={styles.tweetStats}>
+      <div className={styles.redditStats}>
         <div className={styles.stat}>
           <Icon glyph="Highlight" className={styles.statIcon} />
           <Body className={styles.statText}>{comments.toLocaleString()}</Body>

@@ -6,7 +6,6 @@
 
 import Card from "@leafygreen-ui/card";
 import styles from "./RecQueries.module.css";
-import GradientText from "@/components/external/GradientText";
 
 const RecQueries = ({ onQuerySelect, selectedCategory = "general" }) => {
   const queriesPerCategory = {
@@ -70,9 +69,7 @@ const RecQueries = ({ onQuerySelect, selectedCategory = "general" }) => {
             className={styles.recQueryCard}
             onClick={() => handleQueryClick(query)}
           >
-            <GradientText className={styles.recQueryText}>
-              {query}
-            </GradientText>
+            <span className={styles.recQueryText}>{query}</span>
           </Card>
         ))}
       </div>

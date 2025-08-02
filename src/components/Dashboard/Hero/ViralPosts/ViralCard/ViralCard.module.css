@@ -1,0 +1,178 @@
+/* ViralCard.module.css */
+
+.redditCard {
+  width: 380px;
+  height: 280px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.redditCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.redditHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  gap: 0.75rem;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.authorInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.nameContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.handle {
+  margin: 0;
+  color: #0f1419;
+}
+
+.username,
+.timestamp {
+  margin: 0;
+  color: #536471;
+  font-size: 0.9rem;
+}
+
+.timestamp {
+  margin-left: auto;
+}
+
+.redditContent {
+  margin: 1rem 0;
+  color: #0f1419;
+  line-height: 1.5;
+  flex: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  line-clamp: 6;
+  -webkit-box-orient: vertical;
+}
+
+.redditStats {
+  display: flex;
+  gap: 1.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #f7f9fa;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.statIcon {
+  width: 16px;
+  height: 16px;
+  color: #536471;
+}
+
+.statText {
+  margin: 0;
+  color: #536471;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .redditCard {
+    width: 300px;
+    height: 240px;
+    padding: 1.25rem;
+  }
+  
+  .avatar {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .handle {
+    font-size: 0.9rem;
+  }
+  
+  .username,
+  .timestamp {
+    font-size: 0.8rem;
+  }
+  
+  .redditContent {
+    font-size: 0.9rem;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+  }
+  
+  .statText {
+    font-size: 0.8rem;
+  }
+  
+  .statIcon {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .redditCard {
+    width: 260px;
+    height: 220px;
+    padding: 1rem;
+  }
+  
+  .avatar {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .redditHeader {
+    margin-bottom: 0.5rem;
+    gap: 0.5rem;
+  }
+  
+  .handle {
+    font-size: 0.85rem;
+  }
+  
+  .username,
+  .timestamp {
+    font-size: 0.75rem;
+  }
+  
+  .redditContent {
+    font-size: 0.85rem;
+    margin: 0.75rem 0;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+  }
+  
+  .redditStats {
+    gap: 1rem;
+    padding-top: 0.5rem;
+  }
+  
+  .statText {
+    font-size: 0.75rem;
+  }
+  
+  .statIcon {
+    width: 12px;
+    height: 12px;
+  }
+}

@@ -1,13 +1,5 @@
 /* GradientBackground.module.css */
 
 .gradientBackground {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -10;
-  background-color: white;
+  position: absolute;
 } 

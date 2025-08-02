@@ -54,10 +54,8 @@ export default function Layout({ children }) {
       <header className={styles.header}>
         <Navbar onLogout={handleLogout} />
       </header>
-      <main className={styles.main}>
-        <div className={styles.container}>
-          {children}
-        </div>
+      <main>
+        {children}
       </main>
     </div>
   );
