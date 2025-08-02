@@ -12,6 +12,7 @@ import styles from "./Search.module.css";
 
 const Search = ({ 
   onSearchSubmit, 
+  onSearchQueryChange,
   onLabelChange, 
   searchQuery, 
   selectedLabel 
@@ -70,15 +71,13 @@ const Search = ({
     setLocalSearchQuery(searchQuery);
   }, [searchQuery]);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (onSearchSubmit) {
-      onSearchSubmit(localSearchQuery.trim());
-    }
-  };
-
   const handleInputChange = (e) => {
-    setLocalSearchQuery(e.target.value);
+    const value = e.target.value;
+    setLocalSearchQuery(value);
+    // Sync parent state 
+    if (onSearchQueryChange) {
+      onSearchQueryChange(value);
+    }
   };
 
   const handleCategoryChange = (value) => {
@@ -94,6 +93,16 @@ const Search = ({
     }
   };
 
+  // Handle key press to submit custom queries
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      if (localSearchQuery.trim() && onSearchSubmit) {
+        onSearchSubmit(localSearchQuery.trim());
+      }
+    }
+  };
+
   return (
     <section className={styles.searchSection}>
       <div className={styles.container}>
@@ -105,20 +114,21 @@ const Search = ({
               placeholder="Search for topics..."
               value={localSearchQuery}
               onChange={handleInputChange}
-              onSubmit={handleSearch}
+              onKeyPress={handleKeyPress}
               size="default"
             >
-              <SearchResultGroup label="Recommended Queries">
-                {currentQueries.map((query, index) => (
-                  <SearchResult
-                    key={index}
-                    onClick={() => handleSearchResultClick(query)}
-                    description={`Click to search for ${query.toLowerCase()}`}
-                  >
-                    {query}
-                  </SearchResult>
-                ))}
-              </SearchResultGroup>
+              {localSearchQuery.length === 0 && (
+                <SearchResultGroup label="Recommended Queries">
+                  {currentQueries.map((query, index) => (
+                    <SearchResult
+                      key={index}
+                      onClick={() => handleSearchResultClick(query)}
+                    >
+                      {query}
+                    </SearchResult>
+                  ))}
+                </SearchResultGroup>
+              )}
             </SearchInput>
           </div>
 

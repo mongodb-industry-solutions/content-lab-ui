@@ -72,6 +72,11 @@ export default function Topics () {
     []
   );
 
+  // Handle search input changes (sync parent state with input)
+  const handleSearchQueryChange = useCallback((query) => {
+    setSearchQuery(query);
+  }, []);
+
   // Handle search submission (Enter key)
   const handleSearchSubmit = useCallback((query) => {
     setSearchQuery(query);
@@ -130,6 +135,7 @@ export default function Topics () {
       {/* Search Section */}
       <Search 
         onSearchSubmit={handleSearchSubmit}
+        onSearchQueryChange={handleSearchQueryChange}
         onLabelChange={handleLabelChange}
         searchQuery={searchQuery}
         selectedLabel={selectedLabel}
