@@ -2,7 +2,6 @@
  * Clean gradient background component
  */
 
-import { useMobile } from "@/hooks/useMobile";
 import styles from "./GradientBackground.module.css";
 
 // Main gradient background component

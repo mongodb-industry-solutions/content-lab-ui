@@ -13,10 +13,9 @@ import { analyzeQuery } from '@/api/search_api';
 import { debounce, areRequestsEqual } from '@/utils/generalUtils';
 import Search from "@/components/Dashboard/Topics/Search";
 import Suggestions from "@/components/Dashboard/Topics/Suggestions";
-import { GradientBackground } from "@/components/external/GradientBackground";
 import styles from "./Topics.module.css";
 
-const TopicsContainer = () => {
+export default function Topics () {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedLabel, setSelectedLabel] = useState('general');
   const [topics, setTopics] = useState([]);
@@ -88,7 +87,6 @@ const TopicsContainer = () => {
 
   return (
     <div className={styles.topicsContainer}>
-      <GradientBackground />
       
       {/* Content */}
       <div className={styles.content}>
@@ -108,5 +106,3 @@ const TopicsContainer = () => {
     </div>
   );
 };
-
-export default TopicsContainer; 
