@@ -5,79 +5,21 @@
  * Uses LeafyGreen SearchInput and Combobox components
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { SearchInput, SearchResult, SearchResultGroup } from '@leafygreen-ui/search-input';
 import { Combobox, ComboboxOption } from '@leafygreen-ui/combobox';
+import { CONTENT_CATEGORIES, CATEGORY_DISPLAY_NAMES, QUERIES_PER_CATEGORY } from '@/constants/categories';
 import styles from "./Search.module.css";
 
-const Search = ({ 
+export default function Search({ 
   onSearchSubmit, 
   onLabelChange, 
-  selectedLabel,
-  searchQuery = '',
-  onSearchQueryChange = null
-}) => {
-  const [localSearchQuery, setLocalSearchQuery] = useState(searchQuery);
-
-  // Recommended queries per category for SearchResults
-  const queriesPerCategory = {
-    "general": [
-      "Trending topics today",
-      "Popular viral content",
-      "Breaking news stories"
-    ],
-    "technology": [
-      "Latest tech innovations",
-      "AI and machine learning trends",
-      "Cybersecurity updates"
-    ],
-    "health": [
-      "Mental health awareness",
-      "Latest medical breakthroughs",
-      "Wellness and fitness trends"
-    ],
-    "sports": [
-      "Major league updates",
-      "Olympic news and records",
-      "Player transfers and trades"
-    ],
-    "politics": [
-      "Election campaigns",
-      "Policy changes and reforms",
-      "International relations"
-    ],
-    "science": [
-      "Climate change research",
-      "Space exploration updates",
-      "Scientific discoveries"
-    ],
-    "business": [
-      "Market trends and analysis",
-      "Startup funding news",
-      "Economic policy impact"
-    ],
-    "entertainment": [
-      "Celebrity news and updates",
-      "Movie and TV show releases",
-      "Music industry trends"
-    ]
-  };
-
+  selectedLabel
+}) {
+  const [inputValue, setInputValue] = useState('');
+  
   // Get current category queries
-  const currentQueries = queriesPerCategory[selectedLabel] || queriesPerCategory["general"];
-
-  const handleInputChange = (e) => {
-    const value = e.target.value;
-    setLocalSearchQuery(value);
-    if (onSearchQueryChange) {
-      onSearchQueryChange(value);
-    }
-  };
-
-  // Update local state when searchQuery prop changes
-  useEffect(() => {
-    setLocalSearchQuery(searchQuery);
-  }, [searchQuery]);
+  const currentQueries = QUERIES_PER_CATEGORY[selectedLabel] || QUERIES_PER_CATEGORY["general"];
 
   const handleCategoryChange = (value) => {
     if (onLabelChange) {
@@ -85,20 +27,26 @@ const Search = ({
     }
   };
 
-  const handleSearchResultClick = (query) => {
-    setLocalSearchQuery(query);
-    if (onSearchSubmit) {
-      onSearchSubmit(query);
+  const handleSearchSubmit = (query) => {
+    if (onSearchSubmit && query.trim()) {
+      onSearchSubmit(query.trim());
     }
+  };
+
+  const handleSearchResultClick = (query) => {
+    setInputValue(query);
+    handleSearchSubmit(query);
+  };
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
   };
 
   // Handle key press to submit custom queries
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      if (localSearchQuery.trim() && onSearchSubmit) {
-        onSearchSubmit(localSearchQuery.trim());
-      }
+      handleSearchSubmit(inputValue);
     }
   };
 
@@ -111,13 +59,13 @@ const Search = ({
             <SearchInput
               aria-label="Search for topics"
               placeholder="Search for topics..."
-              value={localSearchQuery}
+              value={inputValue}
               onChange={handleInputChange}
               onKeyPress={handleKeyPress}
               size="large"
               className={styles.customInput}
             >
-              {localSearchQuery.length === 0 && (
+              {!inputValue.trim() && (
                 <SearchResultGroup label="Recommended Queries">
                   {currentQueries.map((query, index) => (
                     <SearchResult
@@ -142,14 +90,13 @@ const Search = ({
               clearable={false}
               className={styles.customInput}
             >
-              <ComboboxOption value="general" displayName="All" />
-              <ComboboxOption value="technology" displayName="Technology" />
-              <ComboboxOption value="health" displayName="Health" />
-              <ComboboxOption value="sports" displayName="Sports" />
-              <ComboboxOption value="politics" displayName="Politics" />
-              <ComboboxOption value="science" displayName="Science" />
-              <ComboboxOption value="business" displayName="Business" />
-              <ComboboxOption value="entertainment" displayName="Entertainment" />
+              {CONTENT_CATEGORIES.map((category) => (
+                <ComboboxOption 
+                  key={category}
+                  value={category} 
+                  displayName={CATEGORY_DISPLAY_NAMES[category]} 
+                />
+              ))}
             </Combobox>
           </div>
         </div>
@@ -157,5 +104,3 @@ const Search = ({
     </section>
   );
 };
-
-export default Search;

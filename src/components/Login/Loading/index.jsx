@@ -7,7 +7,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import styles from './Loading.module.css';
 import Card from '@leafygreen-ui/card';
 
-const Loading = () => {
+export default function Loading() {
     return (
         <div className={styles.container}>
             <Card className={styles.loadingCard}>
@@ -22,5 +22,3 @@ const Loading = () => {
         </div>
     );
 };
-
-export default Loading; 

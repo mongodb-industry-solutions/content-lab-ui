@@ -1,13 +1,12 @@
-/* Drafts.module.css */
+/* DesktopDrafts.module.css */
 
-/* Full page grid background */
 .pageBackground {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #fafafa; /* Very light gray base */
+  background-color: #fafafa; 
   background-image: 
     linear-gradient(rgba(156, 153, 153, 0.2) 1px, transparent 1px),
     linear-gradient(90deg, rgba(156, 153, 153, 0.2) 1px, transparent 1px);

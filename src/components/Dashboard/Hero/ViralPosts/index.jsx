@@ -12,7 +12,7 @@ import ViralCard from './ViralCard';
 import Loading from '../Loading';
 import { fetchRedditPosts } from '@/api/reddit_api';
 import styles from './ViralPosts.module.css';
-import { fallbackViralPosts } from '@/utils/constants';
+import { fallbackViralPosts } from '@/constants/fallbacks';
 
 export default function ViralPosts() {
   const [viralPosts, setViralPosts] = useState([]);

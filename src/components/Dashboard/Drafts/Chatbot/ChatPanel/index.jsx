@@ -9,7 +9,7 @@ import { Body } from '@leafygreen-ui/typography';
 import Button from '@leafygreen-ui/button';
 import styles from './ChatPanel.module.css';
 import Icon from '@leafygreen-ui/icon';
-import { WRITING_TOOLS } from '@/utils/constants';
+import { WRITING_TOOLS } from '@/constants/users';
 
 export default function ChatPanel({ onActionSelect }) {
     const handleActionClick = (action) => {

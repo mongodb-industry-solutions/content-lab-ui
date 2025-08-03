@@ -14,7 +14,7 @@ import Icon from '@leafygreen-ui/icon';
 
 import styles from './UserProfile.module.css';
 
-const UserProfile = ({ onClose }) => {
+export default function UserProfile({ onClose }) {
     const [selectedUser, setSelectedUser] = useState(null);
     const [userProfile, setUserProfile] = useState(null);
 
@@ -96,5 +96,3 @@ const UserProfile = ({ onClose }) => {
         </div>
     );
 };
-
-export default UserProfile;

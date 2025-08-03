@@ -6,9 +6,11 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { H2, Body } from '@leafygreen-ui/typography';
 import DraftCard from './DraftCard';
 import Button from '@leafygreen-ui/button';
+import Icon from '@leafygreen-ui/icon';
 import { fetchUserDrafts, deleteDraft } from '@/api/drafts_api';
 import styles from './Saved.module.css';
 
@@ -78,14 +80,16 @@ export default function Saved() {
           <Body className={styles.emptyMessage}>
             Start creating content by exploring topics and saving your work. Your drafts will appear here.
           </Body>
-          <Button
-            variant="primary"
-            href="/topics"
-            size="large"
-            baseFontSize="16"
-          >
-            Explore Topics
-          </Button>
+          <Link href="/topics">
+            <Button
+              variant="primary"
+              size="large"
+              baseFontSize="16"
+              rightGlyph={<Icon glyph="Sparkle" />}
+            >
+              Explore Topics
+            </Button>
+          </Link>
         </div>
       );
     }
@@ -104,7 +108,10 @@ export default function Saved() {
   };
 
   return (
-    <section className={styles.savedSection}>
+    <>
+      <div className={styles.pageBackground}></div>
+      
+      <section className={styles.savedSection}>
       {/* Content */}
       <div className={styles.container}>
         <div className={styles.headerSection}>
@@ -119,5 +126,6 @@ export default function Saved() {
         {renderContent()}
       </div>
     </section>
+    </>
   );
 }

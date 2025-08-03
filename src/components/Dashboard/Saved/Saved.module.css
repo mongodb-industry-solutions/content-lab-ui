@@ -1,5 +1,19 @@
 /* Saved.module.css */
 
+.pageBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fafafa;
+  background-image: 
+    linear-gradient(rgba(156, 153, 153, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(156, 153, 153, 0.2) 1px, transparent 1px);
+  background-size: 2.5vw 4vh;
+  z-index: -10;
+}
+
 .savedSection {
   display: flex;
   justify-content: center;

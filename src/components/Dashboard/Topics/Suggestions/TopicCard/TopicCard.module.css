@@ -1,13 +1,13 @@
 /* TopicCard.module.css */
 
 .topicCard {
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  height: 23rem;
-  width: 100%;
-  max-width: 350px;
+  border: 1px solid #c0c0c0;
+  height: 24rem;
+  width: 350px;
   border-radius: 20px;
   padding: 1rem;
   background: linear-gradient(225deg, #ffffff 0%, #fafafa 100%);
+  position: relative;
 }
 
 /* Image Section */
@@ -40,6 +40,12 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .categoryBadge {
@@ -82,6 +88,9 @@
 /* Footer Section */
 .footerSection {
   margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* Responsive design for larger screens */
@@ -94,15 +103,15 @@
   .contentSection {
     gap: 1rem;
   }
-  
+
   .categoryBadge {
     font-size: 0.8rem;
   }
-  
+
   .topicTitle {
     font-size: 1.1rem;
   }
-  
+
   .keyword {
     font-size: 0.8rem;
   }
@@ -122,11 +131,11 @@
   .categoryBadge {
     font-size: 11px;
   }
-  
+
   .topicTitle {
     font-size: 0.9rem;
   }
-  
+
   .keyword {
     font-size: 0.7rem;
     padding: 0.2rem 0.4rem;

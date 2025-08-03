@@ -11,7 +11,7 @@ import Image from 'next/image';
 
 import styles from './User.module.css';
 
-const User = ({ user = null, isSelectedUser = false, setOpen, setLocalSelectedUser = null, shortDescription = null }) => {
+export default function User({ user = null, isSelectedUser = false, setOpen, setLocalSelectedUser = null, shortDescription = null }) {
     const selectUserAndCloseModal = () => {
         if (!setLocalSelectedUser) return;
         setLocalSelectedUser(user);
@@ -40,5 +40,3 @@ const User = ({ user = null, isSelectedUser = false, setOpen, setLocalSelectedUs
         </div>
     );
 };
-
-export default User;

@@ -11,7 +11,7 @@ import { H2, Description, Subtitle } from '@leafygreen-ui/typography';
 import styles from './Login.module.css';
 import User from './User';
 import Loading from './Loading';
-import { USER_MAP } from "@/utils/constants";
+import { USER_MAP } from "@/constants/users";
 import Banner from "@leafygreen-ui/banner";
 import { useRouter } from 'next/navigation';
 import { fetchUserProfile } from "@/api/profile_api";
@@ -105,10 +105,8 @@ const LoginComponent = ({ onUserSelected }) => {
     );
 };
 
-const Login = ({ onUserSelected }) => {
+export default function Login({ onUserSelected }) {
     return (
         <LoginComponent onUserSelected={onUserSelected} />
     );
 };
-
-export default Login;

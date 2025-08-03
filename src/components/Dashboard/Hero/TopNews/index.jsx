@@ -12,7 +12,7 @@ import NewsCard from './NewsCard';
 import MetricsChart from './MetricsChart';
 import { fetchNews } from '@/api/news_api';
 import Loading from '../Loading';
-import { fallbackNews } from '@/utils/constants';
+import { fallbackNews } from '@/constants/fallbacks';
 import styles from './TopNews.module.css';
 
 export default function TopNews() {

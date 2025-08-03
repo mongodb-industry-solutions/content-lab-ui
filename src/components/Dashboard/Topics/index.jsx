@@ -13,14 +13,15 @@ import InfoWizard from '@/components/external/InfoWizard';
 import { fetchSuggestedTopics as fetchSuggestedTopicsAPI } from '@/api/suggestions_api';
 import { analyzeQuery } from '@/api/search_api';
 import { debounce } from '@/utils/generalUtils';
-import { SUGGESTIONS_INFO_WIZARD } from '@/utils/constants';
+import { SUGGESTIONS_INFO_WIZARD } from '@/constants/infowizard';
+import { CONTENT_CATEGORIES } from '@/constants/categories';
 import Search from "@/components/Dashboard/Topics/Search";
 import Suggestions from "@/components/Dashboard/Topics/Suggestions";
 import styles from "./Topics.module.css";
 
 export default function Topics () {
   const [selectedLabel, setSelectedLabel] = useState('general');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [submittedQuery, setSubmittedQuery] = useState('');
   const [suggestedTopics, setSuggestedTopics] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [isLoadingSuggestions, setIsLoadingSuggestions] = useState(false);
@@ -29,14 +30,23 @@ export default function Topics () {
   const [openHelpModal, setOpenHelpModal] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
 
-  // Fetch suggested topics (always available for carousels)
+  // Fetch suggested topics for all categories
   const fetchSuggestedTopics = async () => {
     setIsLoadingSuggestions(true);
     setError(null);
     
     try {
-      const topics = await fetchSuggestedTopicsAPI();
-      setSuggestedTopics(topics);
+      // Fetch topics for each category
+      const topicsPromises = CONTENT_CATEGORIES.map(category => 
+        fetchSuggestedTopicsAPI(category)
+      );
+      
+      const topicsArrays = await Promise.all(topicsPromises);
+      
+      // Flatten all topics into a single array
+      const allTopics = topicsArrays.flat();
+      
+      setSuggestedTopics(allTopics);
     } catch (err) {
       setError('Failed to load suggested topics. Please try again.');
     } finally {
@@ -69,10 +79,12 @@ export default function Topics () {
   const handleSearchSubmit = useCallback((query) => {
     if (query.trim()) {
       setIsSearchActive(true);
+      setSubmittedQuery(query.trim());
       debouncedSearch(query, selectedLabel);
     } else {
       setIsSearchActive(false);
       setSearchResults([]);
+      setSubmittedQuery('');
     }
   }, [selectedLabel, debouncedSearch]);
 
@@ -80,7 +92,7 @@ export default function Topics () {
   const handleBackToSuggestions = useCallback(() => {
     setIsSearchActive(false);
     setSearchResults([]);
-    setSearchQuery('');
+    setSubmittedQuery('');
   }, []);
 
   // Handle search query changes
@@ -99,10 +111,7 @@ export default function Topics () {
   }, []);
 
   return (
-    <>
-      {/* Full page gray background */}
-      <div className={styles.pageBackground} />
-      
+    <div className={styles.topicsContainer}>
       {/* Header wrapper with glow effect */}
       <div className={styles.headerWrapper}>
         {/* Header and search section */}
@@ -130,8 +139,6 @@ export default function Topics () {
             onSearchSubmit={handleSearchSubmit}
             onLabelChange={handleLabelChange}
             selectedLabel={selectedLabel}
-            searchQuery={searchQuery}
-            onSearchQueryChange={handleSearchQueryChange}
           />
         </div>
       </div>
@@ -146,9 +153,10 @@ export default function Topics () {
             isSearchActive={isSearchActive}
             error={error}
             onBackToSuggestions={handleBackToSuggestions}
+            searchQuery={submittedQuery}
           />
         </div>
       </div>
-    </>
+    </div>
   );
 };

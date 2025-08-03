@@ -11,7 +11,7 @@ import Sidebar from './Sidebar';
 import RichTextEditor from './RichTextEditor';
 import styles from './EditorPanel.module.css';
 
-const EditorPanel = forwardRef(({ metadata, onMetadataChange, topicCard }, ref) => {
+const EditorPanel = forwardRef(({ metadata, onMetadataChange, topicCard, isMobile = false }, ref) => {
     const editorRef = useRef(null);
 
     useImperativeHandle(ref, () => ({
@@ -31,15 +31,18 @@ const EditorPanel = forwardRef(({ metadata, onMetadataChange, topicCard }, ref) 
     }
 
     return (
-        <Card className={styles.editorPanel}>
+        <Card className={`${styles.editorPanel} ${isMobile ? styles.mobileEditor : ''}`}>
             <div className={styles.container}>
-                <div className={styles.sidebar}>
-                    <Sidebar 
-                        topicCard={topicCard} 
-                        metadata={metadata}
-                        onMetadataChange={onMetadataChange}
-                    />
-                </div>
+                {!isMobile && (
+                    <div className={styles.sidebar}>
+                        <Sidebar 
+                            topicCard={topicCard} 
+                            metadata={metadata}
+                            onMetadataChange={onMetadataChange}
+                            isMobile={false}
+                        />
+                    </div>
+                )}
                 <div className={styles.textEditor}>
                     <RichTextEditor ref={editorRef} />
                 </div>

@@ -7,9 +7,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { Body, H3 } from '@leafygreen-ui/typography';
+import { CONTENT_CATEGORIES } from '@/constants/categories';
 import TopicCard from '@/components/Dashboard/Topics/Suggestions/TopicCard';
 import Carousel from '@/components/external/Carousel';
-import { groupTopicsByCategory, getCategoryDisplayName } from '@/utils/generalUtils';
 import Loading from './Loading';
 import styles from './Suggestions.module.css';
 
@@ -20,7 +20,8 @@ export default function Suggestions({
   isLoadingSearch = false, 
   isSearchActive = false,
   error = null,
-  onBackToSuggestions = null
+  onBackToSuggestions = null,
+  searchQuery = ""
 }) {
   const [itemsPerView, setItemsPerView] = useState(3);
   const [carouselGap, setCarouselGap] = useState(16);
@@ -48,155 +49,122 @@ export default function Suggestions({
     return () => window.removeEventListener('resize', updateLayout);
   }, []);
 
-  // Show loading state
-  if (isLoadingSuggestions || isLoadingSearch) {
-    return (
-      <section className={styles.suggestionsSection}>
-        <div className={styles.stackedCards}>
-          <div className={styles.stackedCard4}></div>
-          <div className={styles.stackedCard3}></div>
-          <div className={styles.stackedCard2}></div>
-          <div className={styles.container}>
-            <Loading isSearchLoading={isLoadingSearch} />
+  // Helper function to render the title section
+  const renderTitleSection = () => {
+    if (isSearchActive && searchQuery) {
+      return (
+        <>
+          <div className={styles.title}>
+            <H3 className={styles.titleHeading}>Search Results</H3>
+            <Body className={styles.titleSubtext}>
+              Showing results for "{searchQuery}"
+            </Body>
           </div>
-        </div>
-      </section>
-    );
-  }
-
-  // Show error state
-  if (error) {
-    return (
-      <section className={styles.suggestionsSection}>
-        <div className={styles.stackedCards}>
-          <div className={styles.stackedCard4}></div>
-          <div className={styles.stackedCard3}></div>
-          <div className={styles.stackedCard2}></div>
-          <div className={styles.container}>
-            <div className={styles.errorContainer}>
-              <Body className={styles.errorMessage}>
-                {error}
-              </Body>
-            </div>
+          <div className={styles.titleDivider}></div>
+        </>
+      );
+    }
+    
+    if (!isSearchActive && suggestedTopics.length > 0) {
+      return (
+        <>
+          <div className={styles.title}>
+            <H3 className={styles.titleHeading}>Featured Content</H3>
+            <Body className={styles.titleSubtext}>
+              Curated topics based on current trends and interests
+            </Body>
           </div>
-        </div>
-      </section>
-    );
-  }
+          <div className={styles.titleDivider}></div>
+        </>
+      );
+    }
+    
+    return null;
+  };
 
-  // Show search results in grid layout
-  if (isSearchActive && searchResults.length > 0) {
-    return (
-      <section className={styles.suggestionsSection}>
-        <div className={styles.stackedCards}>
-          <div className={styles.stackedCard4}></div>
-          <div className={styles.stackedCard3}></div>
-          <div className={styles.stackedCard2}></div>
-          <div className={styles.container}>
+  // Helper function to render main content
+  const renderMainContent = () => {
+    // Loading state
+    if (isLoadingSuggestions || isLoadingSearch) {
+      return <Loading isSearchLoading={isLoadingSearch} />;
+    }
+
+    // Error or empty message helper
+    const renderMessage = (text) => (
+      <div className={styles.message}>
+        <Body>{text}</Body>
+      </div>
+    );
+
+    // Combined error/empty state check
+    if (error || !suggestedTopics || suggestedTopics.length === 0) {
+      const message = error || "No suggested topics available.";
+      return renderMessage(message);
+    }
+
+    // Search results
+    if (isSearchActive) {
+      if (searchResults.length > 0) {
+        return (
+          <>
+            {renderTitleSection()}
             {onBackToSuggestions && (
-              <div className={styles.backButtonContainer}>
-                <button 
-                  onClick={onBackToSuggestions}
-                  className={styles.backButton}
-                >
-                  ← Back to Suggestions
-                </button>
-              </div>
+              <button onClick={onBackToSuggestions} className={styles.backButton}>
+                ← Back to Suggestions
+              </button>
             )}
-            <div className={styles.topicsGrid}>
+            <div className={styles.grid}>
               {searchResults.map((topicCard, index) => (
-                <TopicCard 
-                  key={topicCard._id} 
-                  topicCard={topicCard} 
-                  index={index}
-                />
+                <TopicCard key={`${topicCard._id || 'search'}-${index}`} topicCard={topicCard} index={index} />
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  // Show empty state for search with no results (only if not loading)
-  if (isSearchActive && searchResults.length === 0 && !isLoadingSearch) {
-    return (
-      <section className={styles.suggestionsSection}>
-        <div className={styles.stackedCards}>
-          <div className={styles.stackedCard4}></div>
-          <div className={styles.stackedCard3}></div>
-          <div className={styles.stackedCard2}></div>
-          <div className={styles.container}>
+          </>
+        );
+      } else if (!isLoadingSearch) {
+        // Empty search results
+        return (
+          <>
+            {renderTitleSection()}
             {onBackToSuggestions && (
-              <div className={styles.backButtonContainer}>
-                <button 
-                  onClick={onBackToSuggestions}
-                  className={styles.backButton}
-                >
-                  ← Back to Suggestions
-                </button>
-              </div>
+              <button onClick={onBackToSuggestions} className={styles.backButton}>
+                ← Back to Suggestions
+              </button>
             )}
-            <div className={styles.emptyContainer}>
-              <Body className={styles.emptyMessage}>
-                No topics found. Try adjusting your search or filter criteria.
-              </Body>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
+            {renderMessage("No topics found. Try adjusting your search or filter criteria.")}
+          </>
+        );
+      }
+    }
 
-  // Show empty state if no suggested topics
-  if (!suggestedTopics || suggestedTopics.length === 0) {
+    // Category carousels
     return (
-      <section className={styles.suggestionsSection}>
-        <div className={styles.stackedCards}>
-          <div className={styles.stackedCard4}></div>
-          <div className={styles.stackedCard3}></div>
-          <div className={styles.stackedCard2}></div>
-          <div className={styles.container}>
-            <div className={styles.emptyContainer}>
-              <Body className={styles.emptyMessage}>
-                No suggested topics available.
-              </Body>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  // Group suggested topics by category and show in carousels
-  const topicsByCategory = groupTopicsByCategory(suggestedTopics);
-
-  return (
-    <section className={styles.suggestionsSection}>
-      <div className={styles.stackedCards}>
-        <div className={styles.stackedCard4}></div>
-        <div className={styles.stackedCard3}></div>
-        <div className={styles.stackedCard2}></div>
-        <div className={styles.container}>
-          {Object.entries(topicsByCategory).map(([category, categoryTopics]) => (
-            <div key={category} className={styles.categorySection}>
-              <H3 className={styles.categoryTitle}>
-                {getCategoryDisplayName(category)}
+      <>
+        {renderTitleSection()}
+        {CONTENT_CATEGORIES.map((category) => {
+          const categoryTopics = suggestedTopics.filter(topic => topic.label === category);
+          
+          return (
+            <div key={category} className={styles.category}>
+              <H3 className={styles.categoryHeading}>
+                {category.charAt(0).toUpperCase() + category.slice(1)}
               </H3>
-              <Carousel
-                itemsPerView={itemsPerView}
-                gap={carouselGap}
-              >
-                {categoryTopics.map((topicCard, index) => (
-                  <TopicCard 
-                    key={topicCard._id} 
-                    topicCard={topicCard} 
-                    index={index}
-                  />
+              <Carousel itemsPerView={itemsPerView} gap={carouselGap}>
+                {categoryTopics.map((topicCard, cardIndex) => (
+                  <TopicCard key={`${topicCard._id || 'topic'}-${cardIndex}`} topicCard={topicCard} index={cardIndex} />
                 ))}
               </Carousel>
             </div>
-          ))}
+          );
+        })}
+      </>
+    );
+  };
+
+  return (
+    <section className={styles.section}>
+      <div className={styles.wrapper}>
+        <div className={styles.content}>
+          {renderMainContent()}
         </div>
       </div>
     </section>

@@ -20,7 +20,8 @@ export default function Chatbot({
     applyDraftLayout, 
     applySuggestion,
     userProfile,
-    topicCard
+    topicCard,
+    isMobile = false
 }) {
     // Use custom hook for all chatbot logic
     const {
@@ -35,7 +36,7 @@ export default function Chatbot({
     } = useChatbot(getDraftContent, userProfile, topicCard);
 
     return (
-        <Card className={styles.copilot}>
+        <Card className={`${styles.copilot} ${isMobile ? styles.mobileChatbot : ''}`}>
             <div className={styles.copilotContent}>
                 <ChatHeader />
                 

@@ -7,8 +7,8 @@
     flex-direction: column;
     background-color: #F9FBFA;
     overflow: hidden;
-    box-shadow: none !important;
-    border: 1px solid #C1C7C6;
+    box-shadow: none;
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .copilotContent {
@@ -27,13 +27,21 @@
 
 .panelSection {
     padding: 1rem;
-    border-top: 1px solid #e5e7eb;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
     background: #fafbfc;
 }
 
 .chatbotSection {
     margin-top: auto;
     flex-shrink: 0;
+}
+
+/* Mobile styles */
+.mobileChatbot {
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    height: 100%;
 }
 
  
