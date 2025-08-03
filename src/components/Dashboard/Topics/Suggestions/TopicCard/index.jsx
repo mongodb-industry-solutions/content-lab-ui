@@ -2,46 +2,24 @@
 
 /**
  * Topic card component for the suggestions component
+ * Simplified version with image, category badge, keywords, title and source link only
  */
 
-import React, { useState } from 'react';
-import { H3, Body, Link } from '@leafygreen-ui/typography';
-import Card from '@leafygreen-ui/card';
+import React from 'react';
+import { H3, Link } from '@leafygreen-ui/typography';
 import Badge from '@leafygreen-ui/badge';
-import Button from '@leafygreen-ui/button';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { navigateToDraft } from '@/utils/draftUtils';
 import { getBadgeVariant } from '@/utils/generalUtils';
 import styles from './TopicCard.module.css';
 
 export default function TopicCard({ topicCard, index = 0 }) {
-    const router = useRouter();
-    const [isNavigating, setIsNavigating] = useState(false);
-    
     // topic data with fallbacks
     const {
         topic,
-        keywords,
-        description,
+        keywords = [],
         label,
         url = "https://mongodb.com"
     } = topicCard || {};
-
-    const handleDraft = async () => {
-        if (isNavigating) return; // Prevent multiple clicks
-        
-        setIsNavigating(true);
-        
-        try {
-            await navigateToDraft(topicCard, router);
-        } catch (error) {
-            // Fallback to new draft on error
-            router.push('/drafts');
-        } finally {
-            setIsNavigating(false);
-        }
-    };
 
     const handleSourceClick = () => {
         if (url) {
@@ -50,8 +28,8 @@ export default function TopicCard({ topicCard, index = 0 }) {
     };
 
     return (
-        <Card className={styles.topicCard}>
-            {/* Image Section - 40% */}
+        <div className={styles.topicCard}>
+            {/* Image Section */}
             <div className={styles.imageSection}>
                 <Image 
                     src={`/categories/${label === 'general' ? 'technology' : label}_${index % 4 + 1}.png`}
@@ -63,7 +41,7 @@ export default function TopicCard({ topicCard, index = 0 }) {
                 />
             </div>
 
-            {/* Content Section - 60% */}
+            {/* Content Section */}
             <div className={styles.contentSection}>
                 <div className={styles.headerSection}>
                     <Badge variant={getBadgeVariant(label)} className={styles.categoryBadge}>
@@ -75,20 +53,14 @@ export default function TopicCard({ topicCard, index = 0 }) {
                 </div>
 
                 <div className={styles.keywordsSection}>
-                    {keywords.slice(0, 4).map((keyword, idx) => (
-                        <Badge 
-                            key={idx} 
-                            variant="lightgray" 
-                            className={styles.keywordBadge}
-                        >
-                            {keyword}
-                        </Badge>
-                    ))}
+                    <div className={styles.keywordsList}>
+                        {keywords.slice(0, 4).map((keyword, idx) => (
+                            <span key={idx} className={styles.keyword}>
+                                {keyword}
+                            </span>
+                        ))}
+                    </div>
                 </div>
-
-                <Body className={styles.description}>
-                    {description?.length > 150 ? `${description.substring(0, 150)}...` : description}
-                </Body>
 
                 {/* Footer */}
                 <div className={styles.footerSection}>
@@ -99,19 +71,8 @@ export default function TopicCard({ topicCard, index = 0 }) {
                     >
                         View Source
                     </Link>
-                    
-                    <div className={styles.actionButtons}>
-                        <Button 
-                            size="default" 
-                            variant="primary"
-                            onClick={handleDraft}
-                            disabled={isNavigating}
-                        >
-                            {isNavigating ? 'Loading...' : 'Start Drafting'}
-                        </Button>
-                    </div>
                 </div>
             </div>
-        </Card>
+        </div>
     );
 }

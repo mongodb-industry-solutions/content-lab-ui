@@ -12,14 +12,12 @@ import Link from 'next/link';
 import TopNews from './TopNews';
 import ViralPosts from './ViralPosts';
 import styles from './Hero.module.css';
-import DotBackground from '@/components/external/DotBackground';
 import { GradientBackground } from '@/components/external/GradientBackground';
 import Icon from '@leafygreen-ui/icon';
 
 export default function Hero() {
   return (
     <section className={styles.heroContainer}>
-      <DotBackground className={styles.dotBackgroundWrapper} />
       <div className={styles.dividerLineLeft}></div>
       <div className={styles.dividerLineRight}></div>
       <div className={styles.headlineSection}>

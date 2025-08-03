@@ -12,10 +12,10 @@ import styles from "./Search.module.css";
 
 const Search = ({ 
   onSearchSubmit, 
-  onSearchQueryChange,
   onLabelChange, 
-  searchQuery, 
-  selectedLabel 
+  selectedLabel,
+  searchQuery = '',
+  onSearchQueryChange = null
 }) => {
   const [localSearchQuery, setLocalSearchQuery] = useState(searchQuery);
 
@@ -66,19 +66,18 @@ const Search = ({
   // Get current category queries
   const currentQueries = queriesPerCategory[selectedLabel] || queriesPerCategory["general"];
 
-  // Update local state when parent searchQuery changes
-  useEffect(() => {
-    setLocalSearchQuery(searchQuery);
-  }, [searchQuery]);
-
   const handleInputChange = (e) => {
     const value = e.target.value;
     setLocalSearchQuery(value);
-    // Sync parent state 
     if (onSearchQueryChange) {
       onSearchQueryChange(value);
     }
   };
+
+  // Update local state when searchQuery prop changes
+  useEffect(() => {
+    setLocalSearchQuery(searchQuery);
+  }, [searchQuery]);
 
   const handleCategoryChange = (value) => {
     if (onLabelChange) {
@@ -115,7 +114,8 @@ const Search = ({
               value={localSearchQuery}
               onChange={handleInputChange}
               onKeyPress={handleKeyPress}
-              size="default"
+              size="large"
+              className={styles.customInput}
             >
               {localSearchQuery.length === 0 && (
                 <SearchResultGroup label="Recommended Queries">
@@ -135,12 +135,12 @@ const Search = ({
           {/* Category Filter Combobox */}
           <div className={styles.comboboxWrapper}>
             <Combobox
-              label="Category"
               placeholder="Select category"
               value={selectedLabel}
               onChange={handleCategoryChange}
-              size="default"
+              size="large"
               clearable={false}
+              className={styles.customInput}
             >
               <ComboboxOption value="general" displayName="All" />
               <ComboboxOption value="technology" displayName="Technology" />

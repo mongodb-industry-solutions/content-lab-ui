@@ -1,8 +1,0 @@
-/* DotBackground.module.css */
-
-.dotBackground {
-  background-color: #ffffff;
-  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.25) 1px, transparent 1px);
-  background-size: 20px 20px;
-  background-position: 0 0, 10px 10px;
-} 

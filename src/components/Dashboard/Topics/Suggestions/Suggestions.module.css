@@ -2,51 +2,115 @@
 
 .suggestionsSection {
   background: transparent;
-  padding: 2rem 0;
+  padding-top: 4rem;
   min-height: auto;
+  position: relative;
 }
 
-.container {
-  max-width: 1400px;
+/* Stacked cards wrapper */
+.stackedCards {
+  position: relative;
+  width: 90%;
   margin: 0 auto;
-  padding: 0 2rem;
 }
 
-.headerSection {
+/* Main container */
+.container {
+  width: 100%;
+  margin: 0;
+  background: linear-gradient(315deg, #ffffff 0%, #fbfdff 100%);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  padding: 2rem 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Second stacked card */
+.stackedCard2 {
+  position: absolute;
+  top: -12px;
+  left: 4%;
+  width: 92%;
+  height: 100%;
+  background: linear-gradient(315deg, #ffffff 0%, #fbfdff 80%);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 1.5rem;
+  z-index: 1;
+}
+
+/* Third stacked card */
+.stackedCard3 {
+  position: absolute;
+  top: -24px;
+  left: 8%;
+  width: 84%;
+  height: 100%;
+  background: linear-gradient(315deg, #ffffff 0%, #fbfdff 60%);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 1.5rem;
+  z-index: 0;
+}
+
+/* Fourth stacked card */
+.stackedCard4 {
+  position: absolute;
+  top: -36px;
+  left: 12%;
+  width: 76%;
+  height: 100%;
+  background: linear-gradient(315deg, #ffffff 0%, #fbfdff 40%);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 1.5rem;
+  z-index: -1;
+}
+
+.categorySection {
   margin-bottom: 3rem;
 }
 
-.titleWithInfo {
+.categoryTitle {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+  font-size: 2rem;
+  color: #1a1a1a;
+}
+
+/* Back Button */
+.backButtonContainer {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+}
+
+.backButton {
+  background: transparent;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  color: #374151;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+  gap: 0.5rem;
 }
 
-.sectionTitle {
-  text-align: center;
-  color: #000000;
-  margin: 0;
-  font-size: 2.5rem;
-}
-
-.sectionSubtitle {
-  text-align: center;
-  color: #5C6C75;
-  margin: 0;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 1rem;
+.backButton:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #1e293b;
 }
 
 /* Topics Grid Layout */
 .topicsGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
   justify-items: center;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 /* Error State */
@@ -55,6 +119,7 @@
   justify-content: center;
   align-items: center;
   min-height: 200px;
+  padding: 0 2rem;
 }
 
 .errorMessage {
@@ -70,6 +135,7 @@
   justify-content: center;
   align-items: center;
   min-height: 200px;
+  padding: 0 2rem;
 }
 
 .emptyMessage {
@@ -79,34 +145,75 @@
   margin: 0;
 }
 
-/* Large screens - 4 columns */
-@media (min-height: 1200px) {
+/* Medium screens - 3 columns */
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .topicsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+  }
+}
+
+/* Small screens - 2 columns */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .topicsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Mobile - 1 column */
+@media (max-width: 767px) {
+  .suggestionsSection {
+    padding: 3rem 0 2rem 0;
+  }
+
+  .stackedCards {
+    width: 95%;
+  }
+
   .container {
-    max-width: 80%;
+    padding: 1.5rem 0;
   }
 
-  .headerSection {
-    margin-bottom: 4rem;
+  .stackedCard2 {
+    left: 3%;
+    width: 94%;
+    top: -8px;
   }
 
-  .sectionTitle {
-    font-size: 3.5rem;
+  .stackedCard3 {
+    left: 6%;
+    width: 88%;
+    top: -16px;
   }
 
-  .titleWithInfo {
-    margin-bottom: 1.5rem;
-  }
-
-  .sectionSubtitle {
-    font-size: 1.3rem;
+  .stackedCard4 {
+    left: 9%;
+    width: 82%;
+    top: -24px;
   }
 
   .topicsGrid {
-    gap: 2.5rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 1.5rem;
   }
 
-  .errorMessage,
-  .emptyMessage {
-    font-size: 1.5rem;
+  .categoryTitle {
+    padding-left: 1.5rem;
+  }
+
+  .backButtonContainer {
+    padding-left: 1.5rem;
+  }
+
+  .errorContainer,
+  .emptyContainer {
+    padding: 0 1.5rem;
+  }
+
+  .backButton {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
   }
 }

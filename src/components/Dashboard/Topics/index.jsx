@@ -10,155 +10,145 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { H3, Body } from '@leafygreen-ui/typography';
 import InfoWizard from '@/components/external/InfoWizard';
-import { fetchSuggestedTopics } from '@/api/suggestions_api';
+import { fetchSuggestedTopics as fetchSuggestedTopicsAPI } from '@/api/suggestions_api';
 import { analyzeQuery } from '@/api/search_api';
-import { debounce, areRequestsEqual } from '@/utils/generalUtils';
+import { debounce } from '@/utils/generalUtils';
 import { SUGGESTIONS_INFO_WIZARD } from '@/utils/constants';
 import Search from "@/components/Dashboard/Topics/Search";
 import Suggestions from "@/components/Dashboard/Topics/Suggestions";
 import styles from "./Topics.module.css";
 
 export default function Topics () {
-  const [searchQuery, setSearchQuery] = useState('');
   const [selectedLabel, setSelectedLabel] = useState('general');
-  const [topics, setTopics] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSearchLoading, setIsSearchLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [suggestedTopics, setSuggestedTopics] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+  const [isLoadingSuggestions, setIsLoadingSuggestions] = useState(false);
+  const [isLoadingSearch, setIsLoadingSearch] = useState(false);
   const [error, setError] = useState(null);
   const [openHelpModal, setOpenHelpModal] = useState(false);
-  const lastRequestRef = useRef({ query: '', label: 'general' });
+  const [isSearchActive, setIsSearchActive] = useState(false);
 
-  const fetchFilteredTopics = async (query, label) => {
-    const currentRequest = { query, label };
-    
-    // Prevent duplicate requests
-    if (areRequestsEqual(lastRequestRef.current, currentRequest)) {
-      return;
-    }
-
-    // Prevent multiple simultaneous requests
-    if (isLoading) {
-      return;
-    }
-
-    const isSearchQuery = query && query.trim() !== '';
-    
-    setIsLoading(true);
-    setIsSearchLoading(isSearchQuery);
+  // Fetch suggested topics (always available for carousels)
+  const fetchSuggestedTopics = async () => {
+    setIsLoadingSuggestions(true);
     setError(null);
-    lastRequestRef.current = currentRequest;
-
+    
     try {
-      let fetchedTopics; 
-      if (isSearchQuery) {
-        fetchedTopics = await analyzeQuery(query, label);
-      } else {
-        fetchedTopics = await fetchSuggestedTopics(label);
-      }
-      
-      setTopics(fetchedTopics);
+      const topics = await fetchSuggestedTopicsAPI();
+      setSuggestedTopics(topics);
     } catch (err) {
-      setError('Failed to load topics. Please try again.');
-      setTopics([]);
+      setError('Failed to load suggested topics. Please try again.');
     } finally {
-      setIsLoading(false);
-      setIsSearchLoading(false);
+      setIsLoadingSuggestions(false);
     }
   };
 
-  // Debounced version for search submit (prevent spam clicking Enter)
-  const debouncedFetch = useCallback(
-    debounce(fetchFilteredTopics, 300),
+  // Fetch search results
+  const fetchSearchResults = async (query, label) => {
+    setIsLoadingSearch(true);
+    setError(null);
+    
+    try {
+      const results = await analyzeQuery(query, label);
+      setSearchResults(results);
+    } catch (err) {
+      setError('Failed to search topics. Please try again.');
+    } finally {
+      setIsLoadingSearch(false);
+    }
+  };
+
+  // Debounced search to prevent spam
+  const debouncedSearch = useCallback(
+    debounce(fetchSearchResults, 300),
     []
   );
 
-  // Handle search input changes (sync parent state with input)
+  // Handle search submission (only on Enter)
+  const handleSearchSubmit = useCallback((query) => {
+    if (query.trim()) {
+      setIsSearchActive(true);
+      debouncedSearch(query, selectedLabel);
+    } else {
+      setIsSearchActive(false);
+      setSearchResults([]);
+    }
+  }, [selectedLabel, debouncedSearch]);
+
+  // Handle going back to suggestions
+  const handleBackToSuggestions = useCallback(() => {
+    setIsSearchActive(false);
+    setSearchResults([]);
+    setSearchQuery('');
+  }, []);
+
+  // Handle search query changes
   const handleSearchQueryChange = useCallback((query) => {
     setSearchQuery(query);
   }, []);
 
-  // Handle search submission (Enter key)
-  const handleSearchSubmit = useCallback((query) => {
-    setSearchQuery(query);
-    debouncedFetch(query, selectedLabel);
-  }, [selectedLabel, debouncedFetch]);
-
-  // Handle filter/label changes (immediate fetch)
+  // Handle category filter changes (do not trigger search)
   const handleLabelChange = useCallback((label) => {
     setSelectedLabel(label);
-    fetchFilteredTopics(searchQuery, label);
-  }, [searchQuery]);
+  }, []);
 
-  // Generate status text based on current search state
-  const getStatusText = () => {
-    const categoryName = selectedLabel === 'general' ? 'All Categories' : 
-      selectedLabel.charAt(0).toUpperCase() + selectedLabel.slice(1);
-    
-    if (searchQuery && searchQuery.trim() !== '') {
-      return `Search results for "${searchQuery}" in ${categoryName}`;
-    }
-    
-    if (selectedLabel === 'general') {
-      return 'Suggested topics from all categories';
-    }
-    
-    return `Suggested topics in ${categoryName}`;
-  };
-
-  // Initial load on component mount
+  // Load suggested topics on mount
   useEffect(() => {
-    fetchFilteredTopics('', '');
+    fetchSuggestedTopics();
   }, []);
 
   return (
-    <div className={styles.topicsContainer}>
+    <>
+      {/* Full page gray background */}
+      <div className={styles.pageBackground} />
       
-      {/* Header Section */}
-      <div className={styles.headerSection}>
-        <div className={styles.titleWithInfo}>
-          <H3 className={styles.mainTitle}>
-            Discover Trending Topics
-          </H3>
-          <InfoWizard
-            open={openHelpModal}
-            setOpen={setOpenHelpModal}
-            tooltipText="Learn about our data sources and AI search"
-            iconGlyph="Wizard"
-            sections={SUGGESTIONS_INFO_WIZARD}
+      {/* Header wrapper with glow effect */}
+      <div className={styles.headerWrapper}>
+        {/* Header and search section */}
+        <div className={styles.headerContainer}>
+          {/* Header Section */}
+          <div className={styles.headerSection}>
+            <H3 className={styles.mainTitle}>
+              Discover Trending Topics
+            </H3>
+            <div className={styles.subtitleWithInfo}>
+              <Body className={styles.subtitle}>
+                Discover what's trending and get started with your draft in one click.
+              </Body>
+              <InfoWizard
+                open={openHelpModal}
+                setOpen={setOpenHelpModal}
+                tooltipText="Learn about our data sources and AI search"
+                iconGlyph="Wizard"
+                sections={SUGGESTIONS_INFO_WIZARD}
+              />
+            </div>
+          </div>
+
+          <Search 
+            onSearchSubmit={handleSearchSubmit}
+            onLabelChange={handleLabelChange}
+            selectedLabel={selectedLabel}
+            searchQuery={searchQuery}
+            onSearchQueryChange={handleSearchQueryChange}
           />
         </div>
-        <Body className={styles.subtitle}>
-          Discover what's trending and get started with your draft in one click.
-        </Body>
       </div>
 
-      {/* Search Section */}
-      <Search 
-        onSearchSubmit={handleSearchSubmit}
-        onSearchQueryChange={handleSearchQueryChange}
-        onLabelChange={handleLabelChange}
-        searchQuery={searchQuery}
-        selectedLabel={selectedLabel}
-      />
-
-      {/* Divider Line */}
-      <div className={styles.dividerLine}></div>
-      
-      {/* Content */}
-      <div className={styles.content}>
-        <div className={styles.statusIndicator}>
-          <Body className={styles.statusText}>
-            {getStatusText()}
-          </Body>
+      <div className={styles.contentContainer}>
+        <div className={styles.content}>
+          <Suggestions 
+            suggestedTopics={suggestedTopics}
+            searchResults={searchResults}
+            isLoadingSuggestions={isLoadingSuggestions}
+            isLoadingSearch={isLoadingSearch}
+            isSearchActive={isSearchActive}
+            error={error}
+            onBackToSuggestions={handleBackToSuggestions}
+          />
         </div>
-        
-        <Suggestions 
-          topics={topics}
-          isLoading={isLoading}
-          isSearchLoading={isSearchLoading}
-          error={error}
-        />
       </div>
-    </div>
+    </>
   );
 };

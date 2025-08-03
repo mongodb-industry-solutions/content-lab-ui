@@ -107,32 +107,6 @@ export const debounce = (func, delay) => {
 };
 
 /**
- * Check if two request objects are identical to prevent duplicate API calls
- * Handles both suggested topics (label-only) and query topics (query-based) requests
- * @param {Object} requestA - First request object
- * @param {Object} requestB - Second request object
- * @returns {boolean} True if requests are identical
- */
-export const areRequestsEqual = (requestA, requestB) => {
-  // Check if both requests have the same type (based on presence of query)
-  const aHasQuery = requestA.query && requestA.query.trim() !== '';
-  const bHasQuery = requestB.query && requestB.query.trim() !== '';
-  
-  // Different request types (one has query, other doesn't)
-  if (aHasQuery !== bHasQuery) {
-    return false;
-  }
-  
-  // Both are query-based requests
-  if (aHasQuery && bHasQuery) {
-    return requestA.query === requestB.query && requestA.label === requestB.label;
-  }
-  
-  // Both are suggested topics requests (label-only)
-  return requestA.label === requestB.label;
-};
-
-/**
  * Get badge variant color based on category
  * @param {string} category - The category name
  * @returns {string} The badge variant color
@@ -149,4 +123,35 @@ export const getBadgeVariant = (category) => {
     'entertainment': 'blue'
   };
   return variants[category?.toLowerCase()] || 'gray';
+};
+
+/**
+ * Group topics by category
+ * @param {Array} topics - Array of topic objects
+ * @returns {Object} Object with categories as keys and arrays of topics as values
+ */
+export const groupTopicsByCategory = (topics) => {
+  if (!Array.isArray(topics) || topics.length === 0) {
+    return {};
+  }
+
+  return topics.reduce((acc, topic) => {
+    const category = topic.label || 'general';
+    if (!acc[category]) {
+      acc[category] = [];
+    }
+    acc[category].push(topic);
+    return acc;
+  }, {});
+};
+
+/**
+ * Get category display name with proper capitalization
+ * @param {string} category - The category name
+ * @returns {string} The formatted category display name
+ */
+export const getCategoryDisplayName = (category) => {
+  if (!category) return 'General';
+  if (category === 'general') return 'General';
+  return category.charAt(0).toUpperCase() + category.slice(1);
 };

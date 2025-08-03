@@ -7,7 +7,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { H2, Body } from '@leafygreen-ui/typography';
-import GridPattern from '@/components/external/GridPattern';
 import DraftCard from './DraftCard';
 import Button from '@leafygreen-ui/button';
 import { fetchUserDrafts, deleteDraft } from '@/api/drafts_api';
@@ -91,8 +90,6 @@ export default function Saved() {
       );
     }
 
-    
-
     return (
       <div className={styles.draftsGrid}>
         {drafts.map((draft) => (
@@ -108,15 +105,6 @@ export default function Saved() {
 
   return (
     <section className={styles.savedSection}>
-      {/* Animated Grid Background with pulsating #00684A */}
-      <GridPattern
-        numSquares={30}
-        maxOpacity={0.1}
-        duration={3}
-        repeatDelay={1}
-        className={styles.animatedGrid}
-      />
-      
       {/* Content */}
       <div className={styles.container}>
         <div className={styles.headerSection}>

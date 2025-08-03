@@ -10,21 +10,6 @@
   position: relative;
 }
 
-/* Background Components (styling taken from an example) */
-.animatedGrid {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 200%;
-  z-index: 0;
-  mask-image: radial-gradient(800px circle at center, white, transparent);
-  -webkit-mask-image: radial-gradient(800px circle at center, white, transparent);
-  transform: skew(0deg, 12deg);
-  inset: -30% 0;
-}
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
