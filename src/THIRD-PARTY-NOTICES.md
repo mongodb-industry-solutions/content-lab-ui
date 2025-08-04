@@ -1373,11 +1373,6 @@ This project includes third-party packages listed below:
 - **Contact**: kirollos@gmail.com
 
 ---
-### geist@1.4.2
-- **License**: MIT*
-- **Repository**: https://github.com/vercel/geist-font
-
----
 ### get-intrinsic@1.3.0
 - **License**: MIT
 - **Author**: Jordan Harband
@@ -2054,12 +2049,6 @@ This project includes third-party packages listed below:
 ### react-is@17.0.2
 - **License**: MIT
 - **Repository**: https://github.com/facebook/react
-
----
-### react-loading-skeleton@3.5.0
-- **License**: MIT
-- **Author**: David Tang
-- **Repository**: https://github.com/dvtng/react-loading-skeleton
 
 ---
 ### react-textarea-autosize@8.5.9

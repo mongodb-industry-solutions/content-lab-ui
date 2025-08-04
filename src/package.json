@@ -38,7 +38,6 @@
     "next": "15.2.3",
     "react": "19.0.0-rc-02c0e824-20241028",
     "react-dom": "19.0.0-rc-02c0e824-20241028",
-    "react-loading-skeleton": "^3.1.1",
     "reaviz": "^16.0.6"
   },
   "devDependencies": {
