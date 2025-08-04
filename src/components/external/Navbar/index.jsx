@@ -4,7 +4,7 @@
  * Main Navbar component that renders either Desktop or Mobile navbar
  */
 
-import UserProfile from '@/components/Login/UserProfile';
+import UserProfile from '@/components/external/UserProfile';
 import DesktopNavbar from './DesktopNavbar';
 import MobileNavbar from './MobileNavbar';
 import { useState } from 'react';

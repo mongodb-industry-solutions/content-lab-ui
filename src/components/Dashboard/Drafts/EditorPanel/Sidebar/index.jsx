@@ -48,7 +48,7 @@ export default function Sidebar({ topicCard, metadata, onMetadataChange, isMobil
           <div className={styles.inputGroup}>
             <Body baseFontSize={13} className={styles.metadataLabel}>Keywords</Body>
             <div className={styles.keywordsBadges}>
-                {metadata.keywords.map((keyword, index) => (
+                {(metadata.keywords || []).map((keyword, index) => (
                   <Badge
                     key={index}
                     variant="green"

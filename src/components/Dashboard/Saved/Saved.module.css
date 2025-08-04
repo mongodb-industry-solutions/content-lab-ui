@@ -1,33 +1,20 @@
 /* Saved.module.css */
 
-.pageBackground {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #fafafa;
-  background-image: 
-    linear-gradient(rgba(156, 153, 153, 0.2) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(156, 153, 153, 0.2) 1px, transparent 1px);
-  background-size: 2.5vw 4vh;
-  z-index: -10;
+.container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.25) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  padding-top: 100px;
 }
 
 .savedSection {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  width: 100vw;
-  height: 100vh;
-  padding-top: 100px;
-  position: relative;
-}
-
-.container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 3rem;
+  padding: 32px 48px;
   position: relative;
   z-index: 1;
   width: 100%;
@@ -35,26 +22,57 @@
 
 .headerSection {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 48px;
 }
 
 .sectionTitle {
-  color: #000000;
-  margin-bottom: 1rem;
-  font-size: 3rem;
+  font-size: 80px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+  margin-bottom: 24px;
+  color: #1a1a1a;
 }
 
 .sectionSubtitle {
-  color: #5C6C75;
+  color: #4a4a4a;
   max-width: 600px;
   margin: 0 auto;
-  font-size: 1.1rem;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.divider {
+  width: 100vw;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.8);
+  margin: 32px 0;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bannerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 0;
+}
+
+.emptyContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 0;
+  gap: 24px;
+  text-align: center;
 }
 
 .draftsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-  gap: 2rem;
+  gap: 32px;
 }
 
 .loadingContainer {
@@ -62,8 +80,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 4rem 0;
-  gap: 1rem;
+  padding: 64px 0;
+  gap: 16px;
 }
 
 .loadingSpinner {
@@ -77,7 +95,13 @@
 
 .loadingText {
   color: #6B7280;
-  font-size: 1rem;
+  font-size: 16px;
+}
+
+.ctaButton {
+  width: 160px;
+  font-weight: 400;
+  font-size: 14px;
 }
 
 @keyframes spin {
@@ -85,67 +109,97 @@
   100% { transform: rotate(360deg); }
 }
 
-.errorContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 4rem 0;
-}
-
-.errorMessage {
-  color: #EF4444;
-  text-align: center;
-  font-size: 1rem;
-  background: #FEF2F2;
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  border: 1px solid #FECACA;
-}
-
-.emptyContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem 0;
-  gap: 2rem;
-  text-align: center;
-}
-
-.emptyTitle {
-  color: #374151;
-  margin-bottom: 1rem;
-  font-size: 2rem;
-}
-
-.emptyMessage {
-  color: #6B7280;
-  max-width: 500px;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
 @media (min-height: 1200px) {
-  .container {
-    padding: 3rem 4rem;
+  .savedSection {
+    padding: 48px 64px;
     max-width: 1500px;
   }
   
   .headerSection {
-    margin-bottom: 4rem;
+    margin-bottom: 64px;
   }
   
   .sectionTitle {
-    font-size: 3.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 96px;
+    margin-bottom: 24px;
   }
   
   .sectionSubtitle {
-    font-size: 1.2rem;
+    font-size: 20px;
   }
 
   .draftsGrid {
-    gap: 3rem;
-    margin-top: 3rem;
+    gap: 48px;
+    margin-top: 48px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .sectionTitle {
+    font-size: 40px;
+  }
+  
+  .sectionSubtitle {
+    font-size: 16px;
+  }
+  
+  .savedSection {
+    padding: 32px 32px;
+  }
+  
+  .draftsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-top: 80px;
+  }
+  
+  .savedSection {
+    padding: 24px 16px;
+  }
+  
+  .headerSection {
+    margin-bottom: 32px;
+  }
+  
+  .sectionTitle {
+    font-size: 32px;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  
+  .sectionSubtitle {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .draftsGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .loadingContainer,
+  .bannerContainer,
+  .emptyContainer {
+    padding: 48px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 28px;
+    line-height: 1.1;
+  }
+  
+  .sectionSubtitle {
+    font-size: 13px;
+  }
+  
+  .savedSection {
+    padding: 16px 12px;
   }
 }

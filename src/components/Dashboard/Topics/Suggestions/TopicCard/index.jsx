@@ -11,7 +11,7 @@ import Badge from '@leafygreen-ui/badge';
 import Button from '@leafygreen-ui/button';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { getBadgeVariant, getRelativeTime } from '@/utils/generalUtils';
+import { getBadgeVariant } from '@/utils/generalUtils';
 import { navigateToDraft } from '@/utils/draftUtils';
 import styles from './TopicCard.module.css';
 
@@ -24,8 +24,7 @@ export default function TopicCard({ topicCard, index = 0 }) {
     topic,
     keywords = [],
     label,
-    url = "https://mongodb.com",
-    analyzed_at
+    url = "https://mongodb.com"
   } = topicCard || {};
 
   const handleSourceClick = () => {
@@ -57,7 +56,6 @@ export default function TopicCard({ topicCard, index = 0 }) {
           alt={topic}
           width={400}
           height={250}
-          priority
           className={styles.topicImage}
         />
       </div>
@@ -69,11 +67,6 @@ export default function TopicCard({ topicCard, index = 0 }) {
             <Badge variant={getBadgeVariant(label)} className={styles.categoryBadge}>
               {label}
             </Badge>
-            {analyzed_at && (
-              <Body baseFontSize="13">
-                {getRelativeTime(analyzed_at)}
-              </Body>
-            )}
           </div>
           <H3 className={styles.topicTitle}>
             {topic}

@@ -10,7 +10,6 @@ import Card from "@leafygreen-ui/card";
 import { H2, Description, Subtitle } from '@leafygreen-ui/typography';
 import styles from './Login.module.css';
 import User from './User';
-import Loading from './Loading';
 import { USER_MAP } from "@/constants/users";
 import Banner from "@leafygreen-ui/banner";
 import { useRouter } from 'next/navigation';
@@ -20,28 +19,17 @@ const LoginComponent = ({ onUserSelected }) => {
     const [open, setOpen] = useState(false);
     const router = useRouter();
 
-    const [users, setUsers] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
-    const [usersLoading, setUsersLoading] = useState(true);
+
+    const users = Object.entries(USER_MAP).map(([id, details]) => ({
+        id,
+        name: details.name,
+        avatar: details.avatar,
+        shortDescription: details.shortDescription
+    }));
 
     useEffect(() => {
         setOpen(true);
-        
-        const loadUsers = async () => {
-            setUsersLoading(true);
-            
-            const loadedUsers = Object.entries(USER_MAP).map(([id, details]) => ({
-                id,
-                name: details.name,
-                avatar: details.avatar,
-                shortDescription: details.shortDescription
-            }));
-            
-            setUsers(loadedUsers);
-            setUsersLoading(false);
-        };
-
-        loadUsers();
     }, []);
 
     const handleUserSelect = async (user) => {
@@ -61,10 +49,6 @@ const LoginComponent = ({ onUserSelected }) => {
         onUserSelected(user);
         router.push('/');
     };
-
-    if (usersLoading) {
-        return <Loading />;
-    }
 
     return (
         <div className={styles.container}>

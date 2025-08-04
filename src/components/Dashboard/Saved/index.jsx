@@ -7,10 +7,11 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { H2, Body } from '@leafygreen-ui/typography';
+import { H3, Body } from '@leafygreen-ui/typography';
 import DraftCard from './DraftCard';
 import Button from '@leafygreen-ui/button';
 import Icon from '@leafygreen-ui/icon';
+import Banner from '@leafygreen-ui/banner';
 import { fetchUserDrafts, deleteDraft } from '@/api/drafts_api';
 import styles from './Saved.module.css';
 
@@ -65,10 +66,10 @@ export default function Saved() {
 
     if (error) {
       return (
-        <div className={styles.errorContainer}>
-          <Body className={styles.errorMessage}>
+        <div className={styles.bannerContainer}>
+          <Banner variant="danger">
             {error}
-          </Body>
+          </Banner>
         </div>
       );
     }
@@ -76,18 +77,17 @@ export default function Saved() {
     if (!drafts || drafts.length === 0) {
       return (
         <div className={styles.emptyContainer}>
-          <H2 className={styles.emptyTitle}>No Drafts Yet</H2>
-          <Body className={styles.emptyMessage}>
-            Start creating content by exploring topics and saving your work. Your drafts will appear here.
-          </Body>
+          <Banner variant="info">
+            No drafts found. Start creating content by exploring topics and saving your work.
+          </Banner>
           <Link href="/topics">
             <Button
-              variant="primary"
               size="large"
-              baseFontSize="16"
+              variant="primary"
+              className={styles.ctaButton}
               rightGlyph={<Icon glyph="Sparkle" />}
             >
-              Explore Topics
+              Browse Topics
             </Button>
           </Link>
         </div>
@@ -96,10 +96,11 @@ export default function Saved() {
 
     return (
       <div className={styles.draftsGrid}>
-        {drafts.map((draft) => (
+        {drafts.map((draft, index) => (
           <DraftCard 
           key={draft._id} 
           draft={draft} 
+          index={index}
           onDelete={() => handleDeleteDraft(draft._id)} 
           />
         ))}
@@ -108,24 +109,21 @@ export default function Saved() {
   };
 
   return (
-    <>
-      <div className={styles.pageBackground}></div>
-      
+    <div className={styles.container}>
       <section className={styles.savedSection}>
-      {/* Content */}
-      <div className={styles.container}>
         <div className={styles.headerSection}>
-          <H2 className={styles.sectionTitle}>
+          <H3 className={styles.sectionTitle}>
             Your Saved Drafts
-          </H2>
+          </H3>
           <Body className={styles.sectionSubtitle}>
             Continue working on your saved content and bring your ideas to life.
           </Body>
         </div>
         
+        <div className={styles.divider}></div>
+        
         {renderContent()}
-      </div>
-    </section>
-    </>
+      </section>
+    </div>
   );
 }

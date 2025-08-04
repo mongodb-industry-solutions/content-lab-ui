@@ -39,11 +39,6 @@
   gap: 0.25rem;
 }
 
-.handle {
-  margin: 0;
-  color: #0f1419;
-}
-
 .username,
 .timestamp {
   margin: 0;
@@ -104,10 +99,6 @@
     height: 40px;
   }
   
-  .handle {
-    font-size: 0.9rem;
-  }
-  
   .username,
   .timestamp {
     font-size: 0.8rem;
@@ -144,10 +135,6 @@
   .redditHeader {
     margin-bottom: 0.5rem;
     gap: 0.5rem;
-  }
-  
-  .handle {
-    font-size: 0.85rem;
   }
   
   .username,

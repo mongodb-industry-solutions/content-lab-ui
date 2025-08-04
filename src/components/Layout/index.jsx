@@ -4,7 +4,7 @@
  * Layout component for the dashboard / user selection
  */
 
-import Navbar from "@/components/Layout/Navbar";
+import Navbar from "@/components/external/Navbar";
 import Login from "@/components/Login";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";

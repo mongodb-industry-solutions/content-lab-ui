@@ -8,7 +8,7 @@
 import React from 'react';
 import Icon from '@leafygreen-ui/icon';
 import Card from '@leafygreen-ui/card';
-import { Body, Subtitle } from '@leafygreen-ui/typography';
+import { Body, H3 } from '@leafygreen-ui/typography';
 import { getRelativeTime } from '@/utils/generalUtils';
 import Image from 'next/image';
 import styles from './ViralCard.module.css';
@@ -46,7 +46,7 @@ export default function ViralCard({ viralPost }) {
         />
         <div className={styles.authorInfo}>
           <div className={styles.nameContainer}>
-            <Subtitle className={styles.handle}>{`r/${subreddit}`}</Subtitle>
+            <Body baseFontSize={16} weight='semiBold'>{`r/${subreddit}`}</Body>
           </div>
           <Body className={styles.username}>{`u/${author}`}</Body>
         </div>

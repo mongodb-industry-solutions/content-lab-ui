@@ -9,11 +9,12 @@ import { H3, Body, Disclaimer } from '@leafygreen-ui/typography';
 import Card from '@leafygreen-ui/card';
 import Button from '@leafygreen-ui/button';
 import Badge from '@leafygreen-ui/badge';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { getHumanReadableDate, getBadgeVariant } from '@/utils/generalUtils';
 import styles from './DraftCard.module.css';
 
-export default function DraftCard({ draft, onDelete }) {
+export default function DraftCard({ draft, onDelete, index = 0 }) {
   const router = useRouter();
   
   const { 
@@ -41,26 +42,36 @@ export default function DraftCard({ draft, onDelete }) {
   return (
     <Card className={styles.draftCard}>
       <div className={styles.cardContent}>
-        {/* Left Side - Metadata */}
-        <div className={styles.metadataSection}>
+        {/* Left: Image */}
+        <div className={styles.imageSection}>
+          <Image 
+            src={`/categories/${category === 'general' ? 'technology' : category}_${index % 4 + 1}.png`}
+            alt={title}
+            width={200}
+            height={150}
+            className={styles.cardImage}
+          />
+        </div>
+        
+        {/* Right: Content */}
+        <div className={styles.contentSection}>
+          <div className={styles.metadataRow}>
+            <Badge 
+              variant={getBadgeVariant(category)} 
+              className={styles.categoryBadge}
+            >
+              {category}
+            </Badge>
+            
+            <Disclaimer className={styles.lastEdited}>
+              {humanReadableDate}
+            </Disclaimer>
+          </div>
+          
           <H3 className={styles.draftTitle}>
             {title}
           </H3>
           
-          <Badge 
-            variant={getBadgeVariant(category)} 
-            className={styles.categoryBadge}
-          >
-            {category}
-          </Badge>
-          
-          <Disclaimer className={styles.lastEdited}>
-            Last edited {humanReadableDate}
-          </Disclaimer>
-        </div>
-        
-        {/* Right Side - Content Preview */}
-        <div className={styles.contentSection}>
           <Body className={styles.contentPreview}>
             {getContentPreview(content)}
           </Body>
