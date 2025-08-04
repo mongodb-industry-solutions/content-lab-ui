@@ -6,8 +6,9 @@
  */
 
 import React, { useState } from 'react';
-import { SearchInput, SearchResult, SearchResultGroup } from '@leafygreen-ui/search-input';
+import { SearchInput } from '@leafygreen-ui/search-input';
 import { Combobox, ComboboxOption } from '@leafygreen-ui/combobox';
+import Card from '@leafygreen-ui/card';
 import { CONTENT_CATEGORIES, CATEGORY_DISPLAY_NAMES, QUERIES_PER_CATEGORY } from '@/constants/categories';
 import styles from "./Search.module.css";
 
@@ -64,20 +65,7 @@ export default function Search({
               onKeyPress={handleKeyPress}
               size="large"
               className={styles.customInput}
-            >
-              {!inputValue.trim() && (
-                <SearchResultGroup label="Recommended Queries">
-                  {currentQueries.map((query, index) => (
-                    <SearchResult
-                      key={index}
-                      onClick={() => handleSearchResultClick(query)}
-                    >
-                      {query}
-                    </SearchResult>
-                  ))}
-                </SearchResultGroup>
-              )}
-            </SearchInput>
+            />
           </div>
 
           {/* Category Filter Combobox */}
@@ -98,6 +86,21 @@ export default function Search({
                 />
               ))}
             </Combobox>
+          </div>
+        </div>
+
+        {/* Recommended Queries Cards */}
+        <div className={styles.recommendedSection}>
+          <div className={styles.queryCardsGrid}>
+            {currentQueries.map((query, index) => (
+              <Card
+                key={index}
+                className={styles.queryCard}
+                onClick={() => handleSearchResultClick(query)}
+              >
+                {query}
+              </Card>
+            ))}
           </div>
         </div>
       </div>

@@ -46,7 +46,6 @@
     margin: 10px;
 }
 
-/* Mobile: 2 columns */
 @media (max-width: 768px) {
     .card {
         width: 95%;

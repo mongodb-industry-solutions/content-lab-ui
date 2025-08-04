@@ -16,13 +16,14 @@
   margin: 0 2rem 0rem 2rem;
   border-radius: 0 0 2rem 2rem;
   box-shadow: 
-    inset 0 0 0 1px rgba(37, 99, 235, 0.5),
-    inset 0 -4px 12px rgba(37, 99, 235, 0.45),
-    inset 0 -8px 24px rgba(37, 99, 235, 0.4),
-    inset 0 -16px 48px rgba(37, 99, 235, 0.35),
-    inset 0 -32px 96px rgba(37, 99, 235, 0.3);
-  background: rgba(255, 255, 255, 0.8);
+    inset 0 0 0 1px rgba(0, 150, 90, 0.22),
+    inset 0 -4px 12px rgba(0, 150, 90, 0.18),
+    inset 0 -8px 24px rgba(0, 150, 90, 0.15),
+    inset 0 -16px 48px rgba(0, 150, 90, 0.13),
+    inset 0 -32px 96px rgba(0, 150, 90, 0.11);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -51,14 +52,10 @@
 }
 
 .mainTitle {
-  font-size: 96px;
+  font-size: 80px;
   font-weight: 700;
   line-height: 1.1;
   text-align: center;
-  background: linear-gradient(to right, #000000, #6b7280);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   margin-bottom: 1.5rem;
 }
 
@@ -67,7 +64,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .subtitle {
@@ -96,7 +93,6 @@
   text-align: left;
 }
 
-/* Responsive design for mobile/tablet */
 @media (max-width: 1199px) {
   .headerWrapper {
     margin: 0;
@@ -127,26 +123,3 @@
     line-height: 1.5;
   }
 }
-
-/* Responsive design for big monitors/tv screens */
-@media (min-height: 1200px) {
-  .headerSection {
-    padding: 3rem 2rem 0 2rem;
-  }
-  
-  .mainTitle {
-    font-size: 4rem;
-  }
-  
-  .subtitleWithInfo {
-    margin-bottom: 3rem;
-  }
-  
-  .subtitle {
-    font-size: 1.25rem;
-  }
-  
-  .content {
-    padding-bottom: 3rem;
-  }
-} 

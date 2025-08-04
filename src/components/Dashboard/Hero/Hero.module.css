@@ -165,27 +165,13 @@
     padding: 3rem 1rem;
   }
 
-  .mainHeadline {
-    font-size: 5rem;
-    max-width: 1000px;
-    line-height: 1.05;
-  }
-
   .subHeadline {
-    font-size: 1.4rem;
-    max-width: 650px;
-    line-height: 1.7;
+    font-size: 22px;
   }
 
   .ctaButton {
-    font-size: 1.1rem;
-    padding: 1rem 2.5rem;
+    font-size: 16px;
     width: 180px;
-  }
-
-  .newsSection {
-    width: 90%;
-    max-width: 1400px;
   }
 }
 

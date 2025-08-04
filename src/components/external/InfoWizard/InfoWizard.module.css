@@ -10,7 +10,7 @@
   text-align: left;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centers content vertically */
+  justify-content: center; 
 }
 
 .modalContent {
@@ -19,8 +19,8 @@
   gap: 16px;
   overflow-y: auto;
   max-height: 90vh;
-  height: 500px; /* Set a fixed height */
-  min-height: 500px; /* Prevent shrinking */
+  height: 500px; 
+  min-height: 500px; 
 }
 
 .modalH3 {

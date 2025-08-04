@@ -24,7 +24,6 @@
     overflow: hidden;
 }
 
-/* Notification Container */
 .notificationContainer {
     position: fixed;
     top: 100px;
@@ -35,7 +34,6 @@
     max-width: 600px;
 }
 
-/* Header Container */
 .headerContainer {
     position: absolute;
     top: 100px;
@@ -47,7 +45,6 @@
     z-index: 10;
 }
 
-/* Back Button */
 .backButtonContainer {
     display: flex;
     align-items: center;
@@ -65,14 +62,12 @@
     background-color: rgba(255, 255, 255, 1);
 }
 
-/* Publish Button */
 .publishButtonContainer {
     display: flex;
     align-items: center;
     gap: 1rem;
 }
 
-/* Content Grid */
 .contentGrid {
     display: grid;
     grid-template-columns: 11fr 4fr;
@@ -94,23 +89,4 @@
     grid-column: 2 / 3;
     height: 100%;
     overflow: hidden; 
-}
-
-@media (min-height: 1200px) {
-    .draftsContainer {
-        height: 98vh; 
-        padding-top: 120px;
-    }
-    
-    .headerContainer {
-        top: 140px;
-    }
-
-    .notificationContainer {
-        top: 140px;
-    }
-    
-    .contentGrid {
-        height: calc(100vh - 180px); 
-    }
 }

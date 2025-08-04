@@ -9,7 +9,6 @@
   background-color: #00684A;
 }
 
-/* Metadata Section */
 .metadataSection {
   margin-bottom: 2rem;
   flex-shrink: 0;
@@ -39,7 +38,6 @@
   align-items: center;
 }
 
-/* Mobile Sidebar Styles */
 .mobileSidebar {
   border-right: none;
   border-radius: 0;

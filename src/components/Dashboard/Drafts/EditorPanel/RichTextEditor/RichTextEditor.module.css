@@ -15,14 +15,12 @@
   min-height: 400px;
 }
 
-/* Toolbar Section */
 .toolbarSection {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding: 8px 16px;
   flex-shrink: 0;
 }
 
-/* Editor Section */
 .editorSection {
   flex: 1;
   overflow: hidden;
@@ -43,7 +41,7 @@
   outline: none;
   line-height: 1.6;
   font-size: 14px;
-  font-family: 'Euclid Circular A', Arial, sans-serif; /* Use leafygreen font */
+  font-family: 'Euclid Circular A', Arial, sans-serif; /* leafygreen font */
   color: #1C3D31;
   min-height: 400px;
 }
@@ -149,7 +147,6 @@
   text-align: right;
 }
 
-/* Placeholder */
 .editorContent :global(.ProseMirror p.is-editor-empty:first-child::before) {
   content: attr(data-placeholder);
   float: left;
@@ -158,7 +155,6 @@
   height: 0;
 }
 
-/* Status Bar */
 .statusBar {
   display: flex;
   justify-content: space-between;

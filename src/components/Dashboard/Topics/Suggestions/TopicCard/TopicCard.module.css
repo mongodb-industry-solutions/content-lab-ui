@@ -2,15 +2,14 @@
 
 .topicCard {
   border: 1px solid #c0c0c0;
-  height: 24rem;
+  height: 425px;
   width: 350px;
   border-radius: 20px;
-  padding: 1rem;
+  padding: 16px;
   background: linear-gradient(225deg, #ffffff 0%, #fafafa 100%);
   position: relative;
 }
 
-/* Image Section */
 .imageSection {
   height: 50%;
   position: relative;
@@ -25,32 +24,25 @@
   object-fit: contain;
 }
 
-/* Content Section */
 .contentSection {
   height: 50%;
-  padding-top: 0.75rem;
+  padding-top: 12px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: 10px;
 }
 
-/* Header Section */
 .headerSection {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 10px;
 }
 
 .topRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.categoryBadge {
-  width: fit-content;
-  font-size: 12px;
 }
 
 .topicTitle {
@@ -60,12 +52,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   line-height: 1.3;
-  font-size: 1rem;
-}
-
-/* Keywords Section */
-.keywordsSection {
-  margin: 0.5rem 0;
+  font-size: 16px;
 }
 
 .keywordsList {
@@ -75,7 +62,7 @@
 }
 
 .keyword {
-  font-size: 0.75rem;
+  font-size: 12px;
   color: #6b7280;
   background: #f3f4f6;
   padding: 0.25rem 0.5rem;
@@ -85,7 +72,6 @@
   white-space: nowrap;
 }
 
-/* Footer Section */
 .footerSection {
   margin-top: auto;
   display: flex;
@@ -93,57 +79,47 @@
   align-items: center;
 }
 
-/* Responsive design for larger screens */
 @media (min-height: 1200px) {
   .topicCard {
-    height: 28rem;
-    max-width: 380px;
-  }
-
-  .contentSection {
-    gap: 1rem;
-  }
-
-  .categoryBadge {
-    font-size: 0.8rem;
+    height: 475px;
+    width: 400px;
   }
 
   .topicTitle {
-    font-size: 1.1rem;
+    font-size: 18px;
   }
 
   .keyword {
-    font-size: 0.8rem;
+    font-size: 13px;
   }
 }
 
-/* Responsive design for smaller screens */
 @media (max-width: 768px) {
   .topicCard {
-    height: 20rem;
+    height: 400px;
     max-width: 300px;
   }
 
   .contentSection {
-    gap: 0.5rem;
+    gap: 8px;
   }
 
   .categoryBadge {
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .topicTitle {
-    font-size: 0.9rem;
+    font-size: 14px;
   }
 
   .keyword {
-    font-size: 0.7rem;
+    font-size: 9px;
     padding: 0.2rem 0.4rem;
   }
 }
 
 @media (max-width: 480px) {
   .keyword {
-    font-size: 0.6rem;
+    font-size: 9px;
   }
 }

@@ -34,7 +34,7 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: 1px solid #ddd;
+  border: 1px solid #dddddd;
   background: white;
   display: flex;
   align-items: center;
@@ -46,9 +46,8 @@
 }
 
 .navButton:hover:not(.navButtonDisabled) {
-  border-color: #222;
+  border-color: #222222;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transform: translateY(-50%) scale(1.04);
 }
 
 .navButtonLeft {

@@ -9,8 +9,6 @@
   padding: 1rem;
   border-radius: 40px;
   width: fit-content;
-
-  /* Glassmorphism effect */
   background: rgba(255, 255, 255, 0.76);
   border: 1px solid rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(16px);
@@ -21,7 +19,6 @@
   font-size: 15px; 
 }
 
-/* Logo section */
 .logo {
   display: flex;
   align-items: center;
@@ -30,7 +27,6 @@
   justify-self: start;
 }
 
-/* Navigation links */
 .navlinks {
   display: flex;
   gap: 1.5rem;

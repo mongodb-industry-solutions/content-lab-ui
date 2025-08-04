@@ -79,10 +79,12 @@ export default function Topics () {
   const handleSearchSubmit = useCallback((query) => {
     if (query.trim()) {
       setIsSearchActive(true);
+      setIsLoadingSearch(true); 
       setSubmittedQuery(query.trim());
       debouncedSearch(query, selectedLabel);
     } else {
       setIsSearchActive(false);
+      setIsLoadingSearch(false);
       setSearchResults([]);
       setSubmittedQuery('');
     }

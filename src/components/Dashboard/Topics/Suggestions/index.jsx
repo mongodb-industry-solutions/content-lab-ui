@@ -7,6 +7,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { Body, H3 } from '@leafygreen-ui/typography';
+import Button from '@leafygreen-ui/button';
+import Icon from '@leafygreen-ui/icon';
 import { CONTENT_CATEGORIES } from '@/constants/categories';
 import TopicCard from '@/components/Dashboard/Topics/Suggestions/TopicCard';
 import Carousel from '@/components/external/Carousel';
@@ -109,9 +111,14 @@ export default function Suggestions({
           <>
             {renderTitleSection()}
             {onBackToSuggestions && (
-              <button onClick={onBackToSuggestions} className={styles.backButton}>
-                ← Back to Suggestions
-              </button>
+              <Button 
+                onClick={onBackToSuggestions} 
+                variant="primaryOutline"
+                leftGlyph={<Icon glyph="ArrowLeft" />}
+                className={styles.backButton}
+              >
+                Back to Suggestions
+              </Button>
             )}
             <div className={styles.grid}>
               {searchResults.map((topicCard, index) => (
@@ -121,14 +128,18 @@ export default function Suggestions({
           </>
         );
       } else if (!isLoadingSearch) {
-        // Empty search results
         return (
           <>
             {renderTitleSection()}
             {onBackToSuggestions && (
-              <button onClick={onBackToSuggestions} className={styles.backButton}>
-                ← Back to Suggestions
-              </button>
+              <Button 
+                onClick={onBackToSuggestions} 
+                variant="primaryOutline"
+                leftGlyph={<Icon glyph="ArrowLeft" />}
+                className={styles.backButton}
+              >
+                Back to Suggestions
+              </Button>
             )}
             {renderMessage("No topics found. Try adjusting your search or filter criteria.")}
           </>

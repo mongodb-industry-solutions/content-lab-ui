@@ -80,14 +80,12 @@ export default function TopicCard({ topicCard, index = 0 }) {
           </H3>
         </div>
 
-        <div className={styles.keywordsSection}>
-          <div className={styles.keywordsList}>
-            {keywords.slice(0, 3).map((keyword, idx) => (
-              <span key={idx} className={styles.keyword}>
-                {keyword}
-              </span>
-            ))}
-          </div>
+        <div className={styles.keywordsList}>
+          {keywords.slice(0, 3).map((keyword, idx) => (
+            <span key={idx} className={styles.keyword}>
+              {keyword}
+            </span>
+          ))}
         </div>
 
         {/* Footer */}
@@ -103,6 +101,7 @@ export default function TopicCard({ topicCard, index = 0 }) {
             onClick={handleDraft}
             disabled={isNavigating}
             size="small"
+            variant="default"
           >
             {isNavigating ? 'Loading...' : 'Start Drafting'}
           </Button>

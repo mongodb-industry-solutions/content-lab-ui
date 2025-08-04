@@ -125,7 +125,6 @@
   line-height: 1.5;
 }
 
-/* for big monitor/tv screens */
 @media (min-height: 1200px) {
   .container {
     padding: 3rem 4rem;

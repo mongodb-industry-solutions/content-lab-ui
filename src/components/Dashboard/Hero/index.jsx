@@ -12,7 +12,6 @@ import Link from 'next/link';
 import TopNews from './TopNews';
 import ViralPosts from './ViralPosts';
 import styles from './Hero.module.css';
-import { GradientBackground } from '@/components/external/GradientBackground';
 import Icon from '@leafygreen-ui/icon';
 
 export default function Hero() {
@@ -61,7 +60,7 @@ export default function Hero() {
           </div>
           
           <div className={styles.newsSection}>
-            <GradientBackground className={styles.gradientBackground} />
+            
             <TopNews />
           </div>
         </div>

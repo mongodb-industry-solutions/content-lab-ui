@@ -23,7 +23,6 @@
   z-index: 2;
 }
 
-/* Title */
 .title {
   text-align: center;
   margin-bottom: 2.5rem;
@@ -41,7 +40,6 @@
   margin-top: 0.5rem;
 }
 
-/* Title Divider */
 .titleDivider {
   width: 100vw;
   height: 1px;
@@ -52,7 +50,6 @@
   margin: 1.5rem 0 1.5rem 0;
 }
 
-/* Category */
 .category {
   margin-bottom: 3rem;
 }
@@ -64,30 +61,6 @@
   color: #1a1a1a;
 }
 
-/* Back Button */
-.backButton {
-  margin: 0 0 1.5rem 2rem;
-  background: transparent;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 0.75rem 1.5rem;
-  color: #374151;
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.backButton:hover {
-  background: #f8fafc;
-  border-color: #cbd5e1;
-  color: #1e293b;
-}
-
-/* Grid & States */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -107,11 +80,13 @@
   color: #6b7280;
 }
 
-/* Responsive */
+.backButton {
+  margin: 0 0 2rem 2rem;
+}
+
 @media (min-width: 1200px) {
   .grid {
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 1200px;
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
@@ -148,10 +123,6 @@
   .categoryHeading {
     padding-left: 1.5rem;
     font-size: 1.5rem;
-  }
-
-  .backButton {
-    margin-left: 1.5rem;
   }
 
   .message {
