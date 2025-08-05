@@ -2,7 +2,6 @@
   position: relative;
   width: 100%;
   overscroll-behavior-x: contain;
-  z-index: 3;
 }
 
 .carouselTrack {
@@ -62,13 +61,6 @@
   opacity: 0.3;
   cursor: not-allowed;
   pointer-events: none;
-}
-
-@media (max-width: 1200px) {
-  .carouselTrack {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
 }
 
 @media (max-width: 768px) {

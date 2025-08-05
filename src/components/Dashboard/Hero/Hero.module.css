@@ -160,6 +160,11 @@
     gap: 4rem;
   }
 
+  .introBadge {
+    font-size: 1.15rem;
+    padding: 0.5rem 1.25rem;
+  }
+
   .contentCard {
     gap: 2.5rem;
     padding: 3rem 1rem;
