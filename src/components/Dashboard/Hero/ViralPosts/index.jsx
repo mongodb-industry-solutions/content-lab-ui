@@ -7,9 +7,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { H3, Body } from '@leafygreen-ui/typography';
-import { Marquee } from '@/components/external/Marquee';
+import { Marquee } from './Marquee';
 import ViralCard from './ViralCard';
-import Loading from '../Loading';
 import { fetchRedditPosts } from '@/api/reddit_api';
 import styles from './ViralPosts.module.css';
 import { fallbackViralPosts } from '@/constants/fallbacks';
@@ -46,7 +45,13 @@ export default function ViralPosts() {
       
       <div className={styles.marqueeContainer}>
         {isLoading ? (
-          <Loading />
+          <Marquee className={styles.marquee} pauseOnHover={true}>
+            {fallbackViralPosts.map((viralPost) => (
+              <div key={viralPost._id} className={styles.redditWrapper}>
+                <ViralCard viralPost={viralPost} />
+              </div>
+            ))}
+          </Marquee>
         ) : (
           <Marquee className={styles.marquee} pauseOnHover={true}>
             {viralPosts.map((viralPost) => (

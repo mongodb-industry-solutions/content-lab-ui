@@ -10,8 +10,8 @@ import { Body, H3 } from '@leafygreen-ui/typography';
 import Button from '@leafygreen-ui/button';
 import Icon from '@leafygreen-ui/icon';
 import { CONTENT_CATEGORIES } from '@/constants/categories';
-import TopicCard from '@/components/Dashboard/Topics/Suggestions/TopicCard';
-import Carousel from '@/components/external/Carousel';
+import TopicCard from './TopicCard';
+import Carousel from './Carousel';
 import Loading from './Loading';
 import styles from './Suggestions.module.css';
 

@@ -4,7 +4,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { SparklesText } from '@/components/external/SparklesText';
+import { SparklesText } from './SparklesText';
 import styles from './Loading.module.css';
 
 // Generic loading component for non-search operations

@@ -2,7 +2,7 @@
  * Topics page top level component
  */
 
-import Topics from '@/components/Dashboard/Topics';
+import Topics from '@/components/dashboard/Topics';
 
 export default function TopicsPage() {
   return (

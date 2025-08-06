@@ -7,7 +7,7 @@
 import React, { useState, useEffect } from 'react';
 import Icon from '@leafygreen-ui/icon';
 import Card from "@leafygreen-ui/card";
-import { H2, Description, Subtitle } from '@leafygreen-ui/typography';
+import { H3, Description, Body } from '@leafygreen-ui/typography';
 import styles from './Login.module.css';
 import User from './User';
 import { USER_MAP } from "@/constants/users";
@@ -54,8 +54,8 @@ const LoginComponent = ({ onUserSelected }) => {
         <div className={styles.container}>
         <Card className={styles.card}>
             <div className={styles.modalMainContent}>
-                <H2 className={styles.title}>Welcome to The Content Lab</H2>
-                <Subtitle className={styles.subtitle}>This is a MongoDB demo</Subtitle>
+                <H3 className={styles.title}>Welcome to The Content Lab</H3>
+                <Body className={styles.subtitle}>This is a MongoDB demo</Body>
                 <br />
                 <Description className={styles.description}>
                     Please select the user you would like to login as:

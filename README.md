@@ -116,9 +116,6 @@ The Content Lab is built with a modern tech stack designed to deliver a responsi
   - [LeafyGreen UI](https://github.com/mongodb/leafygreen-ui) for customizable components
   - [Lucide React](https://lucide.dev/) for extra icons
 
-- **Animations and Effects:**
-  - Open-source components from [Magic UI](https://magicui.design/), [React Bits](https://reactbits.dev/) and [21st.dev](https://21st.dev/home)
-
 - **Core React and Next.js:**
   - `next`, `react`, `react-dom`
 

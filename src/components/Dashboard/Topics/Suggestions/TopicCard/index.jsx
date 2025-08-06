@@ -24,7 +24,8 @@ export default function TopicCard({ topicCard, index = 0 }) {
     topic,
     keywords = [],
     label,
-    url = "https://mongodb.com"
+    url = "https://mongodb.com",
+    description = ""
   } = topicCard || {};
 
   const handleSourceClick = () => {
@@ -81,6 +82,10 @@ export default function TopicCard({ topicCard, index = 0 }) {
           ))}
         </div>
 
+        <Body className={styles.description}>
+          {description}
+        </Body>
+        
         {/* Footer */}
         <div className={styles.footerSection}>
           <Link 

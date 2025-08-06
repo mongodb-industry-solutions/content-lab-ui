@@ -9,14 +9,14 @@
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { H3, Body } from '@leafygreen-ui/typography';
-import InfoWizard from '@/components/external/InfoWizard';
+import InfoWizard from '@/components/shared/InfoWizard';
 import { fetchSuggestedTopics as fetchSuggestedTopicsAPI } from '@/api/suggestions_api';
 import { analyzeQuery } from '@/api/search_api';
 import { debounce } from '@/utils/generalUtils';
 import { SUGGESTIONS_INFO_WIZARD } from '@/constants/infowizard';
 import { CONTENT_CATEGORIES } from '@/constants/categories';
-import Search from "@/components/Dashboard/Topics/Search";
-import Suggestions from "@/components/Dashboard/Topics/Suggestions";
+import Search from "./Search";
+import Suggestions from "./Suggestions";
 import styles from "./Topics.module.css";
 
 export default function Topics () {

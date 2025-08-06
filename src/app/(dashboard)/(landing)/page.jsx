@@ -2,7 +2,7 @@
  * Landing page top level component
  */
 
-import Hero from '@/components/Dashboard/Hero';
+import Hero from '@/components/dashboard/Hero';
 
 export default function LandingPage() {
   return (

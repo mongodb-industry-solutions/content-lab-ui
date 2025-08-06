@@ -2,7 +2,7 @@
 
 .topicCard {
   border: 1px solid #c0c0c0;
-  height: 425px;
+  height: 450px;
   width: 350px;
   border-radius: 20px;
   padding: 16px;
@@ -11,7 +11,7 @@
 }
 
 .imageSection {
-  height: 50%;
+  height: 40%;
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -25,7 +25,7 @@
 }
 
 .contentSection {
-  height: 50%;
+  height: 60%;
   padding-top: 12px;
   display: flex;
   flex-direction: column;
@@ -72,6 +72,17 @@
   white-space: nowrap;
 }
 
+.description {
+  font-size: 13px;
+  color: #4a4a4a;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .footerSection {
   margin-top: auto;
   display: flex;
@@ -81,7 +92,7 @@
 
 @media (min-height: 1200px) {
   .topicCard {
-    height: 475px;
+    height: 450px;
     width: 400px;
   }
 
@@ -116,10 +127,18 @@
     font-size: 9px;
     padding: 0.2rem 0.4rem;
   }
+
+  .description {
+    font-size: 12px;
+  }
 }
 
 @media (max-width: 480px) {
   .keyword {
     font-size: 9px;
+  }
+
+  .description {
+    font-size: 11px;
   }
 }

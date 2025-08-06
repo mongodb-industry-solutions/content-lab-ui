@@ -8,7 +8,7 @@
 import React from 'react';
 import Icon from '@leafygreen-ui/icon';
 import Card from '@leafygreen-ui/card';
-import { Body, H3 } from '@leafygreen-ui/typography';
+import { Body } from '@leafygreen-ui/typography';
 import { getRelativeTime } from '@/utils/generalUtils';
 import Image from 'next/image';
 import styles from './ViralCard.module.css';

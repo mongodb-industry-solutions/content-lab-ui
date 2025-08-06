@@ -9,7 +9,7 @@ import LeafyGreenProvider from "@leafygreen-ui/leafygreen-provider";
 export function Providers({ children }) { 
 
   return (
-    <LeafyGreenProvider baseFontSize={16}>
+    <LeafyGreenProvider baseFontSize={13}>
       {children}
     </LeafyGreenProvider>
   );

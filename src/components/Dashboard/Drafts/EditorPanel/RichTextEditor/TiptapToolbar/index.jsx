@@ -17,6 +17,7 @@ import {
   AlignRight
 } from 'lucide-react';
 import styles from './TiptapToolbar.module.css';
+import DemoGuideCue from '@/components/shared/DemoGuideCue';
 
 export default function TiptapToolbar({ editor }) {
     if (!editor) {
@@ -25,6 +26,13 @@ export default function TiptapToolbar({ editor }) {
 
     return (
         <div className={styles.toolbar}>
+            <DemoGuideCue title="Formatting Tools">
+                Use these tools to format your article.
+                <br/>
+                <br/>
+                <strong>Need help?</strong> The chatbot can assist with writing and editing.
+            </DemoGuideCue>
+
             {/* Basic formatting */}
             <div className={styles.toolbarGroup}>
                 <button
@@ -134,8 +142,6 @@ export default function TiptapToolbar({ editor }) {
                     <AlignRight size={16} />
                 </button>
             </div>
-
-
         </div>
     );
 } 
