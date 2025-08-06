@@ -28,7 +28,6 @@ The application follows a clear hierarchical structure organized by feature and 
 ├── /components            # Feature-organized UI components
 │   ├── /dashboard/        # Main application features (Hero, Topics, Drafts, Saved)
 │   ├── /layout/           # Navigation and layout components
-│   ├── /login/            # Authentication components
 │   └── /shared/           # Reusable UI components and utilities
 ├── /api                   # Backend communication layer
 ├── /hooks                 # Custom React hooks for shared logic
@@ -45,12 +44,8 @@ The application uses a **hierarchical component structure** with clear separatio
 **Purpose**: Provide structural foundation and navigation
 - **`layout/index.jsx`**: Main layout wrapper handling authentication state and navigation
 - **`layout/Navbar/`**: Primary navigation with desktop/mobile variants and user profile management
+- **`layout/Login/`**: User selection component used for when you first load the app
 - **Route Layouts**: Next.js layout components for different application sections
-
-### Authentication Components
-**Purpose**: Handle user authentication and session management
-- **`login/index.jsx`**: User selection interface for demo purposes
-- **`login/User/`**: Individual user profile cards with selection functionality
 
 ### Feature Components
 **Purpose**: Implement specific business logic and user workflows
