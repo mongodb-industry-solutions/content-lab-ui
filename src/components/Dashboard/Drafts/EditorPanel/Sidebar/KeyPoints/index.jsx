@@ -9,6 +9,7 @@ import React, { useState, useEffect } from 'react';
 import Card from '@leafygreen-ui/card';
 import Button from '@leafygreen-ui/button';
 import { Subtitle, Body } from '@leafygreen-ui/typography';
+import { Spinner } from '@leafygreen-ui/loading-indicator';
 import Icon from '@leafygreen-ui/icon';
 import { researchTopic } from '@/api/research_api';
 import styles from './KeyPoints.module.css';
@@ -44,7 +45,12 @@ export default function KeyPoints({ topicCard }) {
                     {/* Scrollable Content */}
                     <div className={styles.scrollableContent}>
                         {isLoading ? (
-                            <div className={styles.loadingState}>Loading...</div>
+                            <div className={styles.loadingState}>
+                                <Spinner
+                                    displayOption='default-vertical'
+                                    description="Loading key points..."
+                                />
+                            </div>
                         ) : (
                             <div className={styles.keyPointsList}>
                                 {keyPoints.map((point, index) => (

@@ -1,23 +1,24 @@
 /**
- * Loading component for the suggestions component
+ * Loading component for the suggestions component using LeafyGreen PageLoader
  */
 
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { SparklesText } from './SparklesText';
+import { PageLoader, Spinner } from '@leafygreen-ui/loading-indicator';
 import styles from './Loading.module.css';
 
 // Generic loading component for non-search operations
 function GenericLoading() {
     return (
         <div className={styles.genericLoadingContainer}>
-            <div className={styles.spinner}></div>
-            <p className={styles.genericLoadingText}>Loading topics...</p>
+            <Spinner
+                displayOption='large-vertical'
+                description="Loading topics..."
+            />
         </div>
     );
 }
 
-// Search loading component with rotating SparklesText
+// Search loading component with rotating text and PageLoader
 function SearchLoading() {
     const loadingTexts = [
         "Analyzing trends...",
@@ -41,23 +42,10 @@ function SearchLoading() {
     
     return (
         <div className={styles.searchLoadingContainer}>
-            <AnimatePresence mode="wait">
-                <motion.div
-                    key={currentTextIndex}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ 
-                        duration: 0.3,
-                        ease: "easeInOut"
-                    }}
-                >
-                    <SparklesText 
-                        text={loadingTexts[currentTextIndex]}
-                        sparklesCount={15}
-                    />
-                </motion.div>
-            </AnimatePresence>
+            <PageLoader
+                description={loadingTexts[currentTextIndex]}
+                baseFontSize={16}
+            />
         </div>
     );
 }

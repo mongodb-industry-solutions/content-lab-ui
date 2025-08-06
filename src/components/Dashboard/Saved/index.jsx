@@ -8,6 +8,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { H3, Body } from '@leafygreen-ui/typography';
+import { Spinner } from '@leafygreen-ui/loading-indicator';
 import DraftCard from './DraftCard';
 import Button from '@leafygreen-ui/button';
 import Icon from '@leafygreen-ui/icon';
@@ -58,8 +59,10 @@ export default function Saved() {
     if (isLoading) {
       return (
         <div className={styles.loadingContainer}>
-          <div className={styles.loadingSpinner}></div>
-          <Body className={styles.loadingText}>Loading your drafts...</Body>
+          <Spinner
+            displayOption='large-vertical'
+            description="Loading your drafts..."
+          />
         </div>
       );
     }
