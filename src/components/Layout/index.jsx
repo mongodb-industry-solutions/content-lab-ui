@@ -5,10 +5,11 @@
  */
 
 import Navbar from "./Navbar";
-import Login from "@/components/login";
+import Login from "./Login";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Body } from '@leafygreen-ui/typography';
+import { Spinner } from '@leafygreen-ui/loading-indicator';
 import styles from './Layout.module.css';
 
 export default function Layout({ children }) {
@@ -37,9 +38,10 @@ export default function Layout({ children }) {
   if (isLoading) {
     return (
       <div className={styles.loadingContainer}>
-        <div className={styles.loadingSpinner}>
-          <Body>Loading...</Body>
-        </div>
+        <Spinner
+          displayOption='xlarge-vertical'
+          description="Loading..."
+        />
       </div>
     );
   }
