@@ -268,6 +268,11 @@ This project includes third-party packages listed below:
 - **Repository**: https://github.com/mongodb/leafygreen-ui
 
 ---
+### @leafygreen-ui/button@25.0.1
+- **License**: Apache-2.0
+- **Repository**: https://github.com/mongodb/leafygreen-ui
+
+---
 ### @leafygreen-ui/card@13.0.3
 - **License**: Apache-2.0
 - **Repository**: https://github.com/mongodb/leafygreen-ui
@@ -303,6 +308,11 @@ This project includes third-party packages listed below:
 
 ---
 ### @leafygreen-ui/form-field@4.0.1
+- **License**: Apache-2.0
+- **Repository**: https://github.com/mongodb/leafygreen-ui
+
+---
+### @leafygreen-ui/guide-cue@8.0.4
 - **License**: Apache-2.0
 - **Repository**: https://github.com/mongodb/leafygreen-ui
 
@@ -353,6 +363,11 @@ This project includes third-party packages listed below:
 ---
 ### @leafygreen-ui/lib@4.5.1
 - **License**: Apache-2.0
+
+---
+### @leafygreen-ui/loading-indicator@4.0.3
+- **License**: Apache-2.0
+- **Repository**: https://github.com/mongodb/leafygreen-ui
 
 ---
 ### @leafygreen-ui/logo@11.0.2
@@ -1694,6 +1709,11 @@ This project includes third-party packages listed below:
 - **Contact**: zertosh@gmail.com
 
 ---
+### lottie-web@5.13.0
+- **License**: MIT
+- **Repository**: https://github.com/airbnb/lottie-web
+
+---
 ### lucide-react@0.525.0
 - **License**: ISC
 - **Author**: Eric Fennis
@@ -2051,6 +2071,12 @@ This project includes third-party packages listed below:
 - **Repository**: https://github.com/facebook/react
 
 ---
+### react-lottie-player@1.5.6
+- **License**: MIT
+- **Author**: mifi
+- **Repository**: https://github.com/mifi/react-lottie-player
+
+---
 ### react-textarea-autosize@8.5.9
 - **License**: MIT
 - **Author**: Andrey Popp
@@ -2108,6 +2134,13 @@ This project includes third-party packages listed below:
 - **Author**: James Halliday
 - **Repository**: https://github.com/browserify/resolve
 - **Contact**: mail@substack.net
+
+---
+### rfdc@1.4.1
+- **License**: MIT
+- **Author**: David Mark Clements
+- **Repository**: https://github.com/davidmarkclements/rfdc
+- **Contact**: david.clements@nearform.com
 
 ---
 ### rope-sequence@1.3.4
