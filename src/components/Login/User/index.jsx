@@ -11,7 +11,7 @@ import Image from 'next/image';
 
 import styles from './User.module.css';
 
-const User = ({ user = null, isSelectedUser = false, setOpen, setLocalSelectedUser = null, shortDescription = null }) => {
+export default function User({ user = null, isSelectedUser = false, setOpen, setLocalSelectedUser = null, shortDescription = null }) {
     const selectUserAndCloseModal = () => {
         if (!setLocalSelectedUser) return;
         setLocalSelectedUser(user);
@@ -30,6 +30,7 @@ const User = ({ user = null, isSelectedUser = false, setOpen, setLocalSelectedUs
                     width={100}
                     height={100}
                     style={{ width: '100%', height: 'auto' }}
+                    priority
                 />
                 <Body className={styles.userName}>{user.name}</Body>
                 <Body baseFontSize={13} weight="medium" className={styles.userDescription}>
@@ -39,5 +40,3 @@ const User = ({ user = null, isSelectedUser = false, setOpen, setLocalSelectedUs
         </div>
     );
 };
-
-export default User;

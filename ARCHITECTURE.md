@@ -14,6 +14,8 @@ The Content Lab frontend is built with a **component-driven architecture** that 
 - **React 19 RC**: Leverages the latest React features including improved concurrent rendering and enhanced hooks
 - **CSS Modules**: Provides scoped styling with zero runtime overhead and excellent developer experience
 - **LeafyGreen Design System**: MongoDB's official design system ensures consistent UI/UX across the application
+- **TipTap Editor**: Rich text editing with extensible plugin architecture for content creation
+- **User Onboarding**: Integrated guide cue system for demo user experience
 - **Microservices Integration**: Clean separation between frontend and multiple backend services for scalability
 
 ## Project Structure Deep Dive
@@ -24,12 +26,14 @@ The application follows a clear hierarchical structure organized by feature and 
 /src
 ├── /app                    # Next.js App Router with route groups
 ├── /components            # Feature-organized UI components
-│   ├── /Dashboard/        # Main application features (Landing, Topics, Drafts, Saved)
-│   ├── /Layout/           # Navigation and layout components
-│   └── /external/         # Animation and UI enhancement components
+│   ├── /dashboard/        # Main application features (Hero, Topics, Drafts, Saved)
+│   ├── /layout/           # Navigation and layout components
+│   ├── /login/            # Authentication components
+│   └── /shared/           # Reusable UI components and utilities
 ├── /api                   # Backend communication layer
 ├── /hooks                 # Custom React hooks for shared logic
 ├── /utils                 # Utility functions and constants
+├── /constants             # Application constants and configuration
 └── /public               # Static assets and images
 ```
 
@@ -39,22 +43,28 @@ The application uses a **hierarchical component structure** with clear separatio
 
 ### Layout Components
 **Purpose**: Provide structural foundation and navigation
-- **`Layout/index.jsx`**: Main layout wrapper handling authentication state and navigation
-- **`Layout/Navbar`**: Primary navigation with user context and logout functionality
+- **`layout/index.jsx`**: Main layout wrapper handling authentication state and navigation
+- **`layout/Navbar/`**: Primary navigation with desktop/mobile variants and user profile management
 - **Route Layouts**: Next.js layout components for different application sections
+
+### Authentication Components
+**Purpose**: Handle user authentication and session management
+- **`login/index.jsx`**: User selection interface for demo purposes
+- **`login/User/`**: Individual user profile cards with selection functionality
 
 ### Feature Components
 **Purpose**: Implement specific business logic and user workflows
 
 The dashboard is organized into four main feature areas:
-- **`Landing/`**: Welcome page with trending content aggregation
-- **`Topics/`**: Content research and topic exploration with AI-powered suggestions
-- **`Drafts/`**: Content creation environment with rich text editor and AI writing assistant
-- **`Saved/`**: Draft management and organization
+- **`dashboard/Hero/`**: Landing page with trending news and viral content aggregation
+- **`dashboard/Topics/`**: Content research with AI-powered topic suggestions and search
+- **`dashboard/Drafts/`**: Content creation environment with rich text editor and AI writing assistant
+- **`dashboard/Saved/`**: Draft management and organization
 
 ### Shared Components
-- **Animation Components**: Visual enhancements (`FlickeringGrid`, `GradientBackground`, `SparklesText`)
-- **UI Utilities**: Interactive elements (`InfoWizard`, `Globe`, `TiptapToolbar`)
+**Purpose**: Reusable UI components and utilities
+- **`shared/DemoGuideCue/`**: Reusable guide cue wrapper for user onboarding
+- **`shared/InfoWizard/`**: Interactive information display component
 
 ### Component Design Patterns
 
@@ -175,9 +185,10 @@ import styles from './Component.module.css';
 ```
 
 ### Animation and Visual Effects
-External components provide modern UI enhancements:
-- **Magic UI Components**: `GradientBackground`, `GridPattern` for visual appeal
-- **Interactive Animations**: User engagement through motion and transitions
+Built-in components provide modern UI enhancements:
+- **Hero Components**: `TopNews` with auto-rotating content and metrics visualization
+- **Viral Content**: `ViralPosts` with marquee animations and social media integration
+- **Interactive Animations**: User engagement through motion and transitions using Framer Motion
 
 ## Development Patterns
 
@@ -213,6 +224,26 @@ export function useChatbot(getDraftContent, userProfile, topicCard) {
 }
 ```
 
+#### Demo Guide System
+The application includes a sophisticated user onboarding system using reusable guide cues:
+
+```jsx
+// Reusable DemoGuideCue component
+import DemoGuideCue from '@/components/shared/DemoGuideCue';
+
+<DemoGuideCue title="Writing Tools Workflow">
+  Start with Draft to outline ideas.
+  <br/>
+  Then use Refine or Proofread to improve your content.
+</DemoGuideCue>
+```
+
+**Key Features:**
+- **Automatic Positioning**: Attaches to parent elements without manual ref management
+- **Consistent Behavior**: Standardized appearance and interaction patterns
+- **Easy Integration**: Drop-in component requiring minimal setup
+- **Strategic Placement**: Writing tools panel and editor toolbar guidance
+
 ### Error Handling & Performance
 
 - **Consistent Error Boundaries**: Graceful fallback UI for component failures
@@ -244,10 +275,11 @@ This pattern ensures maintainable, testable components while enabling sophistica
 The Content Lab frontend architecture demonstrates **modern React development practices** with a focus on:
 
 1. **Scalable Component Organization**: Clear separation of concerns with feature-based component structure
-2. **Type-Safe Development**: Strategic use of TypeScript patterns and consistent prop interfaces  
+2. **Reusable Component Patterns**: Shared utilities like DemoGuideCue for consistent user experience  
 3. **Performance Optimization**: Lazy loading, image optimization, and efficient state management
-4. **User Experience**: Progressive loading states, optimistic updates, and graceful error handling
-5. **Backend Integration**: Clean API abstraction with flexible environment configuration
-6. **Design System Consistency**: LeafyGreen integration for cohesive visual experience
+4. **User Experience**: Progressive loading states, onboarding guides, and graceful error handling
+5. **Rich Text Editing**: Advanced content creation with TipTap editor and AI-powered writing assistance
+6. **Backend Integration**: Clean API abstraction with flexible environment configuration
+7. **Design System Consistency**: LeafyGreen integration for cohesive visual experience
 
 This architecture supports rapid development while maintaining code quality and user experience standards expected in modern content management applications, showcasing the powerful combination of React, Next.js, and MongoDB's ecosystem for building sophisticated media industry applications.

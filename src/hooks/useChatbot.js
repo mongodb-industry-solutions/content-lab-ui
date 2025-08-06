@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import { sendChatMessage } from '@/api/chat_api';
 import { createBotMessage, createUserMessage, createErrorMessage, createNeedContentMessage } from '@/utils/chatUtils';
-import { WRITING_TOOLS } from '@/utils/constants';
+import { WRITING_TOOLS } from '@/constants/users';
 
 /**
  * Custom hook for managing chatbot state and message handling

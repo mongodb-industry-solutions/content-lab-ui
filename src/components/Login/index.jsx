@@ -7,11 +7,10 @@
 import React, { useState, useEffect } from 'react';
 import Icon from '@leafygreen-ui/icon';
 import Card from "@leafygreen-ui/card";
-import { H2, Description, Subtitle } from '@leafygreen-ui/typography';
+import { H3, Description, Body } from '@leafygreen-ui/typography';
 import styles from './Login.module.css';
 import User from './User';
-import Loading from './Loading';
-import { USER_MAP } from "@/utils/constants";
+import { USER_MAP } from "@/constants/users";
 import Banner from "@leafygreen-ui/banner";
 import { useRouter } from 'next/navigation';
 import { fetchUserProfile } from "@/api/profile_api";
@@ -20,28 +19,17 @@ const LoginComponent = ({ onUserSelected }) => {
     const [open, setOpen] = useState(false);
     const router = useRouter();
 
-    const [users, setUsers] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
-    const [usersLoading, setUsersLoading] = useState(true);
+
+    const users = Object.entries(USER_MAP).map(([id, details]) => ({
+        id,
+        name: details.name,
+        avatar: details.avatar,
+        shortDescription: details.shortDescription
+    }));
 
     useEffect(() => {
         setOpen(true);
-        
-        const loadUsers = async () => {
-            setUsersLoading(true);
-            
-            const loadedUsers = Object.entries(USER_MAP).map(([id, details]) => ({
-                id,
-                name: details.name,
-                avatar: details.avatar,
-                shortDescription: details.shortDescription
-            }));
-            
-            setUsers(loadedUsers);
-            setUsersLoading(false);
-        };
-
-        loadUsers();
     }, []);
 
     const handleUserSelect = async (user) => {
@@ -62,16 +50,12 @@ const LoginComponent = ({ onUserSelected }) => {
         router.push('/');
     };
 
-    if (usersLoading) {
-        return <Loading />;
-    }
-
     return (
         <div className={styles.container}>
         <Card className={styles.card}>
             <div className={styles.modalMainContent}>
-                <H2 className={styles.title}>Welcome to The Content Lab</H2>
-                <Subtitle className={styles.subtitle}>This is a MongoDB demo</Subtitle>
+                <H3 className={styles.title}>Welcome to The Content Lab</H3>
+                <Body className={styles.subtitle}>This is a MongoDB demo</Body>
                 <br />
                 <Description className={styles.description}>
                     Please select the user you would like to login as:
@@ -105,10 +89,8 @@ const LoginComponent = ({ onUserSelected }) => {
     );
 };
 
-const Login = ({ onUserSelected }) => {
+export default function Login({ onUserSelected }) {
     return (
         <LoginComponent onUserSelected={onUserSelected} />
     );
 };
-
-export default Login;

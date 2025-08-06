@@ -8,10 +8,10 @@
 }
 
 .keyPointsCard {
-  padding: 0 !important;
+  padding: 0;
   height: fit-content;
-  border: 1px solid #e2e8f0 !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
 
@@ -21,19 +21,18 @@
   height: 100%;
 }
 
-/* Sticky Header */
 .header {
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding: 1.25rem 1.25rem 1rem 1.25rem;
   flex-shrink: 0;
 }
 
 .keyPointsTitle {
   font-size: 1rem;
+  color: #1a1a1a;
   font-weight: 600;
 }
 
-/* Scrollable Content */
 .scrollableContent {
   flex: 1;
   overflow-y: auto;
@@ -43,7 +42,6 @@
   flex-direction: column;
 }
 
-/* Key Points List */
 .keyPointsList {
   padding: 1rem 1.25rem;
   display: flex;
@@ -52,7 +50,7 @@
 }
 
 .keyPointItem {
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding-bottom: 1rem;
 }
 
@@ -85,7 +83,6 @@
   gap: 0.5rem;
 }
 
-/* Loading State */
 .loadingState {
   display: flex;
   align-items: center;

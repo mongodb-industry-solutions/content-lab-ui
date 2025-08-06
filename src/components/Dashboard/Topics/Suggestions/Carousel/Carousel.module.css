@@ -1,0 +1,84 @@
+.carouselContainer {
+  position: relative;
+  width: 100%;
+  overscroll-behavior-x: contain;
+}
+
+.carouselTrack {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overscroll-behavior-x: contain;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.carouselTrack::-webkit-scrollbar {
+  display: none;
+}
+
+.carouselItem {
+  flex-shrink: 0;
+  overflow: hidden;
+  height: fit-content;
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #dddddd;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 15;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.navButton:hover:not(.navButtonDisabled) {
+  border-color: #222222;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.navButtonLeft {
+  left: 16px;
+}
+
+.navButtonRight {
+  right: 16px;
+}
+
+.navButtonDisabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .carouselTrack {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .navButton {
+    width: 28px;
+    height: 28px;
+  }
+
+  .navButtonLeft {
+    left: 8px;
+  }
+
+  .navButtonRight {
+    right: 8px;
+  }
+}

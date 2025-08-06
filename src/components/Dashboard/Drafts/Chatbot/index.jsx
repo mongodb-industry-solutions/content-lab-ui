@@ -10,17 +10,18 @@
 import Card from '@leafygreen-ui/card';
 import { useChatbot } from '@/hooks/useChatbot';
 import styles from './Chatbot.module.css';
-import ChatbotInput from '@/components/Dashboard/Drafts/Chatbot/ChatbotInput';
-import ChatHeader from '@/components/Dashboard/Drafts/Chatbot/ChatHeader';
-import ChatMessages from '@/components/Dashboard/Drafts/Chatbot/ChatMessages';
-import ChatPanel from '@/components/Dashboard/Drafts/Chatbot/ChatPanel';
+import ChatbotInput from '@/components/dashboard/Drafts/Chatbot/ChatbotInput';
+import ChatHeader from '@/components/dashboard/Drafts/Chatbot/ChatHeader';
+import ChatMessages from '@/components/dashboard/Drafts/Chatbot/ChatMessages';
+import ChatPanel from '@/components/dashboard/Drafts/Chatbot/ChatPanel';
 
 export default function Chatbot({ 
     getDraftContent, 
     applyDraftLayout, 
     applySuggestion,
     userProfile,
-    topicCard
+    topicCard,
+    isMobile = false
 }) {
     // Use custom hook for all chatbot logic
     const {
@@ -35,7 +36,7 @@ export default function Chatbot({
     } = useChatbot(getDraftContent, userProfile, topicCard);
 
     return (
-        <Card className={styles.copilot}>
+        <Card className={`${styles.copilot} ${isMobile ? styles.mobileChatbot : ''}`}>
             <div className={styles.copilotContent}>
                 <ChatHeader />
                 

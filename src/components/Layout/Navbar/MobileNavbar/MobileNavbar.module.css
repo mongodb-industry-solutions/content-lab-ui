@@ -1,14 +1,11 @@
 /* MobileNavbar.module.css */
 
-/* Main mobile navbar */
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.8rem 1rem;
   width: 100%;
-  
-  /* Glassmorphism effect */
   background: rgba(230, 230, 230, 0.4);
   border: 1px solid rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(16px);

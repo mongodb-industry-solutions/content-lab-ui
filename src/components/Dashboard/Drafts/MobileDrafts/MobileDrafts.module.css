@@ -1,0 +1,121 @@
+/* MobileDrafts.module.css */
+
+.mobileDraftsContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    padding-top: 80px;
+    background-color: #fafafa;
+    overflow: hidden;
+}
+
+.notificationContainer {
+    position: fixed;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 90%;
+    max-width: 400px;
+}
+
+.mobileHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    padding: 0 16px;
+    background-color: #fafafa;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.headerLeft,
+.headerRight {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.headerCenter {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.viewTitle {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1C2D38;
+    text-align: center;
+}
+
+.backButton,
+.chatButton {
+    background-color: transparent;
+    border: none;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.backButton:hover,
+.chatButton:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.chatButton {
+    background-color: #00ED64;
+    color: white;
+}
+
+.chatButton:hover {
+    background-color: #00CC57;
+}
+
+.mobileActionBar {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px;
+    background-color: #fafafa;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.actionButton {
+    flex: 1;
+    max-width: none;
+}
+
+.mobileContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 0;
+}
+
+@media (max-width: 480px) {
+    .mobileDraftsContainer {
+        padding-top: 56px;
+    }
+    
+    .mobileHeader {
+        height: 56px;
+        padding: 0 12px;
+    }
+    
+    .mobileActionBar {
+        padding: 8px 12px;
+        gap: 8px;
+    }
+    
+    .notificationContainer {
+        top: 56px;
+        width: 95%;
+    }
+}

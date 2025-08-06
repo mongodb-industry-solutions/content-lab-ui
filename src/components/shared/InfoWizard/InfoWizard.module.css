@@ -1,0 +1,55 @@
+/* InfoWizard.module.css */
+
+.modal {
+  z-index: 1000;
+  transform: translateZ(0);
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+  max-height: 90vh;
+  height: 500px; 
+  min-height: 500px; 
+}
+
+.modalH3 {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.modalImage {
+  display: block;        
+  height: auto;
+  max-width: 100%;
+  margin: 0 auto;        
+  border-radius: 8px;
+}
+
+.htmlRender p, .htmlRender li{
+  font-size: 13px;
+}
+
+.htmlRender mark {
+  background-color: rgb(216, 214, 214);
+  color: black;
+}
+
+.section {
+  margin-bottom: 16px;
+}
+
+.list {
+  margin: 8px 0;
+  padding-left: 20px;
+} 

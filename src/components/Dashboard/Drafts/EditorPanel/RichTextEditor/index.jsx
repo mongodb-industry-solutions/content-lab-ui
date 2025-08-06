@@ -8,7 +8,7 @@
 import React, { forwardRef, useImperativeHandle } from 'react';
 import { EditorContent } from '@tiptap/react';
 import { useTiptapEditor } from '@/hooks/useTiptapEditor';
-import TiptapToolbar from '@/components/external/TiptapToolbar';
+import TiptapToolbar from './TiptapToolbar';
 import { Body, Description } from '@leafygreen-ui/typography';
 import styles from './RichTextEditor.module.css';
 

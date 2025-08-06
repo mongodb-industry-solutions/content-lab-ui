@@ -2,7 +2,7 @@
 
 .chatPanel {
   background: #ffffff;
-  border: 1px solid #e5e7eb;
+  border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   padding: 0.75rem;
 }
@@ -10,7 +10,7 @@
 .panelTitle {
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #374151;
+  color: #1a1a1a;
   font-size: 0.8rem;
 }
 

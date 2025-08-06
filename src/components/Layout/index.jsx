@@ -4,8 +4,8 @@
  * Layout component for the dashboard / user selection
  */
 
-import Navbar from "@/components/Layout/Navbar";
-import Login from "@/components/Login";
+import Navbar from "./Navbar";
+import Login from "@/components/login";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Body } from '@leafygreen-ui/typography';
@@ -54,10 +54,8 @@ export default function Layout({ children }) {
       <header className={styles.header}>
         <Navbar onLogout={handleLogout} />
       </header>
-      <main className={styles.main}>
-        <div className={styles.container}>
-          {children}
-        </div>
+      <main>
+        {children}
       </main>
     </div>
   );

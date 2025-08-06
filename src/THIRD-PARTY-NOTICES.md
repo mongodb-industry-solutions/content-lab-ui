@@ -273,6 +273,21 @@ This project includes third-party packages listed below:
 - **Repository**: https://github.com/mongodb/leafygreen-ui
 
 ---
+### @leafygreen-ui/checkbox@18.0.1
+- **License**: Apache-2.0
+- **Repository**: https://github.com/mongodb/leafygreen-ui
+
+---
+### @leafygreen-ui/chip@4.0.3
+- **License**: Apache-2.0
+- **Repository**: https://github.com/mongodb/leafygreen-ui
+
+---
+### @leafygreen-ui/combobox@12.0.4
+- **License**: Apache-2.0
+- **Repository**: https://github.com/mongodb/leafygreen-ui
+
+---
 ### @leafygreen-ui/descendants@3.0.2
 - **License**: Apache-2.0
 - **Repository**: https://github.com/mongodb/leafygreen-ui
@@ -312,6 +327,16 @@ This project includes third-party packages listed below:
 
 ---
 ### @leafygreen-ui/info-sprinkle@5.0.3
+- **License**: Apache-2.0
+- **Repository**: https://github.com/mongodb/leafygreen-ui
+
+---
+### @leafygreen-ui/inline-definition@9.0.3
+- **License**: Apache-2.0
+- **Repository**: https://github.com/mongodb/leafygreen-ui
+
+---
+### @leafygreen-ui/input-option@4.0.3
 - **License**: Apache-2.0
 - **Repository**: https://github.com/mongodb/leafygreen-ui
 
@@ -369,12 +394,17 @@ This project includes third-party packages listed below:
 - **Repository**: https://github.com/mongodb/leafygreen-ui
 
 ---
-### @leafygreen-ui/tabs@17.0.0
+### @leafygreen-ui/search-input@6.0.3
 - **License**: Apache-2.0
 - **Repository**: https://github.com/mongodb/leafygreen-ui
 
 ---
-### @leafygreen-ui/text-area@12.0.1
+### @leafygreen-ui/segmented-control@11.0.4
+- **License**: Apache-2.0
+- **Repository**: https://github.com/mongodb/leafygreen-ui
+
+---
+### @leafygreen-ui/tabs@17.0.0
 - **License**: Apache-2.0
 - **Repository**: https://github.com/mongodb/leafygreen-ui
 
@@ -384,7 +414,7 @@ This project includes third-party packages listed below:
 - **Repository**: https://github.com/mongodb/leafygreen-ui
 
 ---
-### @leafygreen-ui/tokens@3.1.2
+### @leafygreen-ui/tokens@3.2.0
 - **License**: Apache-2.0
 - **Repository**: https://github.com/mongodb/leafygreen-ui
 
@@ -394,18 +424,19 @@ This project includes third-party packages listed below:
 - **Repository**: https://github.com/mongodb/leafygreen-ui
 
 ---
-### @leafygreen-ui/typography@21.0.1
-- **License**: Apache-2.0
-- **Repository**: https://github.com/mongodb/leafygreen-ui
-
----
-### @leafygreen-ui/typography@22.0.1
+### @leafygreen-ui/typography@22.1.0
 - **License**: Apache-2.0
 - **Repository**: https://github.com/mongodb/leafygreen-ui
 
 ---
 ### @lg-tools/test-harnesses@0.3.2
 - **License**: Apache-2.0
+
+---
+### @marko19907/string-to-color@1.0.0
+- **License**: MIT
+- **Author**: Marko19907
+- **Repository**: https://github.com/Marko19907/string-to-color
 
 ---
 ### @next/env@15.2.3
@@ -425,6 +456,10 @@ This project includes third-party packages listed below:
 - **Author**: Federico Zivolo
 - **Repository**: https://github.com/popperjs/popper-core
 - **Contact**: federico.zivolo@gmail.com
+
+---
+### @reaviz/react-use-fuzzy@1.0.3
+- **License**: MIT
 
 ---
 ### @remirror/core-constants@3.0.0
@@ -622,6 +657,16 @@ This project includes third-party packages listed below:
 - **Repository**: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 ---
+### @types/d3-cloud@1.2.9
+- **License**: MIT
+- **Repository**: https://github.com/DefinitelyTyped/DefinitelyTyped
+
+---
+### @types/d3@3.5.53
+- **License**: MIT
+- **Repository**: https://github.com/DefinitelyTyped/DefinitelyTyped
+
+---
 ### @types/istanbul-lib-coverage@2.0.6
 - **License**: MIT
 - **Repository**: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -677,11 +722,11 @@ This project includes third-party packages listed below:
 - **Repository**: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 ---
-### abbrev@1.1.1
-- **License**: ISC
-- **Author**: Isaac Z. Schlueter
-- **Repository**: https://github.com/isaacs/abbrev-js
-- **Contact**: i@izs.me
+### @upsetjs/venn.js@2.0.0
+- **License**: MIT
+- **Author**: Ben Frederickson
+- **Repository**: https://github.com/upsetjs/venn.js
+- **Contact**: ben@benfrederickson.com
 
 ---
 ### ansi-regex@4.1.1
@@ -745,18 +790,6 @@ This project includes third-party packages listed below:
 - **Contact**: ljharb@gmail.com
 
 ---
-### array-find-index@1.0.2
-- **License**: MIT
-- **Author**: Sindre Sorhus
-- **Repository**: https://github.com/sindresorhus/array-find-index
-- **Contact**: sindresorhus@gmail.com
-
----
-### asap@2.0.6
-- **License**: MIT
-- **Repository**: https://github.com/kriskowal/asap
-
----
 ### ast-types-flow@0.0.7
 - **License**: ISC
 - **Author**: kyldvs
@@ -795,18 +828,17 @@ This project includes third-party packages listed below:
 - **Repository**: https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-jsx
 
 ---
-### balanced-match@1.0.2
-- **License**: MIT
-- **Author**: Julian Gruber
-- **Repository**: https://github.com/juliangruber/balanced-match
-- **Contact**: mail@juliangruber.com
+### big-integer@1.6.52
+- **License**: Unlicense
+- **Author**: Peter Olson
+- **Repository**: https://github.com/peterolson/BigInteger.js
+- **Contact**: peter.e.c.olson+npm@gmail.com
 
 ---
-### brace-expansion@1.1.12
+### body-scroll-lock-upgrade@1.1.0
 - **License**: MIT
-- **Author**: Julian Gruber
-- **Repository**: https://github.com/juliangruber/brace-expansion
-- **Contact**: mail@juliangruber.com
+- **Author**: Rick.li
+- **Repository**: https://github.com/rick-liruixin/body-scroll-lock-upgrade
 
 ---
 ### buffer-from@0.1.2
@@ -856,23 +888,25 @@ This project includes third-party packages listed below:
 - **Contact**: beneb.info@gmail.com
 
 ---
-### chalk@2.4.2
-- **License**: MIT
-- **Repository**: https://github.com/chalk/chalk
-
----
 ### chalk@4.1.2
 - **License**: MIT
 - **Repository**: https://github.com/chalk/chalk
 
 ---
-### client-only@0.0.1
-- **License**: MIT
+### chroma-js@2.6.0
+- **License**: (BSD-3-Clause AND Apache-2.0)
+- **Author**: Gregor Aisch
+- **Repository**: https://github.com/gka/chroma.js
 
 ---
-### cobe@0.6.4
+### classnames@2.5.1
 - **License**: MIT
-- **Repository**: https://github.com/shuding/cobe
+- **Author**: Jed Watson
+- **Repository**: https://github.com/JedWatson/classnames
+
+---
+### client-only@0.0.1
+- **License**: MIT
 
 ---
 ### color-convert@1.9.3
@@ -922,13 +956,6 @@ This project includes third-party packages listed below:
 - **Contact**: tj@vision-media.ca
 
 ---
-### concat-map@0.0.1
-- **License**: MIT
-- **Author**: James Halliday
-- **Repository**: https://github.com/substack/node-concat-map
-- **Contact**: mail@substack.net
-
----
 ### convert-source-map@1.9.0
 - **License**: MIT
 - **Author**: Thorsten Lorenz
@@ -957,6 +984,12 @@ This project includes third-party packages listed below:
 - **Contact**: david.dave.clark@gmail.com
 
 ---
+### coverup@0.1.1
+- **License**: MIT
+- **Author**: Jason Maurer
+- **Repository**: https://github.com/jsonmaur/coverup
+
+---
 ### create-emotion-server@10.0.27
 - **License**: MIT
 - **Author**: Kye Hohenberger
@@ -967,6 +1000,13 @@ This project includes third-party packages listed below:
 - **License**: MIT
 - **Author**: Kye Hohenberger
 - **Repository**: https://github.com/emotion-js/emotion/tree/master/packages/create-emotion
+
+---
+### create-global-state-hook@0.0.2
+- **License**: MIT
+- **Author**: Stanislav Termosa
+- **Repository**: https://github.com/termosa/create-global-state-hook
+- **Contact**: termosa.stanislav@gmail.com
 
 ---
 ### crelt@1.0.6
@@ -990,24 +1030,146 @@ This project includes third-party packages listed below:
 - **Contact**: fredrik.nicol@gmail.com
 
 ---
-### debug@3.2.7
+### ctrl-keys@1.0.6
 - **License**: MIT
-- **Author**: TJ Holowaychuk
-- **Repository**: https://github.com/visionmedia/debug
-- **Contact**: tj@vision-media.ca
+- **Author**: Amine Ben hammou
+
+---
+### d3-array@2.12.1
+- **License**: BSD-3-Clause
+- **Author**: Mike Bostock
+- **Repository**: https://github.com/d3/d3-array
+
+---
+### d3-array@3.2.4
+- **License**: ISC
+- **Author**: Mike Bostock
+- **Repository**: https://github.com/d3/d3-array
+
+---
+### d3-cloud@1.2.7
+- **License**: BSD-3-Clause
+- **Author**: Jason Davies
+- **Repository**: https://github.com/jasondavies/d3-cloud
+
+---
+### d3-color@3.1.0
+- **License**: ISC
+- **Author**: Mike Bostock
+- **Repository**: https://github.com/d3/d3-color
+
+---
+### d3-dispatch@1.0.6
+- **License**: BSD-3-Clause
+- **Author**: Mike Bostock
+- **Repository**: https://github.com/d3/d3-dispatch
+
+---
+### d3-ease@3.0.1
+- **License**: BSD-3-Clause
+- **Author**: Mike Bostock
+- **Repository**: https://github.com/d3/d3-ease
+
+---
+### d3-format@3.1.0
+- **License**: ISC
+- **Author**: Mike Bostock
+- **Repository**: https://github.com/d3/d3-format
+
+---
+### d3-geo@3.1.1
+- **License**: ISC
+- **Author**: Mike Bostock
+- **Repository**: https://github.com/d3/d3-geo
+
+---
+### d3-hierarchy@3.1.2
+- **License**: ISC
+- **Author**: Mike Bostock
+- **Repository**: https://github.com/d3/d3-hierarchy
+
+---
+### d3-interpolate@3.0.1
+- **License**: ISC
+- **Author**: Mike Bostock
+- **Repository**: https://github.com/d3/d3-interpolate
+
+---
+### d3-path@1.0.9
+- **License**: BSD-3-Clause
+- **Author**: Mike Bostock
+- **Repository**: https://github.com/d3/d3-path
+
+---
+### d3-path@3.1.0
+- **License**: ISC
+- **Author**: Mike Bostock
+- **Repository**: https://github.com/d3/d3-path
+
+---
+### d3-sankey@0.12.3
+- **License**: BSD-3-Clause
+- **Author**: Mike Bostock
+- **Repository**: https://github.com/d3/d3-sankey
+
+---
+### d3-scale@4.0.2
+- **License**: ISC
+- **Author**: Mike Bostock
+- **Repository**: https://github.com/d3/d3-scale
+
+---
+### d3-selection@3.0.0
+- **License**: ISC
+- **Author**: Mike Bostock
+- **Repository**: https://github.com/d3/d3-selection
+
+---
+### d3-shape@1.3.7
+- **License**: BSD-3-Clause
+- **Author**: Mike Bostock
+- **Repository**: https://github.com/d3/d3-shape
+
+---
+### d3-shape@3.2.0
+- **License**: ISC
+- **Author**: Mike Bostock
+- **Repository**: https://github.com/d3/d3-shape
+
+---
+### d3-time-format@4.1.0
+- **License**: ISC
+- **Author**: Mike Bostock
+- **Repository**: https://github.com/d3/d3-time-format
+
+---
+### d3-time@3.1.0
+- **License**: ISC
+- **Author**: Mike Bostock
+- **Repository**: https://github.com/d3/d3-time
+
+---
+### d3-timer@3.0.1
+- **License**: ISC
+- **Author**: Mike Bostock
+- **Repository**: https://github.com/d3/d3-timer
+
+---
+### d3-transition@3.0.1
+- **License**: ISC
+- **Author**: Mike Bostock
+- **Repository**: https://github.com/d3/d3-transition
+
+---
+### date-fns@3.6.0
+- **License**: MIT
+- **Repository**: https://github.com/date-fns/date-fns
 
 ---
 ### debug@4.4.1
 - **License**: MIT
 - **Author**: Josh Junon
 - **Repository**: https://github.com/debug-js/debug
-
----
-### debuglog@1.0.1
-- **License**: MIT
-- **Author**: Sam Roberts
-- **Repository**: https://github.com/sam-github/node-debuglog
-- **Contact**: sam@strongloop.com
 
 ---
 ### deep-equal@2.2.3
@@ -1038,13 +1200,6 @@ This project includes third-party packages listed below:
 - **Contact**: npm@lovell.info
 
 ---
-### dezalgo@1.0.4
-- **License**: ISC
-- **Author**: Isaac Z. Schlueter
-- **Repository**: https://github.com/npm/dezalgo
-- **Contact**: i@izs.me
-
----
 ### dom-accessibility-api@0.5.16
 - **License**: MIT
 - **Repository**: https://github.com/eps1lon/dom-accessibility-api
@@ -1069,6 +1224,12 @@ This project includes third-party packages listed below:
 - **Author**: Conrad Pankoff
 - **Repository**: https://github.com/deoxxa/duplexer2
 - **Contact**: deoxxa@fknsrs.biz
+
+---
+### ellipsize@0.5.1
+- **License**: MIT
+- **Author**: Matthijs van Henten
+- **Repository**: https://github.com/mvhenten/ellipsize
 
 ---
 ### emotion@10.0.27
@@ -1131,6 +1292,11 @@ This project includes third-party packages listed below:
 - **Contact**: sindresorhus@gmail.com
 
 ---
+### esm-seedrandom@3.0.5
+- **License**: MIT
+- **Repository**: https://github.com/shanewholloway/js-esm-seedrandom
+
+---
 ### facepaint@1.2.1
 - **License**: MIT
 - **Author**: Kye Hohenberger
@@ -1149,6 +1315,12 @@ This project includes third-party packages listed below:
 - **Repository**: https://github.com/js-n/find-root
 
 ---
+### focus-trap-react@10.3.1
+- **License**: MIT
+- **Author**: David Clark
+- **Repository**: https://github.com/focus-trap/focus-trap-react
+
+---
 ### focus-trap-react@9.0.2
 - **License**: MIT
 - **Author**: David Clark
@@ -1156,6 +1328,12 @@ This project includes third-party packages listed below:
 
 ---
 ### focus-trap@6.9.4
+- **License**: MIT
+- **Author**: David Clark
+- **Repository**: https://github.com/focus-trap/focus-trap
+
+---
+### focus-trap@7.6.5
 - **License**: MIT
 - **Author**: David Clark
 - **Repository**: https://github.com/focus-trap/focus-trap
@@ -1174,13 +1352,6 @@ This project includes third-party packages listed below:
 - **Repository**: https://github.com/motiondivision/motion
 
 ---
-### fs.realpath@1.0.0
-- **License**: ISC
-- **Author**: Isaac Z. Schlueter
-- **Repository**: https://github.com/isaacs/fs.realpath
-- **Contact**: i@izs.me
-
----
 ### function-bind@1.1.2
 - **License**: MIT
 - **Author**: Raynos
@@ -1195,9 +1366,11 @@ This project includes third-party packages listed below:
 - **Contact**: ljharb@gmail.com
 
 ---
-### geist@1.4.2
-- **License**: MIT*
-- **Repository**: https://github.com/vercel/geist-font
+### fuse.js@6.6.2
+- **License**: Apache-2.0
+- **Author**: Kiro Risk
+- **Repository**: https://github.com/krisk/Fuse
+- **Contact**: kirollos@gmail.com
 
 ---
 ### get-intrinsic@1.3.0
@@ -1214,13 +1387,6 @@ This project includes third-party packages listed below:
 - **Contact**: ljharb@gmail.com
 
 ---
-### glob@7.2.3
-- **License**: ISC
-- **Author**: Isaac Z. Schlueter
-- **Repository**: https://github.com/isaacs/node-glob
-- **Contact**: i@izs.me
-
----
 ### gopd@1.2.0
 - **License**: MIT
 - **Author**: Jordan Harband
@@ -1228,23 +1394,11 @@ This project includes third-party packages listed below:
 - **Contact**: ljharb@gmail.com
 
 ---
-### graceful-fs@4.2.11
-- **License**: ISC
-- **Repository**: https://github.com/isaacs/node-graceful-fs
-
----
 ### has-bigints@1.1.0
 - **License**: MIT
 - **Author**: Jordan Harband
 - **Repository**: https://github.com/ljharb/has-bigints
 - **Contact**: ljharb@gmail.com
-
----
-### has-flag@3.0.0
-- **License**: MIT
-- **Author**: Sindre Sorhus
-- **Repository**: https://github.com/sindresorhus/has-flag
-- **Contact**: sindresorhus@gmail.com
 
 ---
 ### has-flag@4.0.0
@@ -1282,11 +1436,11 @@ This project includes third-party packages listed below:
 - **Contact**: ljharb@gmail.com
 
 ---
-### hosted-git-info@2.8.9
-- **License**: ISC
-- **Author**: Rebecca Turner
-- **Repository**: https://github.com/npm/hosted-git-info
-- **Contact**: me@re-becca.org
+### highlight-words-core@1.2.3
+- **License**: MIT
+- **Author**: Brian Vaughn
+- **Repository**: github.com/bvaughn/highlight-words-core
+- **Contact**: brian.david.vaughn@gmail.com
 
 ---
 ### html-tokenize@2.0.1
@@ -1296,18 +1450,18 @@ This project includes third-party packages listed below:
 - **Contact**: mail@substack.net
 
 ---
+### human-format@1.2.1
+- **License**: ISC
+- **Author**: Julien Fontanet
+- **Repository**: https://github.com/JsCommunity/human-format
+- **Contact**: julien.fontanet@isonoe.net
+
+---
 ### import-fresh@3.3.1
 - **License**: MIT
 - **Author**: Sindre Sorhus
 - **Repository**: https://github.com/sindresorhus/import-fresh
 - **Contact**: sindresorhus@gmail.com
-
----
-### inflight@1.0.6
-- **License**: ISC
-- **Author**: Isaac Z. Schlueter
-- **Repository**: https://github.com/npm/inflight
-- **Contact**: i@izs.me
 
 ---
 ### inherits@2.0.4
@@ -1320,6 +1474,25 @@ This project includes third-party packages listed below:
 - **Author**: Jordan Harband
 - **Repository**: https://github.com/ljharb/internal-slot
 - **Contact**: ljharb@gmail.com
+
+---
+### internmap@1.0.1
+- **License**: ISC
+- **Author**: Mike Bostock
+- **Repository**: https://github.com/mbostock/internmap
+
+---
+### internmap@2.0.3
+- **License**: ISC
+- **Author**: Mike Bostock
+- **Repository**: https://github.com/mbostock/internmap
+
+---
+### invert-color@2.0.0
+- **License**: MIT
+- **Author**: Onur Yildirim
+- **Repository**: https://github.com/onury/invert-color
+- **Contact**: onur@cutepilot.com
 
 ---
 ### is-arguments@1.2.0
@@ -1466,6 +1639,10 @@ This project includes third-party packages listed below:
 - **Contact**: mail@juliangruber.com
 
 ---
+### ist-media-internship-fe@0.1.0
+- **License**: UNLICENSED
+
+---
 ### js-tokens@4.0.0
 - **License**: MIT
 - **Author**: Simon Lydell
@@ -1483,13 +1660,6 @@ This project includes third-party packages listed below:
 - **Author**: Kat Marchán
 - **Repository**: https://github.com/npm/json-parse-even-better-errors
 - **Contact**: kzm@zkat.tech
-
----
-### license-checker@25.0.1
-- **License**: BSD-3-Clause
-- **Author**: Dav Glass
-- **Repository**: https://github.com/davglass/license-checker
-- **Contact**: davglass@gmail.com
 
 ---
 ### lines-and-columns@1.2.4
@@ -1554,24 +1724,17 @@ This project includes third-party packages listed below:
 - **Repository**: https://github.com/markdown-it/mdurl
 
 ---
-### minimatch@3.1.2
-- **License**: ISC
-- **Author**: Isaac Z. Schlueter
-- **Repository**: https://github.com/isaacs/minimatch
-- **Contact**: i@izs.me
+### memoize-one@4.0.3
+- **License**: MIT
+- **Author**: Alex Reardon
+- **Repository**: https://github.com/alexreardon/memoize-one
+- **Contact**: alexreardon@gmail.com
 
 ---
 ### minimist@1.2.8
 - **License**: MIT
 - **Author**: James Halliday
 - **Repository**: https://github.com/minimistjs/minimist
-- **Contact**: mail@substack.net
-
----
-### mkdirp@0.5.6
-- **License**: MIT
-- **Author**: James Halliday
-- **Repository**: https://github.com/substack/node-mkdirp
 - **Contact**: mail@substack.net
 
 ---
@@ -1603,6 +1766,12 @@ This project includes third-party packages listed below:
 - **Repository**: https://github.com/juliangruber/multipipe
 
 ---
+### name-initials@0.1.3
+- **License**: MIT
+- **Author**: Eric Vera
+- **Repository**: https://github.com/ericvera/name-initials
+
+---
 ### nanoid@3.3.11
 - **License**: MIT
 - **Author**: Andrey Sitnik
@@ -1613,27 +1782,6 @@ This project includes third-party packages listed below:
 ### next@15.2.3
 - **License**: MIT
 - **Repository**: https://github.com/vercel/next.js
-
----
-### nopt@4.0.3
-- **License**: ISC
-- **Author**: Isaac Z. Schlueter
-- **Repository**: https://github.com/npm/nopt
-- **Contact**: i@izs.me
-
----
-### normalize-package-data@2.5.0
-- **License**: BSD-2-Clause
-- **Author**: Meryn Stol
-- **Repository**: https://github.com/npm/normalize-package-data
-- **Contact**: merynstol@gmail.com
-
----
-### npm-normalize-package-bin@1.0.1
-- **License**: ISC
-- **Author**: Isaac Z. Schlueter
-- **Repository**: https://github.com/npm/npm-normalize-package-bin
-- **Contact**: i@izs.me
 
 ---
 ### object-assign@4.1.1
@@ -1675,46 +1823,11 @@ This project includes third-party packages listed below:
 - **Repository**: https://github.com/ljharb/object.assign
 
 ---
-### ogl@1.0.11
-- **License**: Unlicense
-- **Author**: Nathan Gordon
-- **Repository**: git+https://gordonnl@github.com/oframe/ogl
-- **Contact**: gordonnl@gmail.com
-
----
-### once@1.4.0
-- **License**: ISC
-- **Author**: Isaac Z. Schlueter
-- **Repository**: https://github.com/isaacs/once
-- **Contact**: i@izs.me
-
----
 ### orderedmap@2.1.1
 - **License**: MIT
 - **Author**: Marijn Haverbeke
 - **Repository**: https://github.com/marijnh/orderedmap
 - **Contact**: marijn@haverbeke.berlin
-
----
-### os-homedir@1.0.2
-- **License**: MIT
-- **Author**: Sindre Sorhus
-- **Repository**: https://github.com/sindresorhus/os-homedir
-- **Contact**: sindresorhus@gmail.com
-
----
-### os-tmpdir@1.0.2
-- **License**: MIT
-- **Author**: Sindre Sorhus
-- **Repository**: https://github.com/sindresorhus/os-tmpdir
-- **Contact**: sindresorhus@gmail.com
-
----
-### osenv@0.1.5
-- **License**: ISC
-- **Author**: Isaac Z. Schlueter
-- **Repository**: https://github.com/npm/osenv
-- **Contact**: i@izs.me
 
 ---
 ### parent-module@1.0.1
@@ -1728,13 +1841,6 @@ This project includes third-party packages listed below:
 - **License**: MIT
 - **Author**: Sindre Sorhus
 - **Repository**: https://github.com/sindresorhus/parse-json
-- **Contact**: sindresorhus@gmail.com
-
----
-### path-is-absolute@1.0.1
-- **License**: MIT
-- **Author**: Sindre Sorhus
-- **Repository**: https://github.com/sindresorhus/path-is-absolute
 - **Contact**: sindresorhus@gmail.com
 
 ---
@@ -1752,17 +1858,17 @@ This project includes third-party packages listed below:
 - **Contact**: sindresorhus@gmail.com
 
 ---
-### phenomenon@1.6.0
-- **License**: MIT
-- **Author**: Colin van Eenige
-- **Repository**: https://github.com/vaneenige/phenomenon
-- **Contact**: cvaneenige@gmail.com
-
----
 ### picocolors@1.1.1
 - **License**: ISC
 - **Author**: Alexey Raspopov
 - **Repository**: https://github.com/alexeyraspopov/picocolors
+
+---
+### pluralize@8.0.0
+- **License**: MIT
+- **Author**: Blake Embrey
+- **Repository**: https://github.com/blakeembrey/pluralize
+- **Contact**: hello@blakeembrey.com
 
 ---
 ### polished@2.3.3
@@ -1913,9 +2019,26 @@ This project includes third-party packages listed below:
 - **Repository**: https://github.com/mathiasbynens/punycode.js
 
 ---
+### reablocks@8.7.14
+- **License**: Apache-2.0
+- **Repository**: https://github.com/reaviz/reablocks
+
+---
 ### react-dom@19.0.0-rc-02c0e824-20241028
 - **License**: MIT
 - **Repository**: https://github.com/facebook/react
+
+---
+### react-fast-compare@3.2.2
+- **License**: MIT
+- **Author**: Chris Bolin
+- **Repository**: https://github.com/FormidableLabs/react-fast-compare
+
+---
+### react-highlight-words@0.20.0
+- **License**: MIT
+- **Author**: Brian Vaughn
+- **Repository**: https://github.com/bvaughn/react-highlight-words
 
 ---
 ### react-is@16.13.1
@@ -1928,10 +2051,11 @@ This project includes third-party packages listed below:
 - **Repository**: https://github.com/facebook/react
 
 ---
-### react-loading-skeleton@3.5.0
+### react-textarea-autosize@8.5.9
 - **License**: MIT
-- **Author**: David Tang
-- **Repository**: https://github.com/dvtng/react-loading-skeleton
+- **Author**: Andrey Popp
+- **Repository**: https://github.com/Andarist/react-textarea-autosize
+- **Contact**: 8mayday@gmail.com
 
 ---
 ### react-transition-group@4.4.5
@@ -1942,20 +2066,6 @@ This project includes third-party packages listed below:
 ### react@19.0.0-rc-02c0e824-20241028
 - **License**: MIT
 - **Repository**: https://github.com/facebook/react
-
----
-### read-installed@4.0.3
-- **License**: ISC
-- **Author**: Isaac Z. Schlueter
-- **Repository**: https://github.com/isaacs/read-installed
-- **Contact**: i@izs.me
-
----
-### read-package-json@2.1.2
-- **License**: ISC
-- **Author**: Isaac Z. Schlueter
-- **Repository**: https://github.com/npm/read-package-json
-- **Contact**: i@izs.me
 
 ---
 ### readable-stream@1.0.34
@@ -1970,11 +2080,13 @@ This project includes third-party packages listed below:
 - **Repository**: https://github.com/nodejs/readable-stream
 
 ---
-### readdir-scoped-modules@1.1.0
+### reaviz-data-utils@1.0.0
 - **License**: ISC
-- **Author**: Isaac Z. Schlueter
-- **Repository**: https://github.com/npm/readdir-scoped-modules
-- **Contact**: i@izs.me
+
+---
+### reaviz@16.0.6
+- **License**: Apache-2.0
+- **Repository**: https://github.com/reaviz/reaviz
 
 ---
 ### regexp.prototype.flags@1.5.4
@@ -2012,6 +2124,13 @@ This project includes third-party packages listed below:
 - **Contact**: feross@feross.org
 
 ---
+### safe-identifier@0.4.2
+- **License**: ISC
+- **Author**: Eemeli Aro
+- **Repository**: https://github.com/eemeli/safe-identifier
+- **Contact**: eemeli@gmail.com
+
+---
 ### safe-regex-test@1.1.0
 - **License**: MIT
 - **Author**: Jordan Harband
@@ -2022,12 +2141,6 @@ This project includes third-party packages listed below:
 ### scheduler@0.25.0-rc-02c0e824-20241028
 - **License**: MIT
 - **Repository**: https://github.com/facebook/react
-
----
-### semver@5.7.2
-- **License**: ISC
-- **Author**: GitHub Inc.
-- **Repository**: https://github.com/npm/node-semver
 
 ---
 ### semver@7.7.2
@@ -2091,13 +2204,6 @@ This project includes third-party packages listed below:
 - **Repository**: https://github.com/qix-/node-simple-swizzle
 
 ---
-### slide@1.1.6
-- **License**: ISC
-- **Author**: Isaac Z. Schlueter
-- **Repository**: https://github.com/isaacs/slide-flow-control
-- **Contact**: i@izs.me
-
----
 ### source-map-js@1.2.1
 - **License**: BSD-3-Clause
 - **Author**: Valentin 7rulnik Semirulnik
@@ -2110,50 +2216,6 @@ This project includes third-party packages listed below:
 - **Author**: Nick Fitzgerald
 - **Repository**: https://github.com/mozilla/source-map
 - **Contact**: nfitzgerald@mozilla.com
-
----
-### spdx-compare@1.0.0
-- **License**: MIT
-- **Author**: Kyle E. Mitchell
-- **Repository**: https://github.com/kemitchell/spdx-compare.js
-- **Contact**: kyle@kemitchell.com
-
----
-### spdx-correct@3.2.0
-- **License**: Apache-2.0
-- **Repository**: https://github.com/jslicense/spdx-correct.js
-
----
-### spdx-exceptions@2.5.0
-- **License**: CC-BY-3.0
-- **Author**: The Linux Foundation
-- **Repository**: https://github.com/kemitchell/spdx-exceptions.json
-
----
-### spdx-expression-parse@3.0.1
-- **License**: MIT
-- **Author**: Kyle E. Mitchell
-- **Repository**: https://github.com/jslicense/spdx-expression-parse.js
-- **Contact**: kyle@kemitchell.com
-
----
-### spdx-license-ids@3.0.21
-- **License**: CC0-1.0
-- **Author**: Shinnosuke Watanabe
-- **Repository**: https://github.com/jslicense/spdx-license-ids
-
----
-### spdx-ranges@2.1.1
-- **License**: (MIT AND CC-BY-3.0)
-- **Author**: The Linux Foundation
-- **Repository**: https://github.com/kemitchell/spdx-ranges.js
-
----
-### spdx-satisfies@4.0.1
-- **License**: MIT
-- **Author**: Kyle E. Mitchell
-- **Repository**: https://github.com/kemitchell/spdx-satisfies.js
-- **Contact**: kyle@kemitchell.com
 
 ---
 ### stop-iteration-iterator@1.1.0
@@ -2192,13 +2254,6 @@ This project includes third-party packages listed below:
 - **Contact**: sultantarimo@me.com
 
 ---
-### supports-color@5.5.0
-- **License**: MIT
-- **Author**: Sindre Sorhus
-- **Repository**: https://github.com/chalk/supports-color
-- **Contact**: sindresorhus@gmail.com
-
----
 ### supports-color@7.2.0
 - **License**: MIT
 - **Author**: Sindre Sorhus
@@ -2225,6 +2280,12 @@ This project includes third-party packages listed below:
 - **Repository**: https://github.com/focus-trap/tabbable
 
 ---
+### tailwind-merge@2.6.0
+- **License**: MIT
+- **Author**: Dany Castillo
+- **Repository**: https://github.com/dcastil/tailwind-merge
+
+---
 ### through2@0.4.2
 - **License**: MIT
 - **Author**: Rod Vagg
@@ -2245,11 +2306,10 @@ This project includes third-party packages listed below:
 - **Repository**: https://github.com/atomiks/tippyjs
 
 ---
-### treeify@1.1.0
+### transformation-matrix@2.16.1
 - **License**: MIT
-- **Author**: Luke Plaster
-- **Repository**: https://github.com/notatestuser/treeify
-- **Contact**: notatestuser@gmail.com
+- **Author**: chrvadala
+- **Repository**: https://github.com/chrvadala/transformation-matrix
 
 ---
 ### tslib@2.8.1
@@ -2263,6 +2323,21 @@ This project includes third-party packages listed below:
 - **Repository**: https://github.com/markdown-it/uc.micro
 
 ---
+### use-composed-ref@1.4.0
+- **License**: MIT
+- **Repository**: https://github.com/Andarist/use-composed-ref
+
+---
+### use-isomorphic-layout-effect@1.2.1
+- **License**: MIT
+- **Repository**: https://github.com/Andarist/use-isomorphic-layout-effect
+
+---
+### use-latest@1.3.0
+- **License**: MIT
+- **Repository**: https://github.com/Andarist/use-latest
+
+---
 ### use-sync-external-store@1.5.0
 - **License**: MIT
 - **Repository**: https://github.com/facebook/react
@@ -2273,18 +2348,6 @@ This project includes third-party packages listed below:
 - **Author**: Nathan Rajlich
 - **Repository**: https://github.com/TooTallNate/util-deprecate
 - **Contact**: nathan@tootallnate.net
-
----
-### util-extend@1.0.3
-- **License**: MIT
-- **Repository**: https://github.com/isaacs/util-extend
-
----
-### validate-npm-package-license@3.0.4
-- **License**: Apache-2.0
-- **Author**: Kyle E. Mitchell
-- **Repository**: https://github.com/kemitchell/validate-npm-package-license.js
-- **Contact**: kyle@kemitchell.com
 
 ---
 ### w3c-keyname@2.2.8
@@ -2319,13 +2382,6 @@ This project includes third-party packages listed below:
 - **Author**: Jordan Harband
 - **Repository**: https://github.com/inspect-js/which-typed-array
 - **Contact**: ljharb@gmail.com
-
----
-### wrappy@1.0.2
-- **License**: ISC
-- **Author**: Isaac Z. Schlueter
-- **Repository**: https://github.com/npm/wrappy
-- **Contact**: i@izs.me
 
 ---
 ### xtend@2.1.2

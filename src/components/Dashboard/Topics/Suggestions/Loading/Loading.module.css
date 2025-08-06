@@ -1,6 +1,5 @@
 /* Loading.module.css */
 
-/* Generic Loading Styles */
 .genericLoadingContainer {
   display: flex;
   flex-direction: column;
@@ -32,7 +31,6 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Search Loading Styles */
 .searchLoadingContainer {
   display: flex;
   justify-content: center;
@@ -41,7 +39,6 @@
   min-height: 300px;
 }
 
-/* Large screens */
 @media (min-height: 1200px) {
   .genericLoadingContainer {
     padding: 4rem 0;

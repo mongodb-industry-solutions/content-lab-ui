@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(150deg, #023430, #00684A);
+    background: #00684A;
     min-height: 100vh;
     padding: 0.75rem;
 }
@@ -30,6 +30,18 @@
 
 .title {
     margin-bottom: 1rem;
+    color: #1a1a1a;
+    font-size: 32px;
+}
+
+.subtitle {
+    color: #1a1a1a;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.description {
+    font-size: 16px;
 }
 
 .usersContainer {
@@ -46,19 +58,45 @@
     margin: 10px;
 }
 
-/* Mobile: 2 columns */
 @media (max-width: 768px) {
     .card {
         width: 95%;
         margin: 0 auto;
+        border-radius: 16px;
+    }
+
+    .modalMainContent {
+        padding: 1rem;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .subtitle {
+        font-size: 0.875rem;
+    }
+
+    .usersContainer {
+        gap: 15px 5px;
+        justify-content: space-evenly;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        border-radius: 12px;
     }
 
     .modalMainContent {
         padding: 0.75rem;
     }
 
-    .usersContainer {
-        gap: 15px 5px;
-        justify-content: space-evenly;
+    .title {
+        font-size: 1.25rem;
+    }
+
+    .subtitle {
+        font-size: 0.8rem;
     }
 }

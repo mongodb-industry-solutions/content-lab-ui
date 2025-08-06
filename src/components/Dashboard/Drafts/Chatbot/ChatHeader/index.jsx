@@ -9,8 +9,8 @@ import { useState } from 'react';
 import { H3 } from '@leafygreen-ui/typography';
 import Card from '@leafygreen-ui/card';
 import Image from 'next/image';
-import InfoWizard from '@/components/external/InfoWizard';
-import { CHATBOT_INFO_WIZARD } from '@/utils/constants';
+import InfoWizard from '@/components/shared/InfoWizard';
+import { CHATBOT_INFO_WIZARD } from '@/constants/infowizard';
 import styles from './ChatHeader.module.css';
 
 export default function ChatHeader() {

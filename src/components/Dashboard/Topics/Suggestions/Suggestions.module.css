@@ -1,112 +1,132 @@
 /* Suggestions.module.css */
 
-.suggestionsSection {
+.section {
   background: transparent;
-  padding: 3rem 0;
-  min-height: auto;
+  position: relative;
+  padding-bottom: 4rem;
 }
 
-.container {
-  max-width: 1400px;
+.wrapper {
+  position: relative;
+  width: 90%;
   margin: 0 auto;
-  padding: 0 2rem;
+  border-left: 1px solid rgba(0, 0, 0, 0.8);
+  border-right: 1px solid rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+  border-radius: 0 0 2rem 2rem;
+  padding-bottom: 3rem;
+  overflow-x: hidden;
 }
 
-.headerSection {
+.content {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding-top: 2rem;
+}
+
+.titleHeading {
+  font-size: 2rem;
+  color: #1a1a1a;
+}
+
+.titleSubtext {
+  color: #6b7280;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.titleDivider {
+  width: 100vw;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 1.5rem 0 1.5rem 0;
+}
+
+.category {
   margin-bottom: 3rem;
 }
 
-.titleWithInfo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+.categoryHeading {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+  font-size: 1.75rem;
+  color: #1a1a1a;
 }
 
-.sectionTitle {
-  text-align: center;
-  color: #000000;
-  margin: 0;
-  font-size: 2.5rem;
-}
-
-.sectionSubtitle {
-  text-align: center;
-  color: #5C6C75;
-  margin: 0;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 1rem;
-}
-
-/* Topics Grid Layout */
-.topicsGrid {
+.grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
   justify-items: center;
+  padding: 0 2rem;
 }
 
-/* Error State */
-.errorContainer {
+.message {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 200px;
-}
-
-.errorMessage {
-  color: #dc2626;
+  padding: 0 2rem;
   text-align: center;
   font-size: 1.1rem;
-  margin: 0;
+  color: #6b7280;
 }
 
-/* Empty State */
-.emptyContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 200px;
+.backButton {
+  margin: 0 0 2rem 2rem;
 }
 
-.emptyMessage {
-  color: #5C6C75;
-  text-align: center;
-  font-size: 1.1rem;
-  margin: 0;
-}
-
-/* Large screens - 4 columns */
 @media (min-height: 1200px) {
-  .container {
-    max-width: 80%;
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    width: 95%;
   }
 
-  .headerSection {
-    margin-bottom: 4rem;
+  .title {
+    margin-bottom: 2rem;
   }
 
-  .sectionTitle {
-    font-size: 3.5rem;
+  .titleHeading {
+    font-size: 1.75rem;
   }
 
-  .titleWithInfo {
-    margin-bottom: 1.5rem;
+  .titleSubtext {
+    font-size: 1rem;
   }
 
-  .sectionSubtitle {
-    font-size: 1.3rem;
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 1.5rem;
   }
 
-  .topicsGrid {
-    gap: 2.5rem;
-  }
-
-  .errorMessage,
-  .emptyMessage {
+  .categoryHeading {
+    padding-left: 1.5rem;
     font-size: 1.5rem;
+  }
+
+  .message {
+    padding: 0 1.5rem;
   }
 }

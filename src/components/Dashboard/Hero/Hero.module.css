@@ -1,0 +1,259 @@
+/* Hero.module.css */
+
+.heroContainer {
+  position: relative;
+  width: 100vw;
+  background-color: #ffffff;
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.25) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+}
+
+.headlineSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 2rem 4rem 2rem;
+  position: relative;
+  overflow: visible;
+  z-index: 1;
+}
+
+.singleColumnLayout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6rem;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.singleColumnLayout::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -100px;
+  bottom: 25px;
+  width: 1px;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 5;
+}
+
+.singleColumnLayout::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -100px;
+  bottom: 25px;
+  width: 1px;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 5;
+}
+
+.contentCard {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  align-items: center;
+  padding: 1rem 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.introBadge {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #71717A;
+  text-align: center;
+}
+
+.mainHeadline {
+  font-size: 96px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+  background: linear-gradient(to right, #000000, #6b7280);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subHeadline {
+  color: #303030;
+  font-size: 20px;
+  line-height: 1.6;
+  max-width: 550px;
+  text-align: center;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ctaButton {
+  width: 160px;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.newsSection {
+  position: relative;
+}
+
+.gradientBackground {
+  position: absolute;
+  top: -200%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110%;
+  height: 300%;
+  z-index: 0;
+}
+
+.dividerLine {
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.8);
+  margin: 2rem auto;
+  position: relative;
+  z-index: 5;
+}
+
+.dividerLineLeft {
+  position: absolute;
+  left: 5%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 5;
+}
+
+.dividerLineRight {
+  position: absolute;
+  right: 5%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 5;
+}
+
+.viralSection {
+  padding-bottom: 4rem;
+}
+
+@media (min-height: 1200px) {
+  .singleColumnLayout {
+    max-width: 1400px;
+    gap: 4rem;
+  }
+
+  .introBadge {
+    font-size: 1.15rem;
+    padding: 0.5rem 1.25rem;
+  }
+
+  .contentCard {
+    gap: 2.5rem;
+    padding: 3rem 1rem;
+  }
+
+  .subHeadline {
+    font-size: 22px;
+  }
+
+  .ctaButton {
+    font-size: 16px;
+    width: 180px;
+  }
+}
+
+@media (max-width: 1332px) {
+  .headlineSection {
+    padding: 100px 1rem 2rem 1rem;
+  }
+
+  .singleColumnLayout {
+    gap: 2rem;
+    max-width: 100%;
+  }
+
+  .contentCard {
+    gap: 1.5rem;
+    padding: 1rem 0.5rem;
+  }
+
+  .mainHeadline {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+
+  .subHeadline {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .gradientBackground {
+    height: 340%;
+  }
+
+  .ctaButton {
+    font-size: 13px;
+    width: 150px;
+  }
+
+  .buttonGroup {
+    gap: 0.75rem;
+  }
+  
+  .dividerLine {
+    width: 100%;
+    margin: 1.5rem 0;
+  }
+  
+  .dividerLineLeft,
+  .dividerLineRight {
+    display: none;
+  }
+
+  .singleColumnLayout::before,
+  .singleColumnLayout::after {
+    display: none;
+  }
+  
+  .viralSection {
+    padding: 0 1rem 2rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainHeadline {
+    font-size: 2rem;
+    line-height: 1.1;
+  }
+
+  .subHeadline {
+    font-size: 0.9rem;
+  }
+
+  .ctaButton {
+    font-size: 12px;
+    width: 140px;
+  }
+
+  .buttonGroup {
+    gap: 0.5rem;
+  }
+}

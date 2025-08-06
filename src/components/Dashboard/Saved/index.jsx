@@ -6,10 +6,12 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { H2, Body } from '@leafygreen-ui/typography';
-import GridPattern from '@/components/external/GridPattern';
+import Link from 'next/link';
+import { H3, Body } from '@leafygreen-ui/typography';
 import DraftCard from './DraftCard';
 import Button from '@leafygreen-ui/button';
+import Icon from '@leafygreen-ui/icon';
+import Banner from '@leafygreen-ui/banner';
 import { fetchUserDrafts, deleteDraft } from '@/api/drafts_api';
 import styles from './Saved.module.css';
 
@@ -64,10 +66,10 @@ export default function Saved() {
 
     if (error) {
       return (
-        <div className={styles.errorContainer}>
-          <Body className={styles.errorMessage}>
+        <div className={styles.bannerContainer}>
+          <Banner variant="danger">
             {error}
-          </Body>
+          </Banner>
         </div>
       );
     }
@@ -75,30 +77,30 @@ export default function Saved() {
     if (!drafts || drafts.length === 0) {
       return (
         <div className={styles.emptyContainer}>
-          <H2 className={styles.emptyTitle}>No Drafts Yet</H2>
-          <Body className={styles.emptyMessage}>
-            Start creating content by exploring topics and saving your work. Your drafts will appear here.
-          </Body>
-          <Button
-            variant="primary"
-            href="/topics"
-            size="large"
-            baseFontSize="16"
-          >
-            Explore Topics
-          </Button>
+          <Banner variant="info">
+            No drafts found. Start creating content by exploring topics and saving your work.
+          </Banner>
+          <Link href="/topics">
+            <Button
+              size="large"
+              variant="primary"
+              className={styles.ctaButton}
+              rightGlyph={<Icon glyph="Sparkle" />}
+            >
+              Browse Topics
+            </Button>
+          </Link>
         </div>
       );
     }
 
-    
-
     return (
       <div className={styles.draftsGrid}>
-        {drafts.map((draft) => (
+        {drafts.map((draft, index) => (
           <DraftCard 
           key={draft._id} 
           draft={draft} 
+          index={index}
           onDelete={() => handleDeleteDraft(draft._id)} 
           />
         ))}
@@ -107,29 +109,21 @@ export default function Saved() {
   };
 
   return (
-    <section className={styles.savedSection}>
-      {/* Animated Grid Background with pulsating #00684A */}
-      <GridPattern
-        numSquares={30}
-        maxOpacity={0.1}
-        duration={3}
-        repeatDelay={1}
-        className={styles.animatedGrid}
-      />
-      
-      {/* Content */}
-      <div className={styles.container}>
+    <div className={styles.container}>
+      <section className={styles.savedSection}>
         <div className={styles.headerSection}>
-          <H2 className={styles.sectionTitle}>
+          <H3 className={styles.sectionTitle}>
             Your Saved Drafts
-          </H2>
+          </H3>
           <Body className={styles.sectionSubtitle}>
             Continue working on your saved content and bring your ideas to life.
           </Body>
         </div>
         
+        <div className={styles.divider}></div>
+        
         {renderContent()}
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }

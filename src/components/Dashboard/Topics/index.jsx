@@ -8,105 +8,157 @@
  */
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { fetchSuggestedTopics } from '@/api/suggestions_api';
+import { H3, Body } from '@leafygreen-ui/typography';
+import InfoWizard from '@/components/shared/InfoWizard';
+import { fetchSuggestedTopics as fetchSuggestedTopicsAPI } from '@/api/suggestions_api';
 import { analyzeQuery } from '@/api/search_api';
-import { debounce, areRequestsEqual } from '@/utils/generalUtils';
-import Search from "@/components/Dashboard/Topics/Search";
-import Suggestions from "@/components/Dashboard/Topics/Suggestions";
-import { GradientBackground } from "@/components/external/GradientBackground";
+import { debounce } from '@/utils/generalUtils';
+import { SUGGESTIONS_INFO_WIZARD } from '@/constants/infowizard';
+import { CONTENT_CATEGORIES } from '@/constants/categories';
+import Search from "./Search";
+import Suggestions from "./Suggestions";
 import styles from "./Topics.module.css";
 
-const TopicsContainer = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+export default function Topics () {
   const [selectedLabel, setSelectedLabel] = useState('general');
-  const [topics, setTopics] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSearchLoading, setIsSearchLoading] = useState(false);
+  const [submittedQuery, setSubmittedQuery] = useState('');
+  const [suggestedTopics, setSuggestedTopics] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+  const [isLoadingSuggestions, setIsLoadingSuggestions] = useState(false);
+  const [isLoadingSearch, setIsLoadingSearch] = useState(false);
   const [error, setError] = useState(null);
-  const lastRequestRef = useRef({ query: '', label: 'general' });
+  const [openHelpModal, setOpenHelpModal] = useState(false);
+  const [isSearchActive, setIsSearchActive] = useState(false);
 
-  const fetchFilteredTopics = async (query, label) => {
-    const currentRequest = { query, label };
-    
-    // Prevent duplicate requests
-    if (areRequestsEqual(lastRequestRef.current, currentRequest)) {
-      return;
-    }
-
-    // Prevent multiple simultaneous requests
-    if (isLoading) {
-      return;
-    }
-
-    const isSearchQuery = query && query.trim() !== '';
-    
-    setIsLoading(true);
-    setIsSearchLoading(isSearchQuery);
+  // Fetch suggested topics for all categories
+  const fetchSuggestedTopics = async () => {
+    setIsLoadingSuggestions(true);
     setError(null);
-    lastRequestRef.current = currentRequest;
-
+    
     try {
-      let fetchedTopics; 
-      if (isSearchQuery) {
-        fetchedTopics = await analyzeQuery(query, label);
-      } else {
-        fetchedTopics = await fetchSuggestedTopics(label);
-      }
+      // Fetch topics for each category
+      const topicsPromises = CONTENT_CATEGORIES.map(category => 
+        fetchSuggestedTopicsAPI(category)
+      );
       
-      setTopics(fetchedTopics);
+      const topicsArrays = await Promise.all(topicsPromises);
+      
+      // Flatten all topics into a single array
+      const allTopics = topicsArrays.flat();
+      
+      setSuggestedTopics(allTopics);
     } catch (err) {
-      setError('Failed to load topics. Please try again.');
-      setTopics([]);
+      setError('Failed to load suggested topics. Please try again.');
     } finally {
-      setIsLoading(false);
-      setIsSearchLoading(false);
+      setIsLoadingSuggestions(false);
     }
   };
 
-  // Debounced version for search submit (prevent spam clicking Enter)
-  const debouncedFetch = useCallback(
-    debounce(fetchFilteredTopics, 300),
+  // Fetch search results
+  const fetchSearchResults = async (query, label) => {
+    setIsLoadingSearch(true);
+    setError(null);
+    
+    try {
+      const results = await analyzeQuery(query, label);
+      setSearchResults(results);
+    } catch (err) {
+      setError('Failed to search topics. Please try again.');
+    } finally {
+      setIsLoadingSearch(false);
+    }
+  };
+
+  // Debounced search to prevent spam
+  const debouncedSearch = useCallback(
+    debounce(fetchSearchResults, 300),
     []
   );
 
-  // Handle search submission (Enter key)
+  // Handle search submission (only on Enter)
   const handleSearchSubmit = useCallback((query) => {
-    setSearchQuery(query);
-    debouncedFetch(query, selectedLabel);
-  }, [selectedLabel, debouncedFetch]);
+    if (query.trim()) {
+      setIsSearchActive(true);
+      setIsLoadingSearch(true); 
+      setSubmittedQuery(query.trim());
+      debouncedSearch(query, selectedLabel);
+    } else {
+      setIsSearchActive(false);
+      setIsLoadingSearch(false);
+      setSearchResults([]);
+      setSubmittedQuery('');
+    }
+  }, [selectedLabel, debouncedSearch]);
 
-  // Handle filter/label changes (immediate fetch)
+  // Handle going back to suggestions
+  const handleBackToSuggestions = useCallback(() => {
+    setIsSearchActive(false);
+    setSearchResults([]);
+    setSubmittedQuery('');
+  }, []);
+
+  // Handle search query changes
+  const handleSearchQueryChange = useCallback((query) => {
+    setSearchQuery(query);
+  }, []);
+
+  // Handle category filter changes (do not trigger search)
   const handleLabelChange = useCallback((label) => {
     setSelectedLabel(label);
-    fetchFilteredTopics(searchQuery, label);
-  }, [searchQuery]);
+  }, []);
 
-  // Initial load on component mount
+  // Load suggested topics on mount
   useEffect(() => {
-    fetchFilteredTopics('', '');
+    fetchSuggestedTopics();
   }, []);
 
   return (
     <div className={styles.topicsContainer}>
-      <GradientBackground />
-      
-      {/* Content */}
-      <div className={styles.content}>
-        <Search 
-          onSearchSubmit={handleSearchSubmit}
-          onLabelChange={handleLabelChange}
-          searchQuery={searchQuery}
-          selectedLabel={selectedLabel}
-        />
-        <Suggestions 
-          topics={topics}
-          isLoading={isLoading}
-          isSearchLoading={isSearchLoading}
-          error={error}
-        />
+      {/* Header wrapper with glow effect */}
+      <div className={styles.headerWrapper}>
+        {/* Header and search section */}
+        <div className={styles.headerContainer}>
+          {/* Header Section */}
+          <div className={styles.headerSection}>
+            <H3 className={styles.mainTitle}>
+              Discover Trending Topics
+            </H3>
+            <div className={styles.subtitleWithInfo}>
+              <Body className={styles.subtitle}>
+                Discover what's trending and get started with your draft in one click.
+              </Body>
+              <InfoWizard
+                open={openHelpModal}
+                setOpen={setOpenHelpModal}
+                tooltipText="Learn about our data sources and AI search"
+                iconGlyph="Wizard"
+                sections={SUGGESTIONS_INFO_WIZARD}
+              />
+            </div>
+          </div>
+
+          <Search 
+            onSearchSubmit={handleSearchSubmit}
+            onLabelChange={handleLabelChange}
+            selectedLabel={selectedLabel}
+          />
+        </div>
+      </div>
+
+      <div className={styles.contentContainer}>
+        <div className={styles.content}>
+          <Suggestions 
+            suggestedTopics={suggestedTopics}
+            searchResults={searchResults}
+            isLoadingSuggestions={isLoadingSuggestions}
+            isLoadingSearch={isLoadingSearch}
+            isSearchActive={isSearchActive}
+            error={error}
+            onBackToSuggestions={handleBackToSuggestions}
+            searchQuery={submittedQuery}
+          />
+        </div>
       </div>
     </div>
   );
 };
-
-export default TopicsContainer; 
