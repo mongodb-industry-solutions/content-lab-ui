@@ -64,7 +64,6 @@ export function useDraftManager(initialDraftId, showNotification, editorRef) {
         setMetadata(prev => ({ ...prev, [field]: value }));
     };
 
-
     const handleSaveDraft = async () => {
         const content = editorRef.current?.getDraftContent() || '';
         
@@ -90,7 +89,6 @@ export function useDraftManager(initialDraftId, showNotification, editorRef) {
         }
     };
 
-    // New: Publish draft handler using plain text
     const handlePublishDraft = async () => {
         const content = editorRef.current?.getDraftText() || '';
         
