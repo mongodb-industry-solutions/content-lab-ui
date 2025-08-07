@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { saveDraft, updateDraft, fetchDraftById } from '@/api/drafts_api';
+import { publishDraft } from '@/api/publish_api';
 
 /**
  * Custom hook for managing draft operations
@@ -49,7 +50,7 @@ export function useDraftManager(initialDraftId, showNotification, editorRef) {
                 
                 showNotification('success', 'Draft loaded successfully!');
             } catch (error) {
-                showNotification('error', 'Failed to load draft. Redirecting to new draft...');
+                showNotification('danger', 'Failed to load draft. Redirecting to new draft...');
                 setTimeout(() => router.push('/drafts'), 2000);
             } finally {
                 setIsLoading(false);
@@ -63,12 +64,13 @@ export function useDraftManager(initialDraftId, showNotification, editorRef) {
         setMetadata(prev => ({ ...prev, [field]: value }));
     };
 
+
     const handleSaveDraft = async () => {
         const content = editorRef.current?.getDraftContent() || '';
         
-        if (!userProfile?._id) return showNotification('error', 'No user profile found. Please log in again.');
-        if (!content.trim()) return showNotification('error', 'Please add some content before saving.');
-        if (!metadata.title.trim()) return showNotification('error', 'Please add a title before saving.');
+        if (!userProfile?._id) return showNotification('danger', 'No user profile found. Please log in again.');
+        if (!content.trim()) return showNotification('danger', 'Please add some content before saving.');
+        if (!metadata.title.trim()) return showNotification('danger', 'Please add a title before saving.');
 
         setIsSaving(true);
         try {
@@ -82,7 +84,29 @@ export function useDraftManager(initialDraftId, showNotification, editorRef) {
             if (!draftId) setDraftId(result._id);
             showNotification('success', draftId ? 'Draft updated successfully!' : 'Draft saved successfully!');
         } catch (error) {
-            showNotification('error', 'Failed to save draft. Please try again.');
+            showNotification('danger', 'Failed to save draft. Please try again.');
+        } finally {
+            setIsSaving(false);
+        }
+    };
+
+    // New: Publish draft handler using plain text
+    const handlePublishDraft = async () => {
+        const content = editorRef.current?.getDraftText() || '';
+        
+        if (!userProfile?._id) return showNotification('danger', 'No user profile found. Please log in again.');
+        if (!content.trim()) return showNotification('danger', 'Please add some content before publishing.');
+        if (!metadata.title.trim()) return showNotification('danger', 'Please add a title before publishing.');
+
+        setIsSaving(true);
+        try {
+            const topicId = topicCard?._id || null;
+            const keywords = topicCard?.keywords || null;
+
+            await publishDraft(userProfile._id, metadata.title, metadata.category, content, keywords, topicId);
+            showNotification('success', 'Draft published successfully!');
+        } catch (error) {
+            showNotification('danger', 'Failed to publish draft. Please try again.');
         } finally {
             setIsSaving(false);
         }
@@ -99,6 +123,7 @@ export function useDraftManager(initialDraftId, showNotification, editorRef) {
 
         // Actions
         handleMetadataChange, 
-        handleSaveDraft
+        handleSaveDraft,
+        handlePublishDraft
     };
 } 

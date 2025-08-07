@@ -31,32 +31,18 @@ export default function Hero() {
             </H3>
             
             <Body className={styles.subHeadline}>
-              Discover trending news and viral content powered by <strong>vector search</strong>. Skip the endless scrolling and research with smart recommendations that keep you ahead of the curve.
+              Access <strong>fresh insights</strong> and viral stories in one place, helping content writers find inspiration and write their next standout article with confidence.
             </Body>
             
-            <div className={styles.buttonGroup}>
-              <Link href="/topics">
-                <Button 
-                  size="large"
-                  variant="primary"
-                  className={styles.ctaButton}
-                  rightGlyph={<Icon glyph="Sparkle" />}
-                >
-                  Browse Topics
-                </Button>
-              </Link>
-              
-              <Link href="/saved">
-                <Button 
-                  size="large"
-                  variant="default"
-                  className={styles.ctaButton}
-                  rightGlyph={<Icon glyph="Cursor" />}
-                >
-                  My Drafts
-                </Button>
-              </Link>
-            </div>
+            <Link href="/topics">
+              <Button 
+                size="large"
+                variant="primary"
+                rightGlyph={<Icon glyph="Sparkle" />}
+              >
+                Discover Trending Stories
+              </Button>
+            </Link>
           </div>
           
           <div className={styles.newsSection}>
@@ -73,4 +59,4 @@ export default function Hero() {
       </div>
     </section>
   );
-} 
+}

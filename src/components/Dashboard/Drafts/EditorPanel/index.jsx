@@ -18,6 +18,9 @@ const EditorPanel = forwardRef(({ metadata, onMetadataChange, topicCard, isMobil
         getDraftContent: () => {
             return editorRef.current?.getDraftContent() || '';
         },
+        getDraftText: () => {
+            return editorRef.current?.getDraftText() || '';
+        },
         setDraftContent: (newContent) => {
             editorRef.current?.setDraftContent(newContent);
         },

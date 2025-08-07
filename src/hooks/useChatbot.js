@@ -90,7 +90,7 @@ export function useChatbot(getDraftContent, userProfile, topicCard) {
         // Check if action needs draft content for certain commands
         if ((actionTool.id === 'refine' || actionTool.id === 'proofread')) {
             const draftContent = getDraftContent();
-            if (!draftContent?.trim()) {
+            if (draftContent.trim() === '<p></p>') {
                 // Add a simple message instead of setting command
                 const infoMessage = createNeedContentMessage(actionTool.id);
                 setMessages(prev => [...prev, infoMessage]);

@@ -7,6 +7,7 @@
 
 import React from 'react';
 import Badge from '@leafygreen-ui/badge';
+import { H3 } from '@leafygreen-ui/typography';
 import {
   AreaChart,
   AreaSeries,
@@ -30,18 +31,14 @@ export default function MetricsChart({ article }) {
   const isMobile = useMobile();
 
   return (
-    <div className={styles.metricsCard}>   
-      <div className={styles.legends}>
-          <Badge variant="yellow">Visits</Badge>
-          <Badge variant="green">Shares</Badge>
-          <Badge variant="blue">Comments</Badge>
+    <div className={styles.metricsCard}>
+      <div className={styles.header}>
+        <H3 className={styles.title}>Engagement Stats</H3>
       </div>
-
       <AreaChart
         data={chartData}
-        height={isMobile ? 250 : 375}
+        height={isMobile ? 225 : 350}
         width="100%"
-        tooltip={null}
         xAxis={
           <LinearXAxis
             type="time"
@@ -49,12 +46,13 @@ export default function MetricsChart({ article }) {
               <LinearXAxisTickSeries
                 label={
                   <LinearXAxisTickLabel
-                    format={(v) =>
-                      new Date(v).toLocaleDateString('en-US', {
-                        month: 'numeric',
+                    format={(v) => {
+                      const date = new Date(v);
+                      return date.toLocaleDateString('en-US', {
+                        month: 'short',
                         day: 'numeric',
-                      })
-                    }
+                      });
+                    }}
                     fill="#4a4a4a"
                   />
                 }
@@ -65,11 +63,15 @@ export default function MetricsChart({ article }) {
         }
         yAxis={
           <LinearYAxis
-            axisLine={null}
             tickSeries={
               <LinearYAxisTickSeries
                 line={null}
-                label={null}
+                label={
+                  <LinearXAxisTickLabel
+                    format={v => v.toLocaleString('en-US')}
+                    fill="#4a4a4a"
+                  />
+                }
                 tickSize={20}
               />
             }
@@ -101,6 +103,11 @@ export default function MetricsChart({ article }) {
           />
         }
       />
+      <div className={styles.legends}>
+        <Badge variant="yellow">Visits</Badge>
+        <Badge variant="green">Shares</Badge>
+        <Badge variant="blue">Comments</Badge>
+      </div>
     </div>
   );
 }

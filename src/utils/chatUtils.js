@@ -31,7 +31,7 @@ export const createBotMessage = (response, baseId) => {
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     };
 
-    // Message type mapping - easy to extend with new types
+    // Message type mapping
     const messageTypes = {
         outline: () => ({
             ...baseMessage,

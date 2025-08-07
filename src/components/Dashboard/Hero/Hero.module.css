@@ -93,20 +93,6 @@
   text-align: center;
 }
 
-.buttonGroup {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.ctaButton {
-  width: 160px;
-  font-weight: 400;
-  font-size: 14px;
-}
-
 .newsSection {
   position: relative;
 }

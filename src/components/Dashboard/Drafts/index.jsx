@@ -20,7 +20,7 @@ export default function Drafts({ draftId: initialDraftId = null }) {
     const router = useRouter();
     const editorRef = useRef(null);
     const isMobile = useMobile(1400);
-    
+
     // Custom hooks for drafts
     const { notification, showNotification, clearNotification } = useNotification();
     const {
@@ -31,7 +31,8 @@ export default function Drafts({ draftId: initialDraftId = null }) {
         topicCard,
         metadata,
         handleMetadataChange,
-        handleSaveDraft
+        handleSaveDraft,
+        handlePublishDraft
     } = useDraftManager(initialDraftId, showNotification, editorRef);
 
     // Editor utilities
@@ -41,11 +42,7 @@ export default function Drafts({ draftId: initialDraftId = null }) {
         router.push('/topics');
     };
 
-    const handlePublishDraft = () => {
-        // Do something else here
-    };
-
-        // Shared props for both mobile and desktop components
+    // Shared props for both mobile and desktop components
     const sharedProps = {
         notification,
         clearNotification,

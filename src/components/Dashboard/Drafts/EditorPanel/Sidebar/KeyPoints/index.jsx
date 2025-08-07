@@ -11,6 +11,7 @@ import Button from '@leafygreen-ui/button';
 import { Subtitle, Body } from '@leafygreen-ui/typography';
 import { Spinner } from '@leafygreen-ui/loading-indicator';
 import Icon from '@leafygreen-ui/icon';
+import DemoGuideCue from '@/components/shared/DemoGuideCue';
 import { researchTopic } from '@/api/research_api';
 import styles from './KeyPoints.module.css';
 
@@ -35,6 +36,9 @@ export default function KeyPoints({ topicCard }) {
 
     return (
         <div className={styles.keyPointsContainer}>
+            <DemoGuideCue title="Key Points">
+                Review these essential highlights to help structure and strengthen your article.
+            </DemoGuideCue>
             <Card className={styles.keyPointsCard}>
                 <div className={styles.keyPointsContent}>
                     {/* Sticky Header */}
@@ -80,4 +84,4 @@ export default function KeyPoints({ topicCard }) {
             </Card>
         </div>
     );
-} 
+}

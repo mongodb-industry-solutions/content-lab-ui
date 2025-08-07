@@ -22,7 +22,7 @@ export default function Navbar({ onLogout }) {
     },
     {
       href: '/saved',
-      label: 'Saved',
+      label: 'My Drafts',
     }
   ];
 

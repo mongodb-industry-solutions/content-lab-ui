@@ -59,6 +59,9 @@ export function useTiptapEditor() {
         getDraftContent: () => {
             return editor?.getHTML() || '';
         },
+        getDraftText: () => {
+            return editor?.getText() || '';
+        },
         setDraftContent: (newContent) => {
             if (editor) {
                 editor.commands.setContent(newContent);
