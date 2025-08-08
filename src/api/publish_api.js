@@ -12,7 +12,7 @@ const mainBackendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:
  * */
 export async function publishDraft(userId, title, category, content, keywords = null, topicId = null) {
     try {
-        const response = await fetch(`${mainBackendUrl}/api/drafts/${draftId}/publish`, {
+        const response = await fetch(`${mainBackendUrl}/api/drafts/publish`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

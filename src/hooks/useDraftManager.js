@@ -100,9 +100,14 @@ export function useDraftManager(initialDraftId, showNotification, editorRef) {
         try {
             const topicId = topicCard?._id || null;
             const keywords = topicCard?.keywords || null;
-
-            await publishDraft(userProfile._id, metadata.title, metadata.category, content, keywords, topicId);
+            const result = await publishDraft(userProfile._id, metadata.title, metadata.category, content, keywords, topicId);
             showNotification('success', 'Draft published successfully!');
+        
+            // Redirect to the URL if available in the result
+            if (result) {
+                window.open(result, '_blank'); // Opens in new tab
+                
+            }
         } catch (error) {
             showNotification('danger', 'Failed to publish draft. Please try again.');
         } finally {
