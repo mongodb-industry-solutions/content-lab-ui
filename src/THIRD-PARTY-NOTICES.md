@@ -697,12 +697,27 @@ This project includes third-party packages listed below:
 - **Repository**: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 ---
+### @types/linkify-it@3.0.5
+- **License**: MIT
+- **Repository**: https://github.com/DefinitelyTyped/DefinitelyTyped
+
+---
 ### @types/linkify-it@5.0.0
 - **License**: MIT
 - **Repository**: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 ---
+### @types/markdown-it@13.0.9
+- **License**: MIT
+- **Repository**: https://github.com/DefinitelyTyped/DefinitelyTyped
+
+---
 ### @types/markdown-it@14.1.2
+- **License**: MIT
+- **Repository**: https://github.com/DefinitelyTyped/DefinitelyTyped
+
+---
+### @types/mdurl@1.0.5
 - **License**: MIT
 - **Repository**: https://github.com/DefinitelyTyped/DefinitelyTyped
 
@@ -1727,6 +1742,12 @@ This project includes third-party packages listed below:
 - **Contact**: pieroxy@pieroxy.net
 
 ---
+### markdown-it-task-lists@2.1.1
+- **License**: ISC
+- **Author**: Revin Guillen
+- **Repository**: https://github.com/revin/markdown-it-task-lists
+
+---
 ### markdown-it@14.1.0
 - **License**: MIT
 - **Repository**: https://github.com/markdown-it/markdown-it
@@ -2337,6 +2358,12 @@ This project includes third-party packages listed below:
 - **License**: MIT
 - **Author**: atomiks
 - **Repository**: https://github.com/atomiks/tippyjs
+
+---
+### tiptap-markdown@0.8.10
+- **License**: MIT
+- **Author**: Antoine Guingand
+- **Repository**: https://github.com/aguingand/tiptap-markdown
 
 ---
 ### transformation-matrix@2.16.1

@@ -91,6 +91,7 @@ export function useDraftManager(initialDraftId, showNotification, editorRef) {
 
     const handlePublishDraft = async () => {
         const content = editorRef.current?.getDraftText() || '';
+        console.log(content);
         
         if (!userProfile?._id) return showNotification('danger', 'No user profile found. Please log in again.');
         if (!content.trim()) return showNotification('danger', 'Please add some content before publishing.');

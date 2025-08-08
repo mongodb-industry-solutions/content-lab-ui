@@ -6,6 +6,7 @@ import TextAlign from '@tiptap/extension-text-align';
 import Link from '@tiptap/extension-link';
 import Underline from '@tiptap/extension-underline';
 import Placeholder from '@tiptap/extension-placeholder';
+import { Markdown } from 'tiptap-markdown';
 
 /**
  * Custom hook for managing TipTap editor with all its configuration and state
@@ -23,6 +24,7 @@ export function useTiptapEditor() {
             Heading.configure({
                 levels: [1, 2, 3],
             }),
+            Markdown,
             TextAlign.configure({
                 types: ['heading', 'paragraph'],
             }),
@@ -60,7 +62,7 @@ export function useTiptapEditor() {
             return editor?.getHTML() || '';
         },
         getDraftText: () => {
-            return editor?.getText() || '';
+            return editor?.storage?.markdown?.getMarkdown() || '';
         },
         setDraftContent: (newContent) => {
             if (editor) {

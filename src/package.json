@@ -39,7 +39,8 @@
     "next": "15.2.3",
     "react": "19.0.0-rc-02c0e824-20241028",
     "react-dom": "19.0.0-rc-02c0e824-20241028",
-    "reaviz": "^16.0.6"
+    "reaviz": "^16.0.6",
+    "tiptap-markdown": "0.8.10"
   },
   "devDependencies": {
     "license-checker": "^25.0.1"
