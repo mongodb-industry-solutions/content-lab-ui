@@ -1,4 +1,6 @@
-const mainBackendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
+// IMPORTANT: Use /api as base URL (Next.js proxy pattern)
+// This points to Next.js API routes, NOT the backend directly
+const API_BASE_URL = '/api';
 
 /**
  * Fetch user profile from the main backend
@@ -10,7 +12,7 @@ export async function fetchUserProfile(userId) {
       const params = new URLSearchParams();
       params.append('userId', userId);
       
-      const response = await fetch(`${mainBackendUrl}/api/content/profile?${params.toString()}`, {
+      const response = await fetch(`${API_BASE_URL}/content/profile?${params.toString()}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
