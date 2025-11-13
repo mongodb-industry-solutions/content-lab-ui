@@ -134,7 +134,7 @@ To run The Content Lab locally, ensure the following prerequisites are met.
 > **_Note:_** Create a `.env.local` file within the `/src` directory.
 
 ```bash
-NEXT_PUBLIC_BACKEND_URL="http://localhost:8000"
+NEXT_PUBLIC_SEARCH_BACKEND_URL="http://localhost:8000"
 NEXT_PUBLIC_CHAT_BACKEND_URL="http://localhost:8001"
 ```
 
@@ -167,7 +167,7 @@ npm install
 ```bash
 npm run dev
 ```
-4. The frontend will now be accessible at http://localhost:3000 by default, providing a user interface.
+4. The frontend will now be accessible at http://localhost:8080 by default, providing a user interface.
 
 ## Run with Docker
 
@@ -186,6 +186,10 @@ make clean
 
 - Check that you've created an `.env.local` file that contains the required environment variables.
 - Required environment variables:
-  - `NEXT_PUBLIC_BACKEND_URL`: Main backend service URL (defaults to http://localhost:8000)
+  - `NEXT_PUBLIC_SEARCH_BACKEND_URL`: Main backend service URL (defaults to http://localhost:8000)
   - `NEXT_PUBLIC_CHAT_BACKEND_URL`: Chat/AI backend service URL (defaults to http://localhost:8001)
 - If experiencing build issues with peer dependencies, try installing with `npm install --legacy-peer-deps`
+
+## 📄 License
+
+See [LICENSE](LICENSE) file for details.

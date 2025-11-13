@@ -1,4 +1,6 @@
-const chatBackendUrl = process.env.NEXT_PUBLIC_CHAT_BACKEND_URL || "http://localhost:8001";
+// IMPORTANT: Use /api as base URL (Next.js proxy pattern)
+// This points to Next.js API routes, NOT the backend directly
+const API_BASE_URL = '/api';
 
 /**
  * Send a chat message and get AI response
@@ -12,7 +14,7 @@ const chatBackendUrl = process.env.NEXT_PUBLIC_CHAT_BACKEND_URL || "http://local
  */
 export async function sendChatMessage(chatData) {
   try {
-    const response = await fetch(`${chatBackendUrl}/api/writing/assist`, {
+    const response = await fetch(`${API_BASE_URL}/writing/assist`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

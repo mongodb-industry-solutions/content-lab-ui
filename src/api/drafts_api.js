@@ -1,4 +1,6 @@
-const mainBackendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
+// IMPORTANT: Use /api as base URL (Next.js proxy pattern)
+// This points to Next.js API routes, NOT the backend directly
+const API_BASE_URL = '/api';
 
 /**
  * Save a draft to the main backend
@@ -12,7 +14,7 @@ const mainBackendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:
  */
 export async function saveDraft(userId, title, category, content, keywords = null, topicId = null) {
     try {
-        const response = await fetch(`${mainBackendUrl}/api/drafts`, {
+        const response = await fetch(`${API_BASE_URL}/drafts`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -50,7 +52,7 @@ export async function saveDraft(userId, title, category, content, keywords = nul
  */
 export async function updateDraft(draftId, userId, title, category, content, keywords = null, topicId = null) {
     try {
-        const response = await fetch(`${mainBackendUrl}/api/drafts/${draftId}`, {
+        const response = await fetch(`${API_BASE_URL}/drafts/${draftId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -83,7 +85,7 @@ export async function updateDraft(draftId, userId, title, category, content, key
  */
 export async function fetchDraftById(draftId, userId) {
     try {
-        const response = await fetch(`${mainBackendUrl}/api/drafts/${draftId}?userId=${userId}`, {
+        const response = await fetch(`${API_BASE_URL}/drafts/${draftId}?userId=${userId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -111,7 +113,7 @@ export async function fetchDraftById(draftId, userId) {
  */
 export async function fetchDraftByTopicId(topicId, userId) {
     try {
-        const response = await fetch(`${mainBackendUrl}/api/drafts/by-topic/${topicId}?userId=${userId}`, {
+        const response = await fetch(`${API_BASE_URL}/drafts/by-topic/${topicId}?userId=${userId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -138,7 +140,7 @@ export async function fetchDraftByTopicId(topicId, userId) {
  */
 export async function fetchUserDrafts(userId) {
     try {
-        const response = await fetch(`${mainBackendUrl}/api/drafts?userId=${userId}`, {
+        const response = await fetch(`${API_BASE_URL}/drafts?userId=${userId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -165,7 +167,7 @@ export async function fetchUserDrafts(userId) {
 export async function deleteDraft(draftId, userId) {
     try {
         const response = await fetch(
-            `${mainBackendUrl}/api/drafts/${draftId}?userId=${userId}`,
+            `${API_BASE_URL}/drafts/${draftId}?userId=${userId}`,
             {
                 method: 'DELETE',
                 headers: {
