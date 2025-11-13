@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { Body, Disclaimer } from '@leafygreen-ui/typography';
 import Button from '@leafygreen-ui/button';
 import Icon from '@leafygreen-ui/icon';
-import Typewriter from '@/components/dashboard/Drafts/Chatbot/Typewriter';
+import Typewriter from '@/components/Dashboard/Drafts/Chatbot/Typewriter';
 import mainStyles from '../MessageBubble.module.css';
 import Image from 'next/image';
 import styles from './SuggestionBubble.module.css';
