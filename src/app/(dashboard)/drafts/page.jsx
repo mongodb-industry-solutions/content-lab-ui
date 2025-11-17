@@ -2,7 +2,7 @@
  * Drafts page top level component
  */
 
-import Drafts from '@/components/dashboard/Drafts';
+import Drafts from '@/components/Dashboard/Drafts';
 
 export default function DraftsPage() {
   return (

@@ -1,4 +1,6 @@
-const mainBackendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
+// IMPORTANT: Use /api as base URL (Next.js proxy pattern)
+// This points to Next.js API routes, NOT the backend directly
+const API_BASE_URL = '/api';
 
 /**
  * Fetch suggested topics from the main backend
@@ -14,7 +16,7 @@ export async function fetchSuggestedTopics(label = 'general') {
         params.append('label', label);
       }
       
-      const url = `${mainBackendUrl}/api/content/suggestions${params.toString() ? '?' + params.toString() : ''}`;
+      const url = `${API_BASE_URL}/content/suggestions${params.toString() ? '?' + params.toString() : ''}`;
       
       const response = await fetch(url, {
         method: 'GET',

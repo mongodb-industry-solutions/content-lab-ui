@@ -2,13 +2,13 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile.app
+      dockerfile: Dockerfile.frontend
     image: app:latest
     volumes:
       - ~/.aws/credentials:/root/.aws/credentials:ro
       - ~/.aws/config:/root/.aws/config:ro
       - ~/.aws/sso/cache:/root/.aws/sso/cache:rw  # Only make cache writable
     ports:
-      - "3000:3000"
+      - "8080:8080"
     restart: always
     container_name: app

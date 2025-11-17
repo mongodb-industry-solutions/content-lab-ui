@@ -1,4 +1,6 @@
-const mainBackendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
+// IMPORTANT: Use /api as base URL (Next.js proxy pattern)
+// This points to Next.js API routes, NOT the backend directly
+const API_BASE_URL = '/api';
 
 /**
  * Research a topic and get key points for content creation
@@ -7,7 +9,7 @@ const mainBackendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:
  */
 export async function researchTopic(topic) {
     try {
-      const response = await fetch(`${mainBackendUrl}/api/services/research`, {
+      const response = await fetch(`${API_BASE_URL}/services/research`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

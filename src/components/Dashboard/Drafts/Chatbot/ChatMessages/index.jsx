@@ -7,7 +7,7 @@
 
 import { useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
-import MessageBubble from '@/components/dashboard/Drafts/Chatbot/MessageBubble';
+import MessageBubble from '@/components/Dashboard/Drafts/Chatbot/MessageBubble';
 import styles from './ChatMessages.module.css';
 import { CHATBOT_GREETING_MESSAGE } from '@/constants/users';
 
