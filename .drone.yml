@@ -44,7 +44,7 @@ steps:
         - "ingress.enabled=true"
         - "ingress.hosts[0]=content-lab-ui.industrysolutions.staging.corp.mongodb.com"
         - "mesh.enabled=true"
-        - "resources.limits.cpu=1000m"
+        - "resources.limits.cpu=1000m" #reduce resources
         - "resources.limits.memory=1024Mi"
         - "resources.requests.cpu=250m"
         - "resources.requests.memory=256Mi"
