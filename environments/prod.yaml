@@ -2,7 +2,7 @@ env:
   NODE_ENV: prod
   INTERNAL_SEARCH_BACKEND_URL: http://contentlab-search-web-app:80
   INTERNAL_CHAT_BACKEND_URL: http://contentlab-chat-web-app:80
-  
+
 envSecrets:
   NEXT_PUBLIC_SEARCH_BACKEND_URL: content-lab-ui
   NEXT_PUBLIC_CHAT_BACKEND_URL: content-lab-ui
@@ -13,3 +13,10 @@ serviceAccount:
   irsa:
     accountId: "275662791714"
     roleName: "kanopy-prod-cicd-irsa"
+
+security:
+  dataClassification: "Internal"
+  dataDesignation: ["MI"]
+
+ownership:
+  driEmail: "benjamin.lorenze@mongodb.com"
