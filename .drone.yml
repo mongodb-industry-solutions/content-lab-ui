@@ -34,7 +34,7 @@ steps:
     image: public.ecr.aws/kanopy/drone-helm:v3
     settings:
       chart: mongodb/web-app
-      chart_version: 4.25.0
+      chart_version: 4.30.0
       add_repos: [mongodb=https://10gen.github.io/helm-charts]
       namespace: industrysolutions
       release: content-lab-ui
@@ -51,7 +51,7 @@ steps:
       api_server: https://api.staging.corp.mongodb.com
       kubernetes_token:
         from_secret: staging_kubernetes_token
-      values_files: [ "environments/staging.yaml" ]
+      values_files: ["environments/staging.yaml"]
     when:
       event:
         - push
@@ -92,7 +92,7 @@ steps:
     image: public.ecr.aws/kanopy/drone-helm:v3
     settings:
       chart: mongodb/web-app
-      chart_version: 4.25.0
+      chart_version: 4.30.0
       add_repos: [mongodb=https://10gen.github.io/helm-charts]
       namespace: industrysolutions
       release: content-lab-ui
@@ -109,7 +109,7 @@ steps:
       api_server: https://api.prod.corp.mongodb.com
       kubernetes_token:
         from_secret: prod_kubernetes_token
-      values_files: [ "environments/prod.yaml" ]
+      values_files: ["environments/prod.yaml"]
     when:
       event:
         - push
