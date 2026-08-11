@@ -1,0 +1,49 @@
+name: E2E Tests
+
+on:
+  pull_request:
+    paths:
+      - "src/**"
+      - ".github/workflows/e2e-tests.yml"
+
+# No package-lock.json changes are assumed here, so installs use `npm install` rather than `npm ci`.
+env:
+  NODE_VERSION: "22"
+
+jobs:
+  e2e:
+    name: E2E user workflows
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: src
+
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Build
+        run: npm run build
+
+      - name: Run E2E tests
+        env:
+          APP_NAME: content-lab
+          ENV_NAME: local
+        run: npm run test:e2e
+
+      - name: Upload report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: playwright-report
+          path: src/playwright-report/
+          retention-days: 7
