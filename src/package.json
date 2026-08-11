@@ -39,7 +39,7 @@
     "@tiptap/react": "^2.25.0",
     "@tiptap/starter-kit": "^2.25.0",
     "lucide-react": "^0.525.0",
-    "next": "15.4.10",
+    "next": "15.5.21",
     "react": "19.0.0-rc-02c0e824-20241028",
     "react-dom": "19.0.0-rc-02c0e824-20241028",
     "reaviz": "^16.0.6",
@@ -48,5 +48,17 @@
   "devDependencies": {
     "@playwright/test": "1.55.1",
     "license-checker": "^25.0.1"
+  },
+  "overrides": {
+    "lodash": "4.18.1",
+    "linkify-it": "5.0.2",
+    "linkifyjs": "4.3.2",
+    "minimatch": "3.1.5",
+    "nanoid": "3.3.17",
+    "brace-expansion": "1.1.18",
+    "postcss": "8.5.26",
+    "markdown-it": "14.2.0",
+    "yaml": "1.10.3",
+    "sharp": "0.35.3"
   }
 }
