@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "generate-notices": "node docs/scripts/generate-third-party-notices.js"
+    "generate-notices": "node docs/scripts/generate-third-party-notices.js",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:report": "playwright show-report"
   },
   "dependencies": {
     "@leafygreen-ui/badge": "^10.0.1",
@@ -43,6 +46,7 @@
     "tiptap-markdown": "0.8.10"
   },
   "devDependencies": {
+    "@playwright/test": "1.55.1",
     "license-checker": "^25.0.1"
   }
 }
