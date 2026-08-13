@@ -86,6 +86,9 @@ async function clearBrowserState(page, context) {
 }
 
 test.describe('Content Lab - E2E User Workflows', () => {
+  // Drafts (src/hooks/useMobile.js, 1400px breakpoint) switches to a single-panel mobile layout
+  // below 1400px, where Editor and Chat are separate tabs instead of both visible at once.
+
   test.beforeAll(() => {
     const appName = process.env.APP_NAME || DEFAULT_APP;
     const envName = process.env.ENV_NAME || DEFAULT_ENV;
