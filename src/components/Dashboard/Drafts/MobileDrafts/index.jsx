@@ -43,42 +43,10 @@ export default function MobileDrafts({
         setCurrentView(value);
     };
 
-    const renderCurrentView = () => {
-        switch (currentView) {
-            case 'sidebar':
-                return (
-                    <Sidebar 
-                        metadata={metadata}
-                        onMetadataChange={handleMetadataChange}
-                        topicCard={topicCard}
-                        isMobile={true}
-                    />
-                );
-            case 'editor':
-                return (
-                    <EditorPanel 
-                        ref={editorRef} 
-                        metadata={metadata}
-                        onMetadataChange={handleMetadataChange}
-                        topicCard={topicCard}
-                        isMobile={true}
-                    />
-                );
-            case 'chat':
-                return (
-                    <Chatbot 
-                        getDraftContent={getDraftContent}
-                        applyDraftLayout={applyDraftLayout}
-                        applySuggestion={applySuggestion}
-                        userProfile={userProfile}
-                        topicCard={topicCard}
-                        isMobile={true}
-                    />
-                );
-            default:
-                return null;
-        }
-    };
+    // All three panels stay mounted and are toggled with CSS rather than conditionally rendered, so
+    // switching tabs doesn't unmount/remount EditorPanel and lose its Tiptap content (matches how
+    // DesktopDrafts already keeps Editor and Chat mounted side by side).
+    const panelStyle = (view) => ({ display: currentView === view ? undefined : 'none' });
 
     return (
         <div className={styles.mobileDraftsContainer}>
@@ -154,7 +122,37 @@ export default function MobileDrafts({
 
             {/* Main Content */}
             <div className={styles.mobileContent}>
-                {renderCurrentView()}
+                {topicCard && (
+                    <>
+                        <div style={panelStyle('sidebar')}>
+                            <Sidebar
+                                metadata={metadata}
+                                onMetadataChange={handleMetadataChange}
+                                topicCard={topicCard}
+                                isMobile={true}
+                            />
+                        </div>
+                        <div style={panelStyle('editor')}>
+                            <EditorPanel
+                                ref={editorRef}
+                                metadata={metadata}
+                                onMetadataChange={handleMetadataChange}
+                                topicCard={topicCard}
+                                isMobile={true}
+                            />
+                        </div>
+                        <div style={panelStyle('chat')}>
+                            <Chatbot
+                                getDraftContent={getDraftContent}
+                                applyDraftLayout={applyDraftLayout}
+                                applySuggestion={applySuggestion}
+                                userProfile={userProfile}
+                                topicCard={topicCard}
+                                isMobile={true}
+                            />
+                        </div>
+                    </>
+                )}
             </div>
         </div>
     );
