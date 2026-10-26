@@ -233,15 +233,33 @@ test.describe('Content Lab - E2E User Workflows', () => {
     // Act
     await runWritingTool(page, 'Draft');
 
-    // The draft has been applied to the free text box.
+    // The draft has been applied to the free text box as real rich text.
+    //
+    // `toContainText` alone cannot prove that, and never could: when the payload lands as literal
+    // markup inside a code block the editor's text still contains the phrase. Only the node type
+    // distinguishes the two, so these assertions check structure as well. Every one of them is
+    // scoped to `editorContent`, because the chat bubble renders the same payload through a second
+    // (read-only) Tiptap editor - a bare getByRole('heading', ...) would match both.
     // Assert
+    await expect(editorContent(page).getByRole('heading', { level: 1, name: 'Wellness and fitness trends' })).toBeVisible();
+    await expect(editorContent(page)).not.toContainText('<h1>');
+    await expect(editorContent(page)).not.toContainText('<p>');
     await expect(editorContent(page)).toContainText('Opening hook, three key sections');
+
+    // Applying must also refresh the status bar. The counts come from TipTap's `update` event, which
+    // the old setContent suppressed by defaulting `emitUpdate` to false.
+    await expect(page.getByText('0 words • 0 characters')).toHaveCount(0);
+
+    // The bubble's preview is a second Tiptap editor; it must not become a second
+    // [contenteditable="true"], which the editorContent helper assumes is unique on this page.
+    await expect(page.locator('[contenteditable="true"]')).toHaveCount(1);
 
     // Refine, send, wait for the reply, apply it.
     // Act
     await runWritingTool(page, 'Refine');
 
     // Assert
+    await expect(editorContent(page)).not.toContainText('<p>');
     await expect(editorContent(page)).toContainText('Refined opening hook with tightened sections');
 
     // Refine again, send, wait for the reply, apply it.
@@ -249,6 +267,7 @@ test.describe('Content Lab - E2E User Workflows', () => {
     await runWritingTool(page, 'Refine');
 
     // Assert
+    await expect(editorContent(page)).not.toContainText('<p>');
     await expect(editorContent(page)).toContainText('Second refinement pass with clearer transitions');
 
     // Act
