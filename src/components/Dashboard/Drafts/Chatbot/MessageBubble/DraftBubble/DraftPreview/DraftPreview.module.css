@@ -1,0 +1,113 @@
+/* DraftPreview.module.css */
+
+/* Same typography scale as the editor (RichTextEditor.module.css), sized down for the chat bubble.
+   The class sits on the ProseMirror root itself, so no :global(.ProseMirror) scoping is needed. */
+.previewRoot {
+    font-family: 'Euclid Circular A', Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #1C3D31;
+    outline: none;
+    word-wrap: break-word;
+}
+
+.previewRoot p {
+    margin: 0 0 8px 0;
+}
+
+.previewRoot p:last-child {
+    margin-bottom: 0;
+}
+
+.previewRoot h1 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+}
+
+.previewRoot h2 {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 12px 0 8px 0;
+    line-height: 1.4;
+}
+
+.previewRoot h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 12px 0 8px 0;
+    line-height: 1.4;
+}
+
+.previewRoot h1:first-child,
+.previewRoot h2:first-child,
+.previewRoot h3:first-child {
+    margin-top: 0;
+}
+
+.previewRoot strong {
+    font-weight: 700;
+}
+
+.previewRoot em {
+    font-style: italic;
+}
+
+.previewRoot u {
+    text-decoration: underline;
+}
+
+.previewRoot s {
+    text-decoration: line-through;
+}
+
+.previewRoot ul,
+.previewRoot ol {
+    margin: 0 0 8px 0;
+    padding-left: 20px;
+}
+
+.previewRoot ul li {
+    list-style-type: disc;
+    margin: 2px 0;
+}
+
+.previewRoot ol li {
+    list-style-type: decimal;
+    margin: 2px 0;
+}
+
+.previewRoot a {
+    color: #00684A;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.previewRoot blockquote {
+    margin: 0 0 8px 0;
+    padding-left: 10px;
+    border-left: 3px solid #E8EDEB;
+    color: #5F6C6B;
+}
+
+.previewRoot pre {
+    margin: 0 0 8px 0;
+    padding: 8px;
+    background-color: #FFFFFF;
+    border: 1px solid #E8EDEB;
+    border-radius: 4px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+.previewRoot code {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 12px;
+}
+
+.previewRoot hr {
+    border: none;
+    border-top: 1px solid #E8EDEB;
+    margin: 12px 0;
+}

@@ -20,15 +20,6 @@
     overflow-y: auto;
 }
 
-.draftContent {
-    font-family: 'Source Code Pro', monospace;
-    font-size: 0.75rem;
-    line-height: 1.4;
-    margin: 0;
-    white-space: pre-wrap;
-    color: #1C3D31;
-}
-
 .actionButtons {
     display: flex;
     justify-content: flex-end;

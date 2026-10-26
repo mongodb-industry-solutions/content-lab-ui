@@ -1,12 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useEditor } from '@tiptap/react';
-import StarterKit from '@tiptap/starter-kit';
-import Heading from '@tiptap/extension-heading';
-import TextAlign from '@tiptap/extension-text-align';
-import Link from '@tiptap/extension-link';
-import Underline from '@tiptap/extension-underline';
-import Placeholder from '@tiptap/extension-placeholder';
-import { Markdown } from 'tiptap-markdown';
+import { EDITOR_EXTENSIONS } from '@/utils/tiptapExtensions';
+import { setEditorHtml } from '@/utils/editorUtils';
 
 /**
  * Custom hook for managing TipTap editor with all its configuration and state
@@ -17,28 +12,7 @@ export function useTiptapEditor() {
     const [isMounted, setIsMounted] = useState(false);
 
     const editor = useEditor({
-        extensions: [
-            StarterKit.configure({
-                heading: false, 
-            }),
-            Heading.configure({
-                levels: [1, 2, 3],
-            }),
-            Markdown,
-            TextAlign.configure({
-                types: ['heading', 'paragraph'],
-            }),
-            Link.configure({
-                openOnClick: false,
-                HTMLAttributes: {
-                    class: 'tiptap-link',
-                },
-            }),
-            Underline,
-            Placeholder.configure({
-                placeholder: 'Start writing your article here...',
-            }),
-        ],
+        extensions: EDITOR_EXTENSIONS,
         content: '',
         onUpdate: ({ editor }) => {
             const html = editor.getHTML();
@@ -65,9 +39,7 @@ export function useTiptapEditor() {
             return editor?.storage?.markdown?.getMarkdown() || '';
         },
         setDraftContent: (newContent) => {
-            if (editor) {
-                editor.commands.setContent(newContent);
-            }
+            setEditorHtml(editor, newContent);
         },
         replaceText: (original, replacement) => {
             if (editor) {
