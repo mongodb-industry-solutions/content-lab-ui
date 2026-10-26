@@ -10,6 +10,7 @@ import { Body, Disclaimer } from '@leafygreen-ui/typography';
 import Button from '@leafygreen-ui/button';
 import Icon from '@leafygreen-ui/icon';
 import Typewriter from '@/components/Dashboard/Drafts/Chatbot/Typewriter';
+import DraftPreview from './DraftPreview';
 import mainStyles from '../MessageBubble.module.css'
 import Image from 'next/image';
 import styles from './DraftBubble.module.css';
@@ -50,11 +51,11 @@ export default function DraftBubble({ message, onApply, completedMessages, markC
                         />
                     </Body>
                     
-                    <div className={styles.draftPreview}>
-                        <pre className={styles.draftContent}>
-                            {draftContent}
-                        </pre>
-                    </div>
+                    {draftContent ? (
+                        <div className={styles.draftPreview}>
+                            <DraftPreview html={draftContent} />
+                        </div>
+                    ) : null}
                     
                     <div className={styles.actionButtons}>
                         <Button

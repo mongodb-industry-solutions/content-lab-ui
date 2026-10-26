@@ -16,6 +16,42 @@ export const parseBackendResponse = (response) => {
     };
 };
 
+const HTML_ENTITIES = { lt: '<', gt: '>', quot: '"', '#39': "'", amp: '&' };
+
+/**
+ * Normalise the assistant's draft payload before it reaches app state.
+ *
+ * The backend returns `result.html_content` as free-form model output. It can be absent, it is
+ * sometimes wrapped in a single ```html fence (the model thinking of its reply as a markdown
+ * document), and it is occasionally HTML-escaped rather than raw. A fence or escaped entities are
+ * fatal for anything that renders the value as HTML, so both are unwrapped here - at the boundary
+ * where the payload enters state - rather than in each consumer (the chat bubble preview and the
+ * editor both read `message.draftContent`).
+ *
+ * @param {unknown} raw - The raw html_content value
+ * @returns {string} - HTML ready to be parsed by the editor
+ */
+export const normalizeAssistantContent = (raw) => {
+    if (typeof raw !== 'string') return '';
+
+    let text = raw.trim();
+
+    // Strip one wrapping markdown code fence.
+    const fenced = text.match(/^```[^\n]*\n([\s\S]*?)\n?```$/);
+    if (fenced) text = fenced[1].trim();
+
+    // Decode entities only when the payload has no real tags at all but does contain escaped tag
+    // sequences - i.e. it is unambiguously an escaped HTML document. HTML that merely contains a
+    // code sample (&lt;h1&gt; inside a <pre>) keeps its entities. Single pass, so &amp;lt; does not
+    // double-decode.
+    const isFullyEscaped = !/<\/?[a-z][^>]*>/i.test(text) && /&lt;\/?[a-z][\s\S]*?&gt;/i.test(text);
+    if (isFullyEscaped) {
+        text = text.replace(/&(lt|gt|quot|#39|amp);/g, (match, name) => HTML_ENTITIES[name]);
+    }
+
+    return text;
+};
+
 /**
  * Create message object based on backend response
  * @param {Object} response - The backend response
@@ -24,30 +60,29 @@ export const parseBackendResponse = (response) => {
  */
 export const createBotMessage = (response, baseId) => {
     const { toolUsed, result, fallbackText } = parseBackendResponse(response);
-    
+
     const baseMessage = {
         id: baseId,
         sender: 'bot',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     };
 
+    // The outline and refine tools both hand back a full draft layout
+    const draftLayoutMessage = () => ({
+        ...baseMessage,
+        type: 'draft_layout',
+        draftContent: normalizeAssistantContent(result.html_content)
+    });
+
     // Message type mapping
     const messageTypes = {
-        outline: () => ({
-            ...baseMessage,
-            type: 'draft_layout',
-            draftContent: result.html_content
-        }),
+        outline: draftLayoutMessage,
         proofread: () => ({
-            ...baseMessage, 
+            ...baseMessage,
             type: 'suggestions',
             suggestions: result.corrections
         }),
-        refine: () => ({
-            ...baseMessage,
-            type: 'draft_layout',
-            draftContent: result.html_content
-        })
+        refine: draftLayoutMessage
     };
 
     return messageTypes[toolUsed]?.() || {
